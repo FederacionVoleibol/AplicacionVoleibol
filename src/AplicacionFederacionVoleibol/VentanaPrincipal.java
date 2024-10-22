@@ -161,6 +161,12 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		if (login.VerificacionDeLogin(Nombre, Password) == true) {
 			lblMensaje.setText("Accedido al sistema correctamente, Sr. " + txtUsuario.getText());
 			
+			  VentanaMenuPrincipal menuPrincipal = new VentanaMenuPrincipal(); //Si el usuario y contraseña son correctos se abrirá el menú principal
+	            menuPrincipal.setVisible(true);
+
+	            // Cerrar la ventana login 
+	            this.dispose();
+			
 		}else {
 			lblMensaje.setText("Error en la contraseña.");
 		}
