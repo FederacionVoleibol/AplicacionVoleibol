@@ -82,7 +82,7 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener{
 		btnClasificacion.setBackground(new Color(240, 240, 240));
 		btnClasificacion.addActionListener(this);
 		
-		btnArbitros = new JButton("Listado de árbitros");
+		btnArbitros = new JButton("Introducir Arbitros");
 		btnArbitros.setBounds(199, 28, 117, 21);
 		contentPane.add(btnArbitros);
 		
@@ -126,9 +126,10 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener{
 			this.setVisible(false);
 		}	else if (o == btnArbitros){
 			// si se pulsa en introduccion de datos
-			VentanaClasificacion vh = new VentanaClasificacion();
-			// la muestro
-			vh.setVisible(true);
+			VentanaIntroducirArbitros va = new VentanaIntroducirArbitros(); // Aquí llamamos a la ventana de Introducir Árbitros
+            va.setVisible(true);  // Mostrar la ventana de introducción de árbitros
+            this.setVisible(false);  // Ocultar la ventana de menú principal
+			va.setVisible(true);
 			// oculto la ventana de inicio
 			this.setVisible(false);
 		}
