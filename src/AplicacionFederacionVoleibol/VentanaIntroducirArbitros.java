@@ -106,7 +106,7 @@ public class VentanaIntroducirArbitros extends JFrame {
         });
     }
 
-    // Método para guardar los datos de la tabla en los arreglos
+    // Método para guardar los datos de la tabla en los arrays
     private void guardarDatos() {
         DefaultTableModel model = (DefaultTableModel) tablaArbitros.getModel();
 
