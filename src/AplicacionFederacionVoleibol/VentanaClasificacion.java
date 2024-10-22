@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaClasificacion extends JFrame {
@@ -29,7 +31,7 @@ public class VentanaClasificacion extends JFrame {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}
+			}//fsfs
 		});
 	}
 
@@ -57,22 +59,32 @@ public class VentanaClasificacion extends JFrame {
 		
 		//TABLA DE LA CLASIFICACION
 		tablaClasificacion = new JTable();
+		
 		tablaClasificacion.setModel(new DefaultTableModel(
+			
 			new Object[][] {
-				{1, "CD Avila Voleibol", null, null, null, null, null, null},
-				{2, "CD Zaragoza", null, null, null, null, null, null},
-				{3, "CV Alcobendas", null, null, null, null, null, null},
-				{4, "CV Bar\u00E7a", null, null, null, null, null, null},
-				{5, "CV Madrid Chamber\u00ED", null, null, null, null, null, null},
-				{6, "CV Sayre Mayser", null, null, null, null, null, null},
+				{1, "CD Avila Voleibol", 10, 6, 4, 15, 3, 18},
+				{2, "CD Zaragoza", 10, 5, 5, 12, 5, 15},
+				{3, "CV Alcobendas", 10, 4, 6, 9, 9, 12},
+				{4, "CV Bar\u00E7a", 10, 3, 7, 6,12 , 9},
+				{5, "CV Madrid Chamber\u00ED", 10, 2, 8, 4, 15, 6},
+				{6, "CV Sayre Mayser", 10, 1, 9, 3, 21, 3},
 			},
 			new String[] {
-				"POSICI\u00D3N", "EQUIPO", "PJ", "PG", "PP", "GF", "GC", "PTS"
+				"POSICI\u00D3N", "EQUIPO", "PJ", "PG", "PP", "SETFF", "SETFC", "PTS"
 			}
 		));
+		
+		// Agregar el código para alinear el texto y números en el centro
+		DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+		renderer.setHorizontalAlignment(SwingConstants.CENTER);
+		tablaClasificacion.setDefaultRenderer(Object.class, renderer);
+
+		scrollPane.setViewportView(tablaClasificacion);
+		
 		tablaClasificacion.getColumnModel().getColumn(0).setPreferredWidth(50);
 		tablaClasificacion.getColumnModel().getColumn(0).setMinWidth(17);
-		tablaClasificacion.getColumnModel().getColumn(1).setPreferredWidth(130);
+		tablaClasificacion.getColumnModel().getColumn(1).setPreferredWidth(160);
 		tablaClasificacion.getColumnModel().getColumn(2).setPreferredWidth(55);
 		tablaClasificacion.getColumnModel().getColumn(3).setPreferredWidth(55);
 		tablaClasificacion.getColumnModel().getColumn(4).setPreferredWidth(55);
