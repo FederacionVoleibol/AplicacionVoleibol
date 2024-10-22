@@ -31,7 +31,7 @@ public class VentanaClasificacion extends JFrame {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}//fsfs
+			}
 		});
 	}
 
@@ -61,7 +61,7 @@ public class VentanaClasificacion extends JFrame {
 		tablaClasificacion = new JTable();
 		
 		tablaClasificacion.setModel(new DefaultTableModel(
-			
+			//Valores por defecto/de prueba
 			new Object[][] {
 				{1, "CD Avila Voleibol", 10, 6, 4, 15, 3, 18},
 				{2, "CD Zaragoza", 10, 5, 5, 12, 5, 15},
@@ -81,6 +81,7 @@ public class VentanaClasificacion extends JFrame {
 		tablaClasificacion.setDefaultRenderer(Object.class, renderer);
 
 		scrollPane.setViewportView(tablaClasificacion);
+		
 		
 		tablaClasificacion.getColumnModel().getColumn(0).setPreferredWidth(50);
 		tablaClasificacion.getColumnModel().getColumn(0).setMinWidth(17);
