@@ -150,7 +150,7 @@ public class AlgoritmoJornadasFixture {
     	InformacionEquipos(6);
         System.out.println("Liga con 6 equipos:");
         calcularLigaNumEquiposPar(NUMEQUIPOS);
-        //Prueba de commit github
+        //Prueba de commit github2
         mostrarPartidos(calcularLigaNumEquiposPar(NUMEQUIPOS));
     }
 	
