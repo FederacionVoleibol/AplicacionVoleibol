@@ -168,5 +168,7 @@ public class VentanaInputDatosPartidos extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		contentPane.add(lblNewLabel, BorderLayout.SOUTH);
+		
+		//AÑADIR FECHA, NOMBRE ARBITRO, NOMBRE DE LOS EQUIPOS Y NUMERO DE PARTIDOS
 	}
 }

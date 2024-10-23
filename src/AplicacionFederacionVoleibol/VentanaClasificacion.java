@@ -1,5 +1,6 @@
 package AplicacionFederacionVoleibol;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -39,48 +40,37 @@ public class VentanaClasificacion extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaClasificacion() {
-		setTitle("Clasificación");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		 setTitle("Clasificación");
+			setBounds(100, 100, 800, 500);
+		    contentPane = new JPanel();
+		    contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		    setContentPane(contentPane);
+		    contentPane.setLayout(new BorderLayout());
 
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Clasificación");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel.setBounds(175, 10, 99, 13);
-		contentPane.add(lblNewLabel);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 38, 416, 215);
-		contentPane.add(scrollPane);
-		
-		//TABLA DE LA CLASIFICACION
-		tablaClasificacion = new JTable();
-		
-		tablaClasificacion.setModel(new DefaultTableModel(
-			//Valores por defecto/de prueba
-			new Object[][] {
-				{1, "CD Avila Voleibol", 10, 6, 4, 15, 3, 18},
-				{2, "CD Zaragoza", 10, 5, 5, 12, 5, 15},
-				{3, "CV Alcobendas", 10, 4, 6, 9, 9, 12},
-				{4, "CV Bar\u00E7a", 10, 3, 7, 6,12 , 9},
-				{5, "CV Madrid Chamber\u00ED", 10, 2, 8, 4, 15, 6},
-				{6, "CV Sayre Mayser", 10, 1, 9, 3, 21, 3},
-			},
-			new String[] {
-				"POSICI\u00D3N", "EQUIPO", "PJ", "PG", "PP", "SETFF", "SETFC", "PTS"
-			}
-		));
-		
-		// Agregar el código para alinear el texto y números en el centro
-		DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-		renderer.setHorizontalAlignment(SwingConstants.CENTER);
-		tablaClasificacion.setDefaultRenderer(Object.class, renderer);
+		    JScrollPane scrollPane = new JScrollPane();
+		    contentPane.add(scrollPane, BorderLayout.CENTER);  // Añadir scrollPane en el centro para que ocupe todo el espacio
 
-		scrollPane.setViewportView(tablaClasificacion);
+		    tablaClasificacion = new JTable();
+		    tablaClasificacion.setModel(new DefaultTableModel(
+		        new Object[][] {
+		            {1, "CD Avila Voleibol", 10, 6, 4, 15, 3, 18},
+		            {2, "CD Zaragoza", 10, 5, 5, 12, 5, 15},
+		            {3, "CV Alcobendas", 10, 4, 6, 9, 9, 12},
+		            {4, "CV Bar\u00E7a", 10, 3, 7, 6,12 , 9},
+		            {5, "CV Madrid Chamber\u00ED", 10, 2, 8, 4, 15, 6},
+		            {6, "CV Sayre Mayser", 10, 1, 9, 3, 21, 3},
+		        },
+		        new String[] {
+		            "POSICI\u00D3N", "EQUIPO", "PJ", "PG", "PP", "SETFF", "SETFC", "PTS"
+		        }
+		    ));
+
+		    // Centramos los textos en la tabla
+		    DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+		    renderer.setHorizontalAlignment(SwingConstants.CENTER);
+		    tablaClasificacion.setDefaultRenderer(Object.class, renderer);
+
+		    scrollPane.setViewportView(tablaClasificacion);
 		
 		
 		tablaClasificacion.getColumnModel().getColumn(0).setPreferredWidth(50);

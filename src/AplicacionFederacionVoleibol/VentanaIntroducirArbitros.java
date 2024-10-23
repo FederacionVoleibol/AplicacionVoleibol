@@ -10,6 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -49,22 +50,15 @@ public class VentanaIntroducirArbitros extends JFrame {
      * Create the frame.
      */
     public VentanaIntroducirArbitros() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 600, 400);
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        // Eliminamos el layout nulo y usamos un BorderLayout para que todo se acomode automáticamente
+        contentPane = new JPanel(new BorderLayout());
         setContentPane(contentPane);
-        contentPane.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("Lista de Árbitros");
-        lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        lblNewLabel.setBounds(250, 10, 165, 13);
-        contentPane.add(lblNewLabel);
-
+        // Creamos el JScrollPane que contendrá la tabla
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(10, 38, 560, 250);
-        contentPane.add(scrollPane);
+        contentPane.add(scrollPane, BorderLayout.CENTER);  // Hacemos que ocupe todo el espacio disponible
 
+        // Configuramos la tabla con un modelo vacío
         tablaArbitros = new JTable();
         tablaArbitros.setModel(new DefaultTableModel(
                 new Object[][] {
@@ -78,13 +72,16 @@ public class VentanaIntroducirArbitros extends JFrame {
         ));
         scrollPane.setViewportView(tablaArbitros);
 
+        // Panel de botones en la parte inferior
+        JPanel panelBotones = new JPanel();
+        contentPane.add(panelBotones, BorderLayout.SOUTH);
+
+        // Botones para guardar datos y mostrar lista
         JButton btnGuardarDatos = new JButton("Guardar Datos");
-        btnGuardarDatos.setBounds(100, 310, 120, 30);
-        contentPane.add(btnGuardarDatos);
+        panelBotones.add(btnGuardarDatos);
 
         JButton btnMostrarLista = new JButton("Mostrar Lista");
-        btnMostrarLista.setBounds(350, 310, 120, 30);
-        contentPane.add(btnMostrarLista);
+        panelBotones.add(btnMostrarLista);
 
         // Inicializar los arreglos para almacenar los datos
         nombres = new String[MAX_ARBITROS];
