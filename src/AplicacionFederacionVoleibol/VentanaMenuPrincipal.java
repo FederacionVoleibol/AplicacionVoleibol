@@ -84,12 +84,12 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
 
         // Panel contenedor que usará un BorderLayout para cambiar entre diferentes vistas
         panelContenedor = new JPanel();
-        panelContenedor.setBounds(5, 55, 756, 400);
+        panelContenedor.setBounds(0, 59, 786, 404);
         contentPane.add(panelContenedor);
         panelContenedor.setLayout(new BorderLayout());  // Usamos BorderLayout
 
         // Cargar la ventana de clasificación por defecto (u otro panel que quieras mostrar primero)
-        cargarVentanaClasificacion();
+        //cargarVentanaClasificacion();
     }
 
     @Override

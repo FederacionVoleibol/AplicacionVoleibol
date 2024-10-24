@@ -61,42 +61,47 @@ public class VentanaClasificacion extends JFrame {
 		    setContentPane(contentPane);
 		    contentPane.setLayout(null);
 
-		    JScrollPane scrollPane = new JScrollPane();
-		    scrollPane.setBounds(10, 10, 766, 132);
-		    contentPane.add(scrollPane);  // Añadir scrollPane en el centro para que ocupe todo el espacio
-
-		    tablaClasificacion = new JTable();
-		    tablaClasificacion.setModel(new DefaultTableModel(
-		        new Object[][] {
-		            {1, "CD Avila Voleibol", 10, 6, 4, 15, 3, 18},
-		            {2, "CD Zaragoza", 10, 5, 5, 12, 5, 15},
-		            {3, "CV Alcobendas", 10, 4, 6, 9, 9, 12},
-		            {4, "CV Bar\u00E7a", 10, 3, 7, 6,12 , 9},
-		            {5, "CV Madrid Chamber\u00ED", 10, 2, 8, 4, 15, 6},
-		            {6, "CV Sayre Mayser", 10, 1, 9, 3, 21, 3},
-		        },
-		        new String[] {
-		            "POSICI\u00D3N", "EQUIPO", "PJ", "PG", "PP", "SETFF", "SETFC", "PTS"
-		        }
-		    ));
-
 		    // Centramos los textos en la tabla
 		    DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
 		    renderer.setHorizontalAlignment(SwingConstants.CENTER);
-		    tablaClasificacion.setDefaultRenderer(Object.class, renderer);
-
-		    scrollPane.setViewportView(tablaClasificacion);
 		
+		JPanel PantallaClasificacion = new JPanel();
+		PantallaClasificacion.setBounds(0, 59, 786, 404);
+		contentPane.add(PantallaClasificacion);
+		PantallaClasificacion.setLayout(null);
 		
-		tablaClasificacion.getColumnModel().getColumn(0).setPreferredWidth(50);
-		tablaClasificacion.getColumnModel().getColumn(0).setMinWidth(17);
-		tablaClasificacion.getColumnModel().getColumn(1).setPreferredWidth(160);
-		tablaClasificacion.getColumnModel().getColumn(2).setPreferredWidth(55);
-		tablaClasificacion.getColumnModel().getColumn(3).setPreferredWidth(55);
-		tablaClasificacion.getColumnModel().getColumn(4).setPreferredWidth(55);
-		tablaClasificacion.getColumnModel().getColumn(5).setPreferredWidth(55);
-		tablaClasificacion.getColumnModel().getColumn(6).setPreferredWidth(55);
-		tablaClasificacion.getColumnModel().getColumn(7).setPreferredWidth(55);
-		scrollPane.setViewportView(tablaClasificacion);
+				    JScrollPane scrollPane = new JScrollPane();
+				    scrollPane.setBounds(10, 10, 766, 270);
+				    PantallaClasificacion.add(scrollPane);
+				    
+				    		    tablaClasificacion = new JTable();
+				    		    tablaClasificacion.setModel(new DefaultTableModel(
+				    		        new Object[][] {
+				    		            {1, "CD Avila Voleibol", 10, 6, 4, 15, 3, 18},
+				    		            {2, "CD Zaragoza", 10, 5, 5, 12, 5, 15},
+				    		            {3, "CV Alcobendas", 10, 4, 6, 9, 9, 12},
+				    		            {4, "CV Bar\u00E7a", 10, 3, 7, 6,12 , 9},
+				    		            {5, "CV Madrid Chamber\u00ED", 10, 2, 8, 4, 15, 6},
+				    		            {6, "CV Sayre Mayser", 10, 1, 9, 3, 21, 3},
+				    		        },
+				    		        new String[] {
+				    		            "POSICI\u00D3N", "EQUIPO", "PJ", "PG", "PP", "SETFF", "SETFC", "PTS"
+				    		        }
+				    		    ));
+				    		    tablaClasificacion.setDefaultRenderer(Object.class, renderer);
+				    		    
+				    		    		    scrollPane.setViewportView(tablaClasificacion);
+				    		    		    
+				    		    		    
+				    		    		    tablaClasificacion.getColumnModel().getColumn(0).setPreferredWidth(50);
+				    		    		    tablaClasificacion.getColumnModel().getColumn(0).setMinWidth(17);
+				    		    		    tablaClasificacion.getColumnModel().getColumn(1).setPreferredWidth(160);
+				    		    		    tablaClasificacion.getColumnModel().getColumn(2).setPreferredWidth(55);
+				    		    		    tablaClasificacion.getColumnModel().getColumn(3).setPreferredWidth(55);
+				    		    		    tablaClasificacion.getColumnModel().getColumn(4).setPreferredWidth(55);
+				    		    		    tablaClasificacion.getColumnModel().getColumn(5).setPreferredWidth(55);
+				    		    		    tablaClasificacion.getColumnModel().getColumn(6).setPreferredWidth(55);
+				    		    		    tablaClasificacion.getColumnModel().getColumn(7).setPreferredWidth(55);
+				    		    		    scrollPane.setViewportView(tablaClasificacion);
 	}
 }
