@@ -37,8 +37,20 @@ public class VentanaListaArbitros extends JFrame {
      * Create the frame.
      */
     public VentanaListaArbitros(String[] nombres, String[] apellidos, int[] dnis, String[] nacionalidades) {
+    	// Establecemos un tamaño para la ventana
+        setSize(800, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 600, 400);
+
+        // Centrar la ventana en la pantalla
+        setLocationRelativeTo(null);
+        // Establecemos que la ventana no se pueda redimensionar
+		setResizable(false);
+        
+		
+		//TITULO DE LA VENTANA
+        setTitle("Titulo");
+
+		// Eliminamos el layout nulo y usamos un BorderLayout para que todo se acomode
         contentPane = new JPanel(new BorderLayout());  // Usamos BorderLayout para organizar los componentes
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);

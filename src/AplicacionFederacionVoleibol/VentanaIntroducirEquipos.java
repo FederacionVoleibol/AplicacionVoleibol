@@ -59,8 +59,20 @@ public class VentanaIntroducirEquipos extends JFrame {
 	 */
 	public VentanaIntroducirEquipos() {
 		InformacionEquipos GuardarInformacion = new InformacionEquipos(); 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		
+		
+		// Establecemos un tamaño para la ventana
+        setSize(800, 500);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Centrar la ventana en la pantalla
+        setLocationRelativeTo(null);
+        // Establecemos que la ventana no se pueda redimensionar
+		setResizable(false);
+        
+		
+		//TITULO DE LA VENTANA
+        setTitle("Titulo");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 

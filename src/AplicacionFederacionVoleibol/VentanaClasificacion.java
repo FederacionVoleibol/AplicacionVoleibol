@@ -8,11 +8,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JButton;
 
 public class VentanaClasificacion extends JFrame {
 
@@ -40,15 +44,26 @@ public class VentanaClasificacion extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaClasificacion() {
-		 setTitle("Clasificación");
-			setBounds(100, 100, 800, 500);
+		// Establecemos un tamaño para la ventana
+        setSize(800, 500);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Centrar la ventana en la pantalla
+        setLocationRelativeTo(null);
+        // Establecemos que la ventana no se pueda redimensionar
+		setResizable(false);
+        
+		
+		//TITULO DE LA VENTANA
+        setTitle("Titulo");
 		    contentPane = new JPanel();
 		    contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		    setContentPane(contentPane);
-		    contentPane.setLayout(new BorderLayout());
+		    contentPane.setLayout(null);
 
 		    JScrollPane scrollPane = new JScrollPane();
-		    contentPane.add(scrollPane, BorderLayout.CENTER);  // Añadir scrollPane en el centro para que ocupe todo el espacio
+		    scrollPane.setBounds(10, 10, 766, 132);
+		    contentPane.add(scrollPane);  // Añadir scrollPane en el centro para que ocupe todo el espacio
 
 		    tablaClasificacion = new JTable();
 		    tablaClasificacion.setModel(new DefaultTableModel(

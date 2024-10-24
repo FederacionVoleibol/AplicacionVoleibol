@@ -6,6 +6,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
@@ -52,6 +55,19 @@ public class VentanaIntroducirArbitros extends JFrame {
      * Create the frame.
      */
     public VentanaIntroducirArbitros() {
+
+    	// Establecemos un tamaño para la ventana
+        setSize(800, 500);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Centrar la ventana en la pantalla
+        setLocationRelativeTo(null);
+        // Establecemos que la ventana no se pueda redimensionar
+		setResizable(false);
+        
+		
+		//TITULO DE LA VENTANA
+        setTitle("Titulo");
         // Eliminamos el layout nulo y usamos un BorderLayout para que todo se acomode automáticamente
         contentPane = new JPanel(new BorderLayout());
         setContentPane(contentPane);

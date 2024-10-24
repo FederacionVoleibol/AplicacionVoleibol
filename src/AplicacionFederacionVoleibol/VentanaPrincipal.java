@@ -66,9 +66,19 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 	 * Creación del Diseño de la ventana.
 	 */
 	public VentanaPrincipal() {
-		setTitle("Panel Administrativo");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 500);
+		// Establecemos un tamaño para la ventana
+        setSize(800, 500);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Centrar la ventana en la pantalla
+        setLocationRelativeTo(null);
+        // Establecemos que la ventana no se pueda redimensionar
+		setResizable(false);
+        
+		
+		//TITULO DE LA VENTANA
+        setTitle("Titulo");
+        
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
