@@ -104,7 +104,7 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
         panelContenedor.repaint();
     }
 
-    //CARGA LOS DATOS DEL CONTENEDOR DE VentanaIntroducirArbitros
+    //CARGA LOS DATOS DEL CONTENEDOR DE VentanaArbitros
     private void cargarVentanaArbitros() {
         // Remover todos los componentes previos y cargar la ventana de arbitros
         panelContenedor.removeAll();
@@ -114,4 +114,6 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
         panelContenedor.revalidate();
         panelContenedor.repaint();
     }
+    
+    
 }

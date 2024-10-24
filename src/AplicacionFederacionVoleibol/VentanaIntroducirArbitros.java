@@ -26,6 +26,8 @@ public class VentanaIntroducirArbitros extends JFrame {
     private String[] apellidos;
     private int[] dnis;
     private String[] nacionalidades;
+    
+    
 
     // Número máximo de filas en la tabla
     private static final int MAX_ARBITROS = 3;
