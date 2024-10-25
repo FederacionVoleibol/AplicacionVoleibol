@@ -6,7 +6,7 @@ public class AlgoritmoLogin {
 	 * */
 	private String usernames[] = {"Anthony","Admin","Clara","Alain","Asier"}; //Declaracion de usuarios
 	private String passwords[] = {"1111","txurdinaga","3333","4444","5555"}; //Declaracion de contraseñas
-	private String Cargo[] = {"Desarrollador","Admin","Desarrollador","Moderador","Usuario"};
+	private String Cargo[] = {"Cliente","Admin","Desarrollador","Admin","Usuario"};
 	private String TipodeUsuario = "";
 	
 	
