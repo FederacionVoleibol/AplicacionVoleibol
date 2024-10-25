@@ -50,13 +50,13 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
     public VentanaMenuPrincipal() {
     	
     	// Establecemos un tamaño para la ventana
-        setSize(800, 500);
+        setSize(850, 570);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Centrar la ventana en la pantalla
         setLocationRelativeTo(null);
         // Establecemos que la ventana no se pueda redimensionar
-		//setResizable(false);
+		setResizable(false);
         
 		
 		//TITULO DE LA VENTANA
@@ -99,7 +99,7 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
                         btnArbitros.addActionListener(this);
 
         // Cargar la ventana de clasificación por defecto (u otro panel que quieras mostrar primero)
-        //cargarVentanaClasificacion();
+        cargarVentanaClasificacion();
     }
 
     @Override

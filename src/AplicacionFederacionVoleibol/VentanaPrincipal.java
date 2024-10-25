@@ -67,7 +67,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 	 */
 	public VentanaPrincipal() {
 		// Establecemos un tamaño para la ventana
-        setSize(800, 500);
+        setSize(850, 570);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Centrar la ventana en la pantalla
@@ -87,7 +87,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		
 		panel = new JPanel();
 		panel.setBackground(new Color(0, 128, 255));
-		panel.setBounds(0, 0, 203, 463);
+		panel.setBounds(0, 0, 203, 533);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -98,7 +98,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		
 		panel_1 = new JPanel();
 		panel_1.setBackground(new Color(192, 192, 192));
-		panel_1.setBounds(202, 107, 584, 356);
+		panel_1.setBounds(202, 107, 634, 426);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
