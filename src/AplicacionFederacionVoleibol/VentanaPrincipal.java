@@ -40,10 +40,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 	JPanel panel_1;
 	JLabel lblContrasenia;
 	JLabel lblTituloInicio;
-	JButton btnNewButton;
+	JButton btnIngresar;
 	private JLabel lblNewLabel;
 	private JLabel lblMensaje;
-	AlgoritmoLogin login = new AlgoritmoLogin(); // Creacion de una instancia de la clase Login() que Verifica la existencia del usuario
+	//AlgoritmoLogin login = new AlgoritmoLogin(); // Creacion de una instancia de la clase Login() que Verifica la existencia del usuario
 	
 	
 	/**
@@ -66,6 +66,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 	 * Creación del Diseño de la ventana.
 	 */
 	public VentanaPrincipal() {
+		//Equipos.NombreEquipoVisitante = "Barcelperona";
+		EQUIPOS.GuardarEquipo("Barca");
+		EQUIPOS.MostrarEquipo();
+		
+
 		// Establecemos un tamaño para la ventana
         setSize(850, 570);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -92,13 +97,13 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		panel.setLayout(null);
 		
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("img\\login.png"));
-		lblNewLabel.setBounds(45, 153, 106, 136);
+		lblNewLabel.setBounds(47, 183, 106, 136);
 		panel.add(lblNewLabel);
+		lblNewLabel.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/AplicacionFederacionVoleibol/img/login.png")));
 		
 		panel_1 = new JPanel();
 		panel_1.setBackground(new Color(192, 192, 192));
-		panel_1.setBounds(202, 107, 634, 426);
+		panel_1.setBounds(213, 98, 634, 426);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -138,11 +143,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		passwordField.setBounds(227, 216, 147, 34);
 		panel_1.add(passwordField);
 		
-		btnNewButton = new JButton("Ingresar");
-		btnNewButton.addActionListener(this);
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnNewButton.setBounds(209, 276, 107, 34);
-		panel_1.add(btnNewButton);
+		btnIngresar = new JButton("Ingresar");
+		btnIngresar.addActionListener(this);
+		btnIngresar.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnIngresar.setBounds(209, 276, 107, 34);
+		panel_1.add(btnIngresar);
 		
 		lblMensaje = new JLabel("");
 		lblMensaje.setHorizontalAlignment(SwingConstants.CENTER);
@@ -155,7 +160,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		contentPane.add(lblTituloInicio);
 		lblTituloInicio.setForeground(new Color(0, 128, 255));
 		lblTituloInicio.setFont(new Font("Tahoma", Font.BOLD, 17));
-		Image img = new ImageIcon(this.getClass().getResource("/login.png")).getImage();
+
 		
 		
 		
@@ -168,7 +173,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String Nombre = txtUsuario.getText(); // Obtiene el valor del usuario introducido en TextField
 		String Password = new String(passwordField.getPassword()); // Obtiene el valor de la contrasenia introducida en PasswordField
-		if (login.VerificacionDeLogin(Nombre, Password) == true) {
+		if (AlgoritmoLogin.VerificacionDeLogin(Nombre, Password) == true) {
 			lblMensaje.setText("Accedido al sistema correctamente, Sr. " + txtUsuario.getText());
 			
 			  VentanaMenuPrincipal menuPrincipal = new VentanaMenuPrincipal(); //Si el usuario y contraseña son correctos se abrirá el menú principal
