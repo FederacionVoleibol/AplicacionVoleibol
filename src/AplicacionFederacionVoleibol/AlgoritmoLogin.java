@@ -5,9 +5,13 @@ public class AlgoritmoLogin {
 	 * PEQUEÑA BASE DE DATOS
 	 * */
 	private static String usernames[] = {"Anthony","Admin","Clara","Alain","Asier"}; //Declaracion de usuarios
-	private static String passwords[] = {"1111","txurdinaga","3333","4444","5555"}; //Declaracion de contraseñas
-	private static String Cargo[] = {"Cliente","Admin","Desarrollador","Admin","Usuario"};
-	private static String TipodeUsuario = "";
+	private static String passwords[] = {"admin","admin","admin","user","admin"}; //Declaracion de contraseñas
+	// Admin -> introduce partidos.
+	// Usuario -> Visualiza clasificación. (solo lectura)
+	// Desarrollador -> Acceso total.
+	private static String Cargo[] = {"Admin", "Admin","Desarrollador","Usuario","Desarrollador"};
+	public static String TipodeUsuario = "";
+	private static String Usuario = "";
 
 	
 	
@@ -21,6 +25,7 @@ public class AlgoritmoLogin {
 			if (usuario.equals(user)) {
 				if (passwords[i].equals(password)) {
 					TipodeUsuario = Cargo[i];
+					Usuario = usernames[i];
 					return true; //Devuelve true si es correcto
 				}
 			}
@@ -28,11 +33,14 @@ public class AlgoritmoLogin {
 		}
 		return false;
 	}
-	
-
-	public String TipodeUsuario() {
+	// hacemos el get para que la variable sea accesible desde otras clases
+	public static String getUsuario() {
+		return Usuario;
+	}
+	public static String getTipodeUsuario() {
 		return TipodeUsuario;
 	}
+	
 	
 }
  class EQUIPOS{
@@ -46,7 +54,7 @@ public class AlgoritmoLogin {
 	 
 	//--------Metodo de Guardar--------// 
 	 
-	 public static String NombreEquipoVisitante = "Barcelona";
+	public static String NombreEquipoVisitante = "Barcelona";
 
 	public static void GuardarEquipo(String nombre) {
 			NombreEquipoVisitante = nombre;

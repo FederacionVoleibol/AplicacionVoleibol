@@ -27,6 +27,7 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
     private JButton btnArbitros;
     private JPanel panel;
     private JButton btnNewButton;
+    private JButton btnEquipo;
 
     /**
      * Launch the application.
@@ -60,7 +61,7 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
         
 		
 		//TITULO DE LA VENTANA
-        setTitle("Menú");
+		setTitle("Menú (Sesión Iniciada con: "+AlgoritmoLogin.getUsuario()+" - "+AlgoritmoLogin.getTipodeUsuario()+")");
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -88,6 +89,14 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
                                         btnIntroDatos = new JButton("Jornadas");
                                         panelListadeOpciones.add(btnIntroDatos);
                                         
+                                        btnEquipo = new JButton("Equipos");
+                                        btnEquipo.addActionListener(new ActionListener() {
+                                        	public void actionPerformed(ActionEvent e) {  
+                                        		
+                                        	}
+                                        });
+                                        panelListadeOpciones.add(btnEquipo);
+                                        
                                         panel = new JPanel();
                                         contentPane.add(panel, BorderLayout.SOUTH);
                                         panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -97,6 +106,7 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
                                         btnIntroDatos.addActionListener(this);
                                 btnClasificacion.addActionListener(this);
                         btnArbitros.addActionListener(this);
+                        btnEquipo.addActionListener(this);
 
         // Cargar la ventana de clasificación por defecto (u otro panel que quieras mostrar primero)
         cargarVentanaClasificacion();
@@ -111,6 +121,9 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
         } else if (o == btnArbitros) {
             cargarVentanaArbitros();
         } else if (o == btnIntroDatos) {
+            // Puedes agregar otra ventana si es necesario
+        } else if (o == btnEquipo) {
+        	cargarVentanaEquipos();
             // Puedes agregar otra ventana si es necesario
         }
     }
@@ -136,4 +149,14 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
         panelContenedor.revalidate();
         panelContenedor.repaint();
     }
+    //CARGA LOS DATOS DEL CONTENEDOR DE VentanaClasificacion
+private void cargarVentanaEquipos() {
+    // Remover todos los componentes previos y cargar la ventana de clasificación
+    panelContenedor.removeAll();
+    VentanaIntroducirEquipos ve = new VentanaIntroducirEquipos();
+    ve.setSize(517, 229);
+    panelContenedor.add(ve.getContentPane(), BorderLayout.CENTER);
+    panelContenedor.revalidate();
+    panelContenedor.repaint();
+}
 }

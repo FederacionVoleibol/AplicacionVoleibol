@@ -34,6 +34,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JComboBox;
 import javax.swing.SpringLayout;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class VentanaClasificacion extends JFrame {
@@ -43,35 +44,71 @@ public class VentanaClasificacion extends JFrame {
   private JTable tablaClasificacion;
   private JTextField textField_20;
   private JTextField textField_21;
-  private JTextField textField_22;
-  private JTextField textField_23;
-  private JTextField textField_24;
   private JTextField textField_25;
   private JTextField textField_26;
-  private JTextField textField_27;
-  private JTextField textField_28;
-  private JTextField textField_29;
+  private JPanel PantallaJornadas;
+  private JPanel panel_3;
+  private JButton btnSiguiente;
+  private JLabel lblTituloNumeroJornada;
+  private JButton btnAnterior;
+  private JPanel panelGuardarDatos;
+  private JButton btnGuardarDatos;
+  private JPanel panel_5;
+  private JPanel panel_2;
+  private JLabel lblNewLabel_4;
+  private JLabel lblNewLabel_5;
+  private JPanel panel_6;
+  private JLabel lblNewLabel_9;
+  private JLabel lblNewLabel_10;
+  private JPanel panelPartido2;
+  private JLabel lblPartido2B;
+  private JLabel lblEquipoB;
+  private JLabel lblTotalPuntosSetsB;
+  private JLabel lblPuntajeUltimoSetB;
+  private JLabel lblLocalB;
+  private JLabel lblEquipoLocalB;
+  private JLabel lblVisitanteB;
+  private JLabel lblEquipoVisitanteB;
+  private JPanel panel_7;
+  private JLabel lblNewLabel_2;
+  private JLabel lblNewLabel_6;
+  private JPanel PantallaClasificacion;
+  private JPanel panel;
+  private JLabel lblNewLabel;
+  private JPanel panel_1;
+  private JScrollPane scrollPane;
+  private List<Jornada> jornadas;
+  private int jornadaActual;
+  private JPanel panelPartido1;
+  private JLabel lblPartido1A;
+  private JLabel lblEquipoB_1;
+  private JLabel lblTotalPuntosSetsB_1;
+  private JLabel lblPuntajeUltimoSetB_1;
+  private JLabel lblLocalB_1;
+  private JLabel lblEquipoLocalA;
   private JTextField textField;
   private JTextField textField_1;
+  private JLabel lblVisitanteB_1;
+  private JLabel lblEquipoVisitanteA;
   private JTextField textField_2;
   private JTextField textField_3;
+  private JPanel panelPartido3;
+  private JLabel lblPartido2B_2;
+  private JLabel lblEquipoB_2;
+  private JLabel lblTotalPuntosSetsB_2;
+  private JLabel lblPuntajeUltimoSetB_2;
+  private JLabel lblLocalB_2;
+  private JLabel lblEquipoLocalC;
   private JTextField textField_4;
   private JTextField textField_5;
+  private JLabel lblVisitanteB_2;
+  private JLabel lblEquipoVisitanteC;
   private JTextField textField_6;
   private JTextField textField_7;
-  private JTextField textField_8;
-  private JTextField textField_9;
-  private JTextField textField_10;
-  private JTextField textField_11;
-  private JTextField textField_12;
-  private JTextField textField_13;
-  private JTextField textField_14;
-  private JTextField textField_15;
-  private JTextField textField_16;
-  private JTextField textField_17;
-  private JTextField textField_18;
-  private JTextField textField_19;
+  
+  String[] equipos = {"CV Sayre Mayser", "CV Barça", "CD Zaragoza", "CV Alcobendas", "CD Avila Voleibol", "CV Madrid Chamberí"};
 
+  int indiceEquipo = 0;
   /**
 	 * Launch the application.
 	 */
@@ -92,6 +129,8 @@ public class VentanaClasificacion extends JFrame {
 	 * Create the frame.
 	 */
   public VentanaClasificacion() {
+	  
+	  
     // Establecemos un tamaño para la ventana
     setSize(900, 550);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -112,664 +151,487 @@ public class VentanaClasificacion extends JFrame {
     renderer.setHorizontalAlignment(SwingConstants.CENTER);
     contentPane.setLayout(new GridLayout(0, 2, 0, 0));
 
-    JPanel PantallaJornadas = new JPanel();
+    PantallaJornadas = new JPanel();
     contentPane.add(PantallaJornadas);
     PantallaJornadas.setLayout(new BorderLayout(0, 0));
 
-    JPanel panel_3 = new JPanel();
+    panel_3 = new JPanel();
     PantallaJornadas.add(panel_3, BorderLayout.NORTH);
 
-    JButton btnNewButton_1 = new JButton("Siguiente");
-    btnNewButton_1.setHorizontalAlignment(SwingConstants.LEFT);
+    btnSiguiente = new JButton("Siguiente");
+    btnSiguiente.setHorizontalAlignment(SwingConstants.LEFT);
+    btnSiguiente.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            if (jornadaActual < 10) {
+                jornadaActual++;
+                lblTituloNumeroJornada.setText("JORNADA " + jornadaActual);
 
-    JLabel lblNewLabel_1 = new JLabel("JORNADA 1");
-    lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+                // Reiniciar el índice si se llega al final del arreglo
+                if (indiceEquipo >= equipos.length) {
+                    indiceEquipo = 0;
+                }
+
+                // Actualizar los labels de los equipos
+                lblEquipoLocalA.setText(equipos[indiceEquipo]);
+                lblEquipoVisitanteA.setText(equipos[(indiceEquipo + 1) % equipos.length]);
+                lblEquipoLocalB.setText(equipos[(indiceEquipo + 2) % equipos.length]);
+                lblEquipoVisitanteB.setText(equipos[(indiceEquipo + 3) % equipos.length]);
+                lblEquipoLocalC.setText(equipos[(indiceEquipo + 4) % equipos.length]);
+                lblEquipoVisitanteC.setText(equipos[(indiceEquipo + 5) % equipos.length]);
+
+                // Incrementar el índice de los equipos
+                indiceEquipo++;
+
+               
+            }
+        }
+    });
+
+    
+
+    lblTituloNumeroJornada = new JLabel("JORNADA 1");
+    lblTituloNumeroJornada.setHorizontalAlignment(SwingConstants.CENTER);
     panel_3.setLayout(new BorderLayout(0, 0));
 
-    JButton btnNewButton_2 = new JButton("Anterior");
-    btnNewButton_2.setHorizontalAlignment(SwingConstants.RIGHT);
-    panel_3.add(btnNewButton_2, BorderLayout.WEST);
-    panel_3.add(lblNewLabel_1, BorderLayout.CENTER);
-    panel_3.add(btnNewButton_1, BorderLayout.EAST);
+    btnAnterior = new JButton("Anterior");
+    btnAnterior.setHorizontalAlignment(SwingConstants.RIGHT);
+    btnAnterior.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            if (jornadaActual > 1) {
+                jornadaActual--;
+                lblTituloNumeroJornada.setText("JORNADA " + jornadaActual);
 
-    JPanel panel_4 = new JPanel();
-    PantallaJornadas.add(panel_4, BorderLayout.SOUTH);
+                // Reiniciar el índice si se llega al principio del arreglo
+                if (indiceEquipo <= 0) {
+                    indiceEquipo = equipos.length - 1;
+                }
 
-    JButton btnNewButton_3 = new JButton("Guardar Datos");
-    panel_4.add(btnNewButton_3);
+                // Actualizar los labels de los equipos
+                lblEquipoLocalA.setText(equipos[(indiceEquipo - 1 + equipos.length) % equipos.length]);
+                lblEquipoVisitanteA.setText(equipos[(indiceEquipo) % equipos.length]);
+                lblEquipoLocalB.setText(equipos[(indiceEquipo + 1) % equipos.length]);
+                lblEquipoVisitanteB.setText(equipos[(indiceEquipo + 2) % equipos.length]);
+                lblEquipoLocalC.setText(equipos[(indiceEquipo + 3) % equipos.length]);
+                lblEquipoVisitanteC.setText(equipos[(indiceEquipo + 4) % equipos.length]);
 
-    JPanel panel_5 = new JPanel();
+                // Decrementar el índice de los equipos
+                indiceEquipo--;
+
+           
+            }
+        }
+    });
+
+    
+    panel_3.add(btnAnterior, BorderLayout.WEST);
+    panel_3.add(lblTituloNumeroJornada, BorderLayout.CENTER);
+    panel_3.add(btnSiguiente, BorderLayout.EAST);
+
+    panelGuardarDatos = new JPanel();
+    PantallaJornadas.add(panelGuardarDatos, BorderLayout.SOUTH);
+
+    btnGuardarDatos = new JButton("Guardar Datos");
+    panelGuardarDatos.add(btnGuardarDatos);
+
+    panel_5 = new JPanel();
     PantallaJornadas.add(panel_5, BorderLayout.CENTER);
     panel_5.setLayout(new GridLayout(3, 0, 0, 0));
 
-    JPanel panel_2 = new JPanel();
+    panel_2 = new JPanel();
     panel_5.add(panel_2);
     panel_2.setLayout(new BorderLayout(0, 0));
 
-    JLabel lblNewLabel_4 = new JLabel(" ");
+    lblNewLabel_4 = new JLabel(" ");
     panel_2.add(lblNewLabel_4, BorderLayout.NORTH);
 
-    JLabel lblNewLabel_5 = new JLabel(" ");
+    lblNewLabel_5 = new JLabel(" ");
     panel_2.add(lblNewLabel_5, BorderLayout.SOUTH);
     
-    JPanel panel_9_1 = new JPanel();
-    panel_2.add(panel_9_1, BorderLayout.CENTER);
-    GridBagLayout gbl_panel_9_1 = new GridBagLayout();
-    gbl_panel_9_1.columnWidths = new int[]{60, 75, 33, 33, 33, 33, 33, 0};
-    gbl_panel_9_1.rowHeights = new int[]{13, 13, 21, 21, 0};
-    gbl_panel_9_1.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-    gbl_panel_9_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-    panel_9_1.setLayout(gbl_panel_9_1);
+    panelPartido1 = new JPanel();
+    panel_2.add(panelPartido1, BorderLayout.CENTER);
+    GridBagLayout gbl_panelPartido1 = new GridBagLayout();
+    gbl_panelPartido1.columnWidths = new int[]{54, 50, 70, 33, 70, 0};
+    gbl_panelPartido1.rowHeights = new int[]{13, 13, 19, 19, 0};
+    gbl_panelPartido1.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+    gbl_panelPartido1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+    panelPartido1.setLayout(gbl_panelPartido1);
     
-    JLabel lblNewLabel_11_1_1 = new JLabel("Partido 1");
-    lblNewLabel_11_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-    GridBagConstraints gbc_lblNewLabel_11_1_1 = new GridBagConstraints();
-    gbc_lblNewLabel_11_1_1.fill = GridBagConstraints.HORIZONTAL;
-    gbc_lblNewLabel_11_1_1.anchor = GridBagConstraints.NORTH;
-    gbc_lblNewLabel_11_1_1.gridwidth = 3;
-    gbc_lblNewLabel_11_1_1.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_11_1_1.gridx = 2;
-    gbc_lblNewLabel_11_1_1.gridy = 0;
-    panel_9_1.add(lblNewLabel_11_1_1, gbc_lblNewLabel_11_1_1);
+    lblPartido1A = new JLabel("Partido 1");
+    lblPartido1A.setHorizontalAlignment(SwingConstants.CENTER);
+    GridBagConstraints gbc_lblPartido1A = new GridBagConstraints();
+    gbc_lblPartido1A.fill = GridBagConstraints.HORIZONTAL;
+    gbc_lblPartido1A.anchor = GridBagConstraints.NORTH;
+    gbc_lblPartido1A.gridwidth = 3;
+    gbc_lblPartido1A.insets = new Insets(0, 0, 5, 0);
+    gbc_lblPartido1A.gridx = 2;
+    gbc_lblPartido1A.gridy = 0;
+    panelPartido1.add(lblPartido1A, gbc_lblPartido1A);
     
-    JLabel lblNewLabel_2_1_1 = new JLabel("Equipo");
-    GridBagConstraints gbc_lblNewLabel_2_1_1 = new GridBagConstraints();
-    gbc_lblNewLabel_2_1_1.anchor = GridBagConstraints.NORTH;
-    gbc_lblNewLabel_2_1_1.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_2_1_1.gridx = 1;
-    gbc_lblNewLabel_2_1_1.gridy = 1;
-    panel_9_1.add(lblNewLabel_2_1_1, gbc_lblNewLabel_2_1_1);
+    lblEquipoB_1 = new JLabel("Equipo");
+    GridBagConstraints gbc_lblEquipoB_1 = new GridBagConstraints();
+    gbc_lblEquipoB_1.anchor = GridBagConstraints.NORTH;
+    gbc_lblEquipoB_1.insets = new Insets(0, 0, 5, 5);
+    gbc_lblEquipoB_1.gridx = 2;
+    gbc_lblEquipoB_1.gridy = 1;
+    panelPartido1.add(lblEquipoB_1, gbc_lblEquipoB_1);
     
-    JLabel lblNewLabel_6_3_1 = new JLabel("Set1");
-    GridBagConstraints gbc_lblNewLabel_6_3_1 = new GridBagConstraints();
-    gbc_lblNewLabel_6_3_1.anchor = GridBagConstraints.NORTH;
-    gbc_lblNewLabel_6_3_1.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_6_3_1.gridx = 2;
-    gbc_lblNewLabel_6_3_1.gridy = 1;
-    panel_9_1.add(lblNewLabel_6_3_1, gbc_lblNewLabel_6_3_1);
+    lblTotalPuntosSetsB_1 = new JLabel("Set's");
+    GridBagConstraints gbc_lblTotalPuntosSetsB_1 = new GridBagConstraints();
+    gbc_lblTotalPuntosSetsB_1.anchor = GridBagConstraints.NORTH;
+    gbc_lblTotalPuntosSetsB_1.insets = new Insets(0, 0, 5, 5);
+    gbc_lblTotalPuntosSetsB_1.gridx = 3;
+    gbc_lblTotalPuntosSetsB_1.gridy = 1;
+    panelPartido1.add(lblTotalPuntosSetsB_1, gbc_lblTotalPuntosSetsB_1);
     
-    JLabel lblNewLabel_6_1_2_1 = new JLabel("Set2");
-    GridBagConstraints gbc_lblNewLabel_6_1_2_1 = new GridBagConstraints();
-    gbc_lblNewLabel_6_1_2_1.anchor = GridBagConstraints.NORTH;
-    gbc_lblNewLabel_6_1_2_1.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_6_1_2_1.gridx = 3;
-    gbc_lblNewLabel_6_1_2_1.gridy = 1;
-    panel_9_1.add(lblNewLabel_6_1_2_1, gbc_lblNewLabel_6_1_2_1);
+    lblPuntajeUltimoSetB_1 = new JLabel("Ultimo Set");
+    GridBagConstraints gbc_lblPuntajeUltimoSetB_1 = new GridBagConstraints();
+    gbc_lblPuntajeUltimoSetB_1.fill = GridBagConstraints.HORIZONTAL;
+    gbc_lblPuntajeUltimoSetB_1.anchor = GridBagConstraints.NORTH;
+    gbc_lblPuntajeUltimoSetB_1.insets = new Insets(0, 0, 5, 0);
+    gbc_lblPuntajeUltimoSetB_1.gridx = 4;
+    gbc_lblPuntajeUltimoSetB_1.gridy = 1;
+    panelPartido1.add(lblPuntajeUltimoSetB_1, gbc_lblPuntajeUltimoSetB_1);
     
-    JLabel lblNewLabel_6_2_1_1 = new JLabel("Set3");
-    GridBagConstraints gbc_lblNewLabel_6_2_1_1 = new GridBagConstraints();
-    gbc_lblNewLabel_6_2_1_1.anchor = GridBagConstraints.NORTHEAST;
-    gbc_lblNewLabel_6_2_1_1.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_6_2_1_1.gridx = 4;
-    gbc_lblNewLabel_6_2_1_1.gridy = 1;
-    panel_9_1.add(lblNewLabel_6_2_1_1, gbc_lblNewLabel_6_2_1_1);
+    lblLocalB_1 = new JLabel("Local");
+    lblLocalB_1.setHorizontalAlignment(SwingConstants.RIGHT);
+    lblLocalB_1.setFont(new Font("Arial", Font.PLAIN, 11));
+    GridBagConstraints gbc_lblLocalB_1 = new GridBagConstraints();
+    gbc_lblLocalB_1.fill = GridBagConstraints.HORIZONTAL;
+    gbc_lblLocalB_1.insets = new Insets(0, 0, 5, 5);
+    gbc_lblLocalB_1.gridx = 1;
+    gbc_lblLocalB_1.gridy = 2;
+    panelPartido1.add(lblLocalB_1, gbc_lblLocalB_1);
     
-    JLabel lblNewLabel_6_1_1_2_1 = new JLabel("Set4");
-    GridBagConstraints gbc_lblNewLabel_6_1_1_2_1 = new GridBagConstraints();
-    gbc_lblNewLabel_6_1_1_2_1.anchor = GridBagConstraints.NORTH;
-    gbc_lblNewLabel_6_1_1_2_1.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_6_1_1_2_1.gridx = 5;
-    gbc_lblNewLabel_6_1_1_2_1.gridy = 1;
-    panel_9_1.add(lblNewLabel_6_1_1_2_1, gbc_lblNewLabel_6_1_1_2_1);
-    
-    JLabel lblNewLabel_6_1_1_1_1_1 = new JLabel("Set5");
-    GridBagConstraints gbc_lblNewLabel_6_1_1_1_1_1 = new GridBagConstraints();
-    gbc_lblNewLabel_6_1_1_1_1_1.anchor = GridBagConstraints.NORTHEAST;
-    gbc_lblNewLabel_6_1_1_1_1_1.insets = new Insets(0, 0, 5, 0);
-    gbc_lblNewLabel_6_1_1_1_1_1.gridx = 6;
-    gbc_lblNewLabel_6_1_1_1_1_1.gridy = 1;
-    panel_9_1.add(lblNewLabel_6_1_1_1_1_1, gbc_lblNewLabel_6_1_1_1_1_1);
-    
-    JLabel lblNewLabel_8_2_1 = new JLabel("Local");
-    lblNewLabel_8_2_1.setFont(new Font("Arial", Font.PLAIN, 11));
-    lblNewLabel_8_2_1.setHorizontalAlignment(SwingConstants.RIGHT);
-    GridBagConstraints gbc_lblNewLabel_8_2_1 = new GridBagConstraints();
-    gbc_lblNewLabel_8_2_1.fill = GridBagConstraints.HORIZONTAL;
-    gbc_lblNewLabel_8_2_1.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_8_2_1.gridx = 0;
-    gbc_lblNewLabel_8_2_1.gridy = 2;
-    panel_9_1.add(lblNewLabel_8_2_1, gbc_lblNewLabel_8_2_1);
-    
-    JLabel lblNewLabel_3 = new JLabel("Barca");
-    lblNewLabel_3.setFont(new Font("Arial", Font.PLAIN, 11));
-    lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-    GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
-    gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_3.anchor = GridBagConstraints.EAST;
-    gbc_lblNewLabel_3.gridx = 1;
-    gbc_lblNewLabel_3.gridy = 2;
-    panel_9_1.add(lblNewLabel_3, gbc_lblNewLabel_3);
+    lblEquipoLocalA = new JLabel("Avila Voleibol");
+    lblEquipoLocalA.setFont(new Font("Arial", Font.PLAIN, 11));
+    GridBagConstraints gbc_lblEquipoLocalA = new GridBagConstraints();
+    gbc_lblEquipoLocalA.anchor = GridBagConstraints.EAST;
+    gbc_lblEquipoLocalA.insets = new Insets(0, 0, 5, 5);
+    gbc_lblEquipoLocalA.gridx = 2;
+    gbc_lblEquipoLocalA.gridy = 2;
+    panelPartido1.add(lblEquipoLocalA, gbc_lblEquipoLocalA);
     
     textField = new JTextField();
     textField.setColumns(3);
     GridBagConstraints gbc_textField = new GridBagConstraints();
-    gbc_textField.anchor = GridBagConstraints.WEST;
+    gbc_textField.anchor = GridBagConstraints.NORTHWEST;
     gbc_textField.insets = new Insets(0, 0, 5, 5);
-    gbc_textField.gridx = 2;
+    gbc_textField.gridx = 3;
     gbc_textField.gridy = 2;
-    panel_9_1.add(textField, gbc_textField);
+    panelPartido1.add(textField, gbc_textField);
     
     textField_1 = new JTextField();
     textField_1.setColumns(3);
     GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-    gbc_textField_1.anchor = GridBagConstraints.WEST;
-    gbc_textField_1.insets = new Insets(0, 0, 5, 5);
-    gbc_textField_1.gridx = 3;
+    gbc_textField_1.anchor = GridBagConstraints.NORTH;
+    gbc_textField_1.insets = new Insets(0, 0, 5, 0);
+    gbc_textField_1.gridx = 4;
     gbc_textField_1.gridy = 2;
-    panel_9_1.add(textField_1, gbc_textField_1);
+    panelPartido1.add(textField_1, gbc_textField_1);
+    
+    lblVisitanteB_1 = new JLabel("Visitante");
+    lblVisitanteB_1.setHorizontalAlignment(SwingConstants.RIGHT);
+    lblVisitanteB_1.setFont(new Font("Arial", Font.PLAIN, 11));
+    GridBagConstraints gbc_lblVisitanteB_1 = new GridBagConstraints();
+    gbc_lblVisitanteB_1.fill = GridBagConstraints.HORIZONTAL;
+    gbc_lblVisitanteB_1.insets = new Insets(0, 0, 0, 5);
+    gbc_lblVisitanteB_1.gridx = 1;
+    gbc_lblVisitanteB_1.gridy = 3;
+    panelPartido1.add(lblVisitanteB_1, gbc_lblVisitanteB_1);
+    
+    lblEquipoVisitanteA = new JLabel("Sayre Mayser");
+    lblEquipoVisitanteA.setFont(new Font("Arial", Font.PLAIN, 11));
+    GridBagConstraints gbc_lblEquipoVisitanteA = new GridBagConstraints();
+    gbc_lblEquipoVisitanteA.anchor = GridBagConstraints.WEST;
+    gbc_lblEquipoVisitanteA.insets = new Insets(0, 0, 0, 5);
+    gbc_lblEquipoVisitanteA.gridx = 2;
+    gbc_lblEquipoVisitanteA.gridy = 3;
+    panelPartido1.add(lblEquipoVisitanteA, gbc_lblEquipoVisitanteA);
     
     textField_2 = new JTextField();
     textField_2.setColumns(3);
     GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-    gbc_textField_2.anchor = GridBagConstraints.WEST;
-    gbc_textField_2.insets = new Insets(0, 0, 5, 5);
-    gbc_textField_2.gridx = 4;
-    gbc_textField_2.gridy = 2;
-    panel_9_1.add(textField_2, gbc_textField_2);
+    gbc_textField_2.anchor = GridBagConstraints.NORTHWEST;
+    gbc_textField_2.insets = new Insets(0, 0, 0, 5);
+    gbc_textField_2.gridx = 3;
+    gbc_textField_2.gridy = 3;
+    panelPartido1.add(textField_2, gbc_textField_2);
     
     textField_3 = new JTextField();
     textField_3.setColumns(3);
     GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-    gbc_textField_3.anchor = GridBagConstraints.WEST;
-    gbc_textField_3.insets = new Insets(0, 0, 5, 5);
-    gbc_textField_3.gridx = 5;
-    gbc_textField_3.gridy = 2;
-    panel_9_1.add(textField_3, gbc_textField_3);
-    
-    textField_4 = new JTextField();
-    textField_4.setColumns(3);
-    GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-    gbc_textField_4.anchor = GridBagConstraints.WEST;
-    gbc_textField_4.insets = new Insets(0, 0, 5, 0);
-    gbc_textField_4.gridx = 6;
-    gbc_textField_4.gridy = 2;
-    panel_9_1.add(textField_4, gbc_textField_4);
-    
-    JLabel lblNewLabel_8_1_1_1 = new JLabel("Visitante");
-    lblNewLabel_8_1_1_1.setFont(new Font("Arial", Font.PLAIN, 11));
-    lblNewLabel_8_1_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
-    GridBagConstraints gbc_lblNewLabel_8_1_1_1 = new GridBagConstraints();
-    gbc_lblNewLabel_8_1_1_1.fill = GridBagConstraints.HORIZONTAL;
-    gbc_lblNewLabel_8_1_1_1.insets = new Insets(0, 0, 0, 5);
-    gbc_lblNewLabel_8_1_1_1.gridx = 0;
-    gbc_lblNewLabel_8_1_1_1.gridy = 3;
-    panel_9_1.add(lblNewLabel_8_1_1_1, gbc_lblNewLabel_8_1_1_1);
-    
-    JLabel lblNewLabel_7 = new JLabel("Alcobendas");
-    lblNewLabel_7.setFont(new Font("Arial", Font.PLAIN, 11));
-    lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
-    GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
-    gbc_lblNewLabel_7.insets = new Insets(0, 0, 0, 5);
-    gbc_lblNewLabel_7.anchor = GridBagConstraints.EAST;
-    gbc_lblNewLabel_7.gridx = 1;
-    gbc_lblNewLabel_7.gridy = 3;
-    panel_9_1.add(lblNewLabel_7, gbc_lblNewLabel_7);
-    
-    textField_5 = new JTextField();
-    textField_5.setColumns(3);
-    GridBagConstraints gbc_textField_5 = new GridBagConstraints();
-    gbc_textField_5.anchor = GridBagConstraints.SOUTHWEST;
-    gbc_textField_5.insets = new Insets(0, 0, 0, 5);
-    gbc_textField_5.gridx = 2;
-    gbc_textField_5.gridy = 3;
-    panel_9_1.add(textField_5, gbc_textField_5);
-    
-    textField_6 = new JTextField();
-    textField_6.setColumns(3);
-    GridBagConstraints gbc_textField_6 = new GridBagConstraints();
-    gbc_textField_6.anchor = GridBagConstraints.SOUTHWEST;
-    gbc_textField_6.insets = new Insets(0, 0, 0, 5);
-    gbc_textField_6.gridx = 3;
-    gbc_textField_6.gridy = 3;
-    panel_9_1.add(textField_6, gbc_textField_6);
-    
-    textField_7 = new JTextField();
-    textField_7.setColumns(3);
-    GridBagConstraints gbc_textField_7 = new GridBagConstraints();
-    gbc_textField_7.anchor = GridBagConstraints.SOUTHWEST;
-    gbc_textField_7.insets = new Insets(0, 0, 0, 5);
-    gbc_textField_7.gridx = 4;
-    gbc_textField_7.gridy = 3;
-    panel_9_1.add(textField_7, gbc_textField_7);
-    
-    textField_8 = new JTextField();
-    textField_8.setColumns(3);
-    GridBagConstraints gbc_textField_8 = new GridBagConstraints();
-    gbc_textField_8.anchor = GridBagConstraints.SOUTHWEST;
-    gbc_textField_8.insets = new Insets(0, 0, 0, 5);
-    gbc_textField_8.gridx = 5;
-    gbc_textField_8.gridy = 3;
-    panel_9_1.add(textField_8, gbc_textField_8);
-    
-    textField_9 = new JTextField();
-    textField_9.setColumns(3);
-    GridBagConstraints gbc_textField_9 = new GridBagConstraints();
-    gbc_textField_9.anchor = GridBagConstraints.SOUTHWEST;
-    gbc_textField_9.gridx = 6;
-    gbc_textField_9.gridy = 3;
-    panel_9_1.add(textField_9, gbc_textField_9);
+    gbc_textField_3.anchor = GridBagConstraints.NORTH;
+    gbc_textField_3.gridx = 4;
+    gbc_textField_3.gridy = 3;
+    panelPartido1.add(textField_3, gbc_textField_3);
 
-    JPanel panel_6 = new JPanel();
+    panel_6 = new JPanel();
     panel_5.add(panel_6);
     panel_6.setLayout(new BorderLayout(0, 0));
     
-    JLabel lblNewLabel_9 = new JLabel(" ");
+    lblNewLabel_9 = new JLabel(" ");
     panel_6.add(lblNewLabel_9, BorderLayout.NORTH);
     
-    JLabel lblNewLabel_10 = new JLabel(" ");
+    lblNewLabel_10 = new JLabel(" ");
     panel_6.add(lblNewLabel_10, BorderLayout.SOUTH);
     
-    JPanel panel_9 = new JPanel();
-    panel_6.add(panel_9, BorderLayout.CENTER);
-    GridBagLayout gbl_panel_9 = new GridBagLayout();
-    gbl_panel_9.columnWidths = new int[]{60, 75, 33, 33, 33, 33, 33, 0};
-    gbl_panel_9.rowHeights = new int[]{13, 13, 21, 21, 0};
-    gbl_panel_9.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-    gbl_panel_9.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-    panel_9.setLayout(gbl_panel_9);
+    panelPartido2 = new JPanel();
+    panel_6.add(panelPartido2, BorderLayout.CENTER);
+    GridBagLayout gbl_panelPartido2 = new GridBagLayout();
+    gbl_panelPartido2.columnWidths = new int[]{54, 50, 70, 33, 70, 0};
+    gbl_panelPartido2.rowHeights = new int[]{13, 13, 19, 19, 0};
+    gbl_panelPartido2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+    gbl_panelPartido2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+    panelPartido2.setLayout(gbl_panelPartido2);
     
-    JLabel lblNewLabel_11_1 = new JLabel("Partido 2");
-    lblNewLabel_11_1.setHorizontalAlignment(SwingConstants.CENTER);
-    GridBagConstraints gbc_lblNewLabel_11_1 = new GridBagConstraints();
-    gbc_lblNewLabel_11_1.anchor = GridBagConstraints.NORTH;
-    gbc_lblNewLabel_11_1.fill = GridBagConstraints.HORIZONTAL;
-    gbc_lblNewLabel_11_1.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_11_1.gridwidth = 3;
-    gbc_lblNewLabel_11_1.gridx = 2;
-    gbc_lblNewLabel_11_1.gridy = 0;
-    panel_9.add(lblNewLabel_11_1, gbc_lblNewLabel_11_1);
+    lblPartido2B = new JLabel("Partido 2");
+    lblPartido2B.setHorizontalAlignment(SwingConstants.CENTER);
+    GridBagConstraints gbc_lblPartido2B = new GridBagConstraints();
+    gbc_lblPartido2B.anchor = GridBagConstraints.NORTH;
+    gbc_lblPartido2B.fill = GridBagConstraints.HORIZONTAL;
+    gbc_lblPartido2B.insets = new Insets(0, 0, 5, 0);
+    gbc_lblPartido2B.gridwidth = 3;
+    gbc_lblPartido2B.gridx = 2;
+    gbc_lblPartido2B.gridy = 0;
+    panelPartido2.add(lblPartido2B, gbc_lblPartido2B);
     
-    JLabel lblNewLabel_2_1 = new JLabel("Equipo");
-    GridBagConstraints gbc_lblNewLabel_2_1 = new GridBagConstraints();
-    gbc_lblNewLabel_2_1.anchor = GridBagConstraints.NORTH;
-    gbc_lblNewLabel_2_1.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_2_1.gridx = 1;
-    gbc_lblNewLabel_2_1.gridy = 1;
-    panel_9.add(lblNewLabel_2_1, gbc_lblNewLabel_2_1);
+    lblEquipoB = new JLabel("Equipo");
+    GridBagConstraints gbc_lblEquipoB = new GridBagConstraints();
+    gbc_lblEquipoB.anchor = GridBagConstraints.NORTH;
+    gbc_lblEquipoB.insets = new Insets(0, 0, 5, 5);
+    gbc_lblEquipoB.gridx = 2;
+    gbc_lblEquipoB.gridy = 1;
+    panelPartido2.add(lblEquipoB, gbc_lblEquipoB);
     
-    JLabel lblNewLabel_6_3 = new JLabel("Set1");
-    GridBagConstraints gbc_lblNewLabel_6_3 = new GridBagConstraints();
-    gbc_lblNewLabel_6_3.anchor = GridBagConstraints.NORTH;
-    gbc_lblNewLabel_6_3.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_6_3.gridx = 2;
-    gbc_lblNewLabel_6_3.gridy = 1;
-    panel_9.add(lblNewLabel_6_3, gbc_lblNewLabel_6_3);
+    lblTotalPuntosSetsB = new JLabel("Set's");
+    GridBagConstraints gbc_lblTotalPuntosSetsB = new GridBagConstraints();
+    gbc_lblTotalPuntosSetsB.anchor = GridBagConstraints.NORTH;
+    gbc_lblTotalPuntosSetsB.insets = new Insets(0, 0, 5, 5);
+    gbc_lblTotalPuntosSetsB.gridx = 3;
+    gbc_lblTotalPuntosSetsB.gridy = 1;
+    panelPartido2.add(lblTotalPuntosSetsB, gbc_lblTotalPuntosSetsB);
     
-    JLabel lblNewLabel_6_1_2 = new JLabel("Set2");
-    GridBagConstraints gbc_lblNewLabel_6_1_2 = new GridBagConstraints();
-    gbc_lblNewLabel_6_1_2.anchor = GridBagConstraints.NORTH;
-    gbc_lblNewLabel_6_1_2.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_6_1_2.gridx = 3;
-    gbc_lblNewLabel_6_1_2.gridy = 1;
-    panel_9.add(lblNewLabel_6_1_2, gbc_lblNewLabel_6_1_2);
+    lblPuntajeUltimoSetB = new JLabel("Ultimo Set");
+    GridBagConstraints gbc_lblPuntajeUltimoSetB = new GridBagConstraints();
+    gbc_lblPuntajeUltimoSetB.anchor = GridBagConstraints.NORTH;
+    gbc_lblPuntajeUltimoSetB.fill = GridBagConstraints.HORIZONTAL;
+    gbc_lblPuntajeUltimoSetB.insets = new Insets(0, 0, 5, 0);
+    gbc_lblPuntajeUltimoSetB.gridx = 4;
+    gbc_lblPuntajeUltimoSetB.gridy = 1;
+    panelPartido2.add(lblPuntajeUltimoSetB, gbc_lblPuntajeUltimoSetB);
     
-    JLabel lblNewLabel_6_2_1 = new JLabel("Set3");
-    GridBagConstraints gbc_lblNewLabel_6_2_1 = new GridBagConstraints();
-    gbc_lblNewLabel_6_2_1.anchor = GridBagConstraints.NORTHEAST;
-    gbc_lblNewLabel_6_2_1.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_6_2_1.gridx = 4;
-    gbc_lblNewLabel_6_2_1.gridy = 1;
-    panel_9.add(lblNewLabel_6_2_1, gbc_lblNewLabel_6_2_1);
+    lblLocalB = new JLabel("Local");
+    lblLocalB.setFont(new Font("Arial", Font.PLAIN, 11));
+    lblLocalB.setHorizontalAlignment(SwingConstants.RIGHT);
+    GridBagConstraints gbc_lblLocalB = new GridBagConstraints();
+    gbc_lblLocalB.fill = GridBagConstraints.HORIZONTAL;
+    gbc_lblLocalB.insets = new Insets(0, 0, 5, 5);
+    gbc_lblLocalB.gridx = 1;
+    gbc_lblLocalB.gridy = 2;
+    panelPartido2.add(lblLocalB, gbc_lblLocalB);
     
-    JLabel lblNewLabel_6_1_1_2 = new JLabel("Set4");
-    GridBagConstraints gbc_lblNewLabel_6_1_1_2 = new GridBagConstraints();
-    gbc_lblNewLabel_6_1_1_2.anchor = GridBagConstraints.NORTH;
-    gbc_lblNewLabel_6_1_1_2.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_6_1_1_2.gridx = 5;
-    gbc_lblNewLabel_6_1_1_2.gridy = 1;
-    panel_9.add(lblNewLabel_6_1_1_2, gbc_lblNewLabel_6_1_1_2);
-    
-    JLabel lblNewLabel_6_1_1_1_1 = new JLabel("Set5");
-    GridBagConstraints gbc_lblNewLabel_6_1_1_1_1 = new GridBagConstraints();
-    gbc_lblNewLabel_6_1_1_1_1.anchor = GridBagConstraints.NORTHEAST;
-    gbc_lblNewLabel_6_1_1_1_1.insets = new Insets(0, 0, 5, 0);
-    gbc_lblNewLabel_6_1_1_1_1.gridx = 6;
-    gbc_lblNewLabel_6_1_1_1_1.gridy = 1;
-    panel_9.add(lblNewLabel_6_1_1_1_1, gbc_lblNewLabel_6_1_1_1_1);
-    
-    JLabel lblNewLabel_8_2 = new JLabel("Local");
-    lblNewLabel_8_2.setFont(new Font("Arial", Font.PLAIN, 11));
-    lblNewLabel_8_2.setHorizontalAlignment(SwingConstants.RIGHT);
-    GridBagConstraints gbc_lblNewLabel_8_2 = new GridBagConstraints();
-    gbc_lblNewLabel_8_2.fill = GridBagConstraints.HORIZONTAL;
-    gbc_lblNewLabel_8_2.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_8_2.gridx = 0;
-    gbc_lblNewLabel_8_2.gridy = 2;
-    panel_9.add(lblNewLabel_8_2, gbc_lblNewLabel_8_2);
-    
-    JLabel lblNewLabel_8 = new JLabel("Avila Voleibol");
-    lblNewLabel_8.setFont(new Font("Arial", Font.PLAIN, 11));
-    GridBagConstraints gbc_lblNewLabel_8 = new GridBagConstraints();
-    gbc_lblNewLabel_8.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_8.anchor = GridBagConstraints.EAST;
-    gbc_lblNewLabel_8.gridx = 1;
-    gbc_lblNewLabel_8.gridy = 2;
-    panel_9.add(lblNewLabel_8, gbc_lblNewLabel_8);
+    lblEquipoLocalB = new JLabel("Avila Voleibol");
+    lblEquipoLocalB.setFont(new Font("Arial", Font.PLAIN, 11));
+    GridBagConstraints gbc_lblEquipoLocalB = new GridBagConstraints();
+    gbc_lblEquipoLocalB.anchor = GridBagConstraints.EAST;
+    gbc_lblEquipoLocalB.insets = new Insets(0, 0, 5, 5);
+    gbc_lblEquipoLocalB.gridx = 2;
+    gbc_lblEquipoLocalB.gridy = 2;
+    panelPartido2.add(lblEquipoLocalB, gbc_lblEquipoLocalB);
     
     textField_20 = new JTextField();
     textField_20.setColumns(3);
     GridBagConstraints gbc_textField_20 = new GridBagConstraints();
-    gbc_textField_20.anchor = GridBagConstraints.WEST;
+    gbc_textField_20.anchor = GridBagConstraints.NORTHWEST;
     gbc_textField_20.insets = new Insets(0, 0, 5, 5);
-    gbc_textField_20.gridx = 2;
+    gbc_textField_20.gridx = 3;
     gbc_textField_20.gridy = 2;
-    panel_9.add(textField_20, gbc_textField_20);
+    panelPartido2.add(textField_20, gbc_textField_20);
     
     textField_21 = new JTextField();
     textField_21.setColumns(3);
     GridBagConstraints gbc_textField_21 = new GridBagConstraints();
-    gbc_textField_21.anchor = GridBagConstraints.WEST;
-    gbc_textField_21.insets = new Insets(0, 0, 5, 5);
-    gbc_textField_21.gridx = 3;
+    gbc_textField_21.anchor = GridBagConstraints.NORTH;
+    gbc_textField_21.insets = new Insets(0, 0, 5, 0);
+    gbc_textField_21.gridx = 4;
     gbc_textField_21.gridy = 2;
-    panel_9.add(textField_21, gbc_textField_21);
+    panelPartido2.add(textField_21, gbc_textField_21);
     
-    textField_22 = new JTextField();
-    textField_22.setColumns(3);
-    GridBagConstraints gbc_textField_22 = new GridBagConstraints();
-    gbc_textField_22.anchor = GridBagConstraints.WEST;
-    gbc_textField_22.insets = new Insets(0, 0, 5, 5);
-    gbc_textField_22.gridx = 4;
-    gbc_textField_22.gridy = 2;
-    panel_9.add(textField_22, gbc_textField_22);
+    lblVisitanteB = new JLabel("Visitante");
+    lblVisitanteB.setFont(new Font("Arial", Font.PLAIN, 11));
+    lblVisitanteB.setHorizontalAlignment(SwingConstants.RIGHT);
+    GridBagConstraints gbc_lblVisitanteB = new GridBagConstraints();
+    gbc_lblVisitanteB.fill = GridBagConstraints.HORIZONTAL;
+    gbc_lblVisitanteB.insets = new Insets(0, 0, 0, 5);
+    gbc_lblVisitanteB.gridx = 1;
+    gbc_lblVisitanteB.gridy = 3;
+    panelPartido2.add(lblVisitanteB, gbc_lblVisitanteB);
     
-    textField_23 = new JTextField();
-    textField_23.setColumns(3);
-    GridBagConstraints gbc_textField_23 = new GridBagConstraints();
-    gbc_textField_23.anchor = GridBagConstraints.WEST;
-    gbc_textField_23.insets = new Insets(0, 0, 5, 5);
-    gbc_textField_23.gridx = 5;
-    gbc_textField_23.gridy = 2;
-    panel_9.add(textField_23, gbc_textField_23);
-    
-    textField_24 = new JTextField();
-    textField_24.setColumns(3);
-    GridBagConstraints gbc_textField_24 = new GridBagConstraints();
-    gbc_textField_24.anchor = GridBagConstraints.WEST;
-    gbc_textField_24.insets = new Insets(0, 0, 5, 0);
-    gbc_textField_24.gridx = 6;
-    gbc_textField_24.gridy = 2;
-    panel_9.add(textField_24, gbc_textField_24);
-    
-    JLabel lblNewLabel_8_1_1 = new JLabel("Visitante");
-    lblNewLabel_8_1_1.setFont(new Font("Arial", Font.PLAIN, 11));
-    lblNewLabel_8_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
-    GridBagConstraints gbc_lblNewLabel_8_1_1 = new GridBagConstraints();
-    gbc_lblNewLabel_8_1_1.fill = GridBagConstraints.HORIZONTAL;
-    gbc_lblNewLabel_8_1_1.insets = new Insets(0, 0, 0, 5);
-    gbc_lblNewLabel_8_1_1.gridx = 0;
-    gbc_lblNewLabel_8_1_1.gridy = 3;
-    panel_9.add(lblNewLabel_8_1_1, gbc_lblNewLabel_8_1_1);
-    
-    JLabel lblNewLabel_11 = new JLabel("Sayre Mayser");
-    lblNewLabel_11.setFont(new Font("Arial", Font.PLAIN, 11));
-    GridBagConstraints gbc_lblNewLabel_11 = new GridBagConstraints();
-    gbc_lblNewLabel_11.insets = new Insets(0, 0, 0, 5);
-    gbc_lblNewLabel_11.anchor = GridBagConstraints.EAST;
-    gbc_lblNewLabel_11.gridx = 1;
-    gbc_lblNewLabel_11.gridy = 3;
-    panel_9.add(lblNewLabel_11, gbc_lblNewLabel_11);
+    lblEquipoVisitanteB = new JLabel("Sayre Mayser");
+    lblEquipoVisitanteB.setFont(new Font("Arial", Font.PLAIN, 11));
+    GridBagConstraints gbc_lblEquipoVisitanteB = new GridBagConstraints();
+    gbc_lblEquipoVisitanteB.anchor = GridBagConstraints.WEST;
+    gbc_lblEquipoVisitanteB.insets = new Insets(0, 0, 0, 5);
+    gbc_lblEquipoVisitanteB.gridx = 2;
+    gbc_lblEquipoVisitanteB.gridy = 3;
+    panelPartido2.add(lblEquipoVisitanteB, gbc_lblEquipoVisitanteB);
     
     textField_25 = new JTextField();
     textField_25.setColumns(3);
     GridBagConstraints gbc_textField_25 = new GridBagConstraints();
-    gbc_textField_25.anchor = GridBagConstraints.SOUTHWEST;
+    gbc_textField_25.anchor = GridBagConstraints.NORTHWEST;
     gbc_textField_25.insets = new Insets(0, 0, 0, 5);
-    gbc_textField_25.gridx = 2;
+    gbc_textField_25.gridx = 3;
     gbc_textField_25.gridy = 3;
-    panel_9.add(textField_25, gbc_textField_25);
+    panelPartido2.add(textField_25, gbc_textField_25);
     
     textField_26 = new JTextField();
     textField_26.setColumns(3);
     GridBagConstraints gbc_textField_26 = new GridBagConstraints();
-    gbc_textField_26.anchor = GridBagConstraints.SOUTHWEST;
-    gbc_textField_26.insets = new Insets(0, 0, 0, 5);
-    gbc_textField_26.gridx = 3;
+    gbc_textField_26.anchor = GridBagConstraints.NORTH;
+    gbc_textField_26.gridx = 4;
     gbc_textField_26.gridy = 3;
-    panel_9.add(textField_26, gbc_textField_26);
-    
-    textField_27 = new JTextField();
-    textField_27.setColumns(3);
-    GridBagConstraints gbc_textField_27 = new GridBagConstraints();
-    gbc_textField_27.anchor = GridBagConstraints.SOUTHWEST;
-    gbc_textField_27.insets = new Insets(0, 0, 0, 5);
-    gbc_textField_27.gridx = 4;
-    gbc_textField_27.gridy = 3;
-    panel_9.add(textField_27, gbc_textField_27);
-    
-    textField_28 = new JTextField();
-    textField_28.setColumns(3);
-    GridBagConstraints gbc_textField_28 = new GridBagConstraints();
-    gbc_textField_28.anchor = GridBagConstraints.SOUTHWEST;
-    gbc_textField_28.insets = new Insets(0, 0, 0, 5);
-    gbc_textField_28.gridx = 5;
-    gbc_textField_28.gridy = 3;
-    panel_9.add(textField_28, gbc_textField_28);
-    
-    textField_29 = new JTextField();
-    textField_29.setColumns(3);
-    GridBagConstraints gbc_textField_29 = new GridBagConstraints();
-    gbc_textField_29.anchor = GridBagConstraints.SOUTHWEST;
-    gbc_textField_29.gridx = 6;
-    gbc_textField_29.gridy = 3;
-    panel_9.add(textField_29, gbc_textField_29);
+    panelPartido2.add(textField_26, gbc_textField_26);
 
-    JPanel panel_7 = new JPanel();
+    panel_7 = new JPanel();
     panel_5.add(panel_7);
     panel_7.setLayout(new BorderLayout(0, 0));
     
-    JLabel lblNewLabel_2 = new JLabel(" ");
+    lblNewLabel_2 = new JLabel(" ");
     panel_7.add(lblNewLabel_2, BorderLayout.NORTH);
     
-    JLabel lblNewLabel_6 = new JLabel(" ");
+    lblNewLabel_6 = new JLabel(" ");
     panel_7.add(lblNewLabel_6, BorderLayout.SOUTH);
     
-    JPanel panel_9_1_1 = new JPanel();
-    panel_7.add(panel_9_1_1, BorderLayout.CENTER);
-    GridBagLayout gbl_panel_9_1_1 = new GridBagLayout();
-    gbl_panel_9_1_1.columnWidths = new int[]{60, 75, 33, 33, 33, 33, 33, 0};
-    gbl_panel_9_1_1.rowHeights = new int[]{13, 13, 21, 21, 0};
-    gbl_panel_9_1_1.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-    gbl_panel_9_1_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-    panel_9_1_1.setLayout(gbl_panel_9_1_1);
+    panelPartido3 = new JPanel();
+    panel_7.add(panelPartido3, BorderLayout.CENTER);
+    GridBagLayout gbl_panelPartido3 = new GridBagLayout();
+    gbl_panelPartido3.columnWidths = new int[]{54, 50, 70, 33, 70, 0};
+    gbl_panelPartido3.rowHeights = new int[]{13, 13, 19, 19, 0};
+    gbl_panelPartido3.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+    gbl_panelPartido3.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+    panelPartido3.setLayout(gbl_panelPartido3);
     
-    JLabel lblNewLabel_11_1_1_1 = new JLabel("Partido 3");
-    lblNewLabel_11_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-    GridBagConstraints gbc_lblNewLabel_11_1_1_1 = new GridBagConstraints();
-    gbc_lblNewLabel_11_1_1_1.fill = GridBagConstraints.HORIZONTAL;
-    gbc_lblNewLabel_11_1_1_1.anchor = GridBagConstraints.NORTH;
-    gbc_lblNewLabel_11_1_1_1.gridwidth = 3;
-    gbc_lblNewLabel_11_1_1_1.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_11_1_1_1.gridx = 2;
-    gbc_lblNewLabel_11_1_1_1.gridy = 0;
-    panel_9_1_1.add(lblNewLabel_11_1_1_1, gbc_lblNewLabel_11_1_1_1);
+    lblPartido2B_2 = new JLabel("Partido 3");
+    lblPartido2B_2.setHorizontalAlignment(SwingConstants.CENTER);
+    GridBagConstraints gbc_lblPartido2B_2 = new GridBagConstraints();
+    gbc_lblPartido2B_2.fill = GridBagConstraints.HORIZONTAL;
+    gbc_lblPartido2B_2.anchor = GridBagConstraints.NORTH;
+    gbc_lblPartido2B_2.gridwidth = 3;
+    gbc_lblPartido2B_2.insets = new Insets(0, 0, 5, 0);
+    gbc_lblPartido2B_2.gridx = 2;
+    gbc_lblPartido2B_2.gridy = 0;
+    panelPartido3.add(lblPartido2B_2, gbc_lblPartido2B_2);
     
-    JLabel lblNewLabel_2_1_1_1 = new JLabel("Equipo");
-    GridBagConstraints gbc_lblNewLabel_2_1_1_1 = new GridBagConstraints();
-    gbc_lblNewLabel_2_1_1_1.anchor = GridBagConstraints.NORTH;
-    gbc_lblNewLabel_2_1_1_1.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_2_1_1_1.gridx = 1;
-    gbc_lblNewLabel_2_1_1_1.gridy = 1;
-    panel_9_1_1.add(lblNewLabel_2_1_1_1, gbc_lblNewLabel_2_1_1_1);
+    lblEquipoB_2 = new JLabel("Equipo");
+    GridBagConstraints gbc_lblEquipoB_2 = new GridBagConstraints();
+    gbc_lblEquipoB_2.anchor = GridBagConstraints.NORTH;
+    gbc_lblEquipoB_2.insets = new Insets(0, 0, 5, 5);
+    gbc_lblEquipoB_2.gridx = 2;
+    gbc_lblEquipoB_2.gridy = 1;
+    panelPartido3.add(lblEquipoB_2, gbc_lblEquipoB_2);
     
-    JLabel lblNewLabel_6_3_1_1 = new JLabel("Set1");
-    GridBagConstraints gbc_lblNewLabel_6_3_1_1 = new GridBagConstraints();
-    gbc_lblNewLabel_6_3_1_1.anchor = GridBagConstraints.NORTH;
-    gbc_lblNewLabel_6_3_1_1.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_6_3_1_1.gridx = 2;
-    gbc_lblNewLabel_6_3_1_1.gridy = 1;
-    panel_9_1_1.add(lblNewLabel_6_3_1_1, gbc_lblNewLabel_6_3_1_1);
+    lblTotalPuntosSetsB_2 = new JLabel("Set's");
+    GridBagConstraints gbc_lblTotalPuntosSetsB_2 = new GridBagConstraints();
+    gbc_lblTotalPuntosSetsB_2.anchor = GridBagConstraints.NORTH;
+    gbc_lblTotalPuntosSetsB_2.insets = new Insets(0, 0, 5, 5);
+    gbc_lblTotalPuntosSetsB_2.gridx = 3;
+    gbc_lblTotalPuntosSetsB_2.gridy = 1;
+    panelPartido3.add(lblTotalPuntosSetsB_2, gbc_lblTotalPuntosSetsB_2);
     
-    JLabel lblNewLabel_6_1_2_1_1 = new JLabel("Set2");
-    GridBagConstraints gbc_lblNewLabel_6_1_2_1_1 = new GridBagConstraints();
-    gbc_lblNewLabel_6_1_2_1_1.anchor = GridBagConstraints.NORTH;
-    gbc_lblNewLabel_6_1_2_1_1.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_6_1_2_1_1.gridx = 3;
-    gbc_lblNewLabel_6_1_2_1_1.gridy = 1;
-    panel_9_1_1.add(lblNewLabel_6_1_2_1_1, gbc_lblNewLabel_6_1_2_1_1);
+    lblPuntajeUltimoSetB_2 = new JLabel("Ultimo Set");
+    GridBagConstraints gbc_lblPuntajeUltimoSetB_2 = new GridBagConstraints();
+    gbc_lblPuntajeUltimoSetB_2.fill = GridBagConstraints.HORIZONTAL;
+    gbc_lblPuntajeUltimoSetB_2.anchor = GridBagConstraints.NORTH;
+    gbc_lblPuntajeUltimoSetB_2.insets = new Insets(0, 0, 5, 0);
+    gbc_lblPuntajeUltimoSetB_2.gridx = 4;
+    gbc_lblPuntajeUltimoSetB_2.gridy = 1;
+    panelPartido3.add(lblPuntajeUltimoSetB_2, gbc_lblPuntajeUltimoSetB_2);
     
-    JLabel lblNewLabel_6_2_1_1_1 = new JLabel("Set3");
-    GridBagConstraints gbc_lblNewLabel_6_2_1_1_1 = new GridBagConstraints();
-    gbc_lblNewLabel_6_2_1_1_1.anchor = GridBagConstraints.NORTHEAST;
-    gbc_lblNewLabel_6_2_1_1_1.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_6_2_1_1_1.gridx = 4;
-    gbc_lblNewLabel_6_2_1_1_1.gridy = 1;
-    panel_9_1_1.add(lblNewLabel_6_2_1_1_1, gbc_lblNewLabel_6_2_1_1_1);
+    lblLocalB_2 = new JLabel("Local");
+    lblLocalB_2.setHorizontalAlignment(SwingConstants.RIGHT);
+    lblLocalB_2.setFont(new Font("Arial", Font.PLAIN, 11));
+    GridBagConstraints gbc_lblLocalB_2 = new GridBagConstraints();
+    gbc_lblLocalB_2.fill = GridBagConstraints.HORIZONTAL;
+    gbc_lblLocalB_2.insets = new Insets(0, 0, 5, 5);
+    gbc_lblLocalB_2.gridx = 1;
+    gbc_lblLocalB_2.gridy = 2;
+    panelPartido3.add(lblLocalB_2, gbc_lblLocalB_2);
     
-    JLabel lblNewLabel_6_1_1_2_1_1 = new JLabel("Set4");
-    GridBagConstraints gbc_lblNewLabel_6_1_1_2_1_1 = new GridBagConstraints();
-    gbc_lblNewLabel_6_1_1_2_1_1.anchor = GridBagConstraints.NORTH;
-    gbc_lblNewLabel_6_1_1_2_1_1.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_6_1_1_2_1_1.gridx = 5;
-    gbc_lblNewLabel_6_1_1_2_1_1.gridy = 1;
-    panel_9_1_1.add(lblNewLabel_6_1_1_2_1_1, gbc_lblNewLabel_6_1_1_2_1_1);
+    lblEquipoLocalC = new JLabel("Avila Voleibol");
+    lblEquipoLocalC.setFont(new Font("Arial", Font.PLAIN, 11));
+    GridBagConstraints gbc_lblEquipoLocalC = new GridBagConstraints();
+    gbc_lblEquipoLocalC.anchor = GridBagConstraints.EAST;
+    gbc_lblEquipoLocalC.insets = new Insets(0, 0, 5, 5);
+    gbc_lblEquipoLocalC.gridx = 2;
+    gbc_lblEquipoLocalC.gridy = 2;
+    panelPartido3.add(lblEquipoLocalC, gbc_lblEquipoLocalC);
     
-    JLabel lblNewLabel_6_1_1_1_1_1_1 = new JLabel("Set5");
-    GridBagConstraints gbc_lblNewLabel_6_1_1_1_1_1_1 = new GridBagConstraints();
-    gbc_lblNewLabel_6_1_1_1_1_1_1.anchor = GridBagConstraints.NORTHEAST;
-    gbc_lblNewLabel_6_1_1_1_1_1_1.insets = new Insets(0, 0, 5, 0);
-    gbc_lblNewLabel_6_1_1_1_1_1_1.gridx = 6;
-    gbc_lblNewLabel_6_1_1_1_1_1_1.gridy = 1;
-    panel_9_1_1.add(lblNewLabel_6_1_1_1_1_1_1, gbc_lblNewLabel_6_1_1_1_1_1_1);
+    textField_4 = new JTextField();
+    textField_4.setColumns(3);
+    GridBagConstraints gbc_textField_4 = new GridBagConstraints();
+    gbc_textField_4.anchor = GridBagConstraints.NORTHWEST;
+    gbc_textField_4.insets = new Insets(0, 0, 5, 5);
+    gbc_textField_4.gridx = 3;
+    gbc_textField_4.gridy = 2;
+    panelPartido3.add(textField_4, gbc_textField_4);
     
-    JLabel lblNewLabel_8_2_1_1 = new JLabel("Local");
-    lblNewLabel_8_2_1_1.setFont(new Font("Arial", Font.PLAIN, 11));
-    lblNewLabel_8_2_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
-    GridBagConstraints gbc_lblNewLabel_8_2_1_1 = new GridBagConstraints();
-    gbc_lblNewLabel_8_2_1_1.fill = GridBagConstraints.HORIZONTAL;
-    gbc_lblNewLabel_8_2_1_1.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_8_2_1_1.gridx = 0;
-    gbc_lblNewLabel_8_2_1_1.gridy = 2;
-    panel_9_1_1.add(lblNewLabel_8_2_1_1, gbc_lblNewLabel_8_2_1_1);
+    textField_5 = new JTextField();
+    textField_5.setColumns(3);
+    GridBagConstraints gbc_textField_5 = new GridBagConstraints();
+    gbc_textField_5.anchor = GridBagConstraints.NORTH;
+    gbc_textField_5.insets = new Insets(0, 0, 5, 0);
+    gbc_textField_5.gridx = 4;
+    gbc_textField_5.gridy = 2;
+    panelPartido3.add(textField_5, gbc_textField_5);
     
-    JLabel lblNewLabel_12 = new JLabel("Madrid");
-    lblNewLabel_12.setFont(new Font("Arial", Font.PLAIN, 11));
-    GridBagConstraints gbc_lblNewLabel_12 = new GridBagConstraints();
-    gbc_lblNewLabel_12.insets = new Insets(0, 0, 5, 5);
-    gbc_lblNewLabel_12.anchor = GridBagConstraints.EAST;
-    gbc_lblNewLabel_12.gridx = 1;
-    gbc_lblNewLabel_12.gridy = 2;
-    panel_9_1_1.add(lblNewLabel_12, gbc_lblNewLabel_12);
+    lblVisitanteB_2 = new JLabel("Visitante");
+    lblVisitanteB_2.setHorizontalAlignment(SwingConstants.RIGHT);
+    lblVisitanteB_2.setFont(new Font("Arial", Font.PLAIN, 11));
+    GridBagConstraints gbc_lblVisitanteB_2 = new GridBagConstraints();
+    gbc_lblVisitanteB_2.fill = GridBagConstraints.HORIZONTAL;
+    gbc_lblVisitanteB_2.insets = new Insets(0, 0, 0, 5);
+    gbc_lblVisitanteB_2.gridx = 1;
+    gbc_lblVisitanteB_2.gridy = 3;
+    panelPartido3.add(lblVisitanteB_2, gbc_lblVisitanteB_2);
     
-    textField_10 = new JTextField();
-    textField_10.setColumns(3);
-    GridBagConstraints gbc_textField_10 = new GridBagConstraints();
-    gbc_textField_10.anchor = GridBagConstraints.WEST;
-    gbc_textField_10.insets = new Insets(0, 0, 5, 5);
-    gbc_textField_10.gridx = 2;
-    gbc_textField_10.gridy = 2;
-    panel_9_1_1.add(textField_10, gbc_textField_10);
+    lblEquipoVisitanteC = new JLabel("Sayre Mayser");
+    lblEquipoVisitanteC.setFont(new Font("Arial", Font.PLAIN, 11));
+    GridBagConstraints gbc_lblEquipoVisitanteC = new GridBagConstraints();
+    gbc_lblEquipoVisitanteC.anchor = GridBagConstraints.WEST;
+    gbc_lblEquipoVisitanteC.insets = new Insets(0, 0, 0, 5);
+    gbc_lblEquipoVisitanteC.gridx = 2;
+    gbc_lblEquipoVisitanteC.gridy = 3;
+    panelPartido3.add(lblEquipoVisitanteC, gbc_lblEquipoVisitanteC);
     
-    textField_11 = new JTextField();
-    textField_11.setColumns(3);
-    GridBagConstraints gbc_textField_11 = new GridBagConstraints();
-    gbc_textField_11.anchor = GridBagConstraints.WEST;
-    gbc_textField_11.insets = new Insets(0, 0, 5, 5);
-    gbc_textField_11.gridx = 3;
-    gbc_textField_11.gridy = 2;
-    panel_9_1_1.add(textField_11, gbc_textField_11);
+    textField_6 = new JTextField();
+    textField_6.setColumns(3);
+    GridBagConstraints gbc_textField_6 = new GridBagConstraints();
+    gbc_textField_6.anchor = GridBagConstraints.NORTHWEST;
+    gbc_textField_6.insets = new Insets(0, 0, 0, 5);
+    gbc_textField_6.gridx = 3;
+    gbc_textField_6.gridy = 3;
+    panelPartido3.add(textField_6, gbc_textField_6);
     
-    textField_12 = new JTextField();
-    textField_12.setColumns(3);
-    GridBagConstraints gbc_textField_12 = new GridBagConstraints();
-    gbc_textField_12.anchor = GridBagConstraints.WEST;
-    gbc_textField_12.insets = new Insets(0, 0, 5, 5);
-    gbc_textField_12.gridx = 4;
-    gbc_textField_12.gridy = 2;
-    panel_9_1_1.add(textField_12, gbc_textField_12);
-    
-    textField_13 = new JTextField();
-    textField_13.setColumns(3);
-    GridBagConstraints gbc_textField_13 = new GridBagConstraints();
-    gbc_textField_13.anchor = GridBagConstraints.WEST;
-    gbc_textField_13.insets = new Insets(0, 0, 5, 5);
-    gbc_textField_13.gridx = 5;
-    gbc_textField_13.gridy = 2;
-    panel_9_1_1.add(textField_13, gbc_textField_13);
-    
-    textField_14 = new JTextField();
-    textField_14.setColumns(3);
-    GridBagConstraints gbc_textField_14 = new GridBagConstraints();
-    gbc_textField_14.anchor = GridBagConstraints.WEST;
-    gbc_textField_14.insets = new Insets(0, 0, 5, 0);
-    gbc_textField_14.gridx = 6;
-    gbc_textField_14.gridy = 2;
-    panel_9_1_1.add(textField_14, gbc_textField_14);
-    
-    JLabel lblNewLabel_8_1_1_1_1 = new JLabel("Visitante");
-    lblNewLabel_8_1_1_1_1.setFont(new Font("Arial", Font.PLAIN, 11));
-    lblNewLabel_8_1_1_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
-    GridBagConstraints gbc_lblNewLabel_8_1_1_1_1 = new GridBagConstraints();
-    gbc_lblNewLabel_8_1_1_1_1.fill = GridBagConstraints.HORIZONTAL;
-    gbc_lblNewLabel_8_1_1_1_1.insets = new Insets(0, 0, 0, 5);
-    gbc_lblNewLabel_8_1_1_1_1.gridx = 0;
-    gbc_lblNewLabel_8_1_1_1_1.gridy = 3;
-    panel_9_1_1.add(lblNewLabel_8_1_1_1_1, gbc_lblNewLabel_8_1_1_1_1);
-    
-    JLabel lblNewLabel_13 = new JLabel("Zaragoza");
-    lblNewLabel_13.setFont(new Font("Arial", Font.PLAIN, 11));
-    GridBagConstraints gbc_lblNewLabel_13 = new GridBagConstraints();
-    gbc_lblNewLabel_13.insets = new Insets(0, 0, 0, 5);
-    gbc_lblNewLabel_13.anchor = GridBagConstraints.EAST;
-    gbc_lblNewLabel_13.gridx = 1;
-    gbc_lblNewLabel_13.gridy = 3;
-    panel_9_1_1.add(lblNewLabel_13, gbc_lblNewLabel_13);
-    
-    textField_15 = new JTextField();
-    textField_15.setColumns(3);
-    GridBagConstraints gbc_textField_15 = new GridBagConstraints();
-    gbc_textField_15.anchor = GridBagConstraints.SOUTHWEST;
-    gbc_textField_15.insets = new Insets(0, 0, 0, 5);
-    gbc_textField_15.gridx = 2;
-    gbc_textField_15.gridy = 3;
-    panel_9_1_1.add(textField_15, gbc_textField_15);
-    
-    textField_16 = new JTextField();
-    textField_16.setColumns(3);
-    GridBagConstraints gbc_textField_16 = new GridBagConstraints();
-    gbc_textField_16.anchor = GridBagConstraints.SOUTHWEST;
-    gbc_textField_16.insets = new Insets(0, 0, 0, 5);
-    gbc_textField_16.gridx = 3;
-    gbc_textField_16.gridy = 3;
-    panel_9_1_1.add(textField_16, gbc_textField_16);
-    
-    textField_17 = new JTextField();
-    textField_17.setColumns(3);
-    GridBagConstraints gbc_textField_17 = new GridBagConstraints();
-    gbc_textField_17.anchor = GridBagConstraints.SOUTHWEST;
-    gbc_textField_17.insets = new Insets(0, 0, 0, 5);
-    gbc_textField_17.gridx = 4;
-    gbc_textField_17.gridy = 3;
-    panel_9_1_1.add(textField_17, gbc_textField_17);
-    
-    textField_18 = new JTextField();
-    textField_18.setColumns(3);
-    GridBagConstraints gbc_textField_18 = new GridBagConstraints();
-    gbc_textField_18.anchor = GridBagConstraints.SOUTHWEST;
-    gbc_textField_18.insets = new Insets(0, 0, 0, 5);
-    gbc_textField_18.gridx = 5;
-    gbc_textField_18.gridy = 3;
-    panel_9_1_1.add(textField_18, gbc_textField_18);
-    
-    textField_19 = new JTextField();
-    textField_19.setColumns(3);
-    GridBagConstraints gbc_textField_19 = new GridBagConstraints();
-    gbc_textField_19.anchor = GridBagConstraints.SOUTHWEST;
-    gbc_textField_19.gridx = 6;
-    gbc_textField_19.gridy = 3;
-    panel_9_1_1.add(textField_19, gbc_textField_19);
+    textField_7 = new JTextField();
+    textField_7.setColumns(3);
+    GridBagConstraints gbc_textField_7 = new GridBagConstraints();
+    gbc_textField_7.anchor = GridBagConstraints.NORTH;
+    gbc_textField_7.gridx = 4;
+    gbc_textField_7.gridy = 3;
+    panelPartido3.add(textField_7, gbc_textField_7);
 
-    JPanel PantallaClasificacion = new JPanel();
+    PantallaClasificacion = new JPanel();
     contentPane.add(PantallaClasificacion);
     PantallaClasificacion.setLayout(new BorderLayout(0, 0));
 
-    JPanel panel = new JPanel();
+    panel = new JPanel();
     PantallaClasificacion.add(panel, BorderLayout.NORTH);
 
-    JLabel lblNewLabel = new JLabel("Tabla de Clasificicación");
+    lblNewLabel = new JLabel("Tabla de Clasificicación");
     panel.add(lblNewLabel);
 
-    JPanel panel_1 = new JPanel();
+    panel_1 = new JPanel();
     PantallaClasificacion.add(panel_1, BorderLayout.SOUTH);
 
 //    JButton btnNewButton = new JButton("New button");
@@ -779,7 +641,7 @@ public class VentanaClasificacion extends JFrame {
 //    });
 //    panel_1.add(btnNewButton);
 
-    JScrollPane scrollPane = new JScrollPane();
+    scrollPane = new JScrollPane();
     PantallaClasificacion.add(scrollPane, BorderLayout.CENTER);
 
     tablaClasificacion = new JTable();
@@ -811,4 +673,63 @@ public class VentanaClasificacion extends JFrame {
     tablaClasificacion.getColumnModel().getColumn(7).setPreferredWidth(55);
     scrollPane.setViewportView(tablaClasificacion);
   }
+  
+  class Jornada {
+	    private String nombre;
+	    private List<Partido> partidos;
+
+	    public Jornada(String nombre, List<Partido> partidos) {
+	        this.nombre = nombre;
+	        this.partidos = partidos;
+	    }
+
+	    public String getNombre() {
+	        return nombre;
+	    }
+
+	    public List<Partido> getPartidos() {
+	        return partidos;
+	    }
+	}
+
+	class Partido {
+	    private String equipoLocal;
+	    private String equipoVisitante;
+
+	    public Partido(String equipoLocal, String equipoVisitante) {
+	        this.equipoLocal = equipoLocal;
+	        this.equipoVisitante = equipoVisitante;
+	    }
+
+	    public String getEquipoLocal() {
+	        return equipoLocal;
+	    }
+
+	    public String getEquipoVisitante() {
+	        return equipoVisitante;
+	    }
+	    
+	    private void actualizarJornada() {
+	        lblTituloNumeroJornada.setText(jornadas.get(jornadaActual).getNombre());
+	        Jornada jornada = jornadas.get(jornadaActual);
+	        
+	        // Aquí debes actualizar la UI para mostrar los partidos de la jornada
+	        // Por ejemplo, actualizar los labels y text fields para los partidos
+	        List<Partido> partidos = jornada.getPartidos();
+	        // Suponiendo que tienes métodos para actualizar los labels y text fields
+	        actualizarPartido(panelPartido1, partidos.get(0));
+	        actualizarPartido(panelPartido2, partidos.get(1));
+	        actualizarPartido(panelPartido3, partidos.get(2));
+	    }
+
+	    private void actualizarPartido(JPanel panel, Partido partido) {
+	        // Actualiza los labels y text fields en el panel correspondiente
+	        // Ejemplo:
+	        lblEquipoLocalA.setText(partido.getEquipoLocal());
+	        lblEquipoVisitanteA.setText(partido.getEquipoVisitante());
+	        // Y así sucesivamente para los otros partidos
+	    }
+	}
+  
+  
 }
