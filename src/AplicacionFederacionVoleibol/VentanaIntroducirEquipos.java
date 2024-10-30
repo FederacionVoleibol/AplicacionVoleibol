@@ -11,21 +11,57 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.FlowLayout;
+import java.awt.Color;
+import javax.swing.UIManager;
+import java.awt.SystemColor;
+import javax.swing.border.LineBorder;
 
 public class VentanaIntroducirEquipos extends JFrame {
 	
 
-	AlgoritmoJornadasFixture InformacionEquipos = new AlgoritmoJornadasFixture();
+	//AlgoritmoJornadasFixture InformacionEquipos = new AlgoritmoJornadasFixture();
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textFieldNombreEquipo1;
-	private JTextField textFieldNombreEquipo2;
-	private JTextField textFieldNombreEquipo3;
-	private JTextField textFieldNombreEquipo4;
-	private JTextField textFieldNombreEquipo5;
-	private JTextField textFieldNombreEquipo6;
-	private JTextField textFieldCantidadEquipos;
+	private JPanel header;
+	private JLabel Equipos;
+	private JPanel Footer;
+	private JButton Botom_guardar;
+	private JPanel Equipo;
+	private JPanel Equipo_1;
+	private JPanel Equipo_2;
+	private JPanel Equipo_3;
+	private JPanel Equipo_4;
+	private JPanel Equipo_5;
+	private JPanel Equipo_6;
+	private JTextField txtEquipoNombre1;
+	private JPanel MarginIzq;
+	private JPanel MarginDerc;
+	private JTextField txtEquipoNombre2;
+	private JTextField txtEquipoNombre3;
+	private JTextField txtEquipoNombre4;
+	private JTextField txtEquipoNombre5;
+	private JTextField txtEquipoNombre6;
+	private JPanel TituloEquipo_1;
+	private JLabel lblEquipo1;
+	private JPanel TituloEquipo_2;
+	private JLabel lblEquipo2;
+	private JPanel TituloEquipo_3;
+	private JLabel lblEquipo_3;
+	private JPanel TituloEquipo_4;
+	private JLabel lblEquipo4;
+	private JPanel TituloEquipo_5;
+	private JLabel lblEquipo_5;
+	private JPanel TituloEquipo_6;
+	private JLabel lblEquipo_6;
+	
 
 	/**
 	 * Launch the application.
@@ -77,94 +113,173 @@ public class VentanaIntroducirEquipos extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblTitulo = new JLabel("Definición de Equipos");
-		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitulo.setBounds(109, 40, 173, 13);
-		contentPane.add(lblTitulo);
+		header = new JPanel();
+		contentPane.add(header, BorderLayout.NORTH);
+		header.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JLabel lblCantidadEquipos = new JLabel("Nº de Equipos:");
-		lblCantidadEquipos.setBounds(10, 79, 88, 13);
-		contentPane.add(lblCantidadEquipos);
+		Equipos = new JLabel("Nombre de Equipos");
+		Equipos.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		Equipos.setHorizontalAlignment(SwingConstants.CENTER);
+		header.add(Equipos);
 		
-		JLabel lblNombreEquipo1 = new JLabel("Equipo1:");
-		lblNombreEquipo1.setBounds(10, 121, 88, 13);
-		contentPane.add(lblNombreEquipo1);
+		Footer = new JPanel();
+		contentPane.add(Footer, BorderLayout.SOUTH);
+		Footer.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JLabel lblNombreEquipo2 = new JLabel("Equipo2:");
-		lblNombreEquipo2.setBounds(10, 150, 88, 13);
-		contentPane.add(lblNombreEquipo2);
+		Botom_guardar = new JButton("Guardar");
+		Botom_guardar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		Footer.add(Botom_guardar);
 		
-		JLabel lblNombreEquipo3 = new JLabel("Equipo3:");
-		lblNombreEquipo3.setBounds(10, 173, 88, 13);
-		contentPane.add(lblNombreEquipo3);
+		Equipo = new JPanel();
+		contentPane.add(Equipo, BorderLayout.CENTER);
+		Equipo.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JLabel lblNombreEquipo4 = new JLabel("Equipo4:");
-		lblNombreEquipo4.setBounds(217, 121, 88, 13);
-		contentPane.add(lblNombreEquipo4);
+		Equipo_1 = new JPanel();
+		Equipo_1.setBackground(new Color(192, 192, 192));
+		Equipo.add(Equipo_1);
+		Equipo_1.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		JLabel lblNombreEquipo5 = new JLabel("Equipo5:");
-		lblNombreEquipo5.setBounds(217, 150, 88, 13);
-		contentPane.add(lblNombreEquipo5);
+		TituloEquipo_1 = new JPanel();
+		TituloEquipo_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		TituloEquipo_1.setBackground(new Color(222, 222, 222));
+		Equipo_1.add(TituloEquipo_1);
+		TituloEquipo_1.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JLabel lblNombreEquipo6 = new JLabel("Equipo6:");
-		lblNombreEquipo6.setBounds(217, 173, 88, 13);
-		contentPane.add(lblNombreEquipo6);
+		lblEquipo1 = new JLabel("Equipo1");
+		lblEquipo1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEquipo1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		TituloEquipo_1.add(lblEquipo1);
 		
-		textFieldNombreEquipo1 = new JTextField();
-		textFieldNombreEquipo1.setBounds(109, 118, 96, 19);
-		contentPane.add(textFieldNombreEquipo1);
-		textFieldNombreEquipo1.setColumns(10);
+		txtEquipoNombre1 = new JTextField();
+		txtEquipoNombre1.setText("Introduce el nombre");
+		txtEquipoNombre1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtEquipoNombre1.setHorizontalAlignment(SwingConstants.CENTER);
+		Equipo_1.add(txtEquipoNombre1);
+		txtEquipoNombre1.setColumns(10);
 		
-		textFieldNombreEquipo2 = new JTextField();
-		textFieldNombreEquipo2.setColumns(10);
-		textFieldNombreEquipo2.setBounds(109, 145, 96, 19);
-		contentPane.add(textFieldNombreEquipo2);
+		Equipo_2 = new JPanel();
+		Equipo_2.setBackground(new Color(192, 192, 192));
+		Equipo.add(Equipo_2);
+		Equipo_2.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		textFieldNombreEquipo3 = new JTextField();
-		textFieldNombreEquipo3.setColumns(10);
-		textFieldNombreEquipo3.setBounds(109, 170, 96, 19);
-		contentPane.add(textFieldNombreEquipo3);
+		TituloEquipo_2 = new JPanel();
+		TituloEquipo_2.setBorder(new LineBorder(new Color(0, 0, 0)));
+		TituloEquipo_2.setBackground(new Color(222, 222, 222));
+		Equipo_2.add(TituloEquipo_2);
+		TituloEquipo_2.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		textFieldNombreEquipo4 = new JTextField();
-		textFieldNombreEquipo4.setColumns(10);
-		textFieldNombreEquipo4.setBounds(315, 118, 96, 19);
-		contentPane.add(textFieldNombreEquipo4);
+		lblEquipo2 = new JLabel("Equipo2");
+		lblEquipo2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEquipo2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		TituloEquipo_2.add(lblEquipo2);
 		
-		textFieldNombreEquipo5 = new JTextField();
-		textFieldNombreEquipo5.setColumns(10);
-		textFieldNombreEquipo5.setBounds(315, 145, 96, 19);
-		contentPane.add(textFieldNombreEquipo5);
+		txtEquipoNombre2 = new JTextField();
+		txtEquipoNombre2.setText("Introduce el nombre");
+		txtEquipoNombre2.setHorizontalAlignment(SwingConstants.CENTER);
+		txtEquipoNombre2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		Equipo_2.add(txtEquipoNombre2);
+		txtEquipoNombre2.setColumns(10);
 		
-		textFieldNombreEquipo6 = new JTextField();
-		textFieldNombreEquipo6.setColumns(10);
-		textFieldNombreEquipo6.setBounds(315, 170, 96, 19);
-		contentPane.add(textFieldNombreEquipo6);
+		Equipo_3 = new JPanel();
+		Equipo_3.setBackground(new Color(192, 192, 192));
+		Equipo.add(Equipo_3);
+		Equipo_3.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		textFieldCantidadEquipos = new JTextField();
-		textFieldCantidadEquipos.setBounds(109, 76, 96, 19);
-		contentPane.add(textFieldCantidadEquipos);
-		textFieldCantidadEquipos.setColumns(10);
+		TituloEquipo_3 = new JPanel();
+		TituloEquipo_3.setBorder(new LineBorder(new Color(0, 0, 0)));
+		TituloEquipo_3.setBackground(new Color(222, 222, 222));
+		Equipo_3.add(TituloEquipo_3);
+		TituloEquipo_3.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JButton btnGuardarDatos = new JButton("Guardar");
-		btnGuardarDatos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				GuardarInformacion.Cantidad_Equipos = Integer.parseInt(textFieldCantidadEquipos.getText()); //Integer.parseInt() convierte un dato tipo String a Entero
-				GuardarInformacion.NombreEquipo[0] = textFieldNombreEquipo1.getText();
-				GuardarInformacion.NombreEquipo[1] = textFieldNombreEquipo2.getText();// Guarda el valor del campo de tipo String en el arreglo
-				GuardarInformacion.NombreEquipo[2] = textFieldNombreEquipo3.getText();
-				GuardarInformacion.NombreEquipo[3] = textFieldNombreEquipo4.getText();
-				GuardarInformacion.NombreEquipo[4] = textFieldNombreEquipo5.getText();
-				GuardarInformacion.NombreEquipo[5] = textFieldNombreEquipo6.getText();
-				System.out.println("Informacion guardada");
-				System.out.println("Cantidad de Equipos: " + GuardarInformacion.Cantidad_Equipos);
-				for (int i = 0; i < GuardarInformacion.NombreEquipo.length; i++) {
-					System.out.println("Equipo " + (i + 1) + ": " + GuardarInformacion.NombreEquipo[i]);
-				}
-			}
-		});
-		btnGuardarDatos.setBounds(176, 232, 85, 21);
-		contentPane.add(btnGuardarDatos);
+		lblEquipo_3 = new JLabel("Equipo3");
+		lblEquipo_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEquipo_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		TituloEquipo_3.add(lblEquipo_3);
+		
+		txtEquipoNombre3 = new JTextField();
+		txtEquipoNombre3.setText("Introduce el nombre");
+		txtEquipoNombre3.setHorizontalAlignment(SwingConstants.CENTER);
+		txtEquipoNombre3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		Equipo_3.add(txtEquipoNombre3);
+		txtEquipoNombre3.setColumns(10);
+		
+		Equipo_4 = new JPanel();
+		Equipo_4.setBackground(new Color(192, 192, 192));
+		Equipo.add(Equipo_4);
+		Equipo_4.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		TituloEquipo_4 = new JPanel();
+		TituloEquipo_4.setBorder(new LineBorder(new Color(0, 0, 0)));
+		TituloEquipo_4.setBackground(new Color(222, 222, 222));
+		Equipo_4.add(TituloEquipo_4);
+		TituloEquipo_4.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		lblEquipo4 = new JLabel("Equipo4");
+		lblEquipo4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEquipo4.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		TituloEquipo_4.add(lblEquipo4);
+		
+		txtEquipoNombre4 = new JTextField();
+		txtEquipoNombre4.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtEquipoNombre4.setText("Introduce el nombre");
+		txtEquipoNombre4.setHorizontalAlignment(SwingConstants.CENTER);
+		Equipo_4.add(txtEquipoNombre4);
+		txtEquipoNombre4.setColumns(10);
+		
+		Equipo_5 = new JPanel();
+		Equipo_5.setBackground(new Color(192, 192, 192));
+		Equipo.add(Equipo_5);
+		Equipo_5.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		TituloEquipo_5 = new JPanel();
+		TituloEquipo_5.setBorder(new LineBorder(new Color(0, 0, 0)));
+		TituloEquipo_5.setBackground(new Color(222, 222, 222));
+		Equipo_5.add(TituloEquipo_5);
+		TituloEquipo_5.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		lblEquipo_5 = new JLabel("Equipo5");
+		lblEquipo_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEquipo_5.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblEquipo_5.setBackground(new Color(255, 255, 128));
+		TituloEquipo_5.add(lblEquipo_5);
+		
+		txtEquipoNombre5 = new JTextField();
+		txtEquipoNombre5.setText("Introduce el nombre ");
+		txtEquipoNombre5.setHorizontalAlignment(SwingConstants.CENTER);
+		txtEquipoNombre5.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		Equipo_5.add(txtEquipoNombre5);
+		txtEquipoNombre5.setColumns(10);
+		
+		Equipo_6 = new JPanel();
+		Equipo_6.setBackground(new Color(192, 192, 192));
+		Equipo.add(Equipo_6);
+		Equipo_6.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		TituloEquipo_6 = new JPanel();
+		TituloEquipo_6.setBorder(new LineBorder(new Color(0, 0, 0)));
+		TituloEquipo_6.setBackground(new Color(222, 222, 222));
+		Equipo_6.add(TituloEquipo_6);
+		TituloEquipo_6.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		lblEquipo_6 = new JLabel("Equipo6");
+		lblEquipo_6.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEquipo_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblEquipo_6.setBackground(new Color(128, 255, 128));
+		TituloEquipo_6.add(lblEquipo_6);
+		
+		txtEquipoNombre6 = new JTextField();
+		txtEquipoNombre6.setText("Introduce el nombre");
+		txtEquipoNombre6.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtEquipoNombre6.setHorizontalAlignment(SwingConstants.CENTER);
+		Equipo_6.add(txtEquipoNombre6);
+		txtEquipoNombre6.setColumns(10);
+		
+		MarginIzq = new JPanel();
+		contentPane.add(MarginIzq, BorderLayout.WEST);
+		
+		MarginDerc = new JPanel();
+		contentPane.add(MarginDerc, BorderLayout.EAST);
 	}
 }

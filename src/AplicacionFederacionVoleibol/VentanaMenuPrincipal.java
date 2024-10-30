@@ -13,6 +13,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import java.awt.GridLayout;
+import java.awt.FlowLayout;
 
 public class VentanaMenuPrincipal extends JFrame implements ActionListener {
 
@@ -22,6 +25,9 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
     private JButton btnIntroDatos;
     private JButton btnClasificacion;
     private JButton btnArbitros;
+    private JPanel panel;
+    private JButton btnNewButton;
+    private JButton btnEquipo;
 
     /**
      * Launch the application.
@@ -45,7 +51,7 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
     public VentanaMenuPrincipal() {
     	
     	// Establecemos un tamaño para la ventana
-        setSize(800, 500);
+        setSize(850, 570);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Centrar la ventana en la pantalla
@@ -55,41 +61,55 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
         
 		
 		//TITULO DE LA VENTANA
-        setTitle("Menú");
+		setTitle("Menú (Sesión Iniciada con: "+AlgoritmoLogin.getUsuario()+" - "+AlgoritmoLogin.getTipodeUsuario()+")");
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
-        contentPane.setLayout(null);
-
-        JLabel lblTitulo = new JLabel("Menú");
-        lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 12));
-        lblTitulo.setBounds(351, 10, 89, 13);
-        contentPane.add(lblTitulo);
-
-        btnClasificacion = new JButton("Clasificación");
-        btnClasificacion.setBounds(122, 28, 89, 21);
-        contentPane.add(btnClasificacion);
-        btnClasificacion.setBackground(new Color(240, 240, 240));
-        btnClasificacion.addActionListener(this);
-
-        btnArbitros = new JButton("Introducir Árbitros");
-        btnArbitros.setBounds(306, 28, 117, 21);
-        contentPane.add(btnArbitros);
-        btnArbitros.addActionListener(this);
-
-        btnIntroDatos = new JButton("Introducción de datos de partido");
-        btnIntroDatos.setBounds(544, 28, 181, 21);
-        contentPane.add(btnIntroDatos);
-        btnIntroDatos.addActionListener(this);
+        contentPane.setLayout(new BorderLayout(0, 0));
 
         // Panel contenedor que usará un BorderLayout para cambiar entre diferentes vistas
         panelContenedor = new JPanel();
-        panelContenedor.setBounds(0, 59, 786, 404);
-        contentPane.add(panelContenedor);
-        panelContenedor.setLayout(new BorderLayout());  // Usamos BorderLayout
+        contentPane.add(panelContenedor, BorderLayout.CENTER);
+        panelContenedor.setLayout(new BorderLayout());
+        
+        JPanel panelParteSuperior = new JPanel();
+        contentPane.add(panelParteSuperior, BorderLayout.NORTH);
+        panelParteSuperior.setLayout(new BorderLayout(0, 0));
+                
+                JPanel panelListadeOpciones = new JPanel();
+                panelParteSuperior.add(panelListadeOpciones, BorderLayout.CENTER);
+                
+                        btnArbitros = new JButton("Arbitros");
+                        panelListadeOpciones.add(btnArbitros);
+                        
+                                btnClasificacion = new JButton("Tabla de Clasificación");
+                                panelListadeOpciones.add(btnClasificacion);
+                                btnClasificacion.setBackground(new Color(240, 240, 240));
+                                
+                                        btnIntroDatos = new JButton("Jornadas");
+                                        panelListadeOpciones.add(btnIntroDatos);
+                                        
+                                        btnEquipo = new JButton("Equipos");
+                                        btnEquipo.addActionListener(new ActionListener() {
+                                        	public void actionPerformed(ActionEvent e) {  
+                                        		
+                                        	}
+                                        });
+                                        panelListadeOpciones.add(btnEquipo);
+                                        
+                                        panel = new JPanel();
+                                        contentPane.add(panel, BorderLayout.SOUTH);
+                                        panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+                                        
+                                        btnNewButton = new JButton("Cerrar Sesión");
+                                        panel.add(btnNewButton);
+                                        btnIntroDatos.addActionListener(this);
+                                btnClasificacion.addActionListener(this);
+                        btnArbitros.addActionListener(this);
+                        btnEquipo.addActionListener(this);
 
         // Cargar la ventana de clasificación por defecto (u otro panel que quieras mostrar primero)
-        //cargarVentanaClasificacion();
+        cargarVentanaClasificacion();
     }
 
     @Override
@@ -101,6 +121,9 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
         } else if (o == btnArbitros) {
             cargarVentanaArbitros();
         } else if (o == btnIntroDatos) {
+            // Puedes agregar otra ventana si es necesario
+        } else if (o == btnEquipo) {
+        	cargarVentanaEquipos();
             // Puedes agregar otra ventana si es necesario
         }
     }
@@ -126,6 +149,14 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
         panelContenedor.revalidate();
         panelContenedor.repaint();
     }
-    
-    
+    //CARGA LOS DATOS DEL CONTENEDOR DE VentanaClasificacion
+private void cargarVentanaEquipos() {
+    // Remover todos los componentes previos y cargar la ventana de clasificación
+    panelContenedor.removeAll();
+    VentanaIntroducirEquipos ve = new VentanaIntroducirEquipos();
+    ve.setSize(517, 229);
+    panelContenedor.add(ve.getContentPane(), BorderLayout.CENTER);
+    panelContenedor.revalidate();
+    panelContenedor.repaint();
+}
 }
