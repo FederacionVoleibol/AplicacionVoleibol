@@ -341,14 +341,22 @@ public class AlgoritmoLogin {
 	 private static int PuntajeUltimoSetLocal =0;
 	 private static int PuntajeUltimoSetVisitante =0;
 	 private static int Fecha =0;
+	 private String NombreEquipoLocal = "";
+	 private String NombreEquipoVisitante = "";
 	 
-	 
+	 //-------Constructor--------//
+//	 public ENFRENTAMIENTO(String NombreEquipoLocal) {
+//		this.NombreEquipoLocal = NombreEquipoLocal; 
+//	 }
+//	 
 	//--------Metodo de Guardar--------// 
 	 
 	 public static void GuardarEnfrentamiento() {
 		 
 	 }
-	 
+	 public void GuardarNombreEquipoLocal(String NombreEquipoLocal) {
+		 this.NombreEquipoLocal = NombreEquipoLocal;
+	 }
 	//--------Metodo de Mostrar--------//
 	 
 	 public static int getSetGanadosEquipoLocal() {

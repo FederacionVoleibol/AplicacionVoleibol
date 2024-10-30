@@ -1,4 +1,6 @@
 package AplicacionFederacionVoleibol;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class AlgoritmoJornadasFixture {
@@ -47,12 +49,16 @@ public class AlgoritmoJornadasFixture {
         NUMPARTIDOSPORRONDA = numEquipos / 2;  // En cada ronda se juegan numEquipos / 2 partidos
         
         Partido[][] partido = new Partido[NUMRONDAS][NUMPARTIDOSPORRONDA];  // Matriz para almacenar las rondas y partidos
-
+        List <ENFRENTAMIENTO> ListaEnfrentamiento = new ArrayList<ENFRENTAMIENTO>();
+        
         // Primera fase: Asignar los equipos locales a todas las fechas
         for (int i = 0, id_equipo = 0; i < NUMRONDAS; i++)
         {
             for (int j = 0; j < NUMPARTIDOSPORRONDA; j++)
-            {
+            {	
+				ENFRENTAMIENTO equipo = new ENFRENTAMIENTO();
+
+				equipo.GuardarNombreEquipoLocal(Partido.NombreEquipo[id_equipo]);
                 partido[i][j] = new Partido();  // Crear un objeto Partido dentro de posicion (i, j) para guardar el valor equipolocal y equipovisitante
                 partido[i][j].equipolocal = id_equipo;  // Asignar el equipo local a la posicion de la matriz
                 id_equipo++;  // Incrementar el índice del equipo local
@@ -141,6 +147,11 @@ public class AlgoritmoJornadasFixture {
             }
             System.out.println();
         }
+    }
+    
+    public void MostrarListadeArregloENFRENTAMIENTO() {
+    	
+    	
     }
 
     // Método principal para probar el cálculo del fixture
