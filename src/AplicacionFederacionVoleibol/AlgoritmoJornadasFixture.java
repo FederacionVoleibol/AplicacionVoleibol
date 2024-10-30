@@ -18,7 +18,7 @@ public class AlgoritmoJornadasFixture {
 		// Inicialmente se asignan valores por defecto de 0
         public static int SetGanadosLocal = 0, SetGanadosVisitante = 0;
         public static int Cantidad_Equipos = NUMEQUIPOS;
-        public static int[] id_equipo = new int[Cantidad_Equipos];
+        public static int[] id_equipo = new int[TEMPORADAS.getCantidadEquipos()];
         public static String[] NombreEquipo = new String[Cantidad_Equipos];
         public static int[] PuntajeSetLocal = new int[5];
         public static int[] PuntajeSetVisitante = new int[5];

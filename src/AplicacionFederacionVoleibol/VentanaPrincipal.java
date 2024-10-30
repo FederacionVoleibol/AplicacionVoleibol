@@ -1,169 +1,169 @@
 package AplicacionFederacionVoleibol;
 
-import java.awt.EventQueue;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.Image;
+public class VentanaPrincipal extends JFrame implements ActionListener {
 
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.Canvas;
-import java.awt.FlowLayout;
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+    private static final long serialVersionUID = 1L;
+    private JTextField txtUsuario;
+    private JPasswordField passwordField;
+    private JLabel lblMensaje;
+    private JLabel lblTituloInicio;
+    private JLabel lblUsuario;
+    private JLabel lblIcono;
+    private JLabel lblContrasena;
+    private AlgoritmoLogin login = new AlgoritmoLogin();
 
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            try {
+                VentanaPrincipal frame = new VentanaPrincipal();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
-public class VentanaPrincipal extends JFrame implements ActionListener{
-	
-	
-	/**
-	 * Declaracion de variables  - No modificar
-	 */
+    public VentanaPrincipal() {
+        setSize(850, 570);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setTitle("Inicio de Sesión");
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JTextField txtUsuario;
-	private JPasswordField passwordField;
-	JLabel lblUsuario;
-	JPanel panel;
-	JPanel panel_1;
-	JLabel lblContrasenia;
-	JLabel lblTituloInicio;
-	JButton btnNewButton;
-	private JLabel lblNewLabel;
-	private JLabel lblMensaje;
-	AlgoritmoLogin login = new AlgoritmoLogin(); // Creacion de una instancia de la clase Login() que Verifica la existencia del usuario
-	
-	
-	/**
-	 * Arranca la aplicacion.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaPrincipal frame = new VentanaPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+        JPanel contentPane = new JPanel(new BorderLayout());
+        setContentPane(contentPane);
 
-	/**
-	 * Creación del Diseño de la ventana.
-	 */
-	public VentanaPrincipal() {
-		setTitle("Panel Administrativo");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 500);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        // Panel izquierdo (color azul)
+        JPanel panelIzquierdo = new JPanel();
+        panelIzquierdo.setBackground(new Color(0, 128, 255));
+        panelIzquierdo.setPreferredSize(new Dimension(200, 0));
+        panelIzquierdo.setLayout(new GridBagLayout());
 
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		panel = new JPanel();
-		panel.setBackground(new Color(0, 128, 255));
-		panel.setBounds(0, 0, 203, 463);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		
-		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("img\\login.png"));
-		lblNewLabel.setBounds(45, 153, 106, 136);
-		panel.add(lblNewLabel);
-		
-		panel_1 = new JPanel();
-		panel_1.setBackground(new Color(192, 192, 192));
-		panel_1.setBounds(202, 107, 584, 356);
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);
-		
-		lblUsuario = new JLabel("Usuario:");
-		lblUsuario.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblUsuario.setBounds(124, 163, 93, 45);
-		panel_1.add(lblUsuario);
-		
-		lblContrasenia = new JLabel("Contraseña: ");
-		lblContrasenia.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblContrasenia.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblContrasenia.setBounds(124, 216, 93, 45);
-		panel_1.add(lblContrasenia);
-		
-		txtUsuario = new JTextField();
-		txtUsuario.addActionListener(this);
-		txtUsuario.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				txtUsuario.setText("");
-			}
-		});
-		txtUsuario.setText("Usuario...");
-		txtUsuario.setBounds(227, 163, 147, 34);
-		panel_1.add(txtUsuario);
-		txtUsuario.setColumns(10);
-		
-		passwordField = new JPasswordField("Password...");
-		passwordField.addActionListener(this);
-		passwordField.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				passwordField.setText("");
-			}
-		});
-		passwordField.setBounds(227, 216, 147, 34);
-		panel_1.add(passwordField);
-		
-		btnNewButton = new JButton("Ingresar");
-		btnNewButton.addActionListener(this);
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnNewButton.setBounds(209, 276, 107, 34);
-		panel_1.add(btnNewButton);
-		
-		lblMensaje = new JLabel("");
-		lblMensaje.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMensaje.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblMensaje.setBounds(44, 56, 498, 51);
-		panel_1.add(lblMensaje);
-		
-		lblTituloInicio = new JLabel("PANEL ADMINISTRATIVO");
-		lblTituloInicio.setBounds(373, 35, 256, 53);
-		contentPane.add(lblTituloInicio);
-		lblTituloInicio.setForeground(new Color(0, 128, 255));
-		lblTituloInicio.setFont(new Font("Tahoma", Font.BOLD, 17));
-		Image img = new ImageIcon(this.getClass().getResource("/login.png")).getImage();
-		
-		
-		
-	}
+        lblIcono = new JLabel(new ImageIcon("img/login.png"));
+        panelIzquierdo.add(lblIcono);
+        contentPane.add(panelIzquierdo, BorderLayout.WEST);
 
-	/**
-	 * Algoritmo de accion de los botones y al presionar enter
-	 * */
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		String Nombre = txtUsuario.getText(); // Obtiene el valor del usuario introducido en TextField
-		String Password = new String(passwordField.getPassword()); // Obtiene el valor de la contrasenia introducida en PasswordField
-		if (login.VerificacionDeLogin(Nombre, Password) == true) {
-			lblMensaje.setText("Accedido al sistema correctamente, Sr. " + txtUsuario.getText());
-			
-		}else {
-			lblMensaje.setText("Error en la contraseña.");
-		}
-	}
-		
-	}
+        // Panel central (formulario de inicio de sesión)
+        JPanel panelCentro = new JPanel(new GridBagLayout());
+        panelCentro.setBackground(new Color(192, 192, 192));
+
+        // Título
+        //GridBagConstraints es una serie de reglas que se aplican a cada componente al colocarlo en el diseño, como si fuera una cuadrícula de filas y columnas.
+        //Permite especificar cómo se deben organizar los componentes dentro de una cuadrícula flexible 
+        GridBagConstraints gbcTitulo = new GridBagConstraints();
+        gbcTitulo.fill = GridBagConstraints.HORIZONTAL;
+        gbcTitulo.insets = new Insets(10, 10, 10, 10);
+        gbcTitulo.gridwidth = 2;
+        gbcTitulo.gridx = 0;
+        gbcTitulo.gridy = 0;
+
+        lblTituloInicio = new JLabel("PANEL ADMINISTRATIVO");
+        lblTituloInicio.setFont(new Font("Tahoma", Font.BOLD, 17));
+        lblTituloInicio.setForeground(new Color(0, 128, 255));
+        lblTituloInicio.setHorizontalAlignment(SwingConstants.CENTER);
+        panelCentro.add(lblTituloInicio, gbcTitulo);
+
+        // Etiqueta Usuario
+        GridBagConstraints gbcUsuario = new GridBagConstraints();
+        gbcUsuario.insets = new Insets(10, 10, 10, 10);
+        gbcUsuario.gridx = 0;
+        gbcUsuario.gridy = 1;
+
+        lblUsuario = new JLabel("Usuario:");
+        lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        panelCentro.add(lblUsuario, gbcUsuario);
+
+        // Campo de texto Usuario
+        GridBagConstraints gbcTxtUsuario = new GridBagConstraints();
+        gbcTxtUsuario.insets = new Insets(10, 10, 10, 10);
+        gbcTxtUsuario.gridx = 1;
+        gbcTxtUsuario.gridy = 1;
+        txtUsuario = new JTextField("Usuario...", 15);
+        txtUsuario.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                txtUsuario.setText("");
+            }
+        });
+        
+        // Hacer que el campo de texto responda al Enter
+        txtUsuario.addActionListener(this);
+        panelCentro.add(txtUsuario, gbcTxtUsuario);
+
+        // Etiqueta Contraseña
+        GridBagConstraints gbcLblContrasena = new GridBagConstraints();
+        gbcLblContrasena.insets = new Insets(10, 10, 10, 10);
+        gbcLblContrasena.gridx = 0;
+        gbcLblContrasena.gridy = 2;
+
+        lblContrasena = new JLabel("Contraseña:");
+        lblContrasena.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        panelCentro.add(lblContrasena, gbcLblContrasena);
+
+        // Campo de contraseña
+        GridBagConstraints gbcPasswordField = new GridBagConstraints();
+        gbcPasswordField.insets = new Insets(10, 10, 10, 10);
+        gbcPasswordField.gridx = 1;
+        gbcPasswordField.gridy = 2;
+        passwordField = new JPasswordField("Password...", 15);
+        passwordField.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                passwordField.setText("");
+            }
+        });
+        
+        // Hacer que el campo de contraseña responda al Enter
+        passwordField.addActionListener(this);
+        panelCentro.add(passwordField, gbcPasswordField);
+
+        // Botón Ingresar
+        GridBagConstraints gbcBtnIngresar = new GridBagConstraints();
+        gbcBtnIngresar.insets = new Insets(10, 10, 10, 10);
+        gbcBtnIngresar.gridx = 0;
+        gbcBtnIngresar.gridy = 3;
+        gbcBtnIngresar.gridwidth = 2;
+
+        JButton btnIngresar = new JButton("Ingresar");
+        btnIngresar.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnIngresar.addActionListener(this);
+        
+        // Hacer que el botón Ingresar sea el predeterminado
+        getRootPane().setDefaultButton(btnIngresar);
+        
+        panelCentro.add(btnIngresar, gbcBtnIngresar);
+
+        // Mensaje
+        GridBagConstraints gbcLblMensaje = new GridBagConstraints();
+        gbcLblMensaje.insets = new Insets(10, 10, 10, 10);
+        gbcLblMensaje.gridx = 0;
+        gbcLblMensaje.gridy = 4;
+        gbcLblMensaje.gridwidth = 2;
+
+        lblMensaje = new JLabel("");
+        lblMensaje.setForeground(new Color(255, 0, 0));
+        lblMensaje.setHorizontalAlignment(SwingConstants.CENTER);
+        lblMensaje.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        panelCentro.add(lblMensaje, gbcLblMensaje);
+
+        contentPane.add(panelCentro, BorderLayout.CENTER);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String nombre = txtUsuario.getText();
+        String password = new String(passwordField.getPassword());
+        if (login.VerificacionDeLogin(nombre, password)) {
+            lblMensaje.setText("Accedido al sistema correctamente, Sr. " + nombre);
+            VentanaMenuPrincipal menuPrincipal = new VentanaMenuPrincipal();
+            menuPrincipal.setVisible(true);
+            this.dispose();
+        } else {
+            lblMensaje.setText("Error en la contraseña.");
+        }
+    }
+}
