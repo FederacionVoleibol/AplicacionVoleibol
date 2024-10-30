@@ -22,6 +22,8 @@ import java.awt.Color;
 import javax.swing.UIManager;
 import java.awt.SystemColor;
 import javax.swing.border.LineBorder;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class VentanaIntroducirEquipos extends JFrame {
 	
@@ -153,6 +155,13 @@ public class VentanaIntroducirEquipos extends JFrame {
 		TituloEquipo_1.add(lblEquipo1);
 		
 		txtEquipoNombre1 = new JTextField();
+		txtEquipoNombre1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtEquipoNombre1.setText("");
+				
+			}
+		});
 		txtEquipoNombre1.setText("Introduce el nombre");
 		txtEquipoNombre1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtEquipoNombre1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -176,6 +185,12 @@ public class VentanaIntroducirEquipos extends JFrame {
 		TituloEquipo_2.add(lblEquipo2);
 		
 		txtEquipoNombre2 = new JTextField();
+		txtEquipoNombre2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtEquipoNombre2.setText("");
+			}
+		});
 		txtEquipoNombre2.setText("Introduce el nombre");
 		txtEquipoNombre2.setHorizontalAlignment(SwingConstants.CENTER);
 		txtEquipoNombre2.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -199,6 +214,12 @@ public class VentanaIntroducirEquipos extends JFrame {
 		TituloEquipo_3.add(lblEquipo_3);
 		
 		txtEquipoNombre3 = new JTextField();
+		txtEquipoNombre3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtEquipoNombre3.setText("");
+			}
+		});
 		txtEquipoNombre3.setText("Introduce el nombre");
 		txtEquipoNombre3.setHorizontalAlignment(SwingConstants.CENTER);
 		txtEquipoNombre3.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -222,6 +243,12 @@ public class VentanaIntroducirEquipos extends JFrame {
 		TituloEquipo_4.add(lblEquipo4);
 		
 		txtEquipoNombre4 = new JTextField();
+		txtEquipoNombre4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtEquipoNombre4.setText("");
+			}
+		});
 		txtEquipoNombre4.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtEquipoNombre4.setText("Introduce el nombre");
 		txtEquipoNombre4.setHorizontalAlignment(SwingConstants.CENTER);
@@ -246,6 +273,12 @@ public class VentanaIntroducirEquipos extends JFrame {
 		TituloEquipo_5.add(lblEquipo_5);
 		
 		txtEquipoNombre5 = new JTextField();
+		txtEquipoNombre5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtEquipoNombre5.setText("");
+			}
+		});
 		txtEquipoNombre5.setText("Introduce el nombre ");
 		txtEquipoNombre5.setHorizontalAlignment(SwingConstants.CENTER);
 		txtEquipoNombre5.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -270,6 +303,12 @@ public class VentanaIntroducirEquipos extends JFrame {
 		TituloEquipo_6.add(lblEquipo_6);
 		
 		txtEquipoNombre6 = new JTextField();
+		txtEquipoNombre6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtEquipoNombre6.setText("");
+			}
+		});
 		txtEquipoNombre6.setText("Introduce el nombre");
 		txtEquipoNombre6.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtEquipoNombre6.setHorizontalAlignment(SwingConstants.CENTER);
