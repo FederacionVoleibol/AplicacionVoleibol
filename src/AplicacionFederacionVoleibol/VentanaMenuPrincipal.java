@@ -6,6 +6,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
@@ -22,11 +24,10 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JPanel panelContenedor; // Cambié el nombre para mantener el estilo camelCase
-    private JButton btnIntroDatos;
     private JButton btnClasificacion;
     private JButton btnArbitros;
     private JPanel panel;
-    private JButton btnNewButton;
+    private JButton btnCerrarSesion;
     private JButton btnEquipo;
 
     /**
@@ -86,8 +87,7 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
                                 panelListadeOpciones.add(btnClasificacion);
                                 btnClasificacion.setBackground(new Color(240, 240, 240));
                                 
-                                        btnIntroDatos = new JButton("Jornadas");
-                                        panelListadeOpciones.add(btnIntroDatos);
+                                      
                                         
                                         btnEquipo = new JButton("Equipos");
                                         btnEquipo.addActionListener(new ActionListener() {
@@ -101,13 +101,14 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
                                         contentPane.add(panel, BorderLayout.SOUTH);
                                         panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
                                         
-                                        btnNewButton = new JButton("Cerrar Sesión");
-                                        panel.add(btnNewButton);
-                                        btnIntroDatos.addActionListener(this);
+                                        btnCerrarSesion = new JButton("Cerrar Sesión");
+                                        panel.add(btnCerrarSesion);
+                                    
                                 btnClasificacion.addActionListener(this);
                         btnArbitros.addActionListener(this);
                         btnEquipo.addActionListener(this);
-
+                        btnCerrarSesion.addActionListener(this);
+                        
         // Cargar la ventana de clasificación por defecto (u otro panel que quieras mostrar primero)
         cargarVentanaClasificacion();
     }
@@ -120,11 +121,24 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
             cargarVentanaClasificacion();
         } else if (o == btnArbitros) {
             cargarVentanaArbitros();
-        } else if (o == btnIntroDatos) {
-            // Puedes agregar otra ventana si es necesario
-        } else if (o == btnEquipo) {
+        } 
+        else if (o == btnEquipo) {
         	cargarVentanaEquipos();
             // Puedes agregar otra ventana si es necesario
+        } else if (o == btnCerrarSesion) {
+        	cerrarSesion();
+        }
+    }
+    
+    private void cerrarSesion() {
+        // Confirmación para cerrar sesión
+        int confirm = JOptionPane.showConfirmDialog(this, "¿Seguro que quieres cerrar sesión?", "Cerrar Sesión", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            dispose(); // Cierra la ventana actual (VentanaMenuPrincipal)
+            
+            // Crear y mostrar la ventana de login
+            VentanaPrincipal ventanaLogin = new VentanaPrincipal();
+            ventanaLogin.setVisible(true);
         }
     }
 
