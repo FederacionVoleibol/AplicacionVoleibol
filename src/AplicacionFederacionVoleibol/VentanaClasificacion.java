@@ -659,6 +659,11 @@ public class VentanaClasificacion extends JFrame {
     		}
     		));
     		tablaClasificacion.setDefaultRenderer(Object.class, renderer);
+    		//Para que al iniciar la ventana no se pueda cambiar de posiciones los titulos de la cabecera
+    		tablaClasificacion.getTableHeader().setReorderingAllowed(false);
+    		//Para que al iniciar la ventana no se pueda acortar o alargar una columna
+    		tablaClasificacion.getTableHeader().setResizingAllowed(false);
+    		
 
     scrollPane.setViewportView(tablaClasificacion);
 

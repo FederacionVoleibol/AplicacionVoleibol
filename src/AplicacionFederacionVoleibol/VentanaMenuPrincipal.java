@@ -87,6 +87,7 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
                                 panelListadeOpciones.add(btnClasificacion);
                                 btnClasificacion.setBackground(new Color(240, 240, 240));
                                 
+                                
                                       
                                         
                                         btnEquipo = new JButton("Equipos");
