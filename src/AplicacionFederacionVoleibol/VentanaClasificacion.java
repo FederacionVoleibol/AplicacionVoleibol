@@ -78,7 +78,7 @@ public class VentanaClasificacion extends JFrame {
   private JPanel panel_1;
   private JScrollPane scrollPane;
   private List<Jornada> jornadas;
-  private int jornadaActual;
+  private int jornadaActual = 1;
   private JPanel panelPartido1;
   private JLabel lblPartido1A;
   private JLabel lblEquipoB_1;
@@ -108,11 +108,22 @@ public class VentanaClasificacion extends JFrame {
   
   String[] equipos = {"CV Sayre Mayser", "CV Barça", "CD Zaragoza", "CV Alcobendas", "CD Avila Voleibol", "CV Madrid Chamberí"};
 
-  int indiceEquipo = 0;
+  int indiceEquipo = 1;
+  private JSeparator separator;
+  private JSeparator separator_1;
+  private JSeparator separator_2;
+  private JSeparator separator_3;
+  private JSeparator separator_4;
+  private JSeparator separator_5;
+  private JSeparator separator_6;
+  private JSeparator separator_7;
+  private JSeparator separator_8;
+  private JSeparator separator_9;
   /**
 	 * Launch the application.
 	 */
   public static void main(String[] args) {
+	  
     EventQueue.invokeLater(new Runnable() {
       public void run() {
         try {
@@ -121,7 +132,10 @@ public class VentanaClasificacion extends JFrame {
         } catch(Exception e) {
           e.printStackTrace();
         }
+        
+        
       }
+
     });
   }
 
@@ -158,10 +172,11 @@ public class VentanaClasificacion extends JFrame {
     panel_3 = new JPanel();
     PantallaJornadas.add(panel_3, BorderLayout.NORTH);
 
-    btnSiguiente = new JButton("Siguiente");
-    btnSiguiente.setHorizontalAlignment(SwingConstants.LEFT);
+    btnSiguiente = new JButton("▶");
     btnSiguiente.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
+        	
+        	// hay que editarlo para extarer los partidos del array Jornadas.
             if (jornadaActual < 10) {
                 jornadaActual++;
                 lblTituloNumeroJornada.setText("JORNADA " + jornadaActual);
@@ -174,30 +189,39 @@ public class VentanaClasificacion extends JFrame {
                 // Actualizar los labels de los equipos
                 lblEquipoLocalA.setText(equipos[indiceEquipo]);
                 lblEquipoVisitanteA.setText(equipos[(indiceEquipo + 1) % equipos.length]);
+                
                 lblEquipoLocalB.setText(equipos[(indiceEquipo + 2) % equipos.length]);
                 lblEquipoVisitanteB.setText(equipos[(indiceEquipo + 3) % equipos.length]);
+                
                 lblEquipoLocalC.setText(equipos[(indiceEquipo + 4) % equipos.length]);
                 lblEquipoVisitanteC.setText(equipos[(indiceEquipo + 5) % equipos.length]);
 
                 // Incrementar el índice de los equipos
                 indiceEquipo++;
 
-               
+                if (jornadaActual == 10) {
+                	btnSiguiente.setVisible(false);
+                }
+            	if (jornadaActual > 1) {
+            		btnAnterior.setVisible(true);
+            	}
             }
         }
+
     });
 
     
 
     lblTituloNumeroJornada = new JLabel("JORNADA 1");
     lblTituloNumeroJornada.setHorizontalAlignment(SwingConstants.CENTER);
-    panel_3.setLayout(new BorderLayout(0, 0));
 
-    btnAnterior = new JButton("Anterior");
-    btnAnterior.setHorizontalAlignment(SwingConstants.RIGHT);
+    btnAnterior = new JButton("◀");
+    btnAnterior.setVisible(false);
     btnAnterior.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
+        	// hay que editarlo para extarer los partidos del array Jornadas.
             if (jornadaActual > 1) {
+
                 jornadaActual--;
                 lblTituloNumeroJornada.setText("JORNADA " + jornadaActual);
 
@@ -207,6 +231,7 @@ public class VentanaClasificacion extends JFrame {
                 }
 
                 // Actualizar los labels de los equipos
+                
                 lblEquipoLocalA.setText(equipos[(indiceEquipo - 1 + equipos.length) % equipos.length]);
                 lblEquipoVisitanteA.setText(equipos[(indiceEquipo) % equipos.length]);
                 lblEquipoLocalB.setText(equipos[(indiceEquipo + 1) % equipos.length]);
@@ -216,16 +241,53 @@ public class VentanaClasificacion extends JFrame {
 
                 // Decrementar el índice de los equipos
                 indiceEquipo--;
-
+                
+                if (jornadaActual == 1) {
+                	btnAnterior.setVisible(false);
+                }
+                if (jornadaActual < 10) {
+                	btnSiguiente.setVisible(true);
+                }
            
             }
         }
     });
+    panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
     
-    panel_3.add(btnAnterior, BorderLayout.WEST);
-    panel_3.add(lblTituloNumeroJornada, BorderLayout.CENTER);
-    panel_3.add(btnSiguiente, BorderLayout.EAST);
+    panel_3.add(btnAnterior);
+    
+    separator_9 = new JSeparator();
+    panel_3.add(separator_9);
+    
+    separator_4 = new JSeparator();
+    panel_3.add(separator_4);
+    
+    separator_2 = new JSeparator();
+    panel_3.add(separator_2);
+    
+    separator = new JSeparator();
+    panel_3.add(separator);
+    
+    separator_7 = new JSeparator();
+    panel_3.add(separator_7);
+    panel_3.add(lblTituloNumeroJornada);
+    
+    separator_1 = new JSeparator();
+    panel_3.add(separator_1);
+    
+    separator_6 = new JSeparator();
+    panel_3.add(separator_6);
+    
+    separator_3 = new JSeparator();
+    panel_3.add(separator_3);
+    
+    separator_5 = new JSeparator();
+    panel_3.add(separator_5);
+    
+    separator_8 = new JSeparator();
+    panel_3.add(separator_8);
+    panel_3.add(btnSiguiente);
 
     panelGuardarDatos = new JPanel();
     PantallaJornadas.add(panelGuardarDatos, BorderLayout.SOUTH);
