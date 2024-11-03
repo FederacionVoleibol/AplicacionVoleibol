@@ -255,3 +255,4 @@ Para aprender Git y GitHub, puedes usar estos recursos:
 
 
 > _“Este proyecto fue una gran oportunidad para aprender y mejorar nuestras habilidades en Java y en la colaboración usando GitHub. Trabajar en equipo nos permitió comprender la importancia de un flujo de trabajo estructurado y de las revisiones de código, lo cual fue clave para lograr una aplicación de calidad. Nos llevamos una valiosa experiencia en desarrollo colaborativo que sin duda aplicaremos en futuros proyectos.”_
+
