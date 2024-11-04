@@ -160,6 +160,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         if (login.VerificacionDeLogin(nombre, password)) {
             lblMensaje.setText("Accedido al sistema correctamente, Sr. " + nombre);
             VentanaMenuPrincipal menuPrincipal = new VentanaMenuPrincipal();
+            String tipoderol = login.TipodeUsuario;
+            System.out.println(tipoderol);
             menuPrincipal.setVisible(true);
             this.dispose();
         } else {
