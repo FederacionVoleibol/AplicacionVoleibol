@@ -22,8 +22,13 @@ import java.awt.Color;
 import javax.swing.UIManager;
 import java.awt.SystemColor;
 import javax.swing.border.LineBorder;
+
+import AplicacionFederacionVoleibol.AlgoritmoJornadasFixture.Partido;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class VentanaIntroducirEquipos extends JFrame {
 	
@@ -155,6 +160,7 @@ public class VentanaIntroducirEquipos extends JFrame {
 		TituloEquipo_1.add(lblEquipo1);
 		
 		txtEquipoNombre1 = new JTextField();
+
 		txtEquipoNombre1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
