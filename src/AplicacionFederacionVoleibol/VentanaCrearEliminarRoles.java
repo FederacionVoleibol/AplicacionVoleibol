@@ -67,7 +67,7 @@ public class VentanaCrearEliminarRoles extends JFrame {
 		panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
 		
-		lblRoles = new JLabel("Configuración de roles");
+		lblRoles = new JLabel("Configuración de roles Mantenimiento....");
 		lblRoles.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		panel.add(lblRoles);
 		
