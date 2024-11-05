@@ -59,7 +59,7 @@ public class VentanaEquiposUsuarios extends JFrame {
 	private JLabel lblAlcobendas;
 	private JLabel lblAvila;
 	private JLabel lblBarsa;
-	private JLabel lblNewLabel;
+	private JLabel lblMadrid;
 	private JLabel lblSayre;
 	private JLabel lblZaragoza;
 	
@@ -150,9 +150,13 @@ public class VentanaEquiposUsuarios extends JFrame {
 		TituloEquipo_1.add(lblEquipo1);
 		
 		lblAlcobendas = new JLabel("CV Alcobendas");
+		lblAlcobendas.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblAlcobendas.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblAlcobendas.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAlcobendas.setBackground(new Color(255, 255, 255));
+		//Forzar que el fondo sea blanco
+		lblAlcobendas.setOpaque(true); 
+		lblAlcobendas.setBackground(Color.WHITE); 
 		Equipo_1.add(lblAlcobendas);
 		
 		Equipo_2 = new JPanel();
@@ -172,8 +176,11 @@ public class VentanaEquiposUsuarios extends JFrame {
 		TituloEquipo_2.add(lblEquipo2);
 		
 		lblAvila = new JLabel("CD Avila Voleibol");
+		lblAvila.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblAvila.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAvila.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblAvila.setOpaque(true);
+		lblAvila.setBackground(Color.WHITE); 
 		Equipo_2.add(lblAvila);
 		
 		Equipo_3 = new JPanel();
@@ -193,8 +200,11 @@ public class VentanaEquiposUsuarios extends JFrame {
 		TituloEquipo_3.add(lblEquipo_3);
 		
 		lblBarsa = new JLabel("CV Barça");
+		lblBarsa.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblBarsa.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblBarsa.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBarsa.setOpaque(true);
+		lblBarsa.setBackground(Color.WHITE); 
 		Equipo_3.add(lblBarsa);
 		
 		Equipo_4 = new JPanel();
@@ -213,10 +223,13 @@ public class VentanaEquiposUsuarios extends JFrame {
 		lblEquipo4.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		TituloEquipo_4.add(lblEquipo4);
 		
-		lblNewLabel = new JLabel("CV Madrid Chamberí");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		Equipo_4.add(lblNewLabel);
+		lblMadrid = new JLabel("CV Madrid Chamberí");
+		lblMadrid.setBorder(new LineBorder(new Color(0, 0, 0)));
+		lblMadrid.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblMadrid.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMadrid.setOpaque(true);
+		lblMadrid.setBackground(Color.WHITE); 
+		Equipo_4.add(lblMadrid);
 		
 		Equipo_5 = new JPanel();
 		Equipo_5.setBackground(new Color(192, 192, 192));
@@ -236,8 +249,11 @@ public class VentanaEquiposUsuarios extends JFrame {
 		TituloEquipo_5.add(lblEquipo_5);
 		
 		lblSayre = new JLabel("CV Sayre Mayser");
+		lblSayre.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblSayre.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblSayre.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSayre.setOpaque(true);
+		lblSayre.setBackground(Color.WHITE); 
 		Equipo_5.add(lblSayre);
 		
 		Equipo_6 = new JPanel();
@@ -258,8 +274,11 @@ public class VentanaEquiposUsuarios extends JFrame {
 		TituloEquipo_6.add(lblEquipo_6);
 		
 		lblZaragoza = new JLabel("CD Zaragoza");
+		lblZaragoza.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblZaragoza.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblZaragoza.setHorizontalAlignment(SwingConstants.CENTER);
+		lblZaragoza.setOpaque(true);
+		lblZaragoza.setBackground(Color.WHITE); 
 		Equipo_6.add(lblZaragoza);
 		
 		MarginIzq = new JPanel();

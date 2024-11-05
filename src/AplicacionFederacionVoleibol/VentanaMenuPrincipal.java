@@ -105,7 +105,9 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
                                         
                                         btnJornadas = new JButton("Jornadas");
                                          
-                                        panelListadeOpciones.add(btnJornadas);
+                                        //El admin no tiene sentido que vea el boton jornadas
+                                        if(AlgoritmoLogin.getTipodeUsuario() == "Usuario")
+                                        	panelListadeOpciones.add(btnJornadas);
                                         
                                         
                                         btnDesarrollador = new JButton("Crear Usuario");
@@ -148,10 +150,13 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
         } else if (o == btnArbitros && AlgoritmoLogin.getTipodeUsuario() == "Desarrollador" || AlgoritmoLogin.getTipodeUsuario() == "Admin") {
             cargarVentanaArbitros();
         } 
-        else if (o == btnEquipo) {
+        else if (o == btnEquipo && AlgoritmoLogin.getTipodeUsuario() == "Desarrollador" || AlgoritmoLogin.getTipodeUsuario() == "Admin") {
         	cargarVentanaEquipos();
             // Puedes agregar otra ventana si es necesario
-        } else if (o == btnCerrarSesion) {
+        }else if(o == btnEquipo && AlgoritmoLogin.getTipodeUsuario() == "Usuario") {
+        	cargarVentanaEquiposUsuarios();
+        
+        }else if (o == btnCerrarSesion) {
         	cerrarSesion();
 		}
 	}
@@ -183,9 +188,9 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
     private void cargarVentanaArbitros() {
         // Remover todos los componentes previos y cargar la ventana de arbitros
         panelContenedor.removeAll();
-        VentanaIntroducirArbitros va = new VentanaIntroducirArbitros();
-        va.setSize(517, 229);  // Ajusta el tamaño si es necesario
-        panelContenedor.add(va.getContentPane(), BorderLayout.CENTER);
+        VentanaIntroducirArbitros VentanaIntroducirArbitros = new VentanaIntroducirArbitros();
+        VentanaIntroducirArbitros.setSize(517, 229);  // Ajusta el tamaño si es necesario
+        panelContenedor.add(VentanaIntroducirArbitros.getContentPane(), BorderLayout.CENTER);
         panelContenedor.revalidate();
         panelContenedor.repaint();
     }
@@ -193,18 +198,27 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
 private void cargarVentanaEquipos() {
     // Remover todos los componentes previos y cargar la ventana de clasificación
     panelContenedor.removeAll();
-    VentanaIntroducirEquipos ve = new VentanaIntroducirEquipos();
-    ve.setSize(517, 229);
-    panelContenedor.add(ve.getContentPane(), BorderLayout.CENTER);
+    VentanaIntroducirEquipos VentanaIntroducirEquipos = new VentanaIntroducirEquipos();
+    VentanaIntroducirEquipos.setSize(517, 229);
+    panelContenedor.add(VentanaIntroducirEquipos.getContentPane(), BorderLayout.CENTER);
     panelContenedor.revalidate();
     panelContenedor.repaint();
 }
 private void cargarVentanaClasificacionUsuarios() {
     // Remover todos los componentes previos y cargar la ventana de clasificación
     panelContenedor.removeAll();
-    VentanaClasificacionUsuarios vu = new VentanaClasificacionUsuarios();
-    vu.setSize(517, 229);
-    panelContenedor.add(vu.getContentPane(), BorderLayout.CENTER);
+    VentanaClasificacionUsuarios VentanaClasificacionUsuarios = new VentanaClasificacionUsuarios();
+    VentanaClasificacionUsuarios.setSize(517, 229);
+    panelContenedor.add(VentanaClasificacionUsuarios.getContentPane(), BorderLayout.CENTER);
+    panelContenedor.revalidate();
+    panelContenedor.repaint();
+}
+private void cargarVentanaEquiposUsuarios() {
+    // Remover todos los componentes previos y cargar la ventana de clasificación
+    panelContenedor.removeAll();
+    VentanaEquiposUsuarios VentanaEquiposUsuarios = new VentanaEquiposUsuarios();
+    VentanaEquiposUsuarios.setSize(517, 229);
+    panelContenedor.add(VentanaEquiposUsuarios.getContentPane(), BorderLayout.CENTER);
     panelContenedor.revalidate();
     panelContenedor.repaint();
 }
