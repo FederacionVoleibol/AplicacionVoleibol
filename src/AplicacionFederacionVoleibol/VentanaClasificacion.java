@@ -312,24 +312,24 @@ public class VentanaClasificacion extends JFrame {
     panelPartido1 = new JPanel();
     panel_2.add(panelPartido1, BorderLayout.CENTER);
     GridBagLayout gbl_panelPartido1 = new GridBagLayout();
-    gbl_panelPartido1.columnWidths = new int[]{54, 50, 70, 33, 70, 0};
+    gbl_panelPartido1.columnWidths = new int[]{54, 43, 108, 40, 25, 52, 0};
     gbl_panelPartido1.rowHeights = new int[]{13, 13, 19, 19, 0};
-    gbl_panelPartido1.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+    gbl_panelPartido1.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
     gbl_panelPartido1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
     panelPartido1.setLayout(gbl_panelPartido1);
     
     lblPartido1A = new JLabel("Partido 1");
     lblPartido1A.setHorizontalAlignment(SwingConstants.CENTER);
     GridBagConstraints gbc_lblPartido1A = new GridBagConstraints();
-    gbc_lblPartido1A.fill = GridBagConstraints.HORIZONTAL;
     gbc_lblPartido1A.anchor = GridBagConstraints.NORTH;
+    gbc_lblPartido1A.fill = GridBagConstraints.HORIZONTAL;
+    gbc_lblPartido1A.insets = new Insets(0, 0, 5, 5);
     gbc_lblPartido1A.gridwidth = 3;
-    gbc_lblPartido1A.insets = new Insets(0, 0, 5, 0);
     gbc_lblPartido1A.gridx = 2;
     gbc_lblPartido1A.gridy = 0;
     panelPartido1.add(lblPartido1A, gbc_lblPartido1A);
     
-    lblEquipoB_1 = new JLabel("Equipo");
+    lblEquipoB_1 = new JLabel("Equipos");
     GridBagConstraints gbc_lblEquipoB_1 = new GridBagConstraints();
     gbc_lblEquipoB_1.anchor = GridBagConstraints.NORTH;
     gbc_lblEquipoB_1.insets = new Insets(0, 0, 5, 5);
@@ -337,19 +337,23 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblEquipoB_1.gridy = 1;
     panelPartido1.add(lblEquipoB_1, gbc_lblEquipoB_1);
     
-    lblTotalPuntosSetsB_1 = new JLabel("Set's");
+    lblTotalPuntosSetsB_1 = new JLabel("Puntaje");
+    lblTotalPuntosSetsB_1.setHorizontalAlignment(SwingConstants.RIGHT);
     GridBagConstraints gbc_lblTotalPuntosSetsB_1 = new GridBagConstraints();
     gbc_lblTotalPuntosSetsB_1.anchor = GridBagConstraints.NORTH;
+    gbc_lblTotalPuntosSetsB_1.fill = GridBagConstraints.HORIZONTAL;
     gbc_lblTotalPuntosSetsB_1.insets = new Insets(0, 0, 5, 5);
     gbc_lblTotalPuntosSetsB_1.gridx = 3;
     gbc_lblTotalPuntosSetsB_1.gridy = 1;
     panelPartido1.add(lblTotalPuntosSetsB_1, gbc_lblTotalPuntosSetsB_1);
     
     lblPuntajeUltimoSetB_1 = new JLabel("Ultimo Set");
+    lblPuntajeUltimoSetB_1.setHorizontalAlignment(SwingConstants.CENTER);
     GridBagConstraints gbc_lblPuntajeUltimoSetB_1 = new GridBagConstraints();
-    gbc_lblPuntajeUltimoSetB_1.fill = GridBagConstraints.HORIZONTAL;
     gbc_lblPuntajeUltimoSetB_1.anchor = GridBagConstraints.NORTH;
+    gbc_lblPuntajeUltimoSetB_1.fill = GridBagConstraints.HORIZONTAL;
     gbc_lblPuntajeUltimoSetB_1.insets = new Insets(0, 0, 5, 0);
+    gbc_lblPuntajeUltimoSetB_1.gridwidth = 2;
     gbc_lblPuntajeUltimoSetB_1.gridx = 4;
     gbc_lblPuntajeUltimoSetB_1.gridy = 1;
     panelPartido1.add(lblPuntajeUltimoSetB_1, gbc_lblPuntajeUltimoSetB_1);
@@ -365,9 +369,10 @@ public class VentanaClasificacion extends JFrame {
     panelPartido1.add(lblLocalB_1, gbc_lblLocalB_1);
     
     lblEquipoLocalA = new JLabel("Avila Voleibol");
+    lblEquipoLocalA.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoLocalA.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoLocalA = new GridBagConstraints();
-    gbc_lblEquipoLocalA.anchor = GridBagConstraints.EAST;
+    gbc_lblEquipoLocalA.fill = GridBagConstraints.HORIZONTAL;
     gbc_lblEquipoLocalA.insets = new Insets(0, 0, 5, 5);
     gbc_lblEquipoLocalA.gridx = 2;
     gbc_lblEquipoLocalA.gridy = 2;
@@ -376,7 +381,7 @@ public class VentanaClasificacion extends JFrame {
     textField = new JTextField();
     textField.setColumns(3);
     GridBagConstraints gbc_textField = new GridBagConstraints();
-    gbc_textField.anchor = GridBagConstraints.NORTHWEST;
+    gbc_textField.anchor = GridBagConstraints.NORTHEAST;
     gbc_textField.insets = new Insets(0, 0, 5, 5);
     gbc_textField.gridx = 3;
     gbc_textField.gridy = 2;
@@ -385,9 +390,9 @@ public class VentanaClasificacion extends JFrame {
     textField_1 = new JTextField();
     textField_1.setColumns(3);
     GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-    gbc_textField_1.anchor = GridBagConstraints.NORTH;
+    gbc_textField_1.anchor = GridBagConstraints.NORTHWEST;
     gbc_textField_1.insets = new Insets(0, 0, 5, 0);
-    gbc_textField_1.gridx = 4;
+    gbc_textField_1.gridx = 5;
     gbc_textField_1.gridy = 2;
     panelPartido1.add(textField_1, gbc_textField_1);
     
@@ -395,16 +400,17 @@ public class VentanaClasificacion extends JFrame {
     lblVisitanteB_1.setHorizontalAlignment(SwingConstants.RIGHT);
     lblVisitanteB_1.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblVisitanteB_1 = new GridBagConstraints();
-    gbc_lblVisitanteB_1.fill = GridBagConstraints.HORIZONTAL;
+    gbc_lblVisitanteB_1.anchor = GridBagConstraints.WEST;
     gbc_lblVisitanteB_1.insets = new Insets(0, 0, 0, 5);
     gbc_lblVisitanteB_1.gridx = 1;
     gbc_lblVisitanteB_1.gridy = 3;
     panelPartido1.add(lblVisitanteB_1, gbc_lblVisitanteB_1);
     
     lblEquipoVisitanteA = new JLabel("Sayre Mayser");
+    lblEquipoVisitanteA.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoVisitanteA.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoVisitanteA = new GridBagConstraints();
-    gbc_lblEquipoVisitanteA.anchor = GridBagConstraints.WEST;
+    gbc_lblEquipoVisitanteA.fill = GridBagConstraints.HORIZONTAL;
     gbc_lblEquipoVisitanteA.insets = new Insets(0, 0, 0, 5);
     gbc_lblEquipoVisitanteA.gridx = 2;
     gbc_lblEquipoVisitanteA.gridy = 3;
@@ -413,7 +419,7 @@ public class VentanaClasificacion extends JFrame {
     textField_2 = new JTextField();
     textField_2.setColumns(3);
     GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-    gbc_textField_2.anchor = GridBagConstraints.NORTHWEST;
+    gbc_textField_2.anchor = GridBagConstraints.NORTHEAST;
     gbc_textField_2.insets = new Insets(0, 0, 0, 5);
     gbc_textField_2.gridx = 3;
     gbc_textField_2.gridy = 3;
@@ -422,8 +428,8 @@ public class VentanaClasificacion extends JFrame {
     textField_3 = new JTextField();
     textField_3.setColumns(3);
     GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-    gbc_textField_3.anchor = GridBagConstraints.NORTH;
-    gbc_textField_3.gridx = 4;
+    gbc_textField_3.anchor = GridBagConstraints.NORTHWEST;
+    gbc_textField_3.gridx = 5;
     gbc_textField_3.gridy = 3;
     panelPartido1.add(textField_3, gbc_textField_3);
 
@@ -440,9 +446,9 @@ public class VentanaClasificacion extends JFrame {
     panelPartido2 = new JPanel();
     panel_6.add(panelPartido2, BorderLayout.CENTER);
     GridBagLayout gbl_panelPartido2 = new GridBagLayout();
-    gbl_panelPartido2.columnWidths = new int[]{54, 50, 70, 33, 70, 0};
+    gbl_panelPartido2.columnWidths = new int[]{54, 43, 108, 40, 25, 52, 0};
     gbl_panelPartido2.rowHeights = new int[]{13, 13, 19, 19, 0};
-    gbl_panelPartido2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+    gbl_panelPartido2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
     gbl_panelPartido2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
     panelPartido2.setLayout(gbl_panelPartido2);
     
@@ -451,13 +457,13 @@ public class VentanaClasificacion extends JFrame {
     GridBagConstraints gbc_lblPartido2B = new GridBagConstraints();
     gbc_lblPartido2B.anchor = GridBagConstraints.NORTH;
     gbc_lblPartido2B.fill = GridBagConstraints.HORIZONTAL;
-    gbc_lblPartido2B.insets = new Insets(0, 0, 5, 0);
+    gbc_lblPartido2B.insets = new Insets(0, 0, 5, 5);
     gbc_lblPartido2B.gridwidth = 3;
     gbc_lblPartido2B.gridx = 2;
     gbc_lblPartido2B.gridy = 0;
     panelPartido2.add(lblPartido2B, gbc_lblPartido2B);
     
-    lblEquipoB = new JLabel("Equipo");
+    lblEquipoB = new JLabel("Equipos");
     GridBagConstraints gbc_lblEquipoB = new GridBagConstraints();
     gbc_lblEquipoB.anchor = GridBagConstraints.NORTH;
     gbc_lblEquipoB.insets = new Insets(0, 0, 5, 5);
@@ -465,19 +471,23 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblEquipoB.gridy = 1;
     panelPartido2.add(lblEquipoB, gbc_lblEquipoB);
     
-    lblTotalPuntosSetsB = new JLabel("Set's");
+    lblTotalPuntosSetsB = new JLabel("Puntaje");
+    lblTotalPuntosSetsB.setHorizontalAlignment(SwingConstants.RIGHT);
     GridBagConstraints gbc_lblTotalPuntosSetsB = new GridBagConstraints();
     gbc_lblTotalPuntosSetsB.anchor = GridBagConstraints.NORTH;
+    gbc_lblTotalPuntosSetsB.fill = GridBagConstraints.HORIZONTAL;
     gbc_lblTotalPuntosSetsB.insets = new Insets(0, 0, 5, 5);
     gbc_lblTotalPuntosSetsB.gridx = 3;
     gbc_lblTotalPuntosSetsB.gridy = 1;
     panelPartido2.add(lblTotalPuntosSetsB, gbc_lblTotalPuntosSetsB);
     
     lblPuntajeUltimoSetB = new JLabel("Ultimo Set");
+    lblPuntajeUltimoSetB.setHorizontalAlignment(SwingConstants.CENTER);
     GridBagConstraints gbc_lblPuntajeUltimoSetB = new GridBagConstraints();
     gbc_lblPuntajeUltimoSetB.anchor = GridBagConstraints.NORTH;
     gbc_lblPuntajeUltimoSetB.fill = GridBagConstraints.HORIZONTAL;
     gbc_lblPuntajeUltimoSetB.insets = new Insets(0, 0, 5, 0);
+    gbc_lblPuntajeUltimoSetB.gridwidth = 2;
     gbc_lblPuntajeUltimoSetB.gridx = 4;
     gbc_lblPuntajeUltimoSetB.gridy = 1;
     panelPartido2.add(lblPuntajeUltimoSetB, gbc_lblPuntajeUltimoSetB);
@@ -493,9 +503,10 @@ public class VentanaClasificacion extends JFrame {
     panelPartido2.add(lblLocalB, gbc_lblLocalB);
     
     lblEquipoLocalB = new JLabel("Avila Voleibol");
+    lblEquipoLocalB.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoLocalB.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoLocalB = new GridBagConstraints();
-    gbc_lblEquipoLocalB.anchor = GridBagConstraints.EAST;
+    gbc_lblEquipoLocalB.fill = GridBagConstraints.HORIZONTAL;
     gbc_lblEquipoLocalB.insets = new Insets(0, 0, 5, 5);
     gbc_lblEquipoLocalB.gridx = 2;
     gbc_lblEquipoLocalB.gridy = 2;
@@ -504,7 +515,7 @@ public class VentanaClasificacion extends JFrame {
     textField_20 = new JTextField();
     textField_20.setColumns(3);
     GridBagConstraints gbc_textField_20 = new GridBagConstraints();
-    gbc_textField_20.anchor = GridBagConstraints.NORTHWEST;
+    gbc_textField_20.anchor = GridBagConstraints.NORTHEAST;
     gbc_textField_20.insets = new Insets(0, 0, 5, 5);
     gbc_textField_20.gridx = 3;
     gbc_textField_20.gridy = 2;
@@ -513,9 +524,9 @@ public class VentanaClasificacion extends JFrame {
     textField_21 = new JTextField();
     textField_21.setColumns(3);
     GridBagConstraints gbc_textField_21 = new GridBagConstraints();
-    gbc_textField_21.anchor = GridBagConstraints.NORTH;
+    gbc_textField_21.anchor = GridBagConstraints.NORTHWEST;
     gbc_textField_21.insets = new Insets(0, 0, 5, 0);
-    gbc_textField_21.gridx = 4;
+    gbc_textField_21.gridx = 5;
     gbc_textField_21.gridy = 2;
     panelPartido2.add(textField_21, gbc_textField_21);
     
@@ -523,16 +534,17 @@ public class VentanaClasificacion extends JFrame {
     lblVisitanteB.setFont(new Font("Arial", Font.PLAIN, 11));
     lblVisitanteB.setHorizontalAlignment(SwingConstants.RIGHT);
     GridBagConstraints gbc_lblVisitanteB = new GridBagConstraints();
-    gbc_lblVisitanteB.fill = GridBagConstraints.HORIZONTAL;
+    gbc_lblVisitanteB.anchor = GridBagConstraints.WEST;
     gbc_lblVisitanteB.insets = new Insets(0, 0, 0, 5);
     gbc_lblVisitanteB.gridx = 1;
     gbc_lblVisitanteB.gridy = 3;
     panelPartido2.add(lblVisitanteB, gbc_lblVisitanteB);
     
     lblEquipoVisitanteB = new JLabel("Sayre Mayser");
+    lblEquipoVisitanteB.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoVisitanteB.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoVisitanteB = new GridBagConstraints();
-    gbc_lblEquipoVisitanteB.anchor = GridBagConstraints.WEST;
+    gbc_lblEquipoVisitanteB.fill = GridBagConstraints.HORIZONTAL;
     gbc_lblEquipoVisitanteB.insets = new Insets(0, 0, 0, 5);
     gbc_lblEquipoVisitanteB.gridx = 2;
     gbc_lblEquipoVisitanteB.gridy = 3;
@@ -541,7 +553,7 @@ public class VentanaClasificacion extends JFrame {
     textField_25 = new JTextField();
     textField_25.setColumns(3);
     GridBagConstraints gbc_textField_25 = new GridBagConstraints();
-    gbc_textField_25.anchor = GridBagConstraints.NORTHWEST;
+    gbc_textField_25.anchor = GridBagConstraints.NORTHEAST;
     gbc_textField_25.insets = new Insets(0, 0, 0, 5);
     gbc_textField_25.gridx = 3;
     gbc_textField_25.gridy = 3;
@@ -550,8 +562,8 @@ public class VentanaClasificacion extends JFrame {
     textField_26 = new JTextField();
     textField_26.setColumns(3);
     GridBagConstraints gbc_textField_26 = new GridBagConstraints();
-    gbc_textField_26.anchor = GridBagConstraints.NORTH;
-    gbc_textField_26.gridx = 4;
+    gbc_textField_26.anchor = GridBagConstraints.NORTHWEST;
+    gbc_textField_26.gridx = 5;
     gbc_textField_26.gridy = 3;
     panelPartido2.add(textField_26, gbc_textField_26);
 
@@ -568,24 +580,24 @@ public class VentanaClasificacion extends JFrame {
     panelPartido3 = new JPanel();
     panel_7.add(panelPartido3, BorderLayout.CENTER);
     GridBagLayout gbl_panelPartido3 = new GridBagLayout();
-    gbl_panelPartido3.columnWidths = new int[]{54, 50, 70, 33, 70, 0};
+    gbl_panelPartido3.columnWidths = new int[]{54, 43, 108, 40, 25, 52, 0};
     gbl_panelPartido3.rowHeights = new int[]{13, 13, 19, 19, 0};
-    gbl_panelPartido3.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+    gbl_panelPartido3.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
     gbl_panelPartido3.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
     panelPartido3.setLayout(gbl_panelPartido3);
     
     lblPartido2B_2 = new JLabel("Partido 3");
     lblPartido2B_2.setHorizontalAlignment(SwingConstants.CENTER);
     GridBagConstraints gbc_lblPartido2B_2 = new GridBagConstraints();
-    gbc_lblPartido2B_2.fill = GridBagConstraints.HORIZONTAL;
     gbc_lblPartido2B_2.anchor = GridBagConstraints.NORTH;
+    gbc_lblPartido2B_2.fill = GridBagConstraints.HORIZONTAL;
+    gbc_lblPartido2B_2.insets = new Insets(0, 0, 5, 5);
     gbc_lblPartido2B_2.gridwidth = 3;
-    gbc_lblPartido2B_2.insets = new Insets(0, 0, 5, 0);
     gbc_lblPartido2B_2.gridx = 2;
     gbc_lblPartido2B_2.gridy = 0;
     panelPartido3.add(lblPartido2B_2, gbc_lblPartido2B_2);
     
-    lblEquipoB_2 = new JLabel("Equipo");
+    lblEquipoB_2 = new JLabel("Equipos");
     GridBagConstraints gbc_lblEquipoB_2 = new GridBagConstraints();
     gbc_lblEquipoB_2.anchor = GridBagConstraints.NORTH;
     gbc_lblEquipoB_2.insets = new Insets(0, 0, 5, 5);
@@ -593,19 +605,23 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblEquipoB_2.gridy = 1;
     panelPartido3.add(lblEquipoB_2, gbc_lblEquipoB_2);
     
-    lblTotalPuntosSetsB_2 = new JLabel("Set's");
+    lblTotalPuntosSetsB_2 = new JLabel("Puntaje");
+    lblTotalPuntosSetsB_2.setHorizontalAlignment(SwingConstants.RIGHT);
     GridBagConstraints gbc_lblTotalPuntosSetsB_2 = new GridBagConstraints();
     gbc_lblTotalPuntosSetsB_2.anchor = GridBagConstraints.NORTH;
+    gbc_lblTotalPuntosSetsB_2.fill = GridBagConstraints.HORIZONTAL;
     gbc_lblTotalPuntosSetsB_2.insets = new Insets(0, 0, 5, 5);
     gbc_lblTotalPuntosSetsB_2.gridx = 3;
     gbc_lblTotalPuntosSetsB_2.gridy = 1;
     panelPartido3.add(lblTotalPuntosSetsB_2, gbc_lblTotalPuntosSetsB_2);
     
     lblPuntajeUltimoSetB_2 = new JLabel("Ultimo Set");
+    lblPuntajeUltimoSetB_2.setHorizontalAlignment(SwingConstants.CENTER);
     GridBagConstraints gbc_lblPuntajeUltimoSetB_2 = new GridBagConstraints();
-    gbc_lblPuntajeUltimoSetB_2.fill = GridBagConstraints.HORIZONTAL;
     gbc_lblPuntajeUltimoSetB_2.anchor = GridBagConstraints.NORTH;
+    gbc_lblPuntajeUltimoSetB_2.fill = GridBagConstraints.HORIZONTAL;
     gbc_lblPuntajeUltimoSetB_2.insets = new Insets(0, 0, 5, 0);
+    gbc_lblPuntajeUltimoSetB_2.gridwidth = 2;
     gbc_lblPuntajeUltimoSetB_2.gridx = 4;
     gbc_lblPuntajeUltimoSetB_2.gridy = 1;
     panelPartido3.add(lblPuntajeUltimoSetB_2, gbc_lblPuntajeUltimoSetB_2);
@@ -621,9 +637,10 @@ public class VentanaClasificacion extends JFrame {
     panelPartido3.add(lblLocalB_2, gbc_lblLocalB_2);
     
     lblEquipoLocalC = new JLabel("Avila Voleibol");
+    lblEquipoLocalC.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoLocalC.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoLocalC = new GridBagConstraints();
-    gbc_lblEquipoLocalC.anchor = GridBagConstraints.EAST;
+    gbc_lblEquipoLocalC.fill = GridBagConstraints.HORIZONTAL;
     gbc_lblEquipoLocalC.insets = new Insets(0, 0, 5, 5);
     gbc_lblEquipoLocalC.gridx = 2;
     gbc_lblEquipoLocalC.gridy = 2;
@@ -632,7 +649,7 @@ public class VentanaClasificacion extends JFrame {
     textField_4 = new JTextField();
     textField_4.setColumns(3);
     GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-    gbc_textField_4.anchor = GridBagConstraints.NORTHWEST;
+    gbc_textField_4.anchor = GridBagConstraints.NORTHEAST;
     gbc_textField_4.insets = new Insets(0, 0, 5, 5);
     gbc_textField_4.gridx = 3;
     gbc_textField_4.gridy = 2;
@@ -641,9 +658,9 @@ public class VentanaClasificacion extends JFrame {
     textField_5 = new JTextField();
     textField_5.setColumns(3);
     GridBagConstraints gbc_textField_5 = new GridBagConstraints();
-    gbc_textField_5.anchor = GridBagConstraints.NORTH;
+    gbc_textField_5.anchor = GridBagConstraints.NORTHWEST;
     gbc_textField_5.insets = new Insets(0, 0, 5, 0);
-    gbc_textField_5.gridx = 4;
+    gbc_textField_5.gridx = 5;
     gbc_textField_5.gridy = 2;
     panelPartido3.add(textField_5, gbc_textField_5);
     
@@ -651,16 +668,17 @@ public class VentanaClasificacion extends JFrame {
     lblVisitanteB_2.setHorizontalAlignment(SwingConstants.RIGHT);
     lblVisitanteB_2.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblVisitanteB_2 = new GridBagConstraints();
-    gbc_lblVisitanteB_2.fill = GridBagConstraints.HORIZONTAL;
+    gbc_lblVisitanteB_2.anchor = GridBagConstraints.WEST;
     gbc_lblVisitanteB_2.insets = new Insets(0, 0, 0, 5);
     gbc_lblVisitanteB_2.gridx = 1;
     gbc_lblVisitanteB_2.gridy = 3;
     panelPartido3.add(lblVisitanteB_2, gbc_lblVisitanteB_2);
     
     lblEquipoVisitanteC = new JLabel("Sayre Mayser");
+    lblEquipoVisitanteC.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoVisitanteC.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoVisitanteC = new GridBagConstraints();
-    gbc_lblEquipoVisitanteC.anchor = GridBagConstraints.WEST;
+    gbc_lblEquipoVisitanteC.fill = GridBagConstraints.HORIZONTAL;
     gbc_lblEquipoVisitanteC.insets = new Insets(0, 0, 0, 5);
     gbc_lblEquipoVisitanteC.gridx = 2;
     gbc_lblEquipoVisitanteC.gridy = 3;
@@ -669,7 +687,7 @@ public class VentanaClasificacion extends JFrame {
     textField_6 = new JTextField();
     textField_6.setColumns(3);
     GridBagConstraints gbc_textField_6 = new GridBagConstraints();
-    gbc_textField_6.anchor = GridBagConstraints.NORTHWEST;
+    gbc_textField_6.anchor = GridBagConstraints.NORTHEAST;
     gbc_textField_6.insets = new Insets(0, 0, 0, 5);
     gbc_textField_6.gridx = 3;
     gbc_textField_6.gridy = 3;
@@ -678,8 +696,8 @@ public class VentanaClasificacion extends JFrame {
     textField_7 = new JTextField();
     textField_7.setColumns(3);
     GridBagConstraints gbc_textField_7 = new GridBagConstraints();
-    gbc_textField_7.anchor = GridBagConstraints.NORTH;
-    gbc_textField_7.gridx = 4;
+    gbc_textField_7.anchor = GridBagConstraints.NORTHWEST;
+    gbc_textField_7.gridx = 5;
     gbc_textField_7.gridy = 3;
     panelPartido3.add(textField_7, gbc_textField_7);
 

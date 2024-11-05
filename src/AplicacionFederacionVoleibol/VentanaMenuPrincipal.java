@@ -137,29 +137,29 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
        
     }
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        Object o = ae.getSource();
-        
-        if (o == btnClasificacion && AlgoritmoLogin.getTipodeUsuario() == "Desarrollador" || AlgoritmoLogin.getTipodeUsuario() == "Admin") {
-            cargarVentanaClasificacion();
-            
-        } else if (o == btnClasificacion && AlgoritmoLogin.getTipodeUsuario() == "Usuario") {
-            cargarVentanaClasificacionUsuarios();
-            
-        } else if (o == btnArbitros && AlgoritmoLogin.getTipodeUsuario() == "Desarrollador" || AlgoritmoLogin.getTipodeUsuario() == "Admin") {
+    public void actionPerformed(ActionEvent variableGuardarAccionBoton) {
+        Object botonAccionado = variableGuardarAccionBoton.getSource();
+        String tipoUsuario = AlgoritmoLogin.getTipodeUsuario();
+
+        if (botonAccionado == btnClasificacion) {
+            if (tipoUsuario.equals("Desarrollador") || tipoUsuario.equals("Admin")) {
+                cargarVentanaClasificacion();
+            } else if (tipoUsuario.equals("Usuario")) {
+                cargarVentanaClasificacionUsuarios();
+            }
+        } else if (botonAccionado == btnArbitros && (tipoUsuario.equals("Desarrollador") || tipoUsuario.equals("Admin"))) {
             cargarVentanaArbitros();
-        } 
-        else if (o == btnEquipo && AlgoritmoLogin.getTipodeUsuario() == "Desarrollador" || AlgoritmoLogin.getTipodeUsuario() == "Admin") {
-        	cargarVentanaEquipos();
-            // Puedes agregar otra ventana si es necesario
-        }else if(o == btnEquipo && AlgoritmoLogin.getTipodeUsuario() == "Usuario") {
-        	cargarVentanaEquiposUsuarios();
-        
-        }else if (o == btnCerrarSesion) {
-        	cerrarSesion();
-		}
-	}
+        } else if (botonAccionado == btnEquipo) {
+            if (tipoUsuario.equals("Desarrollador") || tipoUsuario.equals("Admin")) {
+                cargarVentanaEquipos();
+            } else if (tipoUsuario.equals("Usuario")) {
+                cargarVentanaEquiposUsuarios();
+            }
+        } else if (botonAccionado == btnCerrarSesion) {
+            cerrarSesion();
+        }
+    }
+
     
     private void cerrarSesion() {
         // Confirmación para cerrar sesión
@@ -222,4 +222,9 @@ private void cargarVentanaEquiposUsuarios() {
     panelContenedor.revalidate();
     panelContenedor.repaint();
 }
+
 }
+
+
+
+

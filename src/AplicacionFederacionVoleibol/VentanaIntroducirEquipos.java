@@ -24,6 +24,8 @@ import java.awt.SystemColor;
 import javax.swing.border.LineBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class VentanaIntroducirEquipos extends JFrame {
 	
@@ -131,6 +133,36 @@ public class VentanaIntroducirEquipos extends JFrame {
 		Footer.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		Botom_guardar = new JButton("Guardar");
+		Botom_guardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				String NombreEquipo1 = txtEquipoNombre1.getText();
+//				System.out.println(NombreEquipo1);	
+				List <EQUIPOS> listEquipos = new ArrayList <>();
+				JTextField[] ArreglodeVariablestextFields = {
+				        txtEquipoNombre1, txtEquipoNombre2, txtEquipoNombre3,
+				        txtEquipoNombre4, txtEquipoNombre5, txtEquipoNombre6
+				    };
+
+				 for (JTextField posiciondelArreglo : ArreglodeVariablestextFields) {
+				        EQUIPOS equipo = new EQUIPOS(); // Nueva instancia en cada iteración
+				        equipo.setNombreEquipo(posiciondelArreglo.getText());
+				        listEquipos.add(equipo);
+				        
+				    }
+				 // Imprimir la longitud de la lista
+				 int totalEquipos = listEquipos.size();
+				 System.out.println("Total de equipos en la lista: " + totalEquipos);
+				 // Imprimir los nombres de los equipos
+				 for (int i = 0; i < listEquipos.size(); i++) {
+					    EQUIPOS equipo = listEquipos.get(i);
+					    System.out.println("Índice: " + i + ", Nombre del equipo: " + equipo.getNombreEquipo());
+					}
+//				 // Imprimir los nombres de los equipos
+//				for (EQUIPOS ordenEquipos : listEquipos) {
+//					System.out.println(ordenEquipos.getNombreEquipo());
+//				}
+			}
+		});
 		Botom_guardar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		Footer.add(Botom_guardar);
 		
@@ -155,6 +187,12 @@ public class VentanaIntroducirEquipos extends JFrame {
 		TituloEquipo_1.add(lblEquipo1);
 		
 		txtEquipoNombre1 = new JTextField();
+		txtEquipoNombre1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String NombreEquipo1 = txtEquipoNombre1.getText();
+				System.out.println(NombreEquipo1);	
+				}
+		});
 		txtEquipoNombre1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -185,6 +223,12 @@ public class VentanaIntroducirEquipos extends JFrame {
 		TituloEquipo_2.add(lblEquipo2);
 		
 		txtEquipoNombre2 = new JTextField();
+		txtEquipoNombre2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String NombreEquipo2 = txtEquipoNombre1.getText();
+				System.out.println(NombreEquipo2);		
+			}
+		});
 		txtEquipoNombre2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

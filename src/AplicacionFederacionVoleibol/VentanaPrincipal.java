@@ -93,6 +93,19 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         // Hacer que el campo de texto responda al Enter
         txtUsuario.addActionListener(this);
         panelCentro.add(txtUsuario, gbcTxtUsuario);
+        
+                // Mensaje
+                GridBagConstraints gbcLblMensaje = new GridBagConstraints();
+                gbcLblMensaje.insets = new Insets(10, 10, 10, 10);
+                gbcLblMensaje.gridx = 2;
+                gbcLblMensaje.gridy = 1;
+                gbcLblMensaje.gridwidth = 2;
+                
+                lblMensaje = new JLabel("");
+                lblMensaje.setForeground(new Color(255, 0, 0));
+                lblMensaje.setHorizontalAlignment(SwingConstants.CENTER);
+                lblMensaje.setFont(new Font("Tahoma", Font.PLAIN, 14));
+                panelCentro.add(lblMensaje, gbcLblMensaje);
 
         // Etiqueta Contraseña
         GridBagConstraints gbcLblContrasena = new GridBagConstraints();
@@ -137,19 +150,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         
         panelCentro.add(btnIngresar, gbcBtnIngresar);
 
-        // Mensaje
-        GridBagConstraints gbcLblMensaje = new GridBagConstraints();
-        gbcLblMensaje.insets = new Insets(10, 10, 10, 10);
-        gbcLblMensaje.gridx = 0;
-        gbcLblMensaje.gridy = 4;
-        gbcLblMensaje.gridwidth = 2;
-
-        lblMensaje = new JLabel("");
-        lblMensaje.setForeground(new Color(255, 0, 0));
-        lblMensaje.setHorizontalAlignment(SwingConstants.CENTER);
-        lblMensaje.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        panelCentro.add(lblMensaje, gbcLblMensaje);
-
         contentPane.add(panelCentro, BorderLayout.CENTER);
     }
 
@@ -160,8 +160,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         if (login.VerificacionDeLogin(nombre, password)) {
             lblMensaje.setText("Accedido al sistema correctamente, Sr. " + nombre);
             VentanaMenuPrincipal menuPrincipal = new VentanaMenuPrincipal();
-            String tipoderol = login.TipodeUsuario;
-            System.out.println(tipoderol);
             menuPrincipal.setVisible(true);
             this.dispose();
         } else {
