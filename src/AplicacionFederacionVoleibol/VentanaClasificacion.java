@@ -42,10 +42,10 @@ public class VentanaClasificacion extends JFrame {
   private static final long serialVersionUID = 1L;
   private JPanel contentPane;
   private JTable tablaClasificacion;
-  private JTextField textField_20;
-  private JTextField textField_21;
-  private JTextField textField_25;
-  private JTextField textField_26;
+  private JTextField tf_eqlb_p;
+  private JTextField tf_eqlb_ls;
+  private JTextField tf_eqvb_p;
+  private JTextField tf_eqvb_ls;
   private JPanel PantallaJornadas;
   private JPanel panel_3;
   private JButton btnSiguiente;
@@ -86,12 +86,12 @@ public class VentanaClasificacion extends JFrame {
   private JLabel lblPuntajeUltimoSetB_1;
   private JLabel lblLocalB_1;
   private JLabel lblEquipoLocalA;
-  private JTextField textField;
-  private JTextField textField_1;
+  private JTextField tf_eqla_p;
+  private JTextField tf_eqla_ls;
   private JLabel lblVisitanteB_1;
   private JLabel lblEquipoVisitanteA;
-  private JTextField textField_2;
-  private JTextField textField_3;
+  private JTextField tf_eqva_p;
+  private JTextField tf_eqva_ls;
   private JPanel panelPartido3;
   private JLabel lblPartido2B_2;
   private JLabel lblEquipoB_2;
@@ -99,12 +99,12 @@ public class VentanaClasificacion extends JFrame {
   private JLabel lblPuntajeUltimoSetB_2;
   private JLabel lblLocalB_2;
   private JLabel lblEquipoLocalC;
-  private JTextField textField_4;
-  private JTextField textField_5;
+  private JTextField tf_eqlc_p;
+  private JTextField tf_eqlc_c;
   private JLabel lblVisitanteB_2;
   private JLabel lblEquipoVisitanteC;
-  private JTextField textField_6;
-  private JTextField textField_7;
+  private JTextField tf_eqvc_p;
+  private JTextField tf_eqvc_ls;
   
   String[] equipos = {"CV Sayre Mayser", "CV Barça", "CD Zaragoza", "CV Alcobendas", "CD Avila Voleibol", "CV Madrid Chamberí"};
 
@@ -119,6 +119,7 @@ public class VentanaClasificacion extends JFrame {
   private JSeparator separator_7;
   private JSeparator separator_8;
   private JSeparator separator_9;
+  private JLabel prueba;
   /**
 	 * Launch the application.
 	 */
@@ -288,11 +289,39 @@ public class VentanaClasificacion extends JFrame {
     separator_8 = new JSeparator();
     panel_3.add(separator_8);
     panel_3.add(btnSiguiente);
-
+    
+    
     panelGuardarDatos = new JPanel();
     PantallaJornadas.add(panelGuardarDatos, BorderLayout.SOUTH);
 
     btnGuardarDatos = new JButton("Guardar Datos");
+    btnGuardarDatos.addActionListener(new ActionListener() {
+    	public void actionPerformed(ActionEvent e) {
+    		//*************************************************
+    		// GUARDAMOS LOS DATOS DE LA JORNADA, Y ACTUALIZAMOS LA CLASIFICACION
+    		//*************************************************
+    		// 1. Obtencion de datos
+    		// 1.1 Obtencion de los nombres de los equipos 
+    		// ------------------------------------------- EJ: eql_a = equipo local "a", eqv_b -> equipo visitante "b"
+    		String eql_a = lblEquipoLocalA.getText();
+    		String eqv_a = lblEquipoVisitanteA.getText();
+    		String eql_b = lblEquipoLocalB.getText();
+    		String eqv_b = lblEquipoVisitanteB.getText();
+    		String eql_c = lblEquipoLocalC.getText();
+    		String eqv_c = lblEquipoVisitanteC.getText();
+    		
+    		// 1.2 Obtencion del Puntaje (falta modificarlo para que sea int parse int noseque)
+    		String eql_a_p = tf_eqla_p.getText();
+    		//int eqv_a_p = tf_eqva_p.getText();;
+    		//int eql_b_p = tf_eqlb_p.getText();
+    		//int eqv_b_p = tf_eqvb_p.getText();
+    		//int eql_c_p = tf_eqlc_p.getText();
+    		//int eqv_c_p = tf_eqvc_p.getText();
+    		// 2. Almacenamiento en el array de objetos
+    		
+    		// 3. Ordenamiento
+    	}
+    });
     panelGuardarDatos.add(btnGuardarDatos);
 
     panel_5 = new JPanel();
@@ -378,23 +407,23 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblEquipoLocalA.gridy = 2;
     panelPartido1.add(lblEquipoLocalA, gbc_lblEquipoLocalA);
     
-    textField = new JTextField();
-    textField.setColumns(3);
-    GridBagConstraints gbc_textField = new GridBagConstraints();
-    gbc_textField.anchor = GridBagConstraints.NORTHEAST;
-    gbc_textField.insets = new Insets(0, 0, 5, 5);
-    gbc_textField.gridx = 3;
-    gbc_textField.gridy = 2;
-    panelPartido1.add(textField, gbc_textField);
+    tf_eqla_p = new JTextField();
+    tf_eqla_p.setColumns(3);
+    GridBagConstraints gbc_tf_eqla_p = new GridBagConstraints();
+    gbc_tf_eqla_p.anchor = GridBagConstraints.NORTHEAST;
+    gbc_tf_eqla_p.insets = new Insets(0, 0, 5, 5);
+    gbc_tf_eqla_p.gridx = 3;
+    gbc_tf_eqla_p.gridy = 2;
+    panelPartido1.add(tf_eqla_p, gbc_tf_eqla_p);
     
-    textField_1 = new JTextField();
-    textField_1.setColumns(3);
-    GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-    gbc_textField_1.anchor = GridBagConstraints.NORTHWEST;
-    gbc_textField_1.insets = new Insets(0, 0, 5, 0);
-    gbc_textField_1.gridx = 5;
-    gbc_textField_1.gridy = 2;
-    panelPartido1.add(textField_1, gbc_textField_1);
+    tf_eqla_ls = new JTextField();
+    tf_eqla_ls.setColumns(3);
+    GridBagConstraints gbc_tf_eqla_ls = new GridBagConstraints();
+    gbc_tf_eqla_ls.anchor = GridBagConstraints.NORTHWEST;
+    gbc_tf_eqla_ls.insets = new Insets(0, 0, 5, 0);
+    gbc_tf_eqla_ls.gridx = 5;
+    gbc_tf_eqla_ls.gridy = 2;
+    panelPartido1.add(tf_eqla_ls, gbc_tf_eqla_ls);
     
     lblVisitanteB_1 = new JLabel("Visitante");
     lblVisitanteB_1.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -416,22 +445,22 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblEquipoVisitanteA.gridy = 3;
     panelPartido1.add(lblEquipoVisitanteA, gbc_lblEquipoVisitanteA);
     
-    textField_2 = new JTextField();
-    textField_2.setColumns(3);
-    GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-    gbc_textField_2.anchor = GridBagConstraints.NORTHEAST;
-    gbc_textField_2.insets = new Insets(0, 0, 0, 5);
-    gbc_textField_2.gridx = 3;
-    gbc_textField_2.gridy = 3;
-    panelPartido1.add(textField_2, gbc_textField_2);
+    tf_eqva_p = new JTextField();
+    tf_eqva_p.setColumns(3);
+    GridBagConstraints gbc_tf_eqva_p = new GridBagConstraints();
+    gbc_tf_eqva_p.anchor = GridBagConstraints.NORTHEAST;
+    gbc_tf_eqva_p.insets = new Insets(0, 0, 0, 5);
+    gbc_tf_eqva_p.gridx = 3;
+    gbc_tf_eqva_p.gridy = 3;
+    panelPartido1.add(tf_eqva_p, gbc_tf_eqva_p);
     
-    textField_3 = new JTextField();
-    textField_3.setColumns(3);
-    GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-    gbc_textField_3.anchor = GridBagConstraints.NORTHWEST;
-    gbc_textField_3.gridx = 5;
-    gbc_textField_3.gridy = 3;
-    panelPartido1.add(textField_3, gbc_textField_3);
+    tf_eqva_ls = new JTextField();
+    tf_eqva_ls.setColumns(3);
+    GridBagConstraints gbc_tf_eqva_ls = new GridBagConstraints();
+    gbc_tf_eqva_ls.anchor = GridBagConstraints.NORTHWEST;
+    gbc_tf_eqva_ls.gridx = 5;
+    gbc_tf_eqva_ls.gridy = 3;
+    panelPartido1.add(tf_eqva_ls, gbc_tf_eqva_ls);
 
     panel_6 = new JPanel();
     panel_5.add(panel_6);
@@ -512,23 +541,23 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblEquipoLocalB.gridy = 2;
     panelPartido2.add(lblEquipoLocalB, gbc_lblEquipoLocalB);
     
-    textField_20 = new JTextField();
-    textField_20.setColumns(3);
-    GridBagConstraints gbc_textField_20 = new GridBagConstraints();
-    gbc_textField_20.anchor = GridBagConstraints.NORTHEAST;
-    gbc_textField_20.insets = new Insets(0, 0, 5, 5);
-    gbc_textField_20.gridx = 3;
-    gbc_textField_20.gridy = 2;
-    panelPartido2.add(textField_20, gbc_textField_20);
+    tf_eqlb_p = new JTextField();
+    tf_eqlb_p.setColumns(3);
+    GridBagConstraints gbc_tf_eqlb_p = new GridBagConstraints();
+    gbc_tf_eqlb_p.anchor = GridBagConstraints.NORTHEAST;
+    gbc_tf_eqlb_p.insets = new Insets(0, 0, 5, 5);
+    gbc_tf_eqlb_p.gridx = 3;
+    gbc_tf_eqlb_p.gridy = 2;
+    panelPartido2.add(tf_eqlb_p, gbc_tf_eqlb_p);
     
-    textField_21 = new JTextField();
-    textField_21.setColumns(3);
-    GridBagConstraints gbc_textField_21 = new GridBagConstraints();
-    gbc_textField_21.anchor = GridBagConstraints.NORTHWEST;
-    gbc_textField_21.insets = new Insets(0, 0, 5, 0);
-    gbc_textField_21.gridx = 5;
-    gbc_textField_21.gridy = 2;
-    panelPartido2.add(textField_21, gbc_textField_21);
+    tf_eqlb_ls = new JTextField();
+    tf_eqlb_ls.setColumns(3);
+    GridBagConstraints gbc_tf_eqlb_ls = new GridBagConstraints();
+    gbc_tf_eqlb_ls.anchor = GridBagConstraints.NORTHWEST;
+    gbc_tf_eqlb_ls.insets = new Insets(0, 0, 5, 0);
+    gbc_tf_eqlb_ls.gridx = 5;
+    gbc_tf_eqlb_ls.gridy = 2;
+    panelPartido2.add(tf_eqlb_ls, gbc_tf_eqlb_ls);
     
     lblVisitanteB = new JLabel("Visitante");
     lblVisitanteB.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -550,22 +579,22 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblEquipoVisitanteB.gridy = 3;
     panelPartido2.add(lblEquipoVisitanteB, gbc_lblEquipoVisitanteB);
     
-    textField_25 = new JTextField();
-    textField_25.setColumns(3);
-    GridBagConstraints gbc_textField_25 = new GridBagConstraints();
-    gbc_textField_25.anchor = GridBagConstraints.NORTHEAST;
-    gbc_textField_25.insets = new Insets(0, 0, 0, 5);
-    gbc_textField_25.gridx = 3;
-    gbc_textField_25.gridy = 3;
-    panelPartido2.add(textField_25, gbc_textField_25);
+    tf_eqvb_p = new JTextField();
+    tf_eqvb_p.setColumns(3);
+    GridBagConstraints gbc_tf_eqvb_p = new GridBagConstraints();
+    gbc_tf_eqvb_p.anchor = GridBagConstraints.NORTHEAST;
+    gbc_tf_eqvb_p.insets = new Insets(0, 0, 0, 5);
+    gbc_tf_eqvb_p.gridx = 3;
+    gbc_tf_eqvb_p.gridy = 3;
+    panelPartido2.add(tf_eqvb_p, gbc_tf_eqvb_p);
     
-    textField_26 = new JTextField();
-    textField_26.setColumns(3);
-    GridBagConstraints gbc_textField_26 = new GridBagConstraints();
-    gbc_textField_26.anchor = GridBagConstraints.NORTHWEST;
-    gbc_textField_26.gridx = 5;
-    gbc_textField_26.gridy = 3;
-    panelPartido2.add(textField_26, gbc_textField_26);
+    tf_eqvb_ls = new JTextField();
+    tf_eqvb_ls.setColumns(3);
+    GridBagConstraints gbc_tf_eqvb_ls = new GridBagConstraints();
+    gbc_tf_eqvb_ls.anchor = GridBagConstraints.NORTHWEST;
+    gbc_tf_eqvb_ls.gridx = 5;
+    gbc_tf_eqvb_ls.gridy = 3;
+    panelPartido2.add(tf_eqvb_ls, gbc_tf_eqvb_ls);
 
     panel_7 = new JPanel();
     panel_5.add(panel_7);
@@ -646,23 +675,23 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblEquipoLocalC.gridy = 2;
     panelPartido3.add(lblEquipoLocalC, gbc_lblEquipoLocalC);
     
-    textField_4 = new JTextField();
-    textField_4.setColumns(3);
-    GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-    gbc_textField_4.anchor = GridBagConstraints.NORTHEAST;
-    gbc_textField_4.insets = new Insets(0, 0, 5, 5);
-    gbc_textField_4.gridx = 3;
-    gbc_textField_4.gridy = 2;
-    panelPartido3.add(textField_4, gbc_textField_4);
+    tf_eqlc_p = new JTextField();
+    tf_eqlc_p.setColumns(3);
+    GridBagConstraints gbc_tf_eqlc_p = new GridBagConstraints();
+    gbc_tf_eqlc_p.anchor = GridBagConstraints.NORTHEAST;
+    gbc_tf_eqlc_p.insets = new Insets(0, 0, 5, 5);
+    gbc_tf_eqlc_p.gridx = 3;
+    gbc_tf_eqlc_p.gridy = 2;
+    panelPartido3.add(tf_eqlc_p, gbc_tf_eqlc_p);
     
-    textField_5 = new JTextField();
-    textField_5.setColumns(3);
-    GridBagConstraints gbc_textField_5 = new GridBagConstraints();
-    gbc_textField_5.anchor = GridBagConstraints.NORTHWEST;
-    gbc_textField_5.insets = new Insets(0, 0, 5, 0);
-    gbc_textField_5.gridx = 5;
-    gbc_textField_5.gridy = 2;
-    panelPartido3.add(textField_5, gbc_textField_5);
+    tf_eqlc_c = new JTextField();
+    tf_eqlc_c.setColumns(3);
+    GridBagConstraints gbc_tf_eqlc_c = new GridBagConstraints();
+    gbc_tf_eqlc_c.anchor = GridBagConstraints.NORTHWEST;
+    gbc_tf_eqlc_c.insets = new Insets(0, 0, 5, 0);
+    gbc_tf_eqlc_c.gridx = 5;
+    gbc_tf_eqlc_c.gridy = 2;
+    panelPartido3.add(tf_eqlc_c, gbc_tf_eqlc_c);
     
     lblVisitanteB_2 = new JLabel("Visitante");
     lblVisitanteB_2.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -684,22 +713,23 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblEquipoVisitanteC.gridy = 3;
     panelPartido3.add(lblEquipoVisitanteC, gbc_lblEquipoVisitanteC);
     
-    textField_6 = new JTextField();
-    textField_6.setColumns(3);
-    GridBagConstraints gbc_textField_6 = new GridBagConstraints();
-    gbc_textField_6.anchor = GridBagConstraints.NORTHEAST;
-    gbc_textField_6.insets = new Insets(0, 0, 0, 5);
-    gbc_textField_6.gridx = 3;
-    gbc_textField_6.gridy = 3;
-    panelPartido3.add(textField_6, gbc_textField_6);
+    tf_eqvc_p = new JTextField();
+    tf_eqvc_p.setColumns(3);
+    GridBagConstraints gbc_tf_eqvc_p = new GridBagConstraints();
+    gbc_tf_eqvc_p.fill = GridBagConstraints.HORIZONTAL;
+    gbc_tf_eqvc_p.anchor = GridBagConstraints.NORTH;
+    gbc_tf_eqvc_p.insets = new Insets(0, 0, 0, 5);
+    gbc_tf_eqvc_p.gridx = 3;
+    gbc_tf_eqvc_p.gridy = 3;
+    panelPartido3.add(tf_eqvc_p, gbc_tf_eqvc_p);
     
-    textField_7 = new JTextField();
-    textField_7.setColumns(3);
-    GridBagConstraints gbc_textField_7 = new GridBagConstraints();
-    gbc_textField_7.anchor = GridBagConstraints.NORTHWEST;
-    gbc_textField_7.gridx = 5;
-    gbc_textField_7.gridy = 3;
-    panelPartido3.add(textField_7, gbc_textField_7);
+    tf_eqvc_ls = new JTextField();
+    tf_eqvc_ls.setColumns(3);
+    GridBagConstraints gbc_tf_eqvc_ls = new GridBagConstraints();
+    gbc_tf_eqvc_ls.anchor = GridBagConstraints.NORTHWEST;
+    gbc_tf_eqvc_ls.gridx = 5;
+    gbc_tf_eqvc_ls.gridy = 3;
+    panelPartido3.add(tf_eqvc_ls, gbc_tf_eqvc_ls);
 
     PantallaClasificacion = new JPanel();
     contentPane.add(PantallaClasificacion);
