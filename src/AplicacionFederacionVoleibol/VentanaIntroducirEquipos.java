@@ -142,21 +142,52 @@ public class VentanaIntroducirEquipos extends JFrame {
 				        txtEquipoNombre1, txtEquipoNombre2, txtEquipoNombre3,
 				        txtEquipoNombre4, txtEquipoNombre5, txtEquipoNombre6
 				    };
+				
+				//Crear los objetos de 6 EQUIPOS MANUALMENTE
 
+		        EQUIPOS equipo1 = new EQUIPOS(); // Crear objeto del equipo1 y agregarlo a la lista
+		        equipo1.setNombreEquipo("CV Sayre Mayser");
+		        equipo1.setId_equipo(0);
+		        listEquipos.add(equipo1);
+		        EQUIPOS equipo2 = new EQUIPOS();
+		        equipo2.setNombreEquipo("CV Zaragoza");
+		        equipo2.setId_equipo(1);
+		        listEquipos.add(equipo2);
+		        EQUIPOS equipo3 = new EQUIPOS();
+		        equipo3.setNombreEquipo("CV Barça");
+		        equipo3.setId_equipo(2);
+		        listEquipos.add(equipo3);
+		        EQUIPOS equipo4 = new EQUIPOS();
+		        equipo4.setNombreEquipo("CV Alcobendas");
+		        equipo4.setId_equipo(3);
+		        listEquipos.add(equipo4);
+		        EQUIPOS equipo5 = new EQUIPOS();
+		        equipo5.setNombreEquipo("CD Avila Voleibol");
+		        equipo5.setId_equipo(4);
+		        listEquipos.add(equipo5);
+		        EQUIPOS equipo6 = new EQUIPOS();
+		        equipo6.setNombreEquipo("CV Madrid Chamberí");
+		        equipo6.setId_equipo(5);
+		        listEquipos.add(equipo6);
+				
+				/*//Crea los objetos de EQUIPOS para asignarles los nombres
 				 for (JTextField posiciondelArreglo : ArreglodeVariablestextFields) {
 				        EQUIPOS equipo = new EQUIPOS(); // Nueva instancia en cada iteración
 				        equipo.setNombreEquipo(posiciondelArreglo.getText());
 				        listEquipos.add(equipo);
 				        
-				    }
+				    }*/
+		        
 				 // Imprimir la longitud de la lista
 				 int totalEquipos = listEquipos.size();
 				 System.out.println("Total de equipos en la lista: " + totalEquipos);
 				 // Imprimir los nombres de los equipos
 				 for (int i = 0; i < listEquipos.size(); i++) {
 					    EQUIPOS equipo = listEquipos.get(i);
-					    System.out.println("Índice: " + i + ", Nombre del equipo: " + equipo.getNombreEquipo());
-					}
+					    System.out.println("ID= " + equipo.getid_equipo() + ", Nombre del equipo: " + equipo.getNombreEquipo());
+					    
+				 }
+				 System.out.println(listEquipos.size());
 //				 // Imprimir los nombres de los equipos
 //				for (EQUIPOS ordenEquipos : listEquipos) {
 //					System.out.println(ordenEquipos.getNombreEquipo());
@@ -165,7 +196,6 @@ public class VentanaIntroducirEquipos extends JFrame {
 		});
 		Botom_guardar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		Footer.add(Botom_guardar);
-		
 		Equipo = new JPanel();
 		contentPane.add(Equipo, BorderLayout.CENTER);
 		Equipo.setLayout(new GridLayout(0, 1, 0, 0));
