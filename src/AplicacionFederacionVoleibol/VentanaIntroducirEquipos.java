@@ -68,6 +68,7 @@ public class VentanaIntroducirEquipos extends JFrame {
 	private JLabel lblNombreEquipo1;
     String tipoUsuario = AlgoritmoLogin.getTipodeUsuario();
 	List <EQUIPOS> listEquipos = new ArrayList <>();
+	private JLabel lblNombreEquipo2;
 
 	/**
 	 * Launch the application.
@@ -139,28 +140,22 @@ public class VentanaIntroducirEquipos extends JFrame {
 		Footer.add(Botom_guardar);
 		
 		EQUIPOS equipo1 = new EQUIPOS(); // Crear objeto del equipo1 y agregarlo a la lista
-        equipo1.setNombreEquipo("CV Sayre Mayser");
-        equipo1.setId_equipo(0);
+        equipo1.CrearEquipo(0, "CV Sayre Mayser");
         listEquipos.add(equipo1);
         EQUIPOS equipo2 = new EQUIPOS();
-        equipo2.setNombreEquipo("CV Zaragoza");
-        equipo2.setId_equipo(1);
+		equipo2.CrearEquipo(1, "CV Zaragoza");
         listEquipos.add(equipo2);
         EQUIPOS equipo3 = new EQUIPOS();
-        equipo3.setNombreEquipo("CV Barça");
-        equipo3.setId_equipo(2);
+		equipo3.CrearEquipo(2, "CV Barça");
         listEquipos.add(equipo3);
-        EQUIPOS equipo4 = new EQUIPOS();
-        equipo4.setNombreEquipo("CV Alcobendas");
-        equipo4.setId_equipo(3);
+	    EQUIPOS equipo4 = new EQUIPOS();
+	    equipo4.CrearEquipo(3, "CV Alcobendas");
         listEquipos.add(equipo4);
         EQUIPOS equipo5 = new EQUIPOS();
-        equipo5.setNombreEquipo("CD Avila Voleibol");
-        equipo5.setId_equipo(4);
+        equipo5.CrearEquipo(4, "CD Avila Voleibol");
         listEquipos.add(equipo5);
         EQUIPOS equipo6 = new EQUIPOS();
-        equipo6.setNombreEquipo("CV Madrid Chamberí");
-        equipo6.setId_equipo(5);
+        equipo6.CrearEquipo(5, "CV Madrid Chamberí");
         listEquipos.add(equipo6);
 		Botom_guardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -248,10 +243,12 @@ public class VentanaIntroducirEquipos extends JFrame {
 			Equipo_1.add(txtEquipoNombre1);
 
 		}
-
-		lblNombreEquipo1 = new JLabel(listEquipos.get(1).getNombreEquipo());
-		lblNombreEquipo1.setHorizontalAlignment(SwingConstants.CENTER);
-		Equipo_1.add(lblNombreEquipo1);
+		else {
+			lblNombreEquipo1 = new JLabel(listEquipos.get(0).getNombreEquipo());
+			lblNombreEquipo1.setHorizontalAlignment(SwingConstants.CENTER);
+			Equipo_1.add(lblNombreEquipo1);
+			
+		}
 		
 		//---------- FILA EQUIPO 2 ----------//
 		Equipo_2 = new JPanel();
@@ -286,10 +283,15 @@ public class VentanaIntroducirEquipos extends JFrame {
 		txtEquipoNombre2.setText("Introduce el nombre");
 		txtEquipoNombre2.setHorizontalAlignment(SwingConstants.CENTER);
 		txtEquipoNombre2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		Equipo_2.add(txtEquipoNombre2);
 		txtEquipoNombre2.setColumns(10);
-		
-		
+		if (tipoUsuario.equals("Desarrollador")) {
+			//Equipo_2.add(txtEquipoNombre2);
+		}
+		else {
+			lblNombreEquipo2 = new JLabel(listEquipos.get(1).getNombreEquipo());
+			Equipo_2.add(lblNombreEquipo2);
+			
+		}
 		//---------- FILA EQUIPO 3 ----------//
 		
 		Equipo_3 = new JPanel();

@@ -202,16 +202,19 @@ class PARTIDO{
 	 private String Entrenador = "";
 	 private int Puntaje =0;
 	 
+
+	//-------- Metodo Constructor --------// 
+	 
+	 public void CrearEquipo(int id, String nombre) {
+		 
+		 this.id_equipo = id;
+		 this.NombreEquipo = nombre;
+	 }
+	
 	 
 	//--------Metodo de Guardar--------// 
-	 
-	public String NombreEquipoVisitante = "Barcelona";
-
-	public void setEquipo(String nombre) {
-			NombreEquipoVisitante = nombre;
-			
 	
-	}
+	
 	public void setId_equipo(int ID_equipo) {
 		this.id_equipo = ID_equipo;
 	}
@@ -240,10 +243,6 @@ class PARTIDO{
 		 return Puntaje;
 	 }
 	
-	 public void MostrarEquipo() {
-		 System.out.println(NombreEquipoVisitante);
-	 }
-
 }
  
  class ARBITROS{
