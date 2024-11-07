@@ -69,6 +69,10 @@ public class VentanaIntroducirEquipos extends JFrame {
     String tipoUsuario = AlgoritmoLogin.getTipodeUsuario();
 	List <EQUIPOS> listEquipos = new ArrayList <>();
 	private JLabel lblNombreEquipo2;
+	private JLabel lblNombreEquipo3;
+	private JLabel lblNombreEquipo4;
+	private JLabel lblNombreEquipo5;
+	private JLabel lblNombreEquipo6;
 
 	/**
 	 * Launch the application.
@@ -131,14 +135,16 @@ public class VentanaIntroducirEquipos extends JFrame {
 		Equipos.setHorizontalAlignment(SwingConstants.CENTER);
 		header.add(Equipos);
 		
-		Footer = new JPanel();
+		Footer = new JPanel(); 
 		contentPane.add(Footer, BorderLayout.SOUTH);
 		Footer.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		 
 		
 		Botom_guardar = new JButton("Guardar");
 		Botom_guardar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		if (tipoUsuario.equals("Desarrollador")) {
 		Footer.add(Botom_guardar);
-		
+		} 
 		EQUIPOS equipo1 = new EQUIPOS(); // Crear objeto del equipo1 y agregarlo a la lista
         equipo1.CrearEquipo(0, "CV Sayre Mayser");
         listEquipos.add(equipo1);
@@ -246,6 +252,10 @@ public class VentanaIntroducirEquipos extends JFrame {
 		else {
 			lblNombreEquipo1 = new JLabel(listEquipos.get(0).getNombreEquipo());
 			lblNombreEquipo1.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNombreEquipo1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			lblNombreEquipo1.setBorder(new LineBorder(new Color(0, 0, 0)));
+			lblNombreEquipo1.setOpaque(true); 
+			lblNombreEquipo1.setBackground(Color.WHITE); 
 			Equipo_1.add(lblNombreEquipo1);
 			
 		}
@@ -270,7 +280,7 @@ public class VentanaIntroducirEquipos extends JFrame {
 		txtEquipoNombre2 = new JTextField();
 		txtEquipoNombre2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String NombreEquipo2 = txtEquipoNombre1.getText();
+				String NombreEquipo2 = txtEquipoNombre2.getText();
 				System.out.println(NombreEquipo2);		
 			}
 		});
@@ -285,10 +295,15 @@ public class VentanaIntroducirEquipos extends JFrame {
 		txtEquipoNombre2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtEquipoNombre2.setColumns(10);
 		if (tipoUsuario.equals("Desarrollador")) {
-			//Equipo_2.add(txtEquipoNombre2);
+			Equipo_2.add(txtEquipoNombre2);
 		}
 		else {
 			lblNombreEquipo2 = new JLabel(listEquipos.get(1).getNombreEquipo());
+			lblNombreEquipo2.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNombreEquipo2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			lblNombreEquipo2.setBorder(new LineBorder(new Color(0, 0, 0)));
+			lblNombreEquipo2.setOpaque(true); 
+			lblNombreEquipo2.setBackground(Color.WHITE); 
 			Equipo_2.add(lblNombreEquipo2);
 			
 		}
@@ -304,13 +319,19 @@ public class VentanaIntroducirEquipos extends JFrame {
 		TituloEquipo_3.setBackground(new Color(222, 222, 222));
 		Equipo_3.add(TituloEquipo_3);
 		TituloEquipo_3.setLayout(new GridLayout(0, 1, 0, 0));
-		
+		 
 		lblEquipo_3 = new JLabel("Equipo3");
 		lblEquipo_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEquipo_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		TituloEquipo_3.add(lblEquipo_3);
 		
 		txtEquipoNombre3 = new JTextField();
+		txtEquipoNombre3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String NombreEquipo3 = txtEquipoNombre3.getText();
+				System.out.println(NombreEquipo3);		
+			}
+		});
 		txtEquipoNombre3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -320,8 +341,22 @@ public class VentanaIntroducirEquipos extends JFrame {
 		txtEquipoNombre3.setText("Introduce el nombre");
 		txtEquipoNombre3.setHorizontalAlignment(SwingConstants.CENTER);
 		txtEquipoNombre3.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		Equipo_3.add(txtEquipoNombre3);
 		txtEquipoNombre3.setColumns(10);
+		
+		if (tipoUsuario.equals("Desarrollador")) {
+			Equipo_3.add(txtEquipoNombre3);
+		} 
+		else {
+			lblNombreEquipo3 = new JLabel(listEquipos.get(2).getNombreEquipo());
+			lblNombreEquipo3.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNombreEquipo3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			lblNombreEquipo3.setBorder(new LineBorder(new Color(0, 0, 0)));
+			lblNombreEquipo3.setOpaque(true); 
+			lblNombreEquipo3.setBackground(Color.WHITE); 
+			Equipo_3.add(lblNombreEquipo3);
+			
+		}
+		 
 		
 		
 		//---------- FILA EQUIPO 4 ----------//
@@ -343,6 +378,12 @@ public class VentanaIntroducirEquipos extends JFrame {
 		TituloEquipo_4.add(lblEquipo4);
 		
 		txtEquipoNombre4 = new JTextField();
+		txtEquipoNombre4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String NombreEquipo4 = txtEquipoNombre4.getText();
+				System.out.println(NombreEquipo4); 		
+			}
+		});
 		txtEquipoNombre4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -352,8 +393,22 @@ public class VentanaIntroducirEquipos extends JFrame {
 		txtEquipoNombre4.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtEquipoNombre4.setText("Introduce el nombre");
 		txtEquipoNombre4.setHorizontalAlignment(SwingConstants.CENTER);
-		Equipo_4.add(txtEquipoNombre4);
 		txtEquipoNombre4.setColumns(10);
+		
+		if (tipoUsuario.equals("Desarrollador")) {
+			Equipo_4.add(txtEquipoNombre4);
+		} 
+		else {
+			lblNombreEquipo4 = new JLabel(listEquipos.get(3).getNombreEquipo());
+			lblNombreEquipo4.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNombreEquipo4.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			lblNombreEquipo4.setBorder(new LineBorder(new Color(0, 0, 0)));
+			lblNombreEquipo4.setOpaque(true); 
+			lblNombreEquipo4.setBackground(Color.WHITE); 
+			Equipo_4.add(lblNombreEquipo4);
+			
+		}
+		
 		
 		
 		//---------- FILA EQUIPO 5 ----------//
@@ -376,6 +431,12 @@ public class VentanaIntroducirEquipos extends JFrame {
 		TituloEquipo_5.add(lblEquipo_5);
 		
 		txtEquipoNombre5 = new JTextField();
+		txtEquipoNombre5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String NombreEquipo5 = txtEquipoNombre5.getText();
+				System.out.println(NombreEquipo5); 		
+			}
+		});
 		txtEquipoNombre5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -385,9 +446,20 @@ public class VentanaIntroducirEquipos extends JFrame {
 		txtEquipoNombre5.setText("Introduce el nombre ");
 		txtEquipoNombre5.setHorizontalAlignment(SwingConstants.CENTER);
 		txtEquipoNombre5.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		Equipo_5.add(txtEquipoNombre5);
 		txtEquipoNombre5.setColumns(10);
-		
+		if (tipoUsuario.equals("Desarrollador")) {
+			Equipo_5.add(txtEquipoNombre5);
+		} 
+		else {
+			lblNombreEquipo5 = new JLabel(listEquipos.get(4).getNombreEquipo());
+			lblNombreEquipo5.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNombreEquipo5.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			lblNombreEquipo5.setBorder(new LineBorder(new Color(0, 0, 0)));
+			lblNombreEquipo5.setOpaque(true); 
+			lblNombreEquipo5.setBackground(Color.WHITE); 
+			Equipo_5.add(lblNombreEquipo5);
+			
+		}
 		
 		//---------- FILA EQUIPO 6 ----------//
 		
@@ -408,7 +480,15 @@ public class VentanaIntroducirEquipos extends JFrame {
 		lblEquipo_6.setBackground(new Color(128, 255, 128));
 		TituloEquipo_6.add(lblEquipo_6);
 		
+		
+		
 		txtEquipoNombre6 = new JTextField();
+		txtEquipoNombre6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String NombreEquipo6 = txtEquipoNombre6.getText();
+				System.out.println(NombreEquipo6); 		
+			}
+		});
 		txtEquipoNombre6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -418,8 +498,20 @@ public class VentanaIntroducirEquipos extends JFrame {
 		txtEquipoNombre6.setText("Introduce el nombre");
 		txtEquipoNombre6.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtEquipoNombre6.setHorizontalAlignment(SwingConstants.CENTER);
-		Equipo_6.add(txtEquipoNombre6);
 		txtEquipoNombre6.setColumns(10);
+		if (tipoUsuario.equals("Desarrollador")) {
+			Equipo_6.add(txtEquipoNombre6);
+		} 
+		else {
+			lblNombreEquipo6 = new JLabel(listEquipos.get(5).getNombreEquipo());
+			lblNombreEquipo6.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNombreEquipo6.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			lblNombreEquipo6.setBorder(new LineBorder(new Color(0, 0, 0)));
+			lblNombreEquipo6.setOpaque(true); 
+			lblNombreEquipo6.setBackground(Color.WHITE); 
+			Equipo_6.add(lblNombreEquipo6);
+			
+		}
 		
 		//---------- Fila de Margen IZQUIERDO Y DERECHO ----------//
 		
