@@ -1,3 +1,4 @@
+
 package AplicacionFederacionVoleibol;
 
 public class AlgoritmoLogin {
@@ -40,48 +41,208 @@ public class AlgoritmoLogin {
 	public static String getTipodeUsuario() {
 		return TipodeUsuario;
 	}
-	
-	
 }
+	 
+class TEMPORADAS{
+
+	//--------Metodo de Guardar--------// 
+	private static int id_temporada =0;
+	private static int fecha_inicio =0;
+	private static int fecha_final =0;
+	private static int CantidadEquipos =6;
+	private static int NumeroJornadas =10;
+	private static int CantidadPartidosPorJornada =3;
+	
+		 
+	//--------Metodo de Guardar--------// 
+
+	public static void GuardarTemporada() {
+			 
+	}
+		 
+	//--------Metodo de Mostrar--------//
+		 
+	public static int getid_temporada() {
+		return id_temporada;
+	}
+		 
+	public static int getCantidadEquipos() {
+	return CantidadEquipos;
+			 
+	}
+		 
+	public static int getNumeroJornadas() {
+	return NumeroJornadas;
+			 
+	}
+		 
+	public static int getCantidadPartidosPorJornada() {
+	return CantidadPartidosPorJornada;
+	}
+		
+	public static void MostrarTemporada() {
+			 
+	}	
+		 
+		 
+}
+	 
+	
+	 class JORNADAS{
+
+			//----Definición de Variables---//
+			 private int id_jornada =0;
+			 private int fecha_inicio =0;
+			 private int fecha_final =0;
+			 
+			 
+			//--------Metodo de Guardar--------// 
+			 
+			 public void GuardarJornada() {
+				 
+			 }
+			 
+			//--------Metodo de Mostrar--------//
+			 
+			 public int getid_jornada() {
+				 return id_jornada;
+			 }
+			 
+			 public int getfecha_inicio() {
+				 return fecha_inicio;
+			 }
+			 
+			 public int getfecha_final() {
+				 return fecha_final;
+			 }
+			 
+			 public void MostrarJornada() {
+				 
+			 }
+			 
+		 }	
+	
+
+
+
+
+class PARTIDO{
+
+	//----Definición de Variables---//
+
+	 private int id_partido =0;
+	 private int Fecha =0;
+	 private boolean estado =false;
+	 private String NombreEstadio = "";
+	 
+	 private int SetsGanadosEquipoLocal =0;
+	 private int PuntajeUltimoSetLocal =0;
+	 private int SetsGanadosEquipoVisitante =0;
+	 private int PuntajeUltimoSetVisitante =0;
+	 private String NombreEquipoLocal = "";
+	 private String NombreEquipoVisitante = "";
+	 
+	 //-------Constructor--------//
+//	 public ENFRENTAMIENTO(String NombreEquipoLocal) {
+//		this.NombreEquipoLocal = NombreEquipoLocal; 
+//	 }
+//	 
+	//--------Metodo de Guardar--------// 
+	 
+
+	public int getId_partido() {
+		return id_partido;
+	}
+	
+	public void setId_partido(int id_partido) {
+		this.id_partido = id_partido;
+	}
+	 
+	 public void GuardarEnfrentamiento() {
+		 
+	 }
+	public void GuardarNombreEquipoLocal(String NombreEquipoLocal) {
+		 this.NombreEquipoLocal = NombreEquipoLocal;
+	 }
+	//--------Metodo de Mostrar--------//
+	 
+	 public int getSetsGanadosEquipoLocal() {
+			return SetsGanadosEquipoLocal;
+	 }
+	 
+	 public int getSetsGanadosEquipoVisitante() {
+			return SetsGanadosEquipoVisitante;
+	 }
+	 
+	 public int getPuntajeUltimoSetLocal() {
+			return PuntajeUltimoSetLocal;
+	 }
+	 
+	 public int getPuntajeUltimoSetVisitante() {
+			return PuntajeUltimoSetVisitante;
+	 }
+	 
+	 public int getFecha() {
+			return Fecha;
+	 }
+	 
+	 public static void MostrarEnfrentamiento() {
+		 
+	 }	
+}
+
+
+
+
  class EQUIPOS{
 
 	//----Definición de Variables---//
-	 private static int id_equipo =0;
-	 private static String NombreEquipo = "";
-	 private static String Entrenador = "";
-	 private static int Puntaje =0;
+	 private int id_equipo =0;
+	 private String NombreEquipo = "";
+	 private String Entrenador = "";
+	 private int Puntaje =0;
 	 
+
+	//-------- Metodo Constructor --------// 
+	 
+	 public void CrearEquipo(int id, String nombre) {
+		 
+		 this.id_equipo = id;
+		 this.NombreEquipo = nombre;
+	 }
+	
 	 
 	//--------Metodo de Guardar--------// 
-	 
-	public static String NombreEquipoVisitante = "Barcelona";
+	
+	
+	public void setId_equipo(int ID_equipo) {
+		this.id_equipo = ID_equipo;
+	}
 
-	public static void GuardarEquipo(String nombre) {
-			NombreEquipoVisitante = nombre;
+	public void setNombreEquipo(String nombreEquipo) {
+		this.NombreEquipo = nombreEquipo;
 	}
 	 
 	//--------Metodo de Mostrar--------//
 	 
-	public static int getid_equipo() {
+	
+
+	public int getid_equipo() {
 		 return id_equipo;
 	 }
 	
-	public static String getNombreEquipo() {
+	public String getNombreEquipo() {
 		 return NombreEquipo;
 	 }
 	
-	public static String getEntrenador() {
+	public String getEntrenador() {
 		 return Entrenador;
 	 }
 	
-	public static int getPuntaje() {
+	public int getPuntaje() {
 		 return Puntaje;
 	 }
 	
-	 public static void MostrarEquipo() {
-		 System.out.println(NombreEquipoVisitante);
-	 }
-
 }
  
  class ARBITROS{
@@ -173,74 +334,8 @@ public class AlgoritmoLogin {
 	 
  }
  
- class JORNADAS{
 
-	//----Definición de Variables---//
-	 private static int id_jornada =0;
-	 private static int fecha_inicio =0;
-	 private static int fecha_final =0;
-	 
-	 
-	//--------Metodo de Guardar--------// 
-	 
-	 public static void GuardarJornada() {
-		 
-	 }
-	 
-	//--------Metodo de Mostrar--------//
-	 
-	 public static int getid_jornada() {
-		 return id_jornada;
-	 }
-	 
-	 public static int getfecha_inicio() {
-		 return fecha_inicio;
-	 }
-	 
-	 public static int getfecha_final() {
-		 return fecha_final;
-	 }
-	 
-	 public static void MostrarJornada() {
-		 
-	 }
-	 
- }
- 
- class PARTIDOS{
 
-	//----Definición de Variables---//
-	 private static int id_partido =0;
-	 private static boolean estado =false;
-	 private static String NombreEstadio = "";
-	 
-	 
-	//--------Metodo de Guardar--------// 
-	 
-	 public static void GuardarPartido() {
-		 
-	 }
-	 
-	//--------Metodo de Mostrar--------//
-	 
-	 public static int getid_partido() {
-		 return id_partido;
-	 }
-	 
-	 public static boolean getestado() {
-		 return estado;
-	 }
-	 
-	 public static String getNombreEstadio() {
-		 return NombreEstadio;
-	 }
-	 
-	 public static void MostrarPartido() {
-		 
-	 }
-	 
- }
- 
  class CLUBES{
 
 	//----Definición de Variables---//
@@ -288,93 +383,6 @@ public class AlgoritmoLogin {
 		 
  }
 
- 
- class TEMPORADAS{
 
-	//--------Metodo de Guardar--------// 
-	 private static int id_temporada =0;
-	 private static int fecha_inicio =0;
-	 private static int fecha_final =0;
-	 private static int CantidadEquipos =6;
-	 private static int NumeroJornadas =10;
-	 private static int CantidadPartidosPorJornada =3;
-	 
-	 
-	//--------Metodo de Guardar--------// 
-
-	 public static void GuardarTemporada() {
-		 
-	 }
-	 
-	//--------Metodo de Mostrar--------//
-	 
-	 public static int getid_temporada() {
-		 return id_temporada;
-	 }
-	 
-	 public static int getCantidadEquipos() {
-		return CantidadEquipos;
-		 
-	 }
-	 
-	 public static int getNumeroJornadas() {
-		return NumeroJornadas;
-		 
-	 }
-	 
-	 public static int getCantidadPartidosPorJornada() {
-		return CantidadPartidosPorJornada;
-	 }
-	
-	 public static void MostrarTemporada() {
-		 
-	 }	
-	 
-	 
- }
- 
- class ENFRENTAMIENTO{
-
-	//----Definición de Variables---//
-	 private static int SetGanadosEquipoLocal =0;
-	 private static int SetsGanadosEquipoVisitante =0;
-	 private static int PuntajeUltimoSetLocal =0;
-	 private static int PuntajeUltimoSetVisitante =0;
-	 private static int Fecha =0;
-	 
-	 
-	//--------Metodo de Guardar--------// 
-	 
-	 public static void GuardarEnfrentamiento() {
-		 
-	 }
-	 
-	//--------Metodo de Mostrar--------//
-	 
-	 public static int getSetGanadosEquipoLocal() {
-			return SetGanadosEquipoLocal;
-	 }
-	 
-	 public static int getSetsGanadosEquipoVisitante() {
-			return SetsGanadosEquipoVisitante;
-	 }
-	 
-	 public static int getPuntajeUltimoSetLocal() {
-			return PuntajeUltimoSetLocal;
-	 }
-	 
-	 public static int getPuntajeUltimoSetVisitante() {
-			return PuntajeUltimoSetVisitante;
-	 }
-	 
-	 public static int getFecha() {
-			return Fecha;
-	 }
-	 
-	 public static void MostrarEnfrentamiento() {
-		 
-	 }	
- }
- 
  
  
