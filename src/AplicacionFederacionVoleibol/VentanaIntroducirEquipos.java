@@ -65,7 +65,9 @@ public class VentanaIntroducirEquipos extends JFrame {
 	private JLabel lblEquipo_5;
 	private JPanel TituloEquipo_6;
 	private JLabel lblEquipo_6;
-	
+	private JLabel lblNombreEquipo1;
+    String tipoUsuario = AlgoritmoLogin.getTipodeUsuario();
+	List <EQUIPOS> listEquipos = new ArrayList <>();
 
 	/**
 	 * Launch the application.
@@ -133,11 +135,37 @@ public class VentanaIntroducirEquipos extends JFrame {
 		Footer.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		Botom_guardar = new JButton("Guardar");
+		Botom_guardar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		Footer.add(Botom_guardar);
+		
+		EQUIPOS equipo1 = new EQUIPOS(); // Crear objeto del equipo1 y agregarlo a la lista
+        equipo1.setNombreEquipo("CV Sayre Mayser");
+        equipo1.setId_equipo(0);
+        listEquipos.add(equipo1);
+        EQUIPOS equipo2 = new EQUIPOS();
+        equipo2.setNombreEquipo("CV Zaragoza");
+        equipo2.setId_equipo(1);
+        listEquipos.add(equipo2);
+        EQUIPOS equipo3 = new EQUIPOS();
+        equipo3.setNombreEquipo("CV Barça");
+        equipo3.setId_equipo(2);
+        listEquipos.add(equipo3);
+        EQUIPOS equipo4 = new EQUIPOS();
+        equipo4.setNombreEquipo("CV Alcobendas");
+        equipo4.setId_equipo(3);
+        listEquipos.add(equipo4);
+        EQUIPOS equipo5 = new EQUIPOS();
+        equipo5.setNombreEquipo("CD Avila Voleibol");
+        equipo5.setId_equipo(4);
+        listEquipos.add(equipo5);
+        EQUIPOS equipo6 = new EQUIPOS();
+        equipo6.setNombreEquipo("CV Madrid Chamberí");
+        equipo6.setId_equipo(5);
+        listEquipos.add(equipo6);
 		Botom_guardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 //				String NombreEquipo1 = txtEquipoNombre1.getText();
 //				System.out.println(NombreEquipo1);	
-				List <EQUIPOS> listEquipos = new ArrayList <>();
 				JTextField[] ArreglodeVariablestextFields = {
 				        txtEquipoNombre1, txtEquipoNombre2, txtEquipoNombre3,
 				        txtEquipoNombre4, txtEquipoNombre5, txtEquipoNombre6
@@ -145,30 +173,7 @@ public class VentanaIntroducirEquipos extends JFrame {
 				
 				//Crear los objetos de 6 EQUIPOS MANUALMENTE
 
-		        EQUIPOS equipo1 = new EQUIPOS(); // Crear objeto del equipo1 y agregarlo a la lista
-		        equipo1.setNombreEquipo("CV Sayre Mayser");
-		        equipo1.setId_equipo(0);
-		        listEquipos.add(equipo1);
-		        EQUIPOS equipo2 = new EQUIPOS();
-		        equipo2.setNombreEquipo("CV Zaragoza");
-		        equipo2.setId_equipo(1);
-		        listEquipos.add(equipo2);
-		        EQUIPOS equipo3 = new EQUIPOS();
-		        equipo3.setNombreEquipo("CV Barça");
-		        equipo3.setId_equipo(2);
-		        listEquipos.add(equipo3);
-		        EQUIPOS equipo4 = new EQUIPOS();
-		        equipo4.setNombreEquipo("CV Alcobendas");
-		        equipo4.setId_equipo(3);
-		        listEquipos.add(equipo4);
-		        EQUIPOS equipo5 = new EQUIPOS();
-		        equipo5.setNombreEquipo("CD Avila Voleibol");
-		        equipo5.setId_equipo(4);
-		        listEquipos.add(equipo5);
-		        EQUIPOS equipo6 = new EQUIPOS();
-		        equipo6.setNombreEquipo("CV Madrid Chamberí");
-		        equipo6.setId_equipo(5);
-		        listEquipos.add(equipo6);
+		        
 				
 				/*//Crea los objetos de EQUIPOS para asignarles los nombres
 				 for (JTextField posiciondelArreglo : ArreglodeVariablestextFields) {
@@ -194,11 +199,14 @@ public class VentanaIntroducirEquipos extends JFrame {
 //				}
 			}
 		});
-		Botom_guardar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		Footer.add(Botom_guardar);
+		
+		//CONTENTPANE DE MOSTRAR NOMBRE EQUIPOS0
 		Equipo = new JPanel();
 		contentPane.add(Equipo, BorderLayout.CENTER);
 		Equipo.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		
+		//---------- FILA EQUIPO 1 ----------//
 		
 		Equipo_1 = new JPanel();
 		Equipo_1.setBackground(new Color(192, 192, 192));
@@ -233,9 +241,19 @@ public class VentanaIntroducirEquipos extends JFrame {
 		txtEquipoNombre1.setText("Introduce el nombre");
 		txtEquipoNombre1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtEquipoNombre1.setHorizontalAlignment(SwingConstants.CENTER);
-		Equipo_1.add(txtEquipoNombre1);
 		txtEquipoNombre1.setColumns(10);
+
+		txtEquipoNombre1.setColumns(10);
+		if (tipoUsuario.equals("Desarrollador")) {
+			Equipo_1.add(txtEquipoNombre1);
+
+		}
+
+		lblNombreEquipo1 = new JLabel(listEquipos.get(1).getNombreEquipo());
+		lblNombreEquipo1.setHorizontalAlignment(SwingConstants.CENTER);
+		Equipo_1.add(lblNombreEquipo1);
 		
+		//---------- FILA EQUIPO 2 ----------//
 		Equipo_2 = new JPanel();
 		Equipo_2.setBackground(new Color(192, 192, 192));
 		Equipo.add(Equipo_2);
@@ -271,6 +289,9 @@ public class VentanaIntroducirEquipos extends JFrame {
 		Equipo_2.add(txtEquipoNombre2);
 		txtEquipoNombre2.setColumns(10);
 		
+		
+		//---------- FILA EQUIPO 3 ----------//
+		
 		Equipo_3 = new JPanel();
 		Equipo_3.setBackground(new Color(192, 192, 192));
 		Equipo.add(Equipo_3);
@@ -300,6 +321,9 @@ public class VentanaIntroducirEquipos extends JFrame {
 		Equipo_3.add(txtEquipoNombre3);
 		txtEquipoNombre3.setColumns(10);
 		
+		
+		//---------- FILA EQUIPO 4 ----------//
+		
 		Equipo_4 = new JPanel();
 		Equipo_4.setBackground(new Color(192, 192, 192));
 		Equipo.add(Equipo_4);
@@ -328,6 +352,9 @@ public class VentanaIntroducirEquipos extends JFrame {
 		txtEquipoNombre4.setHorizontalAlignment(SwingConstants.CENTER);
 		Equipo_4.add(txtEquipoNombre4);
 		txtEquipoNombre4.setColumns(10);
+		
+		
+		//---------- FILA EQUIPO 5 ----------//
 		
 		Equipo_5 = new JPanel();
 		Equipo_5.setBackground(new Color(192, 192, 192));
@@ -359,6 +386,9 @@ public class VentanaIntroducirEquipos extends JFrame {
 		Equipo_5.add(txtEquipoNombre5);
 		txtEquipoNombre5.setColumns(10);
 		
+		
+		//---------- FILA EQUIPO 6 ----------//
+		
 		Equipo_6 = new JPanel();
 		Equipo_6.setBackground(new Color(192, 192, 192));
 		Equipo.add(Equipo_6);
@@ -389,10 +419,15 @@ public class VentanaIntroducirEquipos extends JFrame {
 		Equipo_6.add(txtEquipoNombre6);
 		txtEquipoNombre6.setColumns(10);
 		
+		//---------- Fila de Margen IZQUIERDO Y DERECHO ----------//
+		
 		MarginIzq = new JPanel();
 		contentPane.add(MarginIzq, BorderLayout.WEST);
 		
 		MarginDerc = new JPanel();
 		contentPane.add(MarginDerc, BorderLayout.EAST);
-	}
-}
+		
+		
+	}//cierre VentanaIntroducirEquipos
+	
+}//cierre VentanaIntroducirEquipos

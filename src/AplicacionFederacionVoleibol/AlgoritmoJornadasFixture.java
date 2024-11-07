@@ -6,30 +6,27 @@ import java.util.Scanner;
 
 public class AlgoritmoJornadasFixture {
 	
-	
+	//--------------VARIABLES PRINCIPALES
 	static Scanner scan = new Scanner(System.in);
-	public static int NUMEQUIPOS = TEMPORADAS.getCantidadEquipos(); // MODIFICABLE SOLO NUMEROS PARES
-	public static int NUMRONDAS; // NOesMODIFICABLE
-	public static int NUMPARTIDOSPORRONDA; // NOesMODIFICABLE
-	 VentanaIntroducirEquipos EstructutraEquipo = new VentanaIntroducirEquipos(); // Herencia de la clase VentanaIntroducirEquipos para extraer la información de los equipos
-		
-	public static class DefiniciondeTemporada {
-	}
+	private static final int NUMEQUIPOS = TEMPORADAS.getCantidadEquipos(); // MODIFICABLE SOLO NUMEROS PARES
+	private static final int NUMRONDAS = NUMEQUIPOS -1; // NOesMODIFICABLE
+	private static final int NUMPARTIDOSPORRONDA = TEMPORADAS.getCantidadPartidosPorJornada(); // NOesMODIFICABLE
+	//VentanaIntroducirEquipos EstructutraEquipo = new VentanaIntroducirEquipos(); // Herencia de la clase VentanaIntroducirEquipos para extraer la información de los equipos
+ 
     // Clase estática para representar un Partido con equipo local y visitante
-    static public class Partido
-    {
-    	
+		static public class Partido{
     	// Inicialmente se asignan valores por defecto de -1 NOesMODIFICABLE
-        public int equipolocal = -1, equipovisitante = -1;
+        private int equipolocal = 0, equipovisitante = 0;
 		// Inicialmente se asignan valores por defecto de 0
-        public static int SetGanadosLocal = 0, SetGanadosVisitante = 0;
-        public static int Cantidad_Equipos = NUMEQUIPOS;
-        public static int[] id_equipo = new int[NUMEQUIPOS];
-        public static String[] NombreEquipo = new String[NUMEQUIPOS];
-        public static int[] PuntajeSetLocal = new int[5];
-        public static int[] PuntajeSetVisitante = new int[5];
+        //public static int SetGanadosLocal = 0, SetGanadosVisitante = 0;
+        //public static int Cantidad_Equipos = NUMEQUIPOS;
+        private static int[] id_equipo = new int[NUMEQUIPOS];
+        private static String[] NombreEquipo = new String[NUMEQUIPOS];
+        //public static int[] PuntajeSetLocal = new int[5];
+        //public static int[] PuntajeSetVisitante = new int[5];
     }
-    private static void InformacionEquipos(int NumerodeEquipos) {
+	// Método para introducir los nombres de los equipos
+    private static void InformacionEquipos() {
     	List <EQUIPOS> listEquipos = new ArrayList <>();
 
     	System.out.println("====================================");
@@ -51,59 +48,40 @@ public class AlgoritmoJornadasFixture {
 
     };
     
-
     // Método para calcular el fixture de la liga si el número de equipos es par
-    private static Partido[][] calcularLigaNumEquiposPar(int numEquipos)
-    {
-        NUMRONDAS = numEquipos - 1;  // Número de rondas es el número de equipos - 1
-        NUMPARTIDOSPORRONDA = numEquipos / 2;  // En cada ronda se juegan numEquipos / 2 partidos
-        
+    private static Partido[][] calcularLigaNumEquiposPar(){  
+    	
         Partido[][] partido = new Partido[NUMRONDAS][NUMPARTIDOSPORRONDA];  // Matriz para almacenar las rondas y partidos
-        //List <PARTIDO> ListaEnfrentamiento = new ArrayList<>();
         
         // Primera fase: Asignar los equipos locales a todas las fechas
         for (int i = 0, id_equipo = 0; i < NUMRONDAS; i++)
         {
             for (int j = 0; j < NUMPARTIDOSPORRONDA; j++)
             {	
-//				PARTIDO equipos = new PARTIDO();
-//				equipos.GuardarNombreEquipoLocal(Partido.NombreEquipo[id_equipo]);
                 partido[i][j] = new Partido();  // Crear un objeto Partido dentro de posicion (i, j) para guardar el valor equipolocal y equipovisitante
                 partido[i][j].equipolocal = id_equipo;  // Asignar el equipo local a la posicion de la matriz
                 id_equipo++;  // Incrementar el índice del equipo local
                 if (id_equipo == NUMRONDAS)
                     id_equipo = 0;  // Reiniciar si llegamos al equipo final
             }
-        } /**	Fecha 1:    1-   2-   3-
-				Fecha 2:    4-   5-   1-
-				Fecha 3:    2-   3-   4-
-				Fecha 4:    5-   1-   2-
-				Fecha 5:    3-   4-   5-
-         	*/
+        }
 
         // Asignar los equipos visitantes para la primera columna (primer partido en cada ronda)
         for (int i = 0; i < NUMRONDAS; i++)
         {
             if (i % 2 == 0)  // En rondas pares
             {
-                partido[i][0].equipovisitante = numEquipos - 1;  // Asignar el equipo más alto como visitante
+                partido[i][0].equipovisitante = NUMEQUIPOS - 1;  // Asignar el equipo más alto como visitante
             }
             else  // En rondas impares
             {
                 partido[i][0].equipovisitante = partido[i][0].equipolocal;  // PASO EL LOCAL A VISITANTE DE ESTE PRIMER PARTIDO
-                partido[i][0].equipolocal = numEquipos - 1; //ASIGNO EL EQUIPO MAS ALTO COMO LOCAL
+                partido[i][0].equipolocal = NUMEQUIPOS - 1; //ASIGNO EL EQUIPO MAS ALTO COMO LOCAL
             }
         }
-        int equipoMasAlto = numEquipos - 1;  // Equipo con el número más alto
+        int equipoMasAlto = NUMEQUIPOS - 1;  // Equipo con el número más alto
         int equipoImparMasAlto = equipoMasAlto - 1;  // Segundo equipo más alto
-
-        /**		Fecha 1:    1-6   2-   3-
-				Fecha 2:    6-4   5-   1-
-				Fecha 3:    2-6   3-   4-
-				Fecha 4:    6-5   1-   2-
-				Fecha 5:    3-6   4-   5-
-         */
-
+        
         // Segunda fase: Asignar los equipos visitantes para los otros partidos de cada ronda
         for (int i = 0, id_equipo = equipoImparMasAlto; i < NUMRONDAS; i++)
         {
@@ -115,13 +93,6 @@ public class AlgoritmoJornadasFixture {
                     id_equipo = equipoImparMasAlto;  // Reiniciar el índice si llegamos al final
             }
         }
-        /**					l-v   l-v   l-v
-         * 		Fecha 1:    1-6   2-5   3-4
-				Fecha 2:    6-4   5-3   1-2
-				Fecha 3:    2-6   3-1   4-5
-				Fecha 4:    6-5   1-4   2-3
-				Fecha 5:    3-6   4-2   5-1
-         */
 
         return partido;  // Devolver la matriz con el fixture
     }
@@ -137,21 +108,15 @@ public class AlgoritmoJornadasFixture {
             for (int j = 0; j < partido[i].length; j++)
             {
                 System.out.print("   " + (Partido.NombreEquipo[(partido[i][j].equipolocal)]) + "-" + (Partido.NombreEquipo[(partido[i][j].equipovisitante)]));
-                
-            
             }
             System.out.println();
         }
-
-    	
-    	
     }
-    
-
-
     // Método para mostrar los partidos de todas las rondas
-    static public void mostrarPartidos(Partido[][] partido)
-    {
+    static public void mostrarPartidos()
+    {	
+
+    	Partido[][] partido = calcularLigaNumEquiposPar();
         // Mostrar la fase de "IDA" (partidos con los equipos tal como están)
         System.out.println("IDA");
 
@@ -164,7 +129,6 @@ public class AlgoritmoJornadasFixture {
             }
             System.out.println();
         }
-
         // Mostrar la fase de "VUELTA" (intercambiar local y visitante)
         System.out.println("VUELTA");
 
@@ -178,21 +142,13 @@ public class AlgoritmoJornadasFixture {
             System.out.println();
         }
     }
-    
-    public void MostrarListadeArregloENFRENTAMIENTO() {
-    	
-    	
-    }
-
     // Método principal para probar el cálculo del fixture
-    static public void main(String[] x)
+    static public void main(String[] args)
     {
         // Calcular y mostrar la liga con 6 equipos
-    	InformacionEquipos(6);
-        System.out.println("Liga con 6 equipos:");
-        calcularLigaNumEquiposPar(NUMEQUIPOS);
-        //Prueba de commit github2
-        mostrarPartidos(calcularLigaNumEquiposPar(NUMEQUIPOS));
+    	InformacionEquipos();
+        calcularLigaNumEquiposPar();
+        mostrarPartidos();
     }
 	
 	
