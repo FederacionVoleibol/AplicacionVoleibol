@@ -40,6 +40,8 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class VentanaClasificacion extends JFrame {
+	
+private ArrayClasificacion arrayClasificacion;
 
   private static final long serialVersionUID = 1L;
   private JPanel contentPane;
@@ -108,9 +110,49 @@ public class VentanaClasificacion extends JFrame {
   private JTextField tf_eqvc_p;
   private JTextField tf_eqvc_ls;
   
-  String[] equipos = {"CV Sayre Mayser", "CV Barça", "CD Zaragoza", "CV Alcobendas", "CD Avila Voleibol", "CV Madrid Chamberí"};
-
+  // Declaracion de las variables que almacenarán los nombres de equipos de cada jornada
+  // --------------------------------------------------- EJ: eql_a equipo local partido "a"
+  String eql_a;
+  String eqv_a;
+  String eql_b;
+  String eqv_b;
+  String eql_c;
+  String eqv_c;
+  
+  //Declaración de las variables que almacenarán el equipo ganador y perdedor de cada jornada
+  // --------------------------------------------------- EJ: w_pa = winner partido "a"
+  String w_pa;
+  String l_pa;
+  String w_pb;
+  String l_pb;
+  String w_pc;
+  String l_pc;
+  // Declaracion del los PUNTAJES
+  // --------------------------------------------------- EJ: eql_a_p = equipo local "a" (points)
+  int eql_a_p;
+  int eqv_a_p;
+  
+  int eql_b_p;
+  int eqv_b_p;
+  
+  int eql_c_p;
+  int eqv_c_p;
+	
+	// Declaracion de los SETS
+	// --------------------------------------------------- EJ: eql_a_ls = equipo local "a" (last set)
+  int eql_a_ls;
+  int eqv_a_ls;
+  
+  int eql_b_ls;
+  int eqv_b_ls;
+  
+  int eql_c_ls;
+  int eqv_c_ls;
+  
+  String[] nombres_equipos = {"CV Sayre Mayser", "CV Barça", "CD Zaragoza", "CV Alcobendas", "CD Avila Voleibol", "CV Madrid Chamberí"};
+  
   int indiceEquipo = 1;
+  
   private JSeparator separator;
   private JSeparator separator_1;
   private JSeparator separator_2;
@@ -121,8 +163,12 @@ public class VentanaClasificacion extends JFrame {
   private JSeparator separator_7;
   private JSeparator separator_8;
   private JSeparator separator_9;
-  private JLabel prueba;
   private JLabel lblNewLabel_1;
+  
+  
+  
+  
+  
   /**
 	 * Launch the application.
 	 */
@@ -133,6 +179,7 @@ public class VentanaClasificacion extends JFrame {
         try {
           VentanaClasificacion frame = new VentanaClasificacion();
           frame.setVisible(true);
+          
         } catch(Exception e) {
           e.printStackTrace();
         }
@@ -147,7 +194,10 @@ public class VentanaClasificacion extends JFrame {
 	 * Create the frame.
 	 */
   public VentanaClasificacion() {
-	  
+	  // asi obtengo el valor de los atributos de los equipos
+	  arrayClasificacion = new ArrayClasificacion();
+	  List<ArrayClasificacion> equipos = arrayClasificacion.getEquipos();
+
 	  
     // Establecemos un tamaño para la ventana
     setSize(900, 550);
@@ -186,19 +236,19 @@ public class VentanaClasificacion extends JFrame {
                 lblTituloNumeroJornada.setText("JORNADA " + jornadaActual);
 
                 // Reiniciar el índice si se llega al final del arreglo
-                if (indiceEquipo >= equipos.length) {
+                if (indiceEquipo >= nombres_equipos.length) {
                     indiceEquipo = 0;
                 }
 
                 // Actualizar los labels de los equipos
-                lblEquipoLocalA.setText(equipos[indiceEquipo]);
-                lblEquipoVisitanteA.setText(equipos[(indiceEquipo + 1) % equipos.length]);
+                lblEquipoLocalA.setText(nombres_equipos[indiceEquipo]);
+                lblEquipoVisitanteA.setText(nombres_equipos[(indiceEquipo + 1) % nombres_equipos.length]);
                 
-                lblEquipoLocalB.setText(equipos[(indiceEquipo + 2) % equipos.length]);
-                lblEquipoVisitanteB.setText(equipos[(indiceEquipo + 3) % equipos.length]);
+                lblEquipoLocalB.setText(nombres_equipos[(indiceEquipo + 2) % nombres_equipos.length]);
+                lblEquipoVisitanteB.setText(nombres_equipos[(indiceEquipo + 3) % nombres_equipos.length]);
                 
-                lblEquipoLocalC.setText(equipos[(indiceEquipo + 4) % equipos.length]);
-                lblEquipoVisitanteC.setText(equipos[(indiceEquipo + 5) % equipos.length]);
+                lblEquipoLocalC.setText(nombres_equipos[(indiceEquipo + 4) % nombres_equipos.length]);
+                lblEquipoVisitanteC.setText(nombres_equipos[(indiceEquipo + 5) % nombres_equipos.length]);
 
                 // Incrementar el índice de los equipos
                 indiceEquipo++;
@@ -231,17 +281,17 @@ public class VentanaClasificacion extends JFrame {
 
                 // Reiniciar el índice si se llega al principio del arreglo
                 if (indiceEquipo <= 0) {
-                    indiceEquipo = equipos.length - 1;
+                    indiceEquipo = nombres_equipos.length - 1;
                 }
 
                 // Actualizar los labels de los equipos
                 
-                lblEquipoLocalA.setText(equipos[(indiceEquipo - 1 + equipos.length) % equipos.length]);
-                lblEquipoVisitanteA.setText(equipos[(indiceEquipo) % equipos.length]);
-                lblEquipoLocalB.setText(equipos[(indiceEquipo + 1) % equipos.length]);
-                lblEquipoVisitanteB.setText(equipos[(indiceEquipo + 2) % equipos.length]);
-                lblEquipoLocalC.setText(equipos[(indiceEquipo + 3) % equipos.length]);
-                lblEquipoVisitanteC.setText(equipos[(indiceEquipo + 4) % equipos.length]);
+                lblEquipoLocalA.setText(nombres_equipos[(indiceEquipo - 1 + nombres_equipos.length) % nombres_equipos.length]);
+                lblEquipoVisitanteA.setText(nombres_equipos[(indiceEquipo) % nombres_equipos.length]);
+                lblEquipoLocalB.setText(nombres_equipos[(indiceEquipo + 1) % nombres_equipos.length]);
+                lblEquipoVisitanteB.setText(nombres_equipos[(indiceEquipo + 2) % nombres_equipos.length]);
+                lblEquipoLocalC.setText(nombres_equipos[(indiceEquipo + 3) % nombres_equipos.length]);
+                lblEquipoVisitanteC.setText(nombres_equipos[(indiceEquipo + 4) % nombres_equipos.length]);
 
                 // Decrementar el índice de los equipos
                 indiceEquipo--;
@@ -312,46 +362,170 @@ public class VentanaClasificacion extends JFrame {
     		String eqv_b = lblEquipoVisitanteB.getText();
     		String eql_c = lblEquipoLocalC.getText();
     		String eqv_c = lblEquipoVisitanteC.getText();
- 
     		
     		try {
-    			// Obtencion del los PUNTAJES
-    			// --------------------------------------------------- EJ: eql_v_p = equipo local "a" (points)
-    			int eql_a_p = Integer.parseInt(tf_eqla_p.getText());
-                int eqv_a_p = Integer.parseInt(tf_eqva_p.getText());
+    		// 1.2 Obtencion del los PUNTAJES
+    			// --------------------------------------------------- EJ: eql_a_p = equipo local "a" (points)
+    			eql_a_p = Integer.parseInt(tf_eqla_p.getText());
+                eqv_a_p = Integer.parseInt(tf_eqva_p.getText());
                 
-                int eql_b_p = Integer.parseInt(tf_eqlb_p.getText());
-                int eqv_b_p = Integer.parseInt(tf_eqvb_p.getText());
+                eql_b_p = Integer.parseInt(tf_eqlb_p.getText());
+                eqv_b_p = Integer.parseInt(tf_eqvb_p.getText());
                 
-        		int eql_c_p = Integer.parseInt(tf_eqlc_p.getText());
-        		int eqv_c_p = Integer.parseInt(tf_eqvc_p.getText());
+        		eql_c_p = Integer.parseInt(tf_eqlc_p.getText());
+        		eqv_c_p = Integer.parseInt(tf_eqvc_p.getText());
         		
-        		// Obtencion de los SETS
-        		// --------------------------------------------------- EJ: eql_v_ls = equipo local "a" (last set)
-        		int eql_a_ls = Integer.parseInt(tf_eqla_ls.getText());
-                int eqv_a_ls = Integer.parseInt(tf_eqva_ls.getText());
+        	// 1.3 Obtencion de los SETS
+        		// --------------------------------------------------- EJ: eql_a_ls = equipo local "a" (last set)
+        		eql_a_ls = Integer.parseInt(tf_eqla_ls.getText());
+                eqv_a_ls = Integer.parseInt(tf_eqva_ls.getText());
                 
-                int eql_b_ls = Integer.parseInt(tf_eqlb_ls.getText());
-                int eqv_b_ls = Integer.parseInt(tf_eqvb_ls.getText());
+                eql_b_ls = Integer.parseInt(tf_eqlb_ls.getText());
+                eqv_b_ls = Integer.parseInt(tf_eqvb_ls.getText());
                 
-        		int eql_c_ls = Integer.parseInt(tf_eqlc_ls.getText());
-        		int eqv_c_ls = Integer.parseInt(tf_eqvc_ls.getText());
+        		eql_c_ls = Integer.parseInt(tf_eqlc_ls.getText());
+        		eqv_c_ls = Integer.parseInt(tf_eqvc_ls.getText());
+        		
+        		// 2. determinación del equipo ganador de cada partido
+        		
+        		// 2.1 PARTIDO A 
+        		//////////(editar esto para que las variables identifiquen al equipo ganador y perdedor)
+        		if (eql_a_p >  eqv_a_p) { // gana el quipo local
+    				w_pa = eql_a;
+    				l_pa = eqv_a;
+        		}else if (eql_a_p < eqv_a_p) { // gana el equipo visitante
+        			w_pa = eqv_a;
+        			l_pa = eql_a;
+        		}else { // empatan
+        			if(eql_a_ls > eqv_a_ls) { // gana el equipo local (con los puntos del último set)
+        				w_pa = eql_a;
+        				l_pa = eqv_a;
+        			}else { // gana el equipo visitante (con los puntos del último set)
+            			w_pa = eqv_a;
+            			l_pa = eql_a;
+        			}
+        		}
+    			
+        		// 2.1 PARTIDO B
+    			if (eql_b_p > eqv_b_p) { // gana el quipo local
+    				w_pb = eql_b;
+    				l_pb = eqv_b;
+        		}else if (eql_b_p < eqv_b_p) { // gana el equipo visitante
+        			w_pb = eqv_b;
+        			l_pb = eql_b;
+        		}else { // empatan
+        			if(eql_b_ls > eqv_b_ls) { // gana el equipo local (con los puntos del último set)
+        				w_pb = eql_b;
+        				l_pb = eqv_b;
+        			}else { // gana el equipo visitante (con los puntos del último set)
+            			w_pb = eqv_b;
+            			l_pb = eql_b;
+        			}
+        		}
+    			
+        		// 2.1 PARTIDO C
+    			if (eql_c_p > eqv_c_p) { // gana el quipo local
+    				w_pc = eql_c;
+    				l_pc = eqv_c;
+        		}else if (eql_c_p < eqv_c_p) { // gana el equipo visitante
+        			w_pc = eqv_c;
+        			l_pc = eql_c;
+        		}else { // empatan
+        			if(eql_c_ls > eqv_c_ls) { // gana el equipo local (con los puntos del último set)
+        				w_pc = eql_c;
+        				l_pc = eqv_c;
+        			}else { // gana el equipo visitante (con los puntos del último set)
+            			w_pc = eqv_c;
+            			l_pc = eql_c;
+        			}
+        		}
                 
             } catch (NumberFormatException ex) {
-                // Manejar el error si el texto no es un número válido
+                // Mostar un error en caso de que se intenten introducir datos que nos son validos (vacio, un caracter que no sea un numero...)
                 JOptionPane.showMessageDialog(null, "Por favor, ingresa un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
             }
     		
-    		//int eqv_a_p = tf_eqva_p.getText();
+    		// 2. determinación del equipo ganador de cada partido
     		
-    		//int eql_b_p = tf_eqlb_p.getText();
-    		//int eqv_b_p = tf_eqvb_p.getText();
-    		
-    		//int eql_c_p = tf_eqlc_p.getText();
-    		//int eqv_c_p = tf_eqvc_p.getText();
-    		// 2. Almacenamiento en el array de objetos
+    		// 2.1 PARTIDO A 
+    		//////////(BORRAR ESTO UNA VEZ TRASLADADO AL TRY-CATCH)
+			if (Integer.parseInt(tf_eqla_p.getText()) >  Integer.parseInt(tf_eqva_p.getText())) { // gana el quipo local
+				w_pa = eql_a;
+				l_pa = eqv_a;
+    		}else if (eql_a_p < eqv_a_p) { // gana el equipo visitante
+    			w_pa = eqv_a;
+    			l_pa = eql_a;
+    		}else { // empatan
+    			if(eql_a_ls > eqv_a_ls) { // gana el equipo local (con los puntos del último set)
+    				w_pa = eql_a;
+    				l_pa = eqv_a;
+    			}else { // gana el equipo visitante (con los puntos del último set)
+        			w_pa = eqv_a;
+        			l_pa = eql_a;
+    			}
+    		}
+			
+    		// 2.1 PARTIDO B
+			if (eql_b_p > eqv_b_p) { // gana el quipo local
+				w_pb = eql_b;
+				l_pb = eqv_b;
+    		}else if (eql_b_p < eqv_b_p) { // gana el equipo visitante
+    			w_pb = eqv_b;
+    			l_pb = eql_b;
+    		}else { // empatan
+    			if(eql_b_ls > eqv_b_ls) { // gana el equipo local (con los puntos del último set)
+    				w_pb = eql_b;
+    				l_pb = eqv_b;
+    			}else { // gana el equipo visitante (con los puntos del último set)
+        			w_pb = eqv_b;
+        			l_pb = eql_b;
+    			}
+    		}
+			
+    		// 2.1 PARTIDO C
+			if (eql_c_p > eqv_c_p) { // gana el quipo local
+				w_pc = eql_c;
+				l_pc = eqv_c;
+    		}else if (eql_c_p < eqv_c_p) { // gana el equipo visitante
+    			w_pc = eqv_c;
+    			l_pc = eql_c;
+    		}else { // empatan
+    			if(eql_c_ls > eqv_c_ls) { // gana el equipo local (con los puntos del último set)
+    				w_pc = eql_c;
+    				l_pc = eqv_c;
+    			}else { // gana el equipo visitante (con los puntos del último set)
+        			w_pc = eqv_c;
+        			l_pc = eql_c;
+    			}
+    		}
+    		// 4. insercion de los datos en la clasificacion 
+			 boolean equipoEncontrado = false;
+		        
+		        // Recorremos la lista de equipos
+		        for (ArrayClasificacion equipo : arrayClasificacion.getEquipos()) {
+		        	// buscamos el equipo que ha ganado el partido "a" 
+		        	if (equipo.getNombre().equals(w_pa)) {
+		        		equipo.setPj(equipo.getPj() + 1); // Aumentamos "partidos jugados" en 1
+		        		equipo.setPg(equipo.getPg() + 1); // Aumentamos "partidos ganados" en 1
+		        		equipo.setSetff(equipo.getSetff() + 1 ); // Aumentamos "setfinal puntos a favor" en el numero de puntos
+		        	}
+		        	
+		        	
+		        	
+		            // Comparamos el nombre del equipo con el valor de w_pa
+		            if (equipo.getNombre().equals(w_pa)) {
+		                equipo.setPg(equipo.getPg() + 1); // Aumentamos pg en 1
+		                equipoEncontrado = true;
+		                lblNewLabel_1.setText(""+equipo.getNombre());
+		                break; // Salimos del bucle una vez encontrado
+		            }
+		        }
     		
     		// 3. Ordenamiento
+			
+			
+			// este label es para hacer pruebas ¡¡¡BORRAR LUEGO!!!
+			//lblNewLabel_1.setText(w_pa);
     	}
     });
     
