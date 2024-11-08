@@ -220,7 +220,7 @@ public class VentanaIntroducirEquipos extends JFrame {
 		Equipo_1.add(TituloEquipo_1);
 		TituloEquipo_1.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		lblEquipo1 = new JLabel("Equipo1");
+		lblEquipo1 = new JLabel("Equipo 1");
 		lblEquipo1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEquipo1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		TituloEquipo_1.add(lblEquipo1);
@@ -272,7 +272,7 @@ public class VentanaIntroducirEquipos extends JFrame {
 		Equipo_2.add(TituloEquipo_2);
 		TituloEquipo_2.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		lblEquipo2 = new JLabel("Equipo2");
+		lblEquipo2 = new JLabel("Equipo 2");
 		lblEquipo2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEquipo2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		TituloEquipo_2.add(lblEquipo2);
@@ -320,7 +320,7 @@ public class VentanaIntroducirEquipos extends JFrame {
 		Equipo_3.add(TituloEquipo_3);
 		TituloEquipo_3.setLayout(new GridLayout(0, 1, 0, 0));
 		 
-		lblEquipo_3 = new JLabel("Equipo3");
+		lblEquipo_3 = new JLabel("Equipo 3");
 		lblEquipo_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEquipo_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		TituloEquipo_3.add(lblEquipo_3);
@@ -372,7 +372,7 @@ public class VentanaIntroducirEquipos extends JFrame {
 		Equipo_4.add(TituloEquipo_4);
 		TituloEquipo_4.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		lblEquipo4 = new JLabel("Equipo4");
+		lblEquipo4 = new JLabel("Equipo 4");
 		lblEquipo4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEquipo4.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		TituloEquipo_4.add(lblEquipo4);
@@ -424,7 +424,7 @@ public class VentanaIntroducirEquipos extends JFrame {
 		Equipo_5.add(TituloEquipo_5);
 		TituloEquipo_5.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		lblEquipo_5 = new JLabel("Equipo5");
+		lblEquipo_5 = new JLabel("Equipo 5");
 		lblEquipo_5.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEquipo_5.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblEquipo_5.setBackground(new Color(255, 255, 128));
@@ -474,7 +474,7 @@ public class VentanaIntroducirEquipos extends JFrame {
 		Equipo_6.add(TituloEquipo_6);
 		TituloEquipo_6.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		lblEquipo_6 = new JLabel("Equipo6");
+		lblEquipo_6 = new JLabel("Equipo 6");
 		lblEquipo_6.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEquipo_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblEquipo_6.setBackground(new Color(128, 255, 128));
