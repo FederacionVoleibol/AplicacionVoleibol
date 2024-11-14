@@ -134,7 +134,8 @@ class PARTIDO{
 	 private int Fecha =0;
 	 private boolean estado =false;
 	 private String NombreEstadio = "";
-	 
+	 private int id_equipo_local =0;
+	 private int id_equipo_visitante =0;
 	 private int SetsGanadosEquipoLocal =0;
 	 private int PuntajeUltimoSetLocal =0;
 	 private int SetsGanadosEquipoVisitante =0;
@@ -147,6 +148,15 @@ class PARTIDO{
 //		this.NombreEquipoLocal = NombreEquipoLocal; 
 //	 }
 //	 
+	public void CrearPartido(int id_partido, int id_equipo_local, int id_equipo_visitante,
+			String NombreEquipoLocal, String NombreEquipoVisitante) {
+		
+		this.id_partido = id_partido;
+		this.id_equipo_local = id_equipo_local;
+		this.id_equipo_visitante = id_equipo_visitante;
+		this.NombreEquipoLocal = NombreEquipoLocal;
+		this.NombreEquipoVisitante = NombreEquipoVisitante;
+	}
 	//--------Metodo de Guardar--------// 
 	 
 
@@ -186,9 +196,15 @@ class PARTIDO{
 			return Fecha;
 	 }
 	 
-	 public static void MostrarEnfrentamiento() {
-		 
+	 public void MostrarPartido() {
+		System.out.println("PartidoID: " + id_partido + ", Equipo Local: " + NombreEquipoLocal + " - Equipo Visitante: " + NombreEquipoVisitante); 
 	 }	
+	 public String getNombreEquipoLocal() {
+		 return NombreEquipoLocal;
+	 }
+	 public String getNombreEquipoVisitante() {
+		return NombreEquipoVisitante; 
+	 }
 }
 
 
@@ -200,7 +216,11 @@ class PARTIDO{
 	 private int id_equipo =0;
 	 private String NombreEquipo = "";
 	 private String Entrenador = "";
-	 private int Puntaje =0;
+	 private int PartidosGanados =0;
+	 private int PartidosPerdidos =0;
+	 private int PuntajeTotal =0;
+	 private int PuntosSetsTotal =0;
+	 private int Posicion_Temporada =0;
 	 
 
 	//-------- Metodo Constructor --------// 
@@ -213,8 +233,30 @@ class PARTIDO{
 	
 	 
 	//--------Metodo de Guardar--------// 
-	
-	
+
+
+	public void setPartidosPerdidos(int partidosPerdidos) {
+		PartidosPerdidos = partidosPerdidos;
+	}
+
+	public void setPosicion_Temporada(int posicion_Temporada) {
+		Posicion_Temporada = posicion_Temporada;
+	}
+
+
+	public void setPuntajeTotal(int puntajeTotal) {
+		PuntajeTotal = puntajeTotal;
+	}
+
+
+	public void setPuntosSetsTotal(int puntosSetsTotal) {
+		PuntosSetsTotal = puntosSetsTotal;
+	}
+
+	public void setPartidosGanados(int partidosGanados) {
+		PartidosGanados = partidosGanados;
+	}
+
 	public void setId_equipo(int ID_equipo) {
 		this.id_equipo = ID_equipo;
 	}
@@ -239,10 +281,27 @@ class PARTIDO{
 		 return Entrenador;
 	 }
 	
-	public int getPuntaje() {
-		 return Puntaje;
+	public int getPartidosGanados() {
+		 return PartidosGanados;
 	 }
 	
+	
+	public int getPartidosPerdidos() {
+		return PartidosPerdidos;
+	}
+	public int getPuntajeTotal() {
+		return PuntajeTotal;
+	}
+
+	public int getPuntosSetsTotal() {
+		return PuntosSetsTotal;
+	}
+
+	public int getPosicion_Temporada() {
+		return Posicion_Temporada;
+	}
+
+
 }
  
  class ARBITROS{

@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class AlgoritmoJornadasFixture {
-	
+
+    public static List<EQUIPOS> listEquipos = new ArrayList<>();
+    public static List<PARTIDO> listPartidos = new ArrayList<>();
+    
 	//--------------VARIABLES PRINCIPALES
 	static Scanner scan = new Scanner(System.in);
 	private static final int NUMEQUIPOS = TEMPORADAS.getCantidadEquipos(); // MODIFICABLE SOLO NUMEROS PARES
@@ -20,33 +24,55 @@ public class AlgoritmoJornadasFixture {
 		// Inicialmente se asignan valores por defecto de 0
         //public static int SetGanadosLocal = 0, SetGanadosVisitante = 0;
         //public static int Cantidad_Equipos = NUMEQUIPOS;
-        private static int[] id_equipo = new int[NUMEQUIPOS];
+        //private static int[] id_equipo = new int[NUMEQUIPOS];
         private static String[] NombreEquipo = new String[NUMEQUIPOS];
         //public static int[] PuntajeSetLocal = new int[5];
         //public static int[] PuntajeSetVisitante = new int[5];
     }
-	// Método para introducir los nombres de los equipos
-    private static void InformacionEquipos() {
-    	List <EQUIPOS> listEquipos = new ArrayList <>();
-
-    	System.out.println("====================================");
-    	System.out.println("Informacion de los equipos: ");
-    	for (int i=0;i<NUMEQUIPOS;i++) {
-        	EQUIPOS equipo = new EQUIPOS();
-	    	System.out.print("Nombre del Equipo "+(i+1)+": ");
-	    	Partido.id_equipo[i] = i;
-	    	equipo.setId_equipo(i);
-	    	Partido.NombreEquipo[i] = scan.nextLine();
-	    	equipo.setNombreEquipo(Partido.NombreEquipo[i]);
-	    	listEquipos.add(equipo);
-	    	
-    	}
-		System.out.println("====================================");
-		for (EQUIPOS ordenEquipo : listEquipos) {
-			System.out.println("Nombre del Equipo: "+ ordenEquipo.getid_equipo()+" - "+ordenEquipo.getNombreEquipo());
-		}
-
-    };
+	// Método para introducir los nombres de los equipos y CREAR LOS OBJETOS EQUIPOS VERS DINAMICA
+//    private static void InformacionEquipos() {
+//
+//    	System.out.println("====================================");
+//    	System.out.println("Informacion de los equipos: ");
+//    	for (int i=0;i<NUMEQUIPOS;i++) {
+//        	EQUIPOS equipo = new EQUIPOS();
+//	    	System.out.print("Nombre del Equipo "+(i+1)+": ");
+//	    	//Partido.id_equipo[i] = i;
+//	    	//equipo.setId_equipo(i);
+//	    	Partido.NombreEquipo[i] = scan.nextLine();
+//	    	equipo.setNombreEquipo(Partido.NombreEquipo[i]);
+//	    	listEquipos.add(equipo);
+//	    	
+//    	}
+//    };
+    
+    public static void MetodoInstanciarEquipos() {
+    EQUIPOS equipo1 = new EQUIPOS(); // Crear objeto del equipo1 y agregarlo a la lista
+    equipo1.CrearEquipo(0, "CV Sayre Mayser");
+    Partido.NombreEquipo[0] = "CV Sayre Mayser";
+    listEquipos.add(equipo1);
+    EQUIPOS equipo2 = new EQUIPOS();
+	equipo2.CrearEquipo(1, "CV Zaragoza");
+	Partido.NombreEquipo[1] = "CV Zaragoza";
+    listEquipos.add(equipo2);
+    EQUIPOS equipo3 = new EQUIPOS();
+	equipo3.CrearEquipo(2, "CV Barça");
+	Partido.NombreEquipo[2] = "CV Barça";
+    listEquipos.add(equipo3);
+    EQUIPOS equipo4 = new EQUIPOS();
+    equipo4.CrearEquipo(3, "CV Alcobendas");
+	Partido.NombreEquipo[3] = "CV Alcobendas";
+    listEquipos.add(equipo4);
+    EQUIPOS equipo5 = new EQUIPOS();
+    equipo5.CrearEquipo(4, "CD Avila Voleibol");
+	Partido.NombreEquipo[4] = "CD Avila Voleibol";
+    listEquipos.add(equipo5);
+    EQUIPOS equipo6 = new EQUIPOS();
+    equipo6.CrearEquipo(5, "CV Madrid Chamberí");
+	Partido.NombreEquipo[5] = "CV Madrid Chamberí";
+    listEquipos.add(equipo6);
+    	
+    }
     
     // Método para calcular el fixture de la liga si el número de equipos es par
     private static Partido[][] calcularLigaNumEquiposPar(){  
@@ -97,23 +123,32 @@ public class AlgoritmoJornadasFixture {
         return partido;  // Devolver la matriz con el fixture
     }
     //Metodo para guardar los partidos por jornada en la clase PARTIDO
-    public void GuardarPartidosenJornada(Partido[][] partido) {
+    public static void GuardarPartidosenJornada() {
+    	Partido[][] partido = calcularLigaNumEquiposPar();
     	int id_partido =0;
-    	List <PARTIDO> listPartidos = new ArrayList<>();
-    	
     	for (int i = 0; i < partido.length; i++){
-            PARTIDO partidos = new PARTIDO();
-            partidos.setId_partido(i+1);
-            System.out.print("Ronda " + (i + 1) + ": ");
+            for (int j = 0; j < partido[i].length; j++) {
+               PARTIDO partidos = new PARTIDO();
+               partidos.CrearPartido(id_partido, partido[i][j].equipolocal, partido[i][j].equipovisitante,
+            		   Partido.NombreEquipo[(partido[i][j].equipolocal)], Partido.NombreEquipo[(partido[i][j].equipovisitante)]);
+			   listPartidos.add(partidos);
+               id_partido++;
+            }
+        }
+    	id_partido = 15;
+    	for (int i = 0; i < partido.length; i++){
             for (int j = 0; j < partido[i].length; j++)
             {
-                System.out.print("   " + (Partido.NombreEquipo[(partido[i][j].equipolocal)]) + "-" + (Partido.NombreEquipo[(partido[i][j].equipovisitante)]));
-            }
-            System.out.println();
+                PARTIDO partidos = new PARTIDO();
+                partidos.CrearPartido(id_partido, partido[i][j].equipovisitante, partido[i][j].equipolocal,
+                		Partido.NombreEquipo[(partido[i][j].equipovisitante)], Partido.NombreEquipo[(partido[i][j].equipolocal)]);
+ 			   listPartidos.add(partidos);
+                id_partido++;
+                }
         }
     }
     // Método para mostrar los partidos de todas las rondas
-    static public void mostrarPartidos()
+    public static void mostrarPartidos()
     {	
 
     	Partido[][] partido = calcularLigaNumEquiposPar();
@@ -142,13 +177,29 @@ public class AlgoritmoJornadasFixture {
             System.out.println();
         }
     }
+    
+    public static void InicializarTemporada() {
+        // Llama a tus métodos necesarios para inicializar datos
+        MetodoInstanciarEquipos();
+        calcularLigaNumEquiposPar();
+        GuardarPartidosenJornada();
+        mostrarPartidos();
+        for (PARTIDO partido : listPartidos) {
+            partido.MostrarPartido(); // Llamar al método MostrarPartido() de cada instancia de PARTIDO
+        }
+        // Comprobación de contenido
+        System.out.println("Contenido de listPartidos: " + listPartidos);
+        System.out.println("Tamaño de listPartidos: " + listPartidos.size());
+    	
+    }
+    
+    
     // Método principal para probar el cálculo del fixture
-    static public void main(String[] args)
+    public static void main(String[] args)
     {
         // Calcular y mostrar la liga con 6 equipos
-    	InformacionEquipos();
-        calcularLigaNumEquiposPar();
-        mostrarPartidos();
+    	//InformacionEquipos();
+    	InicializarTemporada();
     }
 	
 	

@@ -36,6 +36,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JComboBox;
 import javax.swing.SpringLayout;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
@@ -123,11 +124,12 @@ public class VentanaClasificacion extends JFrame {
   private JSeparator separator_9;
   private JLabel prueba;
   private JLabel lblNewLabel_1;
+  public static List<EQUIPOS> listEquipos = new ArrayList<>();
+  public static List<PARTIDO> listPartidos = new ArrayList<>();
   /**
 	 * Launch the application.
 	 */
   public static void main(String[] args) {
-	  
     EventQueue.invokeLater(new Runnable() {
       public void run() {
         try {
@@ -216,7 +218,7 @@ public class VentanaClasificacion extends JFrame {
 
     
 
-    lblTituloNumeroJornada = new JLabel("JORNADA 1");
+    lblTituloNumeroJornada = new JLabel("JORNADA " + (jornadaActual));
     lblTituloNumeroJornada.setHorizontalAlignment(SwingConstants.CENTER);
 
     btnAnterior = new JButton("◀");
@@ -433,8 +435,16 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblLocalB_1.gridx = 1;
     gbc_lblLocalB_1.gridy = 2;
     panelPartido1.add(lblLocalB_1, gbc_lblLocalB_1);
-    
-    lblEquipoLocalA = new JLabel("Avila Voleibol");
+
+ //   lblEquipoLocalA = new JLabel("CV Sayre Mayser");
+    lblEquipoLocalA = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(0).getNombreEquipoLocal());
+    if (AlgoritmoJornadasFixture.listPartidos.size() > 1) {
+        System.out.println("Contenido de listPartidos: " + AlgoritmoJornadasFixture.listPartidos);
+        System.out.println("Tamaño de listPartidos: " + AlgoritmoJornadasFixture.listPartidos.size());
+    } else {
+        System.out.println("Contenido de listPartidos: " + AlgoritmoJornadasFixture.listPartidos);
+        System.out.println("Tamaño de listPartidos: " + AlgoritmoJornadasFixture.listPartidos.size());
+    }
     lblEquipoLocalA.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoLocalA.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoLocalA = new GridBagConstraints();
@@ -472,7 +482,7 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblVisitanteB_1.gridy = 3;
     panelPartido1.add(lblVisitanteB_1, gbc_lblVisitanteB_1);
     
-    lblEquipoVisitanteA = new JLabel("Sayre Mayser");
+    lblEquipoVisitanteA = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(0).getNombreEquipoVisitante());
     lblEquipoVisitanteA.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoVisitanteA.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoVisitanteA = new GridBagConstraints();
@@ -568,7 +578,7 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblLocalB.gridy = 2;
     panelPartido2.add(lblLocalB, gbc_lblLocalB);
     
-    lblEquipoLocalB = new JLabel("Avila Voleibol");
+    lblEquipoLocalB = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(1).getNombreEquipoLocal());
     lblEquipoLocalB.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoLocalB.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoLocalB = new GridBagConstraints();
@@ -606,7 +616,7 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblVisitanteB.gridy = 3;
     panelPartido2.add(lblVisitanteB, gbc_lblVisitanteB);
     
-    lblEquipoVisitanteB = new JLabel("Sayre Mayser");
+    lblEquipoVisitanteB = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(1).getNombreEquipoVisitante());
     lblEquipoVisitanteB.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoVisitanteB.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoVisitanteB = new GridBagConstraints();
@@ -702,7 +712,7 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblLocalB_2.gridy = 2;
     panelPartido3.add(lblLocalB_2, gbc_lblLocalB_2);
     
-    lblEquipoLocalC = new JLabel("Avila Voleibol");
+    lblEquipoLocalC = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(2).getNombreEquipoLocal());
     lblEquipoLocalC.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoLocalC.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoLocalC = new GridBagConstraints();
@@ -740,7 +750,7 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblVisitanteB_2.gridy = 3;
     panelPartido3.add(lblVisitanteB_2, gbc_lblVisitanteB_2);
     
-    lblEquipoVisitanteC = new JLabel("Sayre Mayser");
+    lblEquipoVisitanteC = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(2).getNombreEquipoVisitante());
     lblEquipoVisitanteC.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoVisitanteC.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoVisitanteC = new GridBagConstraints();
@@ -823,6 +833,20 @@ public class VentanaClasificacion extends JFrame {
     tablaClasificacion.getColumnModel().getColumn(6).setPreferredWidth(55);
     tablaClasificacion.getColumnModel().getColumn(7).setPreferredWidth(55);
     scrollPane.setViewportView(tablaClasificacion);
+  }
+  
+  
+  //METODO PARA GUARDAR LOS DATOS DE UN PARTIDO
+  
+  public void RegistrarPartido(int idEquipolocal, int idEquipovisita, int puntosEquipoLocal, int puntosEquipoVisitante,
+		  int puntosUltimoSetLocal, int puntosUltimoSetVisitante) {
+	  //Actualizar los puntos de los equipos segun el resultado del partido
+	  if (puntosEquipoLocal > puntosEquipoVisitante) {
+
+	  }
+	  else if (puntosEquipoLocal < puntosEquipoVisitante) {
+		  
+	  }
   }
   
   class Jornada {

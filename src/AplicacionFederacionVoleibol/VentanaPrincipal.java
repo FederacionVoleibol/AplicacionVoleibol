@@ -18,6 +18,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     private JLabel lblMensajeContra;
 
     public static void main(String[] args) {
+
+  	   
+        AlgoritmoJornadasFixture.InicializarTemporada();//Llamar al metodo main de la clase AlgoritmoJornadasFixture
+    
+   	
         EventQueue.invokeLater(() -> {
             try {
                 VentanaPrincipal frame = new VentanaPrincipal();
@@ -26,8 +31,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
                 e.printStackTrace();
             }
         });
-    }
-
+        }
+    
     public VentanaPrincipal() {
         setSize(850, 570);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

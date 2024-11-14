@@ -67,7 +67,8 @@ public class VentanaIntroducirEquipos extends JFrame {
 	private JLabel lblEquipo_6;
 	private JLabel lblNombreEquipo1;
     String tipoUsuario = AlgoritmoLogin.getTipodeUsuario();
-	List <EQUIPOS> listEquipos = new ArrayList <>();
+	public static List <EQUIPOS> listEquipos = new ArrayList <>();
+	public static List <PARTIDO> listPartidos = new ArrayList <>();
 	private JLabel lblNombreEquipo2;
 	private JLabel lblNombreEquipo3;
 	private JLabel lblNombreEquipo4;
@@ -145,24 +146,27 @@ public class VentanaIntroducirEquipos extends JFrame {
 		if (tipoUsuario.equals("Desarrollador")) {
 		Footer.add(Botom_guardar);
 		} 
-		EQUIPOS equipo1 = new EQUIPOS(); // Crear objeto del equipo1 y agregarlo a la lista
-        equipo1.CrearEquipo(0, "CV Sayre Mayser");
-        listEquipos.add(equipo1);
-        EQUIPOS equipo2 = new EQUIPOS();
-		equipo2.CrearEquipo(1, "CV Zaragoza");
-        listEquipos.add(equipo2);
-        EQUIPOS equipo3 = new EQUIPOS();
-		equipo3.CrearEquipo(2, "CV Barça");
-        listEquipos.add(equipo3);
-	    EQUIPOS equipo4 = new EQUIPOS();
-	    equipo4.CrearEquipo(3, "CV Alcobendas");
-        listEquipos.add(equipo4);
-        EQUIPOS equipo5 = new EQUIPOS();
-        equipo5.CrearEquipo(4, "CD Avila Voleibol");
-        listEquipos.add(equipo5);
-        EQUIPOS equipo6 = new EQUIPOS();
-        equipo6.CrearEquipo(5, "CV Madrid Chamberí");
-        listEquipos.add(equipo6);
+//		EQUIPOS equipo1 = new EQUIPOS(); // Crear objeto del equipo1 y agregarlo a la lista
+//        equipo1.CrearEquipo(0, "CV Sayre Mayser");
+//        listEquipos.add(equipo1);
+//        EQUIPOS equipo2 = new EQUIPOS();
+//		equipo2.CrearEquipo(1, "CV Zaragoza");
+//        listEquipos.add(equipo2);
+//        EQUIPOS equipo3 = new EQUIPOS();
+//		equipo3.CrearEquipo(2, "CV Barça");
+//        listEquipos.add(equipo3);
+//	    EQUIPOS equipo4 = new EQUIPOS();
+//	    equipo4.CrearEquipo(3, "CV Alcobendas");
+//        listEquipos.add(equipo4);
+//        EQUIPOS equipo5 = new EQUIPOS();
+//        equipo5.CrearEquipo(4, "CD Avila Voleibol");
+//        listEquipos.add(equipo5);
+//        EQUIPOS equipo6 = new EQUIPOS();
+//        equipo6.CrearEquipo(5, "CV Madrid Chamberí");
+//        listEquipos.add(equipo6);
+//        for (PARTIDO partido : listPartidos) {
+//            partido.MostrarPartido(); // Llamar al método MostrarPartido() de cada instancia de PARTIDO
+//        }
 		Botom_guardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 //				String NombreEquipo1 = txtEquipoNombre1.getText();
@@ -250,7 +254,9 @@ public class VentanaIntroducirEquipos extends JFrame {
 
 		}
 		else {
-			lblNombreEquipo1 = new JLabel(listEquipos.get(0).getNombreEquipo());
+			//lblNombreEquipo1 = new JLabel(listEquipos.get(0).getNombreEquipo());
+			lblNombreEquipo1 = new JLabel(AlgoritmoJornadasFixture.listEquipos.get(0).getNombreEquipo());
+
 			lblNombreEquipo1.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNombreEquipo1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblNombreEquipo1.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -298,7 +304,9 @@ public class VentanaIntroducirEquipos extends JFrame {
 			Equipo_2.add(txtEquipoNombre2);
 		}
 		else {
-			lblNombreEquipo2 = new JLabel(listEquipos.get(1).getNombreEquipo());
+			//lblNombreEquipo2 = new JLabel(listEquipos.get(1).getNombreEquipo());
+			lblNombreEquipo2 = new JLabel(AlgoritmoJornadasFixture.listEquipos.get(1).getNombreEquipo());
+
 			lblNombreEquipo2.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNombreEquipo2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblNombreEquipo2.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -347,7 +355,9 @@ public class VentanaIntroducirEquipos extends JFrame {
 			Equipo_3.add(txtEquipoNombre3);
 		} 
 		else {
-			lblNombreEquipo3 = new JLabel(listEquipos.get(2).getNombreEquipo());
+			//lblNombreEquipo3 = new JLabel(listEquipos.get(2).getNombreEquipo());
+			lblNombreEquipo3 = new JLabel(AlgoritmoJornadasFixture.listEquipos.get(2).getNombreEquipo());
+
 			lblNombreEquipo3.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNombreEquipo3.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblNombreEquipo3.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -399,7 +409,9 @@ public class VentanaIntroducirEquipos extends JFrame {
 			Equipo_4.add(txtEquipoNombre4);
 		} 
 		else {
-			lblNombreEquipo4 = new JLabel(listEquipos.get(3).getNombreEquipo());
+			//lblNombreEquipo4 = new JLabel(listEquipos.get(3).getNombreEquipo());
+			lblNombreEquipo4 = new JLabel(AlgoritmoJornadasFixture.listEquipos.get(3).getNombreEquipo());
+
 			lblNombreEquipo4.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNombreEquipo4.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblNombreEquipo4.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -451,7 +463,9 @@ public class VentanaIntroducirEquipos extends JFrame {
 			Equipo_5.add(txtEquipoNombre5);
 		} 
 		else {
-			lblNombreEquipo5 = new JLabel(listEquipos.get(4).getNombreEquipo());
+			//lblNombreEquipo5 = new JLabel(listEquipos.get(4).getNombreEquipo());
+			lblNombreEquipo5 = new JLabel(AlgoritmoJornadasFixture.listEquipos.get(4).getNombreEquipo());
+
 			lblNombreEquipo5.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNombreEquipo5.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblNombreEquipo5.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -459,7 +473,13 @@ public class VentanaIntroducirEquipos extends JFrame {
 			lblNombreEquipo5.setBackground(Color.WHITE); 
 			Equipo_5.add(lblNombreEquipo5);
 			
-		}
+		}   if (AlgoritmoJornadasFixture.listPartidos.size() > 1) {
+	        System.out.println("Contenido de listPartidos: " + AlgoritmoJornadasFixture.listPartidos);
+	        System.out.println("Tamaño de listPartidos: " + AlgoritmoJornadasFixture.listPartidos.size());
+	    } else {
+	        System.out.println("Contenido de listPartidos: " + AlgoritmoJornadasFixture.listPartidos);
+	        System.out.println("Tamaño de listPartidos: " + AlgoritmoJornadasFixture.listPartidos.size());
+	    }
 		
 		//---------- FILA EQUIPO 6 ----------//
 		
@@ -503,7 +523,9 @@ public class VentanaIntroducirEquipos extends JFrame {
 			Equipo_6.add(txtEquipoNombre6);
 		} 
 		else {
-			lblNombreEquipo6 = new JLabel(listEquipos.get(5).getNombreEquipo());
+			//lblNombreEquipo6 = new JLabel(listEquipos.get(5).getNombreEquipo());
+			lblNombreEquipo6 = new JLabel(AlgoritmoJornadasFixture.listEquipos.get(5).getNombreEquipo());
+
 			lblNombreEquipo6.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNombreEquipo6.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblNombreEquipo6.setBorder(new LineBorder(new Color(0, 0, 0)));

@@ -46,6 +46,7 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
                 }
             }
         });
+        
     }
 
     /**
