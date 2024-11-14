@@ -111,7 +111,7 @@ public class VentanaClasificacion extends JFrame {
   
   String[] equipos = {"CV Sayre Mayser", "CV Barça", "CD Zaragoza", "CV Alcobendas", "CD Avila Voleibol", "CV Madrid Chamberí"};
 
-  int indiceEquipo = 1;
+  int idPartido = 3;
   private JSeparator separator;
   private JSeparator separator_1;
   private JSeparator separator_2;
@@ -130,6 +130,9 @@ public class VentanaClasificacion extends JFrame {
 	 * Launch the application.
 	 */
   public static void main(String[] args) {
+	  AlgoritmoJornadasFixture.InicializarTemporada();//Llamar al metodo main de la clase AlgoritmoJornadasFixture
+	    
+	   	
     EventQueue.invokeLater(new Runnable() {
       public void run() {
         try {
@@ -186,24 +189,28 @@ public class VentanaClasificacion extends JFrame {
             if (jornadaActual < 10) {
                 jornadaActual++;
                 lblTituloNumeroJornada.setText("JORNADA " + jornadaActual);
-
+                
                 // Reiniciar el índice si se llega al final del arreglo
-                if (indiceEquipo >= equipos.length) {
-                    indiceEquipo = 0;
-                }
+                
 
                 // Actualizar los labels de los equipos
-                lblEquipoLocalA.setText(equipos[indiceEquipo]);
-                lblEquipoVisitanteA.setText(equipos[(indiceEquipo + 1) % equipos.length]);
-                
-                lblEquipoLocalB.setText(equipos[(indiceEquipo + 2) % equipos.length]);
-                lblEquipoVisitanteB.setText(equipos[(indiceEquipo + 3) % equipos.length]);
-                
-                lblEquipoLocalC.setText(equipos[(indiceEquipo + 4) % equipos.length]);
-                lblEquipoVisitanteC.setText(equipos[(indiceEquipo + 5) % equipos.length]);
+                lblEquipoLocalA.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoLocal());
+                lblEquipoVisitanteA.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoVisitante());
+                // Incrementar el índice para el siguiente Partido
+                idPartido++;
+                lblEquipoLocalB.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoLocal());
+                lblEquipoVisitanteB.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoVisitante());
+                // Incrementar el índice para el siguiente Partido
+                idPartido++;
+                lblEquipoLocalC.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoLocal());
+                lblEquipoVisitanteC.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoVisitante());
 
-                // Incrementar el índice de los equipos
-                indiceEquipo++;
+                // Incrementar el índice para el siguiente Partido
+                idPartido++;
+                
+                if (idPartido >= AlgoritmoJornadasFixture.listPartidos.size()) {
+                    idPartido = 3;
+                }
 
                 if (jornadaActual == 10) {
                 	btnSiguiente.setVisible(false);
@@ -226,36 +233,36 @@ public class VentanaClasificacion extends JFrame {
     btnAnterior.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
         	// hay que editarlo para extarer los partidos del array Jornadas.
-            if (jornadaActual > 1) {
-
-                jornadaActual--;
-                lblTituloNumeroJornada.setText("JORNADA " + jornadaActual);
-
-                // Reiniciar el índice si se llega al principio del arreglo
-                if (indiceEquipo <= 0) {
-                    indiceEquipo = equipos.length - 1;
-                }
-
-                // Actualizar los labels de los equipos
-                
-                lblEquipoLocalA.setText(equipos[(indiceEquipo - 1 + equipos.length) % equipos.length]);
-                lblEquipoVisitanteA.setText(equipos[(indiceEquipo) % equipos.length]);
-                lblEquipoLocalB.setText(equipos[(indiceEquipo + 1) % equipos.length]);
-                lblEquipoVisitanteB.setText(equipos[(indiceEquipo + 2) % equipos.length]);
-                lblEquipoLocalC.setText(equipos[(indiceEquipo + 3) % equipos.length]);
-                lblEquipoVisitanteC.setText(equipos[(indiceEquipo + 4) % equipos.length]);
-
-                // Decrementar el índice de los equipos
-                indiceEquipo--;
-                
-                if (jornadaActual == 1) {
-                	btnAnterior.setVisible(false);
-                }
-                if (jornadaActual < 10) {
-                	btnSiguiente.setVisible(true);
-                }
-           
-            }
+//            if (jornadaActual > 1) {
+//
+//                jornadaActual--;
+//                lblTituloNumeroJornada.setText("JORNADA " + jornadaActual);
+//
+//                // Reiniciar el índice si se llega al principio del arreglo
+//                if (indiceEquipo <= 0) {
+//                    indiceEquipo = equipos.length - 1;
+//                }
+//
+//                // Actualizar los labels de los equipos
+//                
+//                lblEquipoLocalA.setText(equipos[(indiceEquipo - 1 + equipos.length) % equipos.length]);
+//                lblEquipoVisitanteA.setText(equipos[(indiceEquipo) % equipos.length]);
+//                lblEquipoLocalB.setText(equipos[(indiceEquipo + 1) % equipos.length]);
+//                lblEquipoVisitanteB.setText(equipos[(indiceEquipo + 2) % equipos.length]);
+//                lblEquipoLocalC.setText(equipos[(indiceEquipo + 3) % equipos.length]);
+//                lblEquipoVisitanteC.setText(equipos[(indiceEquipo + 4) % equipos.length]);
+//
+//                // Decrementar el índice de los equipos
+//                indiceEquipo--;
+//                
+//                if (jornadaActual == 1) {
+//                	btnAnterior.setVisible(false);
+//                }
+//                if (jornadaActual < 10) {
+//                	btnSiguiente.setVisible(true);
+//                }
+//           
+//            }
         }
     });
     panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -308,14 +315,30 @@ public class VentanaClasificacion extends JFrame {
     		// 1. Obtencion de datos
     		// 1.1 Obtencion de los nombres de los equipos 
     		// ------------------------------------------- EJ: eql_a = equipo local "a", eqv_b -> equipo visitante "b"
-    		String eql_a = lblEquipoLocalA.getText();
+
+    		/*
+    		 * 	-SI NO HAY PUNTAJE INGRESADO MOSTRAR MENSAJE DE ERROR
+    		 * 
+    		 *
+    		 * 	-SI YA HAY UN VALOR GUARDADO EN LA POSICION, MOSTRAR MENSAJE DE CONFIRMACION CON ISEMPTY
+    		 * 
+    		 *  -SI NO HAY VALOR EN LA POSICION, INSERTAR VALOR
+    		 *  COMPROBAR EN QUE NUMERO DE JORNADA SE ENCUENTRA
+    		 *  
+    		 * 
+    		 * */
+    		//guardarDatosPartidos();
+    		
+    		
+    		
+/*    		String eql_a = lblEquipoLocalA.getText();
     		String eqv_a = lblEquipoVisitanteA.getText();
     		String eql_b = lblEquipoLocalB.getText();
     		String eqv_b = lblEquipoVisitanteB.getText();
     		String eql_c = lblEquipoLocalC.getText();
     		String eqv_c = lblEquipoVisitanteC.getText();
  
-    		
+ 		
     		try {
     			// Obtencion del los PUNTAJES
     			// --------------------------------------------------- EJ: eql_v_p = equipo local "a" (points)
@@ -342,7 +365,8 @@ public class VentanaClasificacion extends JFrame {
             } catch (NumberFormatException ex) {
                 // Manejar el error si el texto no es un número válido
                 JOptionPane.showMessageDialog(null, "Por favor, ingresa un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            }*/ 
+
     		
     		//int eqv_a_p = tf_eqva_p.getText();
     		
@@ -906,5 +930,48 @@ public class VentanaClasificacion extends JFrame {
 	    }
 	}
   
-  
+  /*
+   * private void guardarDatosPartidos() {
+    try {
+        // Obtener valores ingresados en los campos de puntaje y último set para cada partido
+        int puntajePartido1Local = Integer.parseInt(txtPuntajePartido1Local.getText());
+        int puntajePartido1Visitante = Integer.parseInt(txtPuntajePartido1Visitante.getText());
+        int ultimoSetPartido1Local = Integer.parseInt(txtUltimoSetPartido1Local.getText());
+        int ultimoSetPartido1Visitante = Integer.parseInt(txtUltimoSetPartido1Visitante.getText());
+        
+        int puntajePartido2Local = Integer.parseInt(txtPuntajePartido2Local.getText());
+        int puntajePartido2Visitante = Integer.parseInt(txtPuntajePartido2Visitante.getText());
+        int ultimoSetPartido2Local = Integer.parseInt(txtUltimoSetPartido2Local.getText());
+        int ultimoSetPartido2Visitante = Integer.parseInt(txtUltimoSetPartido2Visitante.getText());
+        
+        int puntajePartido3Local = Integer.parseInt(txtPuntajePartido3Local.getText());
+        int puntajePartido3Visitante = Integer.parseInt(txtPuntajePartido3Visitante.getText());
+        int ultimoSetPartido3Local = Integer.parseInt(txtUltimoSetPartido3Local.getText());
+        int ultimoSetPartido3Visitante = Integer.parseInt(txtUltimoSetPartido3Visitante.getText());
+        
+        // Actualizar los objetos de PARTIDO en el ArrayList
+        AlgoritmoJornadasFixture.listPartidos.get(0).setPuntajeLocal(puntajePartido1Local);
+        AlgoritmoJornadasFixture.listPartidos.get(0).setPuntajeVisitante(puntajePartido1Visitante);
+        AlgoritmoJornadasFixture.listPartidos.get(0).setUltimoSetLocal(ultimoSetPartido1Local);
+        AlgoritmoJornadasFixture.listPartidos.get(0).setUltimoSetVisitante(ultimoSetPartido1Visitante);
+        
+        AlgoritmoJornadasFixture.listPartidos.get(1).setPuntajeLocal(puntajePartido2Local);
+        AlgoritmoJornadasFixture.listPartidos.get(1).setPuntajeVisitante(puntajePartido2Visitante);
+        AlgoritmoJornadasFixture.listPartidos.get(1).setUltimoSetLocal(ultimoSetPartido2Local);
+        AlgoritmoJornadasFixture.listPartidos.get(1).setUltimoSetVisitante(ultimoSetPartido2Visitante);
+        
+        AlgoritmoJornadasFixture.listPartidos.get(2).setPuntajeLocal(puntajePartido3Local);
+        AlgoritmoJornadasFixture.listPartidos.get(2).setPuntajeVisitante(puntajePartido3Visitante);
+        AlgoritmoJornadasFixture.listPartidos.get(2).setUltimoSetLocal(ultimoSetPartido3Local);
+        AlgoritmoJornadasFixture.listPartidos.get(2).setUltimoSetVisitante(ultimoSetPartido3Visitante);
+        
+        // Llama a un método para actualizar la tabla de clasificación
+        actualizarTablaClasificacion();
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Por favor, ingresa valores numéricos válidos para los puntajes.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+   * 
+   * */
 }
