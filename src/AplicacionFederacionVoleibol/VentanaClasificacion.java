@@ -430,13 +430,13 @@ public class VentanaClasificacion extends JFrame {
 
  //   lblEquipoLocalA = new JLabel("CV Sayre Mayser");
     lblEquipoLocalA = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(0).getNombreEquipoLocal());
-    if (AlgoritmoJornadasFixture.listPartidos.size() > 1) {
-        System.out.println("Contenido de listPartidos: " + AlgoritmoJornadasFixture.listPartidos);
-        System.out.println("Tamaño de listPartidos: " + AlgoritmoJornadasFixture.listPartidos.size());
-    } else {
-        System.out.println("Contenido de listPartidos: " + AlgoritmoJornadasFixture.listPartidos);
-        System.out.println("Tamaño de listPartidos: " + AlgoritmoJornadasFixture.listPartidos.size());
-    }
+//    if (AlgoritmoJornadasFixture.listPartidos.size() > 1) {
+//        System.out.println("Contenido de listPartidos: " + AlgoritmoJornadasFixture.listPartidos);
+//        System.out.println("Tamaño de listPartidos: " + AlgoritmoJornadasFixture.listPartidos.size());
+//    } else {
+//        System.out.println("Contenido de listPartidos: " + AlgoritmoJornadasFixture.listPartidos);
+//        System.out.println("Tamaño de listPartidos: " + AlgoritmoJornadasFixture.listPartidos.size());
+//    }
     lblEquipoLocalA.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoLocalA.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoLocalA = new GridBagConstraints();

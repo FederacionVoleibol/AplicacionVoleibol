@@ -183,6 +183,13 @@ public class AlgoritmoJornadasFixture {
             }
             System.out.println();
         }
+        
+        for (PARTIDO partidos : listPartidos) {
+            partidos.MostrarPartido(); // Llamar al método MostrarPartido() de cada instancia de PARTIDO
+        }
+//        // Comprobación de contenido
+//        System.out.println("Contenido de listPartidos: " + listPartidos);
+//        System.out.println("Tamaño de listPartidos: " + listPartidos.size());
     }
     
     public static void InicializarTemporada() {
@@ -190,21 +197,21 @@ public class AlgoritmoJornadasFixture {
         MetodoInstanciarEquipos();
         calcularLigaNumEquiposPar();
         GuardarPartidosenJornada();
-        mostrarPartidos();
-        for (PARTIDO partido : listPartidos) {
-            partido.MostrarPartido(); // Llamar al método MostrarPartido() de cada instancia de PARTIDO
-        }
-//        // Comprobación de contenido
-//        System.out.println("Contenido de listPartidos: " + listPartidos);
-//        System.out.println("Tamaño de listPartidos: " + listPartidos.size());
-    	
+        //mostrarPartidos();
     }
+    
+    
+    
+    
     // Método principal para probar el cálculo del fixture
     public static void main(String[] args)
     {
+    	
         // Calcular y mostrar la liga con 6 equipos
     	//InformacionEquipos();
     	InicializarTemporada();
+    	
+    	
     }
 	
 	

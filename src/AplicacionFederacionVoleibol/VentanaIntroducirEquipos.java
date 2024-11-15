@@ -474,13 +474,15 @@ public class VentanaIntroducirEquipos extends JFrame {
 			lblNombreEquipo5.setBackground(Color.WHITE); 
 			Equipo_5.add(lblNombreEquipo5);
 			
-		}   if (AlgoritmoJornadasFixture.listPartidos.size() > 1) {
-	        System.out.println("Contenido de listPartidos: " + AlgoritmoJornadasFixture.listPartidos);
-	        System.out.println("Tamaño de listPartidos: " + AlgoritmoJornadasFixture.listPartidos.size());
-	    } else {
-	        System.out.println("Contenido de listPartidos: " + AlgoritmoJornadasFixture.listPartidos);
-	        System.out.println("Tamaño de listPartidos: " + AlgoritmoJornadasFixture.listPartidos.size());
-	    }
+		}   
+		
+//		if (AlgoritmoJornadasFixture.listPartidos.size() > 1) {
+//	        System.out.println("Contenido de listPartidos: " + AlgoritmoJornadasFixture.listPartidos);
+//	        System.out.println("Tamaño de listPartidos: " + AlgoritmoJornadasFixture.listPartidos.size());
+//	    } else {
+//	        System.out.println("Contenido de listPartidos: " + AlgoritmoJornadasFixture.listPartidos);
+//	        System.out.println("Tamaño de listPartidos: " + AlgoritmoJornadasFixture.listPartidos.size());
+//	    }
 		
 		//---------- FILA EQUIPO 6 ----------//
 		
