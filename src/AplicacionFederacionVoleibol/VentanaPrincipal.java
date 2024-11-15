@@ -59,7 +59,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         panelCentro.setBackground(new Color(192, 192, 192));
         
         logo = new JLabel("");
-        logo.setIcon(new ImageIcon("C:\\Users\\ik_1dw3a\\Downloads\\logo100x110.PNG"));
+        logo.setIcon(new ImageIcon("./img/logo100x110.png"));
         GridBagConstraints gbc_logo = new GridBagConstraints();
         gbc_logo.insets = new Insets(0, 0, 5, 5);
         gbc_logo.gridx = 1;
