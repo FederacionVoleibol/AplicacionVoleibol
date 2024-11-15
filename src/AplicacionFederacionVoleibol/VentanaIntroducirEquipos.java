@@ -90,6 +90,7 @@ public class VentanaIntroducirEquipos extends JFrame {
 	}
 	
 	public static void main(String[] args) {
+		  AlgoritmoJornadasFixture.InicializarTemporada();//Llamar al metodo main de la clase AlgoritmoJornadasFixture
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

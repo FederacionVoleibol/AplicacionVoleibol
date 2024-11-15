@@ -15,21 +15,14 @@ public class AlgoritmoJornadasFixture {
 	private static final int NUMEQUIPOS = TEMPORADAS.getCantidadEquipos(); // MODIFICABLE SOLO NUMEROS PARES
 	private static final int NUMRONDAS = NUMEQUIPOS -1; // NOesMODIFICABLE
 	private static final int NUMPARTIDOSPORRONDA = TEMPORADAS.getCantidadPartidosPorJornada(); // NOesMODIFICABLE
-	//VentanaIntroducirEquipos EstructutraEquipo = new VentanaIntroducirEquipos(); // Herencia de la clase VentanaIntroducirEquipos para extraer la información de los equipos
- 
-    // Clase estática para representar un Partido con equipo local y visitante
+// Clase estática para representar un Partido con equipo local y visitante
 		static public class Partido{
-    	// Inicialmente se asignan valores por defecto de -1 NOesMODIFICABLE
         private int equipolocal = 0, equipovisitante = 0;
-		// Inicialmente se asignan valores por defecto de 0
-        //public static int SetGanadosLocal = 0, SetGanadosVisitante = 0;
-        //public static int Cantidad_Equipos = NUMEQUIPOS;
-        //private static int[] id_equipo = new int[NUMEQUIPOS];
         private static String[] NombreEquipo = new String[NUMEQUIPOS];
-        //public static int[] PuntajeSetLocal = new int[5];
-        //public static int[] PuntajeSetVisitante = new int[5];
     }
-	// Método para introducir los nombres de los equipos y CREAR LOS OBJETOS EQUIPOS VERS DINAMICA
+		
+		
+	// Método para introducir los nombres de los equipos y CREAR LOS OBJETOS EQUIPOS VERSION DINAMICA PARA RETO 2 POR TRABAJAR
 //    private static void InformacionEquipos() {
 //
 //    	System.out.println("====================================");
@@ -45,7 +38,7 @@ public class AlgoritmoJornadasFixture {
 //	    	
 //    	}
 //    };
-    
+    // Método para instanciar los equipos y agregarlos a la lista
     public static void MetodoInstanciarEquipos() {
     EQUIPOS equipo1 = new EQUIPOS(); // Crear objeto del equipo1 y agregarlo a la lista
     equipo1.CrearEquipo(0, "CV Sayre Mayser");
@@ -91,7 +84,6 @@ public class AlgoritmoJornadasFixture {
                     id_equipo = 0;  // Reiniciar si llegamos al equipo final
             }
         }
-
         // Asignar los equipos visitantes para la primera columna (primer partido en cada ronda)
         for (int i = 0; i < NUMRONDAS; i++)
         {
@@ -141,7 +133,7 @@ public class AlgoritmoJornadasFixture {
             }
             // Agregar la jornada completa a listJornadas
             listJornadas.add(jornadas);
-            System.out.println("Equipos en la jornada " + i + ": " + jornadas.getIDequiposporJornada());
+   //         System.out.println("Equipos en la jornada " + i + ": " + jornadas.getIDequiposporJornada());
         }
 
         // Segunda mitad de las jornadas
@@ -159,13 +151,12 @@ public class AlgoritmoJornadasFixture {
             }
             // Agregar la jornada completa a listJornadas
             listJornadas.add(jornadas);
-            System.out.println("Equipos en la jornada " + (i + 5) + ": " + jornadas.getIDequiposporJornada());
+ //           System.out.println("Equipos en la jornada " + (i + 5) + ": " + jornadas.getIDequiposporJornada());
         }
     }
 
     // Método para mostrar los partidos de todas las rondas
-    public static void mostrarPartidos()
-    {	
+    public static void mostrarPartidos()	{	
 
     	Partido[][] partido = calcularLigaNumEquiposPar();
         // Mostrar la fase de "IDA" (partidos con los equipos tal como están)
@@ -203,13 +194,11 @@ public class AlgoritmoJornadasFixture {
         for (PARTIDO partido : listPartidos) {
             partido.MostrarPartido(); // Llamar al método MostrarPartido() de cada instancia de PARTIDO
         }
-        // Comprobación de contenido
-        System.out.println("Contenido de listPartidos: " + listPartidos);
-        System.out.println("Tamaño de listPartidos: " + listPartidos.size());
+//        // Comprobación de contenido
+//        System.out.println("Contenido de listPartidos: " + listPartidos);
+//        System.out.println("Tamaño de listPartidos: " + listPartidos.size());
     	
     }
-    
-    
     // Método principal para probar el cálculo del fixture
     public static void main(String[] args)
     {

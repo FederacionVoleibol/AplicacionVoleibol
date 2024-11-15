@@ -129,7 +129,7 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
                         
         // Cargar la ventana de clasificación por defecto (u otro panel que quieras mostrar primero)
        AlgoritmoLogin login = new AlgoritmoLogin();
-       if (login.TipodeUsuario == "Desarrollador" || login.TipodeUsuario == "Admin") {
+       if (login.TipodeUsuario == "Admin") {//login.TipodeUsuario == "Desarrollador" ||
     	   cargarVentanaClasificacion();
     	   }
        else {
@@ -143,9 +143,13 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
         String tipoUsuario = AlgoritmoLogin.getTipodeUsuario();
 
         if (botonAccionado == btnClasificacion) {
-            if (tipoUsuario.equals("Desarrollador") || tipoUsuario.equals("Admin")) {
+            if (tipoUsuario.equals("Admin")) {
                 cargarVentanaClasificacion();
-            } else if (tipoUsuario.equals("Usuario")) {
+            } else if (tipoUsuario.equals("Desarrollador")) {
+                cargarVentanaClasificacionUsuarios();
+            }
+            
+            else if (tipoUsuario.equals("Usuario")) {
                 cargarVentanaClasificacionUsuarios();
             }
         } else if (botonAccionado == btnArbitros && (tipoUsuario.equals("Desarrollador") || tipoUsuario.equals("Admin"))) {
