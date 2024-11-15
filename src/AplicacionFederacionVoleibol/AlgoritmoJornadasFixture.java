@@ -9,7 +9,7 @@ public class AlgoritmoJornadasFixture {
 
     public static List<EQUIPOS> listEquipos = new ArrayList<>();
     public static List<PARTIDO> listPartidos = new ArrayList<>();
-    
+    public static List<JORNADAS> listJornadas = new ArrayList<>();
 	//--------------VARIABLES PRINCIPALES
 	static Scanner scan = new Scanner(System.in);
 	private static final int NUMEQUIPOS = TEMPORADAS.getCantidadEquipos(); // MODIFICABLE SOLO NUMEROS PARES
@@ -124,29 +124,45 @@ public class AlgoritmoJornadasFixture {
     }
     //Metodo para guardar los partidos por jornada en la clase PARTIDO
     public static void GuardarPartidosenJornada() {
-    	Partido[][] partido = calcularLigaNumEquiposPar();
-    	int id_partido =0;
-    	for (int i = 0; i < partido.length; i++){
+        Partido[][] partido = calcularLigaNumEquiposPar();
+        int id_partido = 0;
+
+        // Primera mitad de las jornadas
+        for (int i = 0; i < partido.length; i++) {
+            JORNADAS jornadas = new JORNADAS();
             for (int j = 0; j < partido[i].length; j++) {
-               PARTIDO partidos = new PARTIDO();
-               partidos.CrearPartido(id_partido, partido[i][j].equipolocal, partido[i][j].equipovisitante,
-            		   Partido.NombreEquipo[(partido[i][j].equipolocal)], Partido.NombreEquipo[(partido[i][j].equipovisitante)]);
-			   listPartidos.add(partidos);
-               id_partido++;
+                PARTIDO partidos = new PARTIDO();
+                partidos.CrearPartido(id_partido, partido[i][j].equipolocal, partido[i][j].equipovisitante,
+                        Partido.NombreEquipo[partido[i][j].equipolocal], Partido.NombreEquipo[partido[i][j].equipovisitante]);
+                listPartidos.add(partidos);
+                jornadas.addListaEquiposPorJornada(partido[i][j].equipolocal);  // Agregar el equipo local
+                jornadas.addListaEquiposPorJornada(partido[i][j].equipovisitante);  // Agregar el equipo visitante
+                id_partido++;
             }
+            // Agregar la jornada completa a listJornadas
+            listJornadas.add(jornadas);
+            System.out.println("Equipos en la jornada " + i + ": " + jornadas.getIDequiposporJornada());
         }
-    	id_partido = 15;
-    	for (int i = 0; i < partido.length; i++){
-            for (int j = 0; j < partido[i].length; j++)
-            {
+
+        // Segunda mitad de las jornadas
+        id_partido = 15;  // Reiniciar el ID para la segunda mitad
+        for (int i = 0; i < partido.length; i++) {
+            JORNADAS jornadas = new JORNADAS();
+            for (int j = 0; j < partido[i].length; j++) {
                 PARTIDO partidos = new PARTIDO();
                 partidos.CrearPartido(id_partido, partido[i][j].equipovisitante, partido[i][j].equipolocal,
-                		Partido.NombreEquipo[(partido[i][j].equipovisitante)], Partido.NombreEquipo[(partido[i][j].equipolocal)]);
- 			   listPartidos.add(partidos);
+                        Partido.NombreEquipo[partido[i][j].equipovisitante], Partido.NombreEquipo[partido[i][j].equipolocal]);
+                listPartidos.add(partidos);
+                jornadas.addListaEquiposPorJornada(partido[i][j].equipovisitante);  // Agregar el equipo visitante
+                jornadas.addListaEquiposPorJornada(partido[i][j].equipolocal);  // Agregar el equipo local
                 id_partido++;
-                }
+            }
+            // Agregar la jornada completa a listJornadas
+            listJornadas.add(jornadas);
+            System.out.println("Equipos en la jornada " + (i + 5) + ": " + jornadas.getIDequiposporJornada());
         }
     }
+
     // Método para mostrar los partidos de todas las rondas
     public static void mostrarPartidos()
     {	

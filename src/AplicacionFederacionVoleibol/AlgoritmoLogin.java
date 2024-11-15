@@ -1,6 +1,9 @@
 
 package AplicacionFederacionVoleibol;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AlgoritmoLogin {
 	/**
 	 * PEQUEÑA BASE DE DATOS
@@ -94,7 +97,8 @@ class TEMPORADAS{
 			 private int id_jornada =0;
 			 private int fecha_inicio =0;
 			 private int fecha_final =0;
-			 
+			 private int [] EquiposporPartidos = new int[5];
+			 private List<Integer> IDequiposporJornada = new ArrayList();
 			 
 			//--------Metodo de Guardar--------// 
 			 
@@ -120,7 +124,22 @@ class TEMPORADAS{
 				 
 			 }
 			 
-		 }	
+			    // Método para agregar un equipo a la jornada
+			    public void addListaEquiposPorJornada(int idEquipo) {
+			        if (IDequiposporJornada.size() < 6) { // Asegurar que solo se agreguen 6 equipos
+			            IDequiposporJornada.add(idEquipo);
+			        } else {
+			            System.out.println("Ya se han agregado 6 equipos para esta jornada.");
+			        }
+			    }
+
+			    // Método para obtener la lista de equipos en la jornada
+			    public List<Integer> getIDequiposporJornada() {
+			        return IDequiposporJornada;
+			    }
+
+			    
+			}
 	
 
 
@@ -142,6 +161,7 @@ class PARTIDO{
 	 private int PuntajeUltimoSetVisitante =0;
 	 private String NombreEquipoLocal = "";
 	 private String NombreEquipoVisitante = "";
+	 private boolean resultadoCalculado = false;
 	 
 	 //-------Constructor--------//
 //	 public ENFRENTAMIENTO(String NombreEquipoLocal) {
@@ -171,11 +191,41 @@ class PARTIDO{
 	 public void GuardarEnfrentamiento() {
 		 
 	 }
+	 
+	public void setSetsGanadosEquipoLocal(int setsGanadosEquipoLocal) {
+		SetsGanadosEquipoLocal = setsGanadosEquipoLocal;
+	}
+
+
+	public void setPuntajeUltimoSetLocal(int puntajeUltimoSetLocal) {
+		PuntajeUltimoSetLocal = puntajeUltimoSetLocal;
+	}
+
+
+	public void setSetsGanadosEquipoVisitante(int setsGanadosEquipoVisitante) {
+		SetsGanadosEquipoVisitante = setsGanadosEquipoVisitante;
+	}
+
+
+	public void setPuntajeUltimoSetVisitante(int puntajeUltimoSetVisitante) {
+		PuntajeUltimoSetVisitante = puntajeUltimoSetVisitante;
+	}
+
+
 	public void GuardarNombreEquipoLocal(String NombreEquipoLocal) {
 		 this.NombreEquipoLocal = NombreEquipoLocal;
 	 }
 	//--------Metodo de Mostrar--------//
-	 
+
+	public int getId_equipo_local() {
+		return id_equipo_local;
+	}
+
+
+	public int getId_equipo_visitante() {
+		return id_equipo_visitante;
+	}
+
 	 public int getSetsGanadosEquipoLocal() {
 			return SetsGanadosEquipoLocal;
 	 }
@@ -205,6 +255,16 @@ class PARTIDO{
 	 public String getNombreEquipoVisitante() {
 		return NombreEquipoVisitante; 
 	 }
+	 
+
+	 public boolean isResultadoCalculado() {
+		    return resultadoCalculado;
+		}
+
+		public void setResultadoCalculado(boolean resultadoCalculado) {
+		    this.resultadoCalculado = resultadoCalculado;
+		}
+	 
 }
 
 
@@ -235,34 +295,32 @@ class PARTIDO{
 	//--------Metodo de Guardar--------// 
 
 
-	public void setPartidosPerdidos(int partidosPerdidos) {
-		PartidosPerdidos = partidosPerdidos;
-	}
-
-	public void setPosicion_Temporada(int posicion_Temporada) {
-		Posicion_Temporada = posicion_Temporada;
-	}
-
-
-	public void setPuntajeTotal(int puntajeTotal) {
-		PuntajeTotal = puntajeTotal;
-	}
-
-
-	public void setPuntosSetsTotal(int puntosSetsTotal) {
-		PuntosSetsTotal = puntosSetsTotal;
-	}
-
-	public void setPartidosGanados(int partidosGanados) {
-		PartidosGanados = partidosGanados;
-	}
-
 	public void setId_equipo(int ID_equipo) {
 		this.id_equipo = ID_equipo;
 	}
 
 	public void setNombreEquipo(String nombreEquipo) {
 		this.NombreEquipo = nombreEquipo;
+	}
+
+	public void setPosicion_Temporada(int posicion_Temporada) {
+		Posicion_Temporada = posicion_Temporada;
+	}
+	
+	public void incrementarPartidosGanados() {
+	    PartidosGanados += 1;
+	}
+
+	public void incrementarPartidosPerdidos() {
+	    PartidosPerdidos += 1;
+	}
+
+	public void agregarPuntosSetsTotal(int puntos) {
+	    PuntosSetsTotal += puntos;
+	}
+
+	public void agregarPuntajeTotal(int puntos) {
+	    PuntajeTotal += puntos;
 	}
 	 
 	//--------Metodo de Mostrar--------//

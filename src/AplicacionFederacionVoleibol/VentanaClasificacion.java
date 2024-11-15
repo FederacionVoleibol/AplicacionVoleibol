@@ -45,10 +45,10 @@ public class VentanaClasificacion extends JFrame {
   private static final long serialVersionUID = 1L;
   private JPanel contentPane;
   private JTable tablaClasificacion;
-  private JTextField tf_eqlb_p;
-  private JTextField tf_eqlb_ls;
-  private JTextField tf_eqvb_p;
-  private JTextField tf_eqvb_ls;
+  private JTextField txtPuntajePartido2Local;
+  private JTextField txtUltimoSetPartido2Local;
+  private JTextField txtPuntajePartido2Visitante;
+  private JTextField txtUltimoSetPartido2Visitante;
   private JPanel PantallaJornadas;
   private JPanel panel_3;
   private JButton btnSiguiente;
@@ -89,12 +89,12 @@ public class VentanaClasificacion extends JFrame {
   private JLabel lblPuntajeUltimoSetB_1;
   private JLabel lblLocalB_1;
   private JLabel lblEquipoLocalA;
-  private JTextField tf_eqla_p;
-  private JTextField tf_eqla_ls;
+  private JTextField txtPuntajePartido1Local;
+  private JTextField txtUltimoSetPartido1Local;
   private JLabel lblVisitanteB_1;
   private JLabel lblEquipoVisitanteA;
-  private JTextField tf_eqva_p;
-  private JTextField tf_eqva_ls;
+  private JTextField txtPuntajePartido1Visitante;
+  private JTextField txtUltimoSetPartido1Visitante;
   private JPanel panelPartido3;
   private JLabel lblPartido2B_2;
   private JLabel lblEquipoB_2;
@@ -102,12 +102,12 @@ public class VentanaClasificacion extends JFrame {
   private JLabel lblPuntajeUltimoSetB_2;
   private JLabel lblLocalB_2;
   private JLabel lblEquipoLocalC;
-  private JTextField tf_eqlc_p;
-  private JTextField tf_eqlc_ls;
+  private JTextField txtPuntajePartido3Local;
+  private JTextField txtUltimoSetPartido3Local;
   private JLabel lblVisitanteB_2;
   private JLabel lblEquipoVisitanteC;
-  private JTextField tf_eqvc_p;
-  private JTextField tf_eqvc_ls;
+  private JTextField txtPuntajePartido3Visitante;
+  private JTextField txtUltimoSetPartido3Visitante;
   
   String[] equipos = {"CV Sayre Mayser", "CV Barça", "CD Zaragoza", "CV Alcobendas", "CD Avila Voleibol", "CV Madrid Chamberí"};
 
@@ -126,6 +126,10 @@ public class VentanaClasificacion extends JFrame {
   private JLabel lblNewLabel_1;
   public static List<EQUIPOS> listEquipos = new ArrayList<>();
   public static List<PARTIDO> listPartidos = new ArrayList<>();
+  private JTextField[] puntajeLocalFields;
+  private JTextField[] puntajeVisitanteFields;
+  private JTextField[] ultimoSetLocalFields;
+  private JTextField[] ultimoSetVisitanteFields;
   /**
 	 * Launch the application.
 	 */
@@ -186,7 +190,7 @@ public class VentanaClasificacion extends JFrame {
         public void actionPerformed(ActionEvent e) {
         	
         	// hay que editarlo para extarer los partidos del array Jornadas.
-            if (jornadaActual < 10) {
+            if (jornadaActual <= 10) {
                 jornadaActual++;
                 lblTituloNumeroJornada.setText("JORNADA " + jornadaActual);
                 
@@ -198,19 +202,19 @@ public class VentanaClasificacion extends JFrame {
                 lblEquipoVisitanteA.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoVisitante());
                 // Incrementar el índice para el siguiente Partido
                 idPartido++;
+                System.out.println("idpartido: " + idPartido + ", idjornada:" + jornadaActual);
+                
                 lblEquipoLocalB.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoLocal());
                 lblEquipoVisitanteB.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoVisitante());
                 // Incrementar el índice para el siguiente Partido
                 idPartido++;
+                System.out.println("idpartido: " + idPartido + ", idjornada:" + jornadaActual);
                 lblEquipoLocalC.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoLocal());
                 lblEquipoVisitanteC.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoVisitante());
 
                 // Incrementar el índice para el siguiente Partido
                 idPartido++;
-                
-                if (idPartido >= AlgoritmoJornadasFixture.listPartidos.size()) {
-                    idPartido = 3;
-                }
+                System.out.println("idpartido: " + idPartido + ", idjornada:" + jornadaActual);
 
                 if (jornadaActual == 10) {
                 	btnSiguiente.setVisible(false);
@@ -232,37 +236,43 @@ public class VentanaClasificacion extends JFrame {
     btnAnterior.setVisible(false);
     btnAnterior.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
+
+        	
         	// hay que editarlo para extarer los partidos del array Jornadas.
-//            if (jornadaActual > 1) {
-//
-//                jornadaActual--;
-//                lblTituloNumeroJornada.setText("JORNADA " + jornadaActual);
-//
-//                // Reiniciar el índice si se llega al principio del arreglo
-//                if (indiceEquipo <= 0) {
-//                    indiceEquipo = equipos.length - 1;
-//                }
-//
-//                // Actualizar los labels de los equipos
-//                
-//                lblEquipoLocalA.setText(equipos[(indiceEquipo - 1 + equipos.length) % equipos.length]);
-//                lblEquipoVisitanteA.setText(equipos[(indiceEquipo) % equipos.length]);
-//                lblEquipoLocalB.setText(equipos[(indiceEquipo + 1) % equipos.length]);
-//                lblEquipoVisitanteB.setText(equipos[(indiceEquipo + 2) % equipos.length]);
-//                lblEquipoLocalC.setText(equipos[(indiceEquipo + 3) % equipos.length]);
-//                lblEquipoVisitanteC.setText(equipos[(indiceEquipo + 4) % equipos.length]);
-//
-//                // Decrementar el índice de los equipos
-//                indiceEquipo--;
-//                
-//                if (jornadaActual == 1) {
-//                	btnAnterior.setVisible(false);
-//                }
-//                if (jornadaActual < 10) {
-//                	btnSiguiente.setVisible(true);
-//                }
-//           
-//            }
+            if (jornadaActual <= 10) {
+                jornadaActual--;
+                lblTituloNumeroJornada.setText("JORNADA " + jornadaActual);
+                
+                // Reiniciar el índice si se llega al final del arreglo
+                idPartido = idPartido -6;
+
+                // Actualizar los labels de los equipos
+                lblEquipoLocalA.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoLocal());
+                lblEquipoVisitanteA.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoVisitante());
+                // Incrementar el índice para el siguiente Partido
+                idPartido++;
+                System.out.println("idpartido: " + idPartido + ", idjornada:" + jornadaActual);
+                lblEquipoLocalB.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoLocal());
+                lblEquipoVisitanteB.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoVisitante());
+                // Incrementar el índice para el siguiente Partido
+                idPartido++;
+                System.out.println("idpartido: " + idPartido + ", idjornada:" + jornadaActual);
+                lblEquipoLocalC.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoLocal());
+                lblEquipoVisitanteC.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoVisitante());
+                // Incrementar el índice para el siguiente Partido
+                idPartido++;
+                System.out.println("idpartido: " + idPartido + ", idjornada:" + jornadaActual);
+                if (idPartido <= 0) {
+                    idPartido = 3;
+                }
+
+                if (jornadaActual == 1) {
+                	btnAnterior.setVisible(false);
+                }
+            	if (jornadaActual < 10) {
+            		btnSiguiente.setVisible(true);
+            	}
+            }
         }
     });
     panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -312,6 +322,9 @@ public class VentanaClasificacion extends JFrame {
     		//*************************************************
     		// GUARDAMOS LOS DATOS DE LA JORNADA, Y ACTUALIZAMOS LA CLASIFICACION
     		//*************************************************
+    		
+    		
+    		
     		// 1. Obtencion de datos
     		// 1.1 Obtencion de los nombres de los equipos 
     		// ------------------------------------------- EJ: eql_a = equipo local "a", eqv_b -> equipo visitante "b"
@@ -328,8 +341,12 @@ public class VentanaClasificacion extends JFrame {
     		 * 
     		 * */
     		//guardarDatosPartidos();
-    		
-    		
+    		System.out.println("22Tamaño de listPartidos: " + AlgoritmoJornadasFixture.listPartidos.size());
+    		inicializarCamposDeTexto();
+    		guardarDatosPartidos(0);
+    		mostrarDatosPartidos(0);
+    		mostrarDatosPartidos(1);
+    		mostrarDatosPartidos(2);
     		
 /*    		String eql_a = lblEquipoLocalA.getText();
     		String eqv_a = lblEquipoVisitanteA.getText();
@@ -478,23 +495,23 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblEquipoLocalA.gridy = 2;
     panelPartido1.add(lblEquipoLocalA, gbc_lblEquipoLocalA);
     
-    tf_eqla_p = new JTextField();
-    tf_eqla_p.setColumns(3);
-    GridBagConstraints gbc_tf_eqla_p = new GridBagConstraints();
-    gbc_tf_eqla_p.anchor = GridBagConstraints.NORTHEAST;
-    gbc_tf_eqla_p.insets = new Insets(0, 0, 5, 5);
-    gbc_tf_eqla_p.gridx = 3;
-    gbc_tf_eqla_p.gridy = 2;
-    panelPartido1.add(tf_eqla_p, gbc_tf_eqla_p);
+    txtPuntajePartido1Local = new JTextField();
+    txtPuntajePartido1Local.setColumns(3);
+    GridBagConstraints gbc_txtPuntajePartido1Local = new GridBagConstraints();
+    gbc_txtPuntajePartido1Local.anchor = GridBagConstraints.NORTHEAST;
+    gbc_txtPuntajePartido1Local.insets = new Insets(0, 0, 5, 5);
+    gbc_txtPuntajePartido1Local.gridx = 3;
+    gbc_txtPuntajePartido1Local.gridy = 2;
+    panelPartido1.add(txtPuntajePartido1Local, gbc_txtPuntajePartido1Local);
     
-    tf_eqla_ls = new JTextField();
-    tf_eqla_ls.setColumns(3);
-    GridBagConstraints gbc_tf_eqla_ls = new GridBagConstraints();
-    gbc_tf_eqla_ls.anchor = GridBagConstraints.NORTHWEST;
-    gbc_tf_eqla_ls.insets = new Insets(0, 0, 5, 0);
-    gbc_tf_eqla_ls.gridx = 5;
-    gbc_tf_eqla_ls.gridy = 2;
-    panelPartido1.add(tf_eqla_ls, gbc_tf_eqla_ls);
+    txtUltimoSetPartido1Local = new JTextField();
+    txtUltimoSetPartido1Local.setColumns(3);
+    GridBagConstraints gbc_txtUltimoSetPartido1Local = new GridBagConstraints();
+    gbc_txtUltimoSetPartido1Local.anchor = GridBagConstraints.NORTHWEST;
+    gbc_txtUltimoSetPartido1Local.insets = new Insets(0, 0, 5, 0);
+    gbc_txtUltimoSetPartido1Local.gridx = 5;
+    gbc_txtUltimoSetPartido1Local.gridy = 2;
+    panelPartido1.add(txtUltimoSetPartido1Local, gbc_txtUltimoSetPartido1Local);
     
     lblVisitanteB_1 = new JLabel("Visitante");
     lblVisitanteB_1.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -516,22 +533,22 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblEquipoVisitanteA.gridy = 3;
     panelPartido1.add(lblEquipoVisitanteA, gbc_lblEquipoVisitanteA);
     
-    tf_eqva_p = new JTextField();
-    tf_eqva_p.setColumns(3);
-    GridBagConstraints gbc_tf_eqva_p = new GridBagConstraints();
-    gbc_tf_eqva_p.anchor = GridBagConstraints.NORTHEAST;
-    gbc_tf_eqva_p.insets = new Insets(0, 0, 0, 5);
-    gbc_tf_eqva_p.gridx = 3;
-    gbc_tf_eqva_p.gridy = 3;
-    panelPartido1.add(tf_eqva_p, gbc_tf_eqva_p);
+    txtPuntajePartido1Visitante = new JTextField();
+    txtPuntajePartido1Visitante.setColumns(3);
+    GridBagConstraints gbc_txtPuntajePartido1Visitante = new GridBagConstraints();
+    gbc_txtPuntajePartido1Visitante.anchor = GridBagConstraints.NORTHEAST;
+    gbc_txtPuntajePartido1Visitante.insets = new Insets(0, 0, 0, 5);
+    gbc_txtPuntajePartido1Visitante.gridx = 3;
+    gbc_txtPuntajePartido1Visitante.gridy = 3;
+    panelPartido1.add(txtPuntajePartido1Visitante, gbc_txtPuntajePartido1Visitante);
     
-    tf_eqva_ls = new JTextField();
-    tf_eqva_ls.setColumns(3);
-    GridBagConstraints gbc_tf_eqva_ls = new GridBagConstraints();
-    gbc_tf_eqva_ls.anchor = GridBagConstraints.NORTHWEST;
-    gbc_tf_eqva_ls.gridx = 5;
-    gbc_tf_eqva_ls.gridy = 3;
-    panelPartido1.add(tf_eqva_ls, gbc_tf_eqva_ls);
+    txtUltimoSetPartido1Visitante = new JTextField();
+    txtUltimoSetPartido1Visitante.setColumns(3);
+    GridBagConstraints gbc_txtUltimoSetPartido1Visitante = new GridBagConstraints();
+    gbc_txtUltimoSetPartido1Visitante.anchor = GridBagConstraints.NORTHWEST;
+    gbc_txtUltimoSetPartido1Visitante.gridx = 5;
+    gbc_txtUltimoSetPartido1Visitante.gridy = 3;
+    panelPartido1.add(txtUltimoSetPartido1Visitante, gbc_txtUltimoSetPartido1Visitante);
 
     panel_6 = new JPanel();
     panel_5.add(panel_6);
@@ -612,23 +629,23 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblEquipoLocalB.gridy = 2;
     panelPartido2.add(lblEquipoLocalB, gbc_lblEquipoLocalB);
     
-    tf_eqlb_p = new JTextField();
-    tf_eqlb_p.setColumns(3);
-    GridBagConstraints gbc_tf_eqlb_p = new GridBagConstraints();
-    gbc_tf_eqlb_p.anchor = GridBagConstraints.NORTHEAST;
-    gbc_tf_eqlb_p.insets = new Insets(0, 0, 5, 5);
-    gbc_tf_eqlb_p.gridx = 3;
-    gbc_tf_eqlb_p.gridy = 2;
-    panelPartido2.add(tf_eqlb_p, gbc_tf_eqlb_p);
+    txtPuntajePartido2Local = new JTextField();
+    txtPuntajePartido2Local.setColumns(3);
+    GridBagConstraints gbc_txtPuntajePartido2Local = new GridBagConstraints();
+    gbc_txtPuntajePartido2Local.anchor = GridBagConstraints.NORTHEAST;
+    gbc_txtPuntajePartido2Local.insets = new Insets(0, 0, 5, 5);
+    gbc_txtPuntajePartido2Local.gridx = 3;
+    gbc_txtPuntajePartido2Local.gridy = 2;
+    panelPartido2.add(txtPuntajePartido2Local, gbc_txtPuntajePartido2Local);
     
-    tf_eqlb_ls = new JTextField();
-    tf_eqlb_ls.setColumns(3);
-    GridBagConstraints gbc_tf_eqlb_ls = new GridBagConstraints();
-    gbc_tf_eqlb_ls.anchor = GridBagConstraints.NORTHWEST;
-    gbc_tf_eqlb_ls.insets = new Insets(0, 0, 5, 0);
-    gbc_tf_eqlb_ls.gridx = 5;
-    gbc_tf_eqlb_ls.gridy = 2;
-    panelPartido2.add(tf_eqlb_ls, gbc_tf_eqlb_ls);
+    txtUltimoSetPartido2Local = new JTextField();
+    txtUltimoSetPartido2Local.setColumns(3);
+    GridBagConstraints gbc_txtUltimoSetPartido2Local = new GridBagConstraints();
+    gbc_txtUltimoSetPartido2Local.anchor = GridBagConstraints.NORTHWEST;
+    gbc_txtUltimoSetPartido2Local.insets = new Insets(0, 0, 5, 0);
+    gbc_txtUltimoSetPartido2Local.gridx = 5;
+    gbc_txtUltimoSetPartido2Local.gridy = 2;
+    panelPartido2.add(txtUltimoSetPartido2Local, gbc_txtUltimoSetPartido2Local);
     
     lblVisitanteB = new JLabel("Visitante");
     lblVisitanteB.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -650,22 +667,22 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblEquipoVisitanteB.gridy = 3;
     panelPartido2.add(lblEquipoVisitanteB, gbc_lblEquipoVisitanteB);
     
-    tf_eqvb_p = new JTextField();
-    tf_eqvb_p.setColumns(3);
-    GridBagConstraints gbc_tf_eqvb_p = new GridBagConstraints();
-    gbc_tf_eqvb_p.anchor = GridBagConstraints.NORTHEAST;
-    gbc_tf_eqvb_p.insets = new Insets(0, 0, 0, 5);
-    gbc_tf_eqvb_p.gridx = 3;
-    gbc_tf_eqvb_p.gridy = 3;
-    panelPartido2.add(tf_eqvb_p, gbc_tf_eqvb_p);
+    txtPuntajePartido2Visitante = new JTextField();
+    txtPuntajePartido2Visitante.setColumns(3);
+    GridBagConstraints gbc_txtPuntajePartido2Visitante = new GridBagConstraints();
+    gbc_txtPuntajePartido2Visitante.anchor = GridBagConstraints.NORTHEAST;
+    gbc_txtPuntajePartido2Visitante.insets = new Insets(0, 0, 0, 5);
+    gbc_txtPuntajePartido2Visitante.gridx = 3;
+    gbc_txtPuntajePartido2Visitante.gridy = 3;
+    panelPartido2.add(txtPuntajePartido2Visitante, gbc_txtPuntajePartido2Visitante);
     
-    tf_eqvb_ls = new JTextField();
-    tf_eqvb_ls.setColumns(3);
-    GridBagConstraints gbc_tf_eqvb_ls = new GridBagConstraints();
-    gbc_tf_eqvb_ls.anchor = GridBagConstraints.NORTHWEST;
-    gbc_tf_eqvb_ls.gridx = 5;
-    gbc_tf_eqvb_ls.gridy = 3;
-    panelPartido2.add(tf_eqvb_ls, gbc_tf_eqvb_ls);
+    txtUltimoSetPartido2Visitante = new JTextField();
+    txtUltimoSetPartido2Visitante.setColumns(3);
+    GridBagConstraints gbc_txtUltimoSetPartido2Visitante = new GridBagConstraints();
+    gbc_txtUltimoSetPartido2Visitante.anchor = GridBagConstraints.NORTHWEST;
+    gbc_txtUltimoSetPartido2Visitante.gridx = 5;
+    gbc_txtUltimoSetPartido2Visitante.gridy = 3;
+    panelPartido2.add(txtUltimoSetPartido2Visitante, gbc_txtUltimoSetPartido2Visitante);
 
     panel_7 = new JPanel();
     panel_5.add(panel_7);
@@ -746,23 +763,23 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblEquipoLocalC.gridy = 2;
     panelPartido3.add(lblEquipoLocalC, gbc_lblEquipoLocalC);
     
-    tf_eqlc_p = new JTextField();
-    tf_eqlc_p.setColumns(3);
-    GridBagConstraints gbc_tf_eqlc_p = new GridBagConstraints();
-    gbc_tf_eqlc_p.anchor = GridBagConstraints.NORTHEAST;
-    gbc_tf_eqlc_p.insets = new Insets(0, 0, 5, 5);
-    gbc_tf_eqlc_p.gridx = 3;
-    gbc_tf_eqlc_p.gridy = 2;
-    panelPartido3.add(tf_eqlc_p, gbc_tf_eqlc_p);
+    txtPuntajePartido3Local = new JTextField();
+    txtPuntajePartido3Local.setColumns(3);
+    GridBagConstraints gbc_txtPuntajePartido3Local = new GridBagConstraints();
+    gbc_txtPuntajePartido3Local.anchor = GridBagConstraints.NORTHEAST;
+    gbc_txtPuntajePartido3Local.insets = new Insets(0, 0, 5, 5);
+    gbc_txtPuntajePartido3Local.gridx = 3;
+    gbc_txtPuntajePartido3Local.gridy = 2;
+    panelPartido3.add(txtPuntajePartido3Local, gbc_txtPuntajePartido3Local);
     
-    tf_eqlc_ls = new JTextField();
-    tf_eqlc_ls.setColumns(3);
-    GridBagConstraints gbc_tf_eqlc_ls = new GridBagConstraints();
-    gbc_tf_eqlc_ls.anchor = GridBagConstraints.NORTHWEST;
-    gbc_tf_eqlc_ls.insets = new Insets(0, 0, 5, 0);
-    gbc_tf_eqlc_ls.gridx = 5;
-    gbc_tf_eqlc_ls.gridy = 2;
-    panelPartido3.add(tf_eqlc_ls, gbc_tf_eqlc_ls);
+    txtUltimoSetPartido3Local = new JTextField();
+    txtUltimoSetPartido3Local.setColumns(3);
+    GridBagConstraints gbc_txtUltimoSetPartido3Local = new GridBagConstraints();
+    gbc_txtUltimoSetPartido3Local.anchor = GridBagConstraints.NORTHWEST;
+    gbc_txtUltimoSetPartido3Local.insets = new Insets(0, 0, 5, 0);
+    gbc_txtUltimoSetPartido3Local.gridx = 5;
+    gbc_txtUltimoSetPartido3Local.gridy = 2;
+    panelPartido3.add(txtUltimoSetPartido3Local, gbc_txtUltimoSetPartido3Local);
     
     lblVisitanteB_2 = new JLabel("Visitante");
     lblVisitanteB_2.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -784,22 +801,22 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblEquipoVisitanteC.gridy = 3;
     panelPartido3.add(lblEquipoVisitanteC, gbc_lblEquipoVisitanteC);
     
-    tf_eqvc_p = new JTextField();
-    tf_eqvc_p.setColumns(3);
-    GridBagConstraints gbc_tf_eqvc_p = new GridBagConstraints();
-    gbc_tf_eqvc_p.anchor = GridBagConstraints.NORTHEAST;
-    gbc_tf_eqvc_p.insets = new Insets(0, 0, 0, 5);
-    gbc_tf_eqvc_p.gridx = 3;
-    gbc_tf_eqvc_p.gridy = 3;
-    panelPartido3.add(tf_eqvc_p, gbc_tf_eqvc_p);
+    txtPuntajePartido3Visitante = new JTextField();
+    txtPuntajePartido3Visitante.setColumns(3);
+    GridBagConstraints gbc_txtPuntajePartido3Visitante = new GridBagConstraints();
+    gbc_txtPuntajePartido3Visitante.anchor = GridBagConstraints.NORTHEAST;
+    gbc_txtPuntajePartido3Visitante.insets = new Insets(0, 0, 0, 5);
+    gbc_txtPuntajePartido3Visitante.gridx = 3;
+    gbc_txtPuntajePartido3Visitante.gridy = 3;
+    panelPartido3.add(txtPuntajePartido3Visitante, gbc_txtPuntajePartido3Visitante);
     
-    tf_eqvc_ls = new JTextField();
-    tf_eqvc_ls.setColumns(3);
-    GridBagConstraints gbc_tf_eqvc_ls = new GridBagConstraints();
-    gbc_tf_eqvc_ls.anchor = GridBagConstraints.NORTHWEST;
-    gbc_tf_eqvc_ls.gridx = 5;
-    gbc_tf_eqvc_ls.gridy = 3;
-    panelPartido3.add(tf_eqvc_ls, gbc_tf_eqvc_ls);
+    txtUltimoSetPartido3Visitante = new JTextField();
+    txtUltimoSetPartido3Visitante.setColumns(3);
+    GridBagConstraints gbc_txtUltimoSetPartido3Visitante = new GridBagConstraints();
+    gbc_txtUltimoSetPartido3Visitante.anchor = GridBagConstraints.NORTHWEST;
+    gbc_txtUltimoSetPartido3Visitante.gridx = 5;
+    gbc_txtUltimoSetPartido3Visitante.gridy = 3;
+    panelPartido3.add(txtUltimoSetPartido3Visitante, gbc_txtUltimoSetPartido3Visitante);
 
     PantallaClasificacion = new JPanel();
     contentPane.add(PantallaClasificacion);
@@ -929,49 +946,248 @@ public class VentanaClasificacion extends JFrame {
 	        // Y así sucesivamente para los otros partidos
 	    }
 	}
-  
-  /*
-   * private void guardarDatosPartidos() {
+
+//	private void actualizarTablaClasificacion() {
+//	    // Recalcular las estadísticas de cada equipo
+//	    for (EQUIPOS equipo : AlgoritmoJornadasFixture.listEquipos) {
+//	        equipo.reiniciarEstadisticas(); // Este método debería reiniciar las estadísticas (PJ, PG, PP, etc.)
+//
+//	        for (PARTIDO partido : AlgoritmoJornadasFixture.listPartidos) {
+//	            if (partido.getNombreEquipoLocal().equals(equipo.getNombreEquipo())) {
+//	                equipo.actualizarEstadisticas(partido.getResultadoLocal(), partido.getResultadoVisitante());
+//	            } else if (partido.getNombreEquipoVisitante().equals(equipo.getNombreEquipo())) {
+//	                equipo.actualizarEstadisticas(partido.getResultadoVisitante(), partido.getResultadoLocal());
+//	            }
+//	        }
+//	    }
+//	    // Actualizar el modelo de la JTable para reflejar los cambios en la interfaz
+//	    ((DefaultTableModel) tablaClasificacion.getModel()).fireTableDataChanged();
+//	}
+	
+//	public void calcularClasificacion() {
+//		//Reiniciar los valores de los equipos 
+//		for (EQUIPOS equipo : AlgoritmoJornadasFixture.listEquipos) {
+//	        equipo.setPartidosGanados(0);
+//	        equipo.setPartidosPerdidos(0);
+//	        equipo.setPuntajeTotal(0);
+//	        equipo.setPuntosSetsTotal(0);
+//	        equipo.setPosicion_Temporada(0);
+//		}
+//		//Calcula la clasificacion basado en los equipos
+//		for (PARTIDO partido : AlgoritmoJornadasFixture.listPartidos) {
+//		}
+//	}
+	
+//	public void actualizarTablaClasificacion() {
+//	    DefaultTableModel model = (DefaultTableModel) tablaClasificacion.getModel();
+//	    model.setRowCount(0); // Limpiar la tabla
+//
+//	    int posicion = 1;
+//	    for (EQUIPOS equipo : AlgoritmoJornadasFixture.listEquipos) {
+//	        Object[] row = new Object[] {
+//	            posicion++,
+//	            equipo.getNombreEquipo(),
+//	            equipo.getPartidosGanados() + equipo.getPartidosPerdidos(), // PJ
+//	            equipo.getPartidosGanados(),
+//	            equipo.getPartidosPerdidos(),
+//	            equipo.getPuntosSetsTotal(), // SETFF
+//	            0, // SETFC (puedes añadir si tienes este dato)
+//	            equipo.getPuntajeTotal() // PTS
+//	        };
+//	        model.addRow(row);
+//	    }
+//	}
+	
+	public void calcularGanadordelPartido(int id_partido, int puntaje_local, int puntaje_visitante, int ultimo_set_local, int ultimo_set_visitante) {
+	    PARTIDO partido = AlgoritmoJornadasFixture.listPartidos.get(id_partido);
+
+	    // Verificar si el resultado ya fue calculado
+	    if (partido.isResultadoCalculado()) {
+	        System.out.println("Resultado ya calculado para el partido: " + id_partido);
+	        return; // Salir si el resultado ya fue calculado
+	    }
+
+	    int idEquipoLocal = partido.getId_equipo_local();
+	    int idEquipoVisitante = partido.getId_equipo_visitante();
+	    EQUIPOS equipoLocal = AlgoritmoJornadasFixture.listEquipos.get(idEquipoLocal);
+	    EQUIPOS equipoVisitante = AlgoritmoJornadasFixture.listEquipos.get(idEquipoVisitante);
+
+	    // Comparar puntajes y actualizar estadísticas
+	    if (puntaje_local > puntaje_visitante) {
+	        // Equipo local gana
+	        equipoLocal.incrementarPartidosGanados();
+	        equipoLocal.agregarPuntajeTotal(3);  // 3 puntos por ganar
+	        equipoVisitante.incrementarPartidosPerdidos();
+	        equipoVisitante.agregarPuntajeTotal(1);  // 1 punto por perder
+	    } else if (puntaje_visitante > puntaje_local) {
+	        // Equipo visitante gana
+	        equipoVisitante.incrementarPartidosGanados();
+	        equipoVisitante.agregarPuntajeTotal(3);  // 3 puntos por ganar
+	        equipoLocal.incrementarPartidosPerdidos();
+	        equipoLocal.agregarPuntajeTotal(1);  // 1 punto por perder
+	    }
+
+	    equipoLocal.agregarPuntosSetsTotal(ultimo_set_local);
+	    equipoVisitante.agregarPuntosSetsTotal(ultimo_set_visitante);
+
+	    // Marcar el partido como calculado
+	    partido.setResultadoCalculado(true);
+	}
+	
+
+
+public void inicializarCamposDeTexto() {
+    puntajeLocalFields = new JTextField[] { txtPuntajePartido1Local, txtPuntajePartido2Local, txtPuntajePartido3Local };
+    puntajeVisitanteFields = new JTextField[] { txtPuntajePartido1Visitante, txtPuntajePartido2Visitante, txtPuntajePartido3Visitante };
+    ultimoSetLocalFields = new JTextField[] { txtUltimoSetPartido1Local, txtUltimoSetPartido2Local, txtUltimoSetPartido3Local };
+    ultimoSetVisitanteFields = new JTextField[] { txtUltimoSetPartido1Visitante, txtUltimoSetPartido2Visitante, txtUltimoSetPartido3Visitante };
+}
+
+private void guardarDatosPartidos(int id_jornada) {
+    System.out.println("Guardando datos de partidos para la jornada: " + id_jornada);
+
     try {
-        // Obtener valores ingresados en los campos de puntaje y último set para cada partido
-        int puntajePartido1Local = Integer.parseInt(txtPuntajePartido1Local.getText());
-        int puntajePartido1Visitante = Integer.parseInt(txtPuntajePartido1Visitante.getText());
-        int ultimoSetPartido1Local = Integer.parseInt(txtUltimoSetPartido1Local.getText());
-        int ultimoSetPartido1Visitante = Integer.parseInt(txtUltimoSetPartido1Visitante.getText());
-        
-        int puntajePartido2Local = Integer.parseInt(txtPuntajePartido2Local.getText());
-        int puntajePartido2Visitante = Integer.parseInt(txtPuntajePartido2Visitante.getText());
-        int ultimoSetPartido2Local = Integer.parseInt(txtUltimoSetPartido2Local.getText());
-        int ultimoSetPartido2Visitante = Integer.parseInt(txtUltimoSetPartido2Visitante.getText());
-        
-        int puntajePartido3Local = Integer.parseInt(txtPuntajePartido3Local.getText());
-        int puntajePartido3Visitante = Integer.parseInt(txtPuntajePartido3Visitante.getText());
-        int ultimoSetPartido3Local = Integer.parseInt(txtUltimoSetPartido3Local.getText());
-        int ultimoSetPartido3Visitante = Integer.parseInt(txtUltimoSetPartido3Visitante.getText());
-        
-        // Actualizar los objetos de PARTIDO en el ArrayList
-        AlgoritmoJornadasFixture.listPartidos.get(0).setPuntajeLocal(puntajePartido1Local);
-        AlgoritmoJornadasFixture.listPartidos.get(0).setPuntajeVisitante(puntajePartido1Visitante);
-        AlgoritmoJornadasFixture.listPartidos.get(0).setUltimoSetLocal(ultimoSetPartido1Local);
-        AlgoritmoJornadasFixture.listPartidos.get(0).setUltimoSetVisitante(ultimoSetPartido1Visitante);
-        
-        AlgoritmoJornadasFixture.listPartidos.get(1).setPuntajeLocal(puntajePartido2Local);
-        AlgoritmoJornadasFixture.listPartidos.get(1).setPuntajeVisitante(puntajePartido2Visitante);
-        AlgoritmoJornadasFixture.listPartidos.get(1).setUltimoSetLocal(ultimoSetPartido2Local);
-        AlgoritmoJornadasFixture.listPartidos.get(1).setUltimoSetVisitante(ultimoSetPartido2Visitante);
-        
-        AlgoritmoJornadasFixture.listPartidos.get(2).setPuntajeLocal(puntajePartido3Local);
-        AlgoritmoJornadasFixture.listPartidos.get(2).setPuntajeVisitante(puntajePartido3Visitante);
-        AlgoritmoJornadasFixture.listPartidos.get(2).setUltimoSetLocal(ultimoSetPartido3Local);
-        AlgoritmoJornadasFixture.listPartidos.get(2).setUltimoSetVisitante(ultimoSetPartido3Visitante);
-        
-        // Llama a un método para actualizar la tabla de clasificación
-        actualizarTablaClasificacion();
+        // Obtener la jornada correspondiente por id_jornada
+        JORNADAS jornada = AlgoritmoJornadasFixture.listJornadas.get(id_jornada);
+        List<Integer> equiposEnJornada = jornada.getIDequiposporJornada();
+
+        // Iterar sobre los 3 partidos de la jornada
+        for (int i = 0; i < 3; i++) {
+            int id_partido = id_jornada * 3 + i; // Calcula el id_partido usando id_jornada y el índice del partido en la jornada
+
+            // Obtener el partido existente en listPartidos
+            PARTIDO partido = AlgoritmoJornadasFixture.listPartidos.get(id_partido);
+
+            // Obtener los IDs de los equipos local y visitante en el ArrayList de EquiposEnJornadas de 0 a 5
+            int idEquipoLocal = equiposEnJornada.get(i * 2);
+            int idEquipoVisitante = equiposEnJornada.get(i * 2 + 1);
+
+            // Obtener los objetos EQUIPOS correspondientes a los equipos local y visitante
+            EQUIPOS equipoLocal = AlgoritmoJornadasFixture.listEquipos.get(idEquipoLocal);
+            EQUIPOS equipoVisitante = AlgoritmoJornadasFixture.listEquipos.get(idEquipoVisitante);
+
+            // Obtener los valores directamente desde los arreglos de campos de texto
+            int puntajeLocal = Integer.parseInt(puntajeLocalFields[i].getText());
+            int puntajeVisitante = Integer.parseInt(puntajeVisitanteFields[i].getText());
+            int ultimoSetLocal = Integer.parseInt(ultimoSetLocalFields[i].getText());
+            int ultimoSetVisitante = Integer.parseInt(ultimoSetVisitanteFields[i].getText());
+
+            // Actualizar el objeto PARTIDO
+            partido.setSetsGanadosEquipoLocal(puntajeLocal);
+            partido.setPuntajeUltimoSetLocal(ultimoSetLocal);
+            partido.setSetsGanadosEquipoVisitante(puntajeVisitante);
+            partido.setPuntajeUltimoSetVisitante(ultimoSetVisitante);
+
+            // Asegurarse de calcular el resultado solo una vez por partido
+            if (!partido.isResultadoCalculado()) {
+                calcularGanadordelPartido(id_partido, puntajeLocal, puntajeVisitante, ultimoSetLocal, ultimoSetVisitante);
+                partido.setResultadoCalculado(true); // Marcar como calculado
+            }
+        }
     } catch (NumberFormatException ex) {
         JOptionPane.showMessageDialog(this, "Por favor, ingresa valores numéricos válidos para los puntajes.", "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
 
-   * 
-   * */
+
+
+// private void guardarDatosPartidos(int id_partido) {  //PARA LA LINEA 317
+//		// Obtener el partido correspondiente por id_partido
+//	    PARTIDO partido = AlgoritmoJornadasFixture.listPartidos.get(id_partido);
+//	    // Obtener los IDs de los equipos local y visitante
+//	    int idEquipoLocal = partido.getId_equipo_local();
+//	    System.out.println("IDequipoLocal: "+ idEquipoLocal);
+//	    int idEquipoVisitante = partido.getId_equipo_visitante();
+//	    System.out.println("IDequipoLocal: "+ idEquipoVisitante);
+//	    // Obtener los objetos EQUIPOS correspondientes a los equipos local y visitante
+//	    EQUIPOS equipoLocal = AlgoritmoJornadasFixture.listEquipos.get(idEquipoLocal);
+//	    EQUIPOS equipoVisitante = AlgoritmoJornadasFixture.listEquipos.get(idEquipoVisitante);
+//	    
+//    try {
+//        // Obtener valores ingresados en los campos de puntaje y último set para cada partido
+//        int puntajePartido1Local = Integer.parseInt(txtPuntajePartido1Local.getText());
+//        int puntajePartido1Visitante = Integer.parseInt(txtPuntajePartido1Visitante.getText());
+//        int ultimoSetPartido1Local = Integer.parseInt(txtUltimoSetPartido1Local.getText());
+//        int ultimoSetPartido1Visitante = Integer.parseInt(txtUltimoSetPartido1Visitante.getText());
+//        
+//        //calcularGanadordelPartido();
+//        
+////        int puntajePartido2Local = Integer.parseInt(txtPuntajePartido2Local.getText());
+////        int puntajePartido2Visitante = Integer.parseInt(txtPuntajePartido2Visitante.getText());
+////        int ultimoSetPartido2Local = Integer.parseInt(txtUltimoSetPartido2Local.getText());
+////        int ultimoSetPartido2Visitante = Integer.parseInt(txtUltimoSetPartido2Visitante.getText());
+////        
+////        int puntajePartido3Local = Integer.parseInt(txtPuntajePartido3Local.getText());
+////        int puntajePartido3Visitante = Integer.parseInt(txtPuntajePartido3Visitante.getText());
+////        int ultimoSetPartido3Local = Integer.parseInt(txtUltimoSetPartido3Local.getText());
+////        int ultimoSetPartido3Visitante = Integer.parseInt(txtUltimoSetPartido3Visitante.getText());
+////        
+//        // Actualizar los objetos de PARTIDO en el ArrayList
+//        partido.setSetsGanadosEquipoLocal(puntajePartido1Local);
+//        partido.setPuntajeUltimoSetLocal(ultimoSetPartido1Local);
+//        equipoLocal.setPuntosSetsTotal(ultimoSetPartido1Local);
+//        partido.setSetsGanadosEquipoVisitante(puntajePartido1Visitante);
+//        partido.setPuntajeUltimoSetVisitante(ultimoSetPartido1Visitante);
+//        equipoVisitante.setPuntosSetsTotal(ultimoSetPartido1Visitante);
+//        calcularGanadordelPartido(id_partido, puntajePartido1Local, puntajePartido1Visitante, ultimoSetPartido1Local, ultimoSetPartido1Visitante);
+//        calcularGanadordelPartido(id_partido, puntajePartido2Local, puntajePartido2Visitante, ultimoSetPartido2Local, ultimoSetPartido2Visitante);
+//        calcularGanadordelPartido(id_partido, puntajePartido3Local, puntajePartido3Visitante, ultimoSetPartido3Local, ultimoSetPartido3Visitante);
+//        
+////        AlgoritmoJornadasFixture.listPartidos.get(1).setSetsGanadosEquipoLocal(puntajePartido2Local);
+////        AlgoritmoJornadasFixture.listPartidos.get(1).setSetsGanadosEquipoVisitante(puntajePartido2Visitante);
+////        AlgoritmoJornadasFixture.listPartidos.get(1).setPuntajeUltimoSetLocal(ultimoSetPartido2Local);
+////        AlgoritmoJornadasFixture.listPartidos.get(1).setPuntajeUltimoSetVisitante(ultimoSetPartido2Visitante);
+////        
+////        AlgoritmoJornadasFixture.listPartidos.get(2).setSetsGanadosEquipoLocal(puntajePartido3Local);
+////        AlgoritmoJornadasFixture.listPartidos.get(2).setSetsGanadosEquipoVisitante(puntajePartido3Visitante);
+////        AlgoritmoJornadasFixture.listPartidos.get(2).setPuntajeUltimoSetLocal(ultimoSetPartido3Local);
+////        AlgoritmoJornadasFixture.listPartidos.get(2).setPuntajeUltimoSetVisitante(ultimoSetPartido3Visitante);
+////        
+////        
+//        
+//        // Llama a un método para actualizar la tabla de clasificación
+//        //actualizarTablaClasificacion();
+//    } catch (NumberFormatException ex) {
+//        JOptionPane.showMessageDialog(this, "Por favor, ingresa valores numéricos válidos para los puntajes.", "Error", JOptionPane.ERROR_MESSAGE);
+//    }
+//}
+
+ 
+ private void mostrarDatosPartidos(int id_partido) {  //PARA LA LINEA 317
+		// Obtener el partido correspondiente por id_partido
+	    PARTIDO partido = AlgoritmoJornadasFixture.listPartidos.get(id_partido);
+	    // Obtener los IDs de los equipos local y visitante
+	    int idEquipoLocal = partido.getId_equipo_local();
+	    int idEquipoVisitante = partido.getId_equipo_visitante();
+	    // Obtener los objetos EQUIPOS correspondientes a los equipos local y visitante
+	    EQUIPOS equipoLocal = AlgoritmoJornadasFixture.listEquipos.get(idEquipoLocal);
+	    EQUIPOS equipoVisitante = AlgoritmoJornadasFixture.listEquipos.get(idEquipoVisitante);
+	    
+	    System.out.println("//// Datos del ARREGLO PARTIDOS " + id_partido + " ////");
+	    System.out.println("Partido " + id_partido + ": " + equipoLocal.getNombreEquipo() + " vs " + equipoVisitante.getNombreEquipo()
+	    +" o " + equipoLocal.getid_equipo() + " vs "  + equipoVisitante.getid_equipo());
+	    System.out.println("Puntaje local: " + partido.getSetsGanadosEquipoLocal());
+	    System.out.println("Puntaje visitante: " + partido.getSetsGanadosEquipoVisitante());
+	    System.out.println("Ultimo set local: " + partido.getPuntajeUltimoSetLocal());
+	    System.out.println("Ultimo set visitante: " + partido.getPuntajeUltimoSetVisitante());
+
+		 
+	    System.out.println("//// Datos del ARREGLO EQUIPOS ////");
+	    System.out.println("Puntos sets total de " + equipoLocal.getNombreEquipo() + ": " + equipoLocal.getPuntosSetsTotal());
+	    System.out.println("Puntos sets total de " + equipoVisitante.getNombreEquipo() + ": " + equipoVisitante.getPuntosSetsTotal());
+	    
+	    System.out.println("Puntos totales de: " + equipoLocal.getNombreEquipo() + ": " + equipoLocal.getPuntajeTotal());
+	    System.out.println("Puntos totales de: " + equipoVisitante.getNombreEquipo() + ": " + equipoVisitante.getPuntajeTotal());
+	    
+	    System.out.println("Partidos ganados de: " + equipoLocal.getNombreEquipo() + ": "  + equipoLocal.getPartidosGanados());
+	    System.out.println("Partidos ganados de: " + equipoVisitante.getNombreEquipo() + ": " + equipoVisitante.getPartidosGanados());
+	    
+	    System.out.println("Partidos perdidos de: " + equipoLocal.getNombreEquipo() + ": "  + equipoLocal.getPartidosPerdidos());
+	    System.out.println("Partidos perdidos de: " + equipoVisitante.getNombreEquipo() + ": " + equipoVisitante.getPartidosPerdidos());
+	    
+	    
+	    
+	    
+	    
+ }
 }
