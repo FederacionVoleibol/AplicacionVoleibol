@@ -173,7 +173,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         getRootPane().setDefaultButton(btnIngresar);
         
         panelCentro.add(btnIngresar, gbcBtnIngresar);
-        contentPane.add(panelCentro, BorderLayout.SOUTH);
+        contentPane.add(panelCentro, BorderLayout.CENTER);
     }
 
     @Override
