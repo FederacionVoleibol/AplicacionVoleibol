@@ -80,7 +80,6 @@ public class VentanaClasificacion extends JFrame {
   private JLabel lblNewLabel;
   private JPanel panel_1;
   private JScrollPane scrollPane;
-  private int jornadaActual = 1;
   private JPanel panelPartido1;
   private JLabel lblPartido1A;
   private JLabel lblEquipoB_1;
@@ -110,7 +109,7 @@ public class VentanaClasificacion extends JFrame {
   
   String[] equipos = {"CV Sayre Mayser", "CV Barça", "CD Zaragoza", "CV Alcobendas", "CD Avila Voleibol", "CV Madrid Chamberí"};
 
-  int idPartido = 3;
+
   private JSeparator separator;
   private JSeparator separator_1;
   private JSeparator separator_2;
@@ -128,7 +127,9 @@ public class VentanaClasificacion extends JFrame {
   private JTextField[] puntajeLocalFields;
   private JTextField[] puntajeVisitanteFields;
   private JTextField[] ultimoSetLocalFields;
-  private JTextField[] ultimoSetVisitanteFields;
+  private JTextField[] ultimoSetVisitanteFields;  
+  private int jornadaActual = 1;
+  int idPartido = 0;
   /**
 	 * Launch the application.
 	 */
@@ -185,6 +186,10 @@ public class VentanaClasificacion extends JFrame {
     panel_3 = new JPanel();
     PantallaJornadas.add(panel_3, BorderLayout.NORTH);
 
+    System.out.println("Numero de Jornada: " + jornadaActual);
+    System.out.println("Numerode Partido: " + (idPartido));
+    System.out.println("Numerode Partido: " + (idPartido+1));
+    System.out.println("Numerode Partido: " + (idPartido+2));
     btnSiguiente = new JButton("▶");
     btnSiguiente.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
@@ -195,22 +200,33 @@ public class VentanaClasificacion extends JFrame {
                 lblTituloNumeroJornada.setText("JORNADA " + jornadaActual);
                 
                 // Reiniciar el índice si se llega al final del arreglo
-                
+
+                System.out.println("-------");
+                System.out.println("Numero de Jornada: " + jornadaActual);
+                System.out.println("Numerode Partido: " + (idPartido+3));
 
                 // Actualizar los labels de los equipos
-                lblEquipoLocalA.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoLocal());
-                lblEquipoVisitanteA.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoVisitante());
+                lblEquipoLocalA.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido+3).getNombreEquipoLocal());
+                lblEquipoVisitanteA.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido+3).getNombreEquipoVisitante());
                 // Incrementar el índice para el siguiente Partido
                 idPartido++;
                 //System.out.println("idpartido: " + idPartido + ", idjornada:" + jornadaActual);
-                
-                lblEquipoLocalB.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoLocal());
-                lblEquipoVisitanteB.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoVisitante());
+
+
+
+                System.out.println("Numerode Partido: " +(idPartido+3));
+
+                lblEquipoLocalB.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido+3).getNombreEquipoLocal());
+                lblEquipoVisitanteB.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido+3).getNombreEquipoVisitante());
                 // Incrementar el índice para el siguiente Partido
                 idPartido++;
+
+
+                System.out.println("Numerode Partido: " + (idPartido+3));
+
                 //System.out.println("idpartido: " + idPartido + ", idjornada:" + jornadaActual);
-                lblEquipoLocalC.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoLocal());
-                lblEquipoVisitanteC.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoVisitante());
+                lblEquipoLocalC.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido+3).getNombreEquipoLocal());
+                lblEquipoVisitanteC.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido+3).getNombreEquipoVisitante());
 
                 // Incrementar el índice para el siguiente Partido
                 idPartido++;
@@ -240,27 +256,36 @@ public class VentanaClasificacion extends JFrame {
                 jornadaActual--;
                 lblTituloNumeroJornada.setText("JORNADA " + jornadaActual);
                 
+                
                 // Reiniciar el índice si se llega al final del arreglo
                 idPartido = idPartido -6;
+                System.out.println("-------");
+                System.out.println("Numero de Jornada: " + jornadaActual);
+                System.out.println("Numerode Partido: " + (idPartido+3));
 
                 // Actualizar los labels de los equipos
-                lblEquipoLocalA.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoLocal());
-                lblEquipoVisitanteA.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoVisitante());
+                lblEquipoLocalA.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido+3).getNombreEquipoLocal());
+                lblEquipoVisitanteA.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido+3).getNombreEquipoVisitante());
                 // Incrementar el índice para el siguiente Partido
                 idPartido++;
+                
+                System.out.println("Numerode Partido: " + (idPartido+3));
                 //System.out.println("idpartido: " + idPartido + ", idjornada:" + jornadaActual);
-                lblEquipoLocalB.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoLocal());
-                lblEquipoVisitanteB.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoVisitante());
+                lblEquipoLocalB.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido+3).getNombreEquipoLocal());
+                lblEquipoVisitanteB.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido+3).getNombreEquipoVisitante());
                 // Incrementar el índice para el siguiente Partido
                 idPartido++;
+                
+                System.out.println("Numerode Partido: " + (idPartido+3));
+                
                 //System.out.println("idpartido: " + idPartido + ", idjornada:" + jornadaActual);
-                lblEquipoLocalC.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoLocal());
-                lblEquipoVisitanteC.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoVisitante());
+                lblEquipoLocalC.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido+3).getNombreEquipoLocal());
+                lblEquipoVisitanteC.setText(AlgoritmoJornadasFixture.listPartidos.get(idPartido+3).getNombreEquipoVisitante());
                 // Incrementar el índice para el siguiente Partido
                 idPartido++;
                 //System.out.println("idpartido: " + idPartido + ", idjornada:" + jornadaActual);
                 if (idPartido <= 0) {
-                    idPartido = 3;
+                    idPartido = 0;
                 }
 
                 if (jornadaActual == 1) {
@@ -337,12 +362,18 @@ public class VentanaClasificacion extends JFrame {
     		
     		// 2. Guardar datos
     		// 2.1. Guardar los datos introducidos en las jornadas
-    		inicializarCamposDeTexto();
-    		guardarDatosPartidos(0);
-    		mostrarDatosPartidos(0);
-    		mostrarDatosPartidos(1);
-    		mostrarDatosPartidos(2);
     		
+    		//este metodo guardarDatosPartidos es la funcion que permite obtener los valores, guardarlos en las estructuras
+    		// y calcular equipo ganar, sumar puntajes si tiene otro partido jugado.
+    		guardarDatosPartidos((jornadaActual-1));
+    		//System.out.println("IDPARTIDO ACTUAL"+ idPartido + " y la funcion interpreta el: " + (idPartido));
+    		mostrarDatosPartidos((idPartido));
+    		//System.out.println("IDPARTIDO ACTUAL"+ idPartido + " y la funcion interpreta el: " + (idPartido+1));
+    		mostrarDatosPartidos((idPartido+1));
+    		//System.out.println("IDPARTIDO ACTUAL"+ idPartido + " y la funcion interpreta el: " + (idPartido+2));
+    		mostrarDatosPartidos((idPartido+2));
+    		//LO DE MOSTRAR ES SOLO PARA CORROBRAR POR CONSOLA, LO NECESITO ANTES DE PASAR LOS DATOS A LA TABLA
+    		//DE CLASIFICACION, LUEGO YA NO NECESITO MOSTRARDATOSPARTIDOS
     		// 3. Ordenamiento
     		
     		// 4. Actualizacion de la tabla
@@ -429,7 +460,7 @@ public class VentanaClasificacion extends JFrame {
     panelPartido1.add(lblLocalB_1, gbc_lblLocalB_1);
 
  //   lblEquipoLocalA = new JLabel("CV Sayre Mayser");
-    lblEquipoLocalA = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(0).getNombreEquipoLocal());
+    lblEquipoLocalA = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoLocal());
 //    if (AlgoritmoJornadasFixture.listPartidos.size() > 1) {
 //        System.out.println("Contenido de listPartidos: " + AlgoritmoJornadasFixture.listPartidos);
 //        System.out.println("Tamaño de listPartidos: " + AlgoritmoJornadasFixture.listPartidos.size());
@@ -474,7 +505,7 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblVisitanteB_1.gridy = 3;
     panelPartido1.add(lblVisitanteB_1, gbc_lblVisitanteB_1);
     
-    lblEquipoVisitanteA = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(0).getNombreEquipoVisitante());
+    lblEquipoVisitanteA = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(idPartido).getNombreEquipoVisitante());
     lblEquipoVisitanteA.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoVisitanteA.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoVisitanteA = new GridBagConstraints();
@@ -570,7 +601,7 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblLocalB.gridy = 2;
     panelPartido2.add(lblLocalB, gbc_lblLocalB);
     
-    lblEquipoLocalB = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(1).getNombreEquipoLocal());
+    lblEquipoLocalB = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(idPartido+1).getNombreEquipoLocal());
     lblEquipoLocalB.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoLocalB.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoLocalB = new GridBagConstraints();
@@ -608,7 +639,7 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblVisitanteB.gridy = 3;
     panelPartido2.add(lblVisitanteB, gbc_lblVisitanteB);
     
-    lblEquipoVisitanteB = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(1).getNombreEquipoVisitante());
+    lblEquipoVisitanteB = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(idPartido+1).getNombreEquipoVisitante());
     lblEquipoVisitanteB.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoVisitanteB.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoVisitanteB = new GridBagConstraints();
@@ -704,7 +735,7 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblLocalB_2.gridy = 2;
     panelPartido3.add(lblLocalB_2, gbc_lblLocalB_2);
     
-    lblEquipoLocalC = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(2).getNombreEquipoLocal());
+    lblEquipoLocalC = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(idPartido+2).getNombreEquipoLocal());
     lblEquipoLocalC.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoLocalC.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoLocalC = new GridBagConstraints();
@@ -742,7 +773,7 @@ public class VentanaClasificacion extends JFrame {
     gbc_lblVisitanteB_2.gridy = 3;
     panelPartido3.add(lblVisitanteB_2, gbc_lblVisitanteB_2);
     
-    lblEquipoVisitanteC = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(2).getNombreEquipoVisitante());
+    lblEquipoVisitanteC = new JLabel(AlgoritmoJornadasFixture.listPartidos.get(idPartido+2).getNombreEquipoVisitante());
     lblEquipoVisitanteC.setHorizontalAlignment(SwingConstants.RIGHT);
     lblEquipoVisitanteC.setFont(new Font("Arial", Font.PLAIN, 11));
     GridBagConstraints gbc_lblEquipoVisitanteC = new GridBagConstraints();
@@ -864,15 +895,16 @@ public class VentanaClasificacion extends JFrame {
 	    partido.setResultadoCalculado(true);
 	}
 
-public void inicializarCamposDeTexto() {
+
+private void guardarDatosPartidos(int id_jornada) {
+	
+	//ARREGLOS PARA OBTENER EL JTEXFILED DE MANERA DINAMICA Y OBTENER LOS CAMPOS DE TEXTO, PARA USARLO EN EL BUCLE
     puntajeLocalFields = new JTextField[] { txtPuntajePartido1Local, txtPuntajePartido2Local, txtPuntajePartido3Local };
     puntajeVisitanteFields = new JTextField[] { txtPuntajePartido1Visitante, txtPuntajePartido2Visitante, txtPuntajePartido3Visitante };
     ultimoSetLocalFields = new JTextField[] { txtUltimoSetPartido1Local, txtUltimoSetPartido2Local, txtUltimoSetPartido3Local };
     ultimoSetVisitanteFields = new JTextField[] { txtUltimoSetPartido1Visitante, txtUltimoSetPartido2Visitante, txtUltimoSetPartido3Visitante };
-}
 
-private void guardarDatosPartidos(int id_jornada) {
-    System.out.println("Guardando datos de partidos para la jornada: " + id_jornada);
+    //System.out.println("Guardando datos de partidos para la jornada: " + id_jornada);
 
     try {
         // Obtener la jornada correspondiente por id_jornada
@@ -927,30 +959,34 @@ private void guardarDatosPartidos(int id_jornada) {
 	    // Obtener los objetos EQUIPOS correspondientes a los equipos local y visitante
 	    EQUIPOS equipoLocal = AlgoritmoJornadasFixture.listEquipos.get(idEquipoLocal);
 	    EQUIPOS equipoVisitante = AlgoritmoJornadasFixture.listEquipos.get(idEquipoVisitante);
-	    
-	    System.out.println("//// Datos del ARREGLO PARTIDOS " + id_partido + " ////");
-	    System.out.println("Partido " + id_partido + ": " + equipoLocal.getNombreEquipo() + " vs " + equipoVisitante.getNombreEquipo()
-	    +" o " + equipoLocal.getid_equipo() + " vs "  + equipoVisitante.getid_equipo());
+
+	    System.out.println("╔════════════════════════════════════════════════════╗");
+	    System.out.println("                JORNADA "+jornadaActual +" -  PARTIDO "+(id_partido) +"                     ");
+	    System.out.println("     "+equipoLocal.getNombreEquipo() + " (" + partido.getSetsGanadosEquipoLocal() +
+	    ") vs (" + partido.getSetsGanadosEquipoVisitante()+ ") " + equipoVisitante.getNombreEquipo());
+	    System.out.println("╚════════════════════════════════════════════════════╝");
+	    System.out.println("/======= DATOS GUARDADOS EN LA CLASE PARTIDOS: ======/");
+//	    System.out.println("Partido " + id_partido + ": ("+ equipoLocal.getid_equipo() + ") " + equipoLocal.getNombreEquipo() + " vs " + equipoVisitante.getNombreEquipo()
+//	    + " ("  + equipoVisitante.getid_equipo() + ")");
 	    System.out.println("Puntaje local: " + partido.getSetsGanadosEquipoLocal());
 	    System.out.println("Puntaje visitante: " + partido.getSetsGanadosEquipoVisitante());
 	    System.out.println("Ultimo set local: " + partido.getPuntajeUltimoSetLocal());
 	    System.out.println("Ultimo set visitante: " + partido.getPuntajeUltimoSetVisitante());
 
 		 
-	    System.out.println("//// Datos del ARREGLO EQUIPOS ////");
-	    System.out.println("Puntos sets total de " + equipoLocal.getNombreEquipo() + ": " + equipoLocal.getPuntosSetsTotal());
-	    System.out.println("Puntos sets total de " + equipoVisitante.getNombreEquipo() + ": " + equipoVisitante.getPuntosSetsTotal());
-	    
-	    System.out.println("Puntos totales de: " + equipoLocal.getNombreEquipo() + ": " + equipoLocal.getPuntajeTotal());
-	    System.out.println("Puntos totales de: " + equipoVisitante.getNombreEquipo() + ": " + equipoVisitante.getPuntajeTotal());
-	    
-	    System.out.println("Partidos ganados de: " + equipoLocal.getNombreEquipo() + ": "  + equipoLocal.getPartidosGanados());
-	    System.out.println("Partidos ganados de: " + equipoVisitante.getNombreEquipo() + ": " + equipoVisitante.getPartidosGanados());
-	    
-	    System.out.println("Partidos perdidos de: " + equipoLocal.getNombreEquipo() + ": "  + equipoLocal.getPartidosPerdidos());
-	    System.out.println("Partidos perdidos de: " + equipoVisitante.getNombreEquipo() + ": " + equipoVisitante.getPartidosPerdidos());
-	    
-	    
+	    System.out.println("/======= DATOS GUARDADOS EN LA CLASE EQUIPO: ======/");
+	    System.out.println(equipoLocal.getNombreEquipo());
+	    System.out.println("Partidos ganados: "  + equipoLocal.getPartidosGanados());
+	    System.out.println("Partidos perdidos: "  + equipoLocal.getPartidosPerdidos());
+	    System.out.println("Puntos total de los SETS: " + equipoLocal.getPuntosSetsTotal());
+	    System.out.println("Puntos totales de Temporada: " + equipoLocal.getPuntajeTotal());
+	    System.out.println("---------------------------------");
+	    System.out.println(equipoVisitante.getNombreEquipo());
+	    System.out.println("Partidos ganados: "  + equipoVisitante.getPartidosGanados());
+	    System.out.println("Partidos perdidos: "  + equipoVisitante.getPartidosPerdidos());
+	    System.out.println("Puntos total de los SETS: " + equipoVisitante.getPuntosSetsTotal());
+	    System.out.println("Puntos totales de Temporada: " + equipoVisitante.getPuntajeTotal());
+	    //System.out.println("/=======================================================/");
 	    
 	    
 	    

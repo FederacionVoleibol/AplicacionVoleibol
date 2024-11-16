@@ -247,7 +247,7 @@ class PARTIDO{
 	 }
 	 
 	 public void MostrarPartido() {
-		System.out.println("PartidoID: " + id_partido + ", Equipo Local: " + NombreEquipoLocal + " - Equipo Visitante: " + NombreEquipoVisitante); 
+		System.out.println("PartidoID: " + id_partido  + " " + NombreEquipoLocal + " - " + NombreEquipoVisitante); 
 	 }	
 	 public String getNombreEquipoLocal() {
 		 return NombreEquipoLocal;

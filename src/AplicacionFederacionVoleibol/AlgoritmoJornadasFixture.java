@@ -187,9 +187,38 @@ public class AlgoritmoJornadasFixture {
         for (PARTIDO partidos : listPartidos) {
             partidos.MostrarPartido(); // Llamar al método MostrarPartido() de cada instancia de PARTIDO
         }
+        System.out.println("Tamanio de jorndas: " + listJornadas.size());
+        System.out.println("Tamanio de partidos: " + listPartidos.size());
+        System.out.println("Tamanio de equipos: " + listEquipos.size());
 //        // Comprobación de contenido
 //        System.out.println("Contenido de listPartidos: " + listPartidos);
 //        System.out.println("Tamaño de listPartidos: " + listPartidos.size());
+        
+        
+        System.out.println("Equipos por jornada:");
+        for (int i = 0; i < listJornadas.size(); i++) {
+            JORNADAS jornada = listJornadas.get(i); // Obtener la jornada actual
+            System.out.println("Jornada " + (i ) + ": " + jornada.getIDequiposporJornada());
+        }
+
+        System.out.println("Lista de partidos:");
+        for (int i = 0; i < listPartidos.size(); i++) {
+            System.out.print("Partido " + (i + 1) + ": ");
+            listPartidos.get(i).MostrarPartido(); // Usar el método MostrarPartido para imprimir los detalles
+        }
+
+        System.out.println("Lista detallada de equipos:");
+        for (int i = 0; i < listEquipos.size(); i++) {
+            EQUIPOS equipo = listEquipos.get(i);
+            System.out.println("Equipo " + (i + 1) + ": ID=" + equipo.getid_equipo() + ", Nombre=" + equipo.getNombreEquipo() +
+                               ", Puntos Totales=" + equipo.getPuntajeTotal());
+        }
+        
+        System.out.println("Lista de equipos:");
+        for (int i = 0; i < listEquipos.size(); i++) {
+            EQUIPOS equipo = listEquipos.get(i); // Obtener el equipo actual
+            System.out.println("Equipo " + (i + 1) + ": " + equipo.getNombreEquipo());
+        }
     }
     
     public static void InicializarTemporada() {
