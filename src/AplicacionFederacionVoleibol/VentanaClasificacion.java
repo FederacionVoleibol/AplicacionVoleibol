@@ -130,6 +130,10 @@ public class VentanaClasificacion extends JFrame {
   private JTextField[] ultimoSetVisitanteFields;  
   private int jornadaActual = 1;
   int idPartido = 0;
+  private static List<EQUIPOS> ListOrdenClasificacion = new ArrayList<>();
+
+  
+  
   /**
 	 * Launch the application.
 	 */
@@ -157,7 +161,7 @@ public class VentanaClasificacion extends JFrame {
 	 * Create the frame.
 	 */
   public VentanaClasificacion() {
-	  
+	  mostrarTodosLosEquipos();
 	  
     // Establecemos un tamaño para la ventana
     setSize(900, 550);
@@ -372,6 +376,14 @@ public class VentanaClasificacion extends JFrame {
     		mostrarDatosPartidos((idPartido+1));
     		//System.out.println("IDPARTIDO ACTUAL"+ idPartido + " y la funcion interpreta el: " + (idPartido+2));
     		mostrarDatosPartidos((idPartido+2));
+    		
+    		//System.out.println("Datos en listEquipos antes de calcular posiciones:");
+    		for (EQUIPOS equipo : listEquipos) {
+    		    System.out.println("Equipo: " + equipo.getNombreEquipo() + ", Puntaje: " + equipo.getPuntajeTotal());
+    		}
+    		mostrarTodosLosEquipos();
+    		CalcularYMostrarPosicionesEquipos();
+    		//CalcularPosicionEquipos();
     		//LO DE MOSTRAR ES SOLO PARA CORROBRAR POR CONSOLA, LO NECESITO ANTES DE PASAR LOS DATOS A LA TABLA
     		//DE CLASIFICACION, LUEGO YA NO NECESITO MOSTRARDATOSPARTIDOS
     		// 3. Ordenamiento
@@ -895,6 +907,145 @@ public class VentanaClasificacion extends JFrame {
 	    partido.setResultadoCalculado(true);
 	}
 
+	public static void CalcularYMostrarPosicionesEquipos() {
+	    if (AlgoritmoJornadasFixture.listEquipos.isEmpty()) {
+	        System.out.println("La lista de equipos está vacía. No se puede calcular la clasificación.");
+	        return;
+	    }
+
+	    // Crear una lista auxiliar con el mismo contenido para calcular las posiciones
+	    List<EQUIPOS> listaPosicionDeEquipos = new ArrayList<>(AlgoritmoJornadasFixture.listEquipos);
+	    
+	    
+	    //ORDENAMINETO CLASICO
+//	    for (int i = 0; i < listaPosicionDeEquipos.size(); i++) {
+//	        for (int j = i + 1; j < listaPosicionDeEquipos.size(); j++) {
+//	            if (listaPosicionDeEquipos.get(j).getPuntajeTotal() > listaPosicionDeEquipos.get(i).getPuntajeTotal()) {
+//	                // Intercambiar elementos
+//	                EQUIPOS temp = listaPosicionDeEquipos.get(i);
+//	                listaPosicionDeEquipos.set(i, listaPosicionDeEquipos.get(j));
+//	                listaPosicionDeEquipos.set(j, temp);
+//	            }
+//	        }
+//	    }
+	    
+	    //NUEVO METODO ORDENAMIENTO
+	    // Ordenar la lista auxiliar por puntaje total en orden descendente
+	    // CON EL MEOTODO SORT EXLUCISVO PARA LIST
+	    listaPosicionDeEquipos.sort((equipo1, equipo2) -> {
+	        // Compara primero por PuntajeTotal en orden descendente
+	        int comparacion = Integer.compare(equipo2.getPuntajeTotal(), equipo1.getPuntajeTotal());
+	        
+	        if (comparacion == 0) {
+	        	// Si el PuntajeTotal son iguales, compara por PuntosSetsTotal en orden descendente
+	            comparacion = Integer.compare(equipo2.getPuntosSetsTotal(), equipo1.getPuntosSetsTotal());
+	        }
+
+	        if (comparacion == 0) {
+	            // Si también los PuntosSetsTotal son iguales, compara por Fundacion en orden ascendente (más antiguo primero)
+	            comparacion = Integer.compare(equipo1.getFundacion(), equipo2.getFundacion());
+	        }
+	        
+	        if (comparacion == 0) {
+	            // Si tambien el Anio de Fundacion son iguales ,Comparar por NombreEquipo (ascendente) como último recurso
+	            comparacion = equipo1.getNombreEquipo().compareTo(equipo2.getNombreEquipo());
+	        }
+
+	        return comparacion;
+	    });
+	    //METODO COMPARATOR  IMPORT.UTIL.COMPARATOR
+//	    listaPosicionDeEquipos.sort(
+//	    	    Comparator.comparingInt(EQUIPOS::getPuntajeTotal).reversed() // Orden descendente por PuntajeTotal
+//	    	        .thenComparingInt(EQUIPOS::getPuntosSetsTotal).reversed() // Luego por PuntosSetsTotal en descendente
+//	    	        .thenComparingInt(EQUIPOS::getFundacion) // Finalmente por Fundacion en ascendente
+//	    	);
+
+	    
+	 // Asignar las posiciones en función del orden en la lista auxiliar
+	    for (int i = 0; i < listaPosicionDeEquipos.size(); i++) {
+	        EQUIPOS PosicionDeEquipos = listaPosicionDeEquipos.get(i);
+	        final int posicion = i + 1; // Variable final para usar dentro del stream
+
+	        // Buscar el equipo correspondiente en la lista original y actualizar su posición
+	        for (EQUIPOS listaEquiposoriginal : AlgoritmoJornadasFixture.listEquipos) {
+	            if (listaEquiposoriginal.getid_equipo() == PosicionDeEquipos.getid_equipo()) {
+	            	listaEquiposoriginal.setPosicion_Temporada(posicion);
+	                break; // Salir del bucle una vez actualizado
+	            }
+	        }
+	    }
+	    
+	    // Mostrar la nueva lista con posiciones, nombres y puntajes
+	    System.out.println("╔════════════════════════════════════════════════════════════════════════════════════╗");
+	    System.out.println("                                    CLASIFICACIÓN                                    ");
+	    System.out.println("╚════════════════════════════════════════════════════════════════════════════════════╝");
+	    System.out.printf("%-10s %-25s %-10s %-10s %-10s %-15s%n", 
+	        "Posición", "Nombre del Equipo", "PG", "PP", "PTS Total", "Puntos de Sets");
+	    System.out.println("--------------------------------------------------------------------------------------");
+
+	    for (EQUIPOS equipo : listaPosicionDeEquipos) {
+	        System.out.printf("%-10d %-25s %-10d %-10d %-10d %-15d%n", 
+	                equipo.getPosicion_Temporada(),
+	                equipo.getNombreEquipo(),
+	                equipo.getPartidosGanados(),
+	                equipo.getPartidosPerdidos(),
+	                equipo.getPuntajeTotal(),
+	                equipo.getPuntosSetsTotal());
+	        }
+	    
+	    // Mostrar la lista original sin ordenar
+	    System.out.println("\n╔════════════════════════════════════════════════════╗");
+	    System.out.println("         CLASIFICACIÓN SEGÚN EL ORDEN ORIGINAL        ");
+	    System.out.println("╚════════════════════════════════════════════════════╝");
+	    System.out.printf("%-10s %-25s %-10s%n", "Índice", "Nombre del Equipo", "Puntaje Total");
+	    System.out.println("-----------------------------------------------------");
+	    for (int i = 0; i < AlgoritmoJornadasFixture.listEquipos.size(); i++) {
+	        EQUIPOS equipo = AlgoritmoJornadasFixture.listEquipos.get(i);
+	        System.out.printf("%-10d %-25s %-10d%n", 
+	            i,
+	            equipo.getNombreEquipo(),
+	            equipo.getPuntajeTotal());
+	    }
+	}
+
+	
+    // Método para calcular la posición de los equipos
+    public static void CalcularPosicionEquipos() {
+    	
+        // Verificar si listEquipos tiene datos
+        if (listEquipos.isEmpty()) {
+            System.out.println("La lista de equipos está vacía. No se puede calcular la clasificación.");
+            return;
+        }
+
+        // Copiar los equipos a la lista global
+        ListOrdenClasificacion = new ArrayList<>(listEquipos);
+
+        // Ordenar por puntaje total en orden descendente
+        ListOrdenClasificacion.sort((equipo1, equipo2) -> 
+            Integer.compare(equipo2.getPuntajeTotal(), equipo1.getPuntajeTotal())
+        );
+
+        // Asignar posición según el orden
+        for (int i = 0; i < ListOrdenClasificacion.size(); i++) {
+            ListOrdenClasificacion.get(i).setPosicion_Temporada(i + 1); // Asignar posición empezando desde 1
+        }
+        
+        // Mostrar la clasificación
+        if (ListOrdenClasificacion.isEmpty()) {
+            System.out.println("No hay datos en la lista de clasificación para mostrar.");
+            return;
+        }
+
+        System.out.println("Posición | Nombre del Equipo           | Puntaje Total");
+        System.out.println("-----------------------------------------------------");
+        for (EQUIPOS equipo : ListOrdenClasificacion) {
+            System.out.printf("%-8d | %-25s | %-13d%n", 
+                equipo.getPosicion_Temporada(), 
+                equipo.getNombreEquipo(), 
+                equipo.getPuntajeTotal());
+        }
+    }
 
 private void guardarDatosPartidos(int id_jornada) {
 	
@@ -988,7 +1139,29 @@ private void guardarDatosPartidos(int id_jornada) {
 	    System.out.println("Puntos totales de Temporada: " + equipoVisitante.getPuntajeTotal());
 	    //System.out.println("/=======================================================/");
 	    
-	    
-	    
  }
+ 
+//Método para mostrar todos los valores de cada equipo en listEquipos
+private void mostrarTodosLosEquipos() {
+  if (AlgoritmoJornadasFixture.listEquipos.isEmpty()) {
+      System.out.println("La lista de equipos está vacía.");
+      return;
+  }
+
+  System.out.println("╔════════════════════════════════════════════════════════════════════════════╗");
+  System.out.println("                                  LISTA DE EQUIPOS                            ");
+  System.out.println("╚════════════════════════════════════════════════════════════════════════════╝");
+  for (EQUIPOS equipo : AlgoritmoJornadasFixture.listEquipos) {
+      System.out.println("╔════════════════════════════════════════════════════════════╗");
+      System.out.println("ID del Equipo: " + equipo.getid_equipo());
+      System.out.println("Nombre del Equipo: " + equipo.getNombreEquipo());
+      System.out.println("Entrenador: " + equipo.getEntrenador());
+      System.out.println("Partidos Ganados: " + equipo.getPartidosGanados());
+      System.out.println("Partidos Perdidos: " + equipo.getPartidosPerdidos());
+      System.out.println("Puntaje Total: " + equipo.getPuntajeTotal());
+      System.out.println("Puntos Totales de Sets: " + equipo.getPuntosSetsTotal());
+      System.out.println("Posición en la Temporada: " + equipo.getPosicion_Temporada());
+      System.out.println("╚════════════════════════════════════════════════════════════╝");
+  }
+}
 }

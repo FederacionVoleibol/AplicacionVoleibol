@@ -12,10 +12,13 @@ public class AlgoritmoJornadasFixture {
     public static List<JORNADAS> listJornadas = new ArrayList<>();
 	//--------------VARIABLES PRINCIPALES
 	static Scanner scan = new Scanner(System.in);
+	
 	private static final int NUMEQUIPOS = TEMPORADAS.getCantidadEquipos(); // MODIFICABLE SOLO NUMEROS PARES
 	private static final int NUMRONDAS = NUMEQUIPOS -1; // NOesMODIFICABLE
 	private static final int NUMPARTIDOSPORRONDA = TEMPORADAS.getCantidadPartidosPorJornada(); // NOesMODIFICABLE
-// Clase estática para representar un Partido con equipo local y visitante
+	
+	
+	// Clase estática para representar un Partido con equipo local y visitante
 		static public class Partido{
         private int equipolocal = 0, equipovisitante = 0;
         private static String[] NombreEquipo = new String[NUMEQUIPOS];
@@ -41,27 +44,27 @@ public class AlgoritmoJornadasFixture {
     // Método para instanciar los equipos y agregarlos a la lista
     public static void MetodoInstanciarEquipos() {
     EQUIPOS equipo1 = new EQUIPOS(); // Crear objeto del equipo1 y agregarlo a la lista
-    equipo1.CrearEquipo(0, "CV Sayre Mayser");
+    equipo1.CrearEquipo(0, "CV Sayre Mayser", 2000);
     Partido.NombreEquipo[0] = "CV Sayre Mayser";
     listEquipos.add(equipo1);
     EQUIPOS equipo2 = new EQUIPOS();
-	equipo2.CrearEquipo(1, "CV Zaragoza");
+	equipo2.CrearEquipo(1, "CV Zaragoza", 2001);
 	Partido.NombreEquipo[1] = "CV Zaragoza";
     listEquipos.add(equipo2);
     EQUIPOS equipo3 = new EQUIPOS();
-	equipo3.CrearEquipo(2, "CV Barça");
+	equipo3.CrearEquipo(2, "CV Barça", 2002);
 	Partido.NombreEquipo[2] = "CV Barça";
     listEquipos.add(equipo3);
     EQUIPOS equipo4 = new EQUIPOS();
-    equipo4.CrearEquipo(3, "CV Alcobendas");
+    equipo4.CrearEquipo(3, "CV Alcobendas", 2003);
 	Partido.NombreEquipo[3] = "CV Alcobendas";
     listEquipos.add(equipo4);
     EQUIPOS equipo5 = new EQUIPOS();
-    equipo5.CrearEquipo(4, "CD Avila Voleibol");
+    equipo5.CrearEquipo(4, "CD Avila Voleibol", 2004);
 	Partido.NombreEquipo[4] = "CD Avila Voleibol";
     listEquipos.add(equipo5);
     EQUIPOS equipo6 = new EQUIPOS();
-    equipo6.CrearEquipo(5, "CV Madrid Chamberí");
+    equipo6.CrearEquipo(5, "CV Madrid Chamberí", 2005);
 	Partido.NombreEquipo[5] = "CV Madrid Chamberí";
     listEquipos.add(equipo6);
     	

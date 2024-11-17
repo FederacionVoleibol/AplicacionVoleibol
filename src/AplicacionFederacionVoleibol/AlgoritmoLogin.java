@@ -281,14 +281,16 @@ class PARTIDO{
 	 private int PuntajeTotal =0;
 	 private int PuntosSetsTotal =0;
 	 private int Posicion_Temporada =0;
+	 private  int Fundacion =0;
 	 
 
 	//-------- Metodo Constructor --------// 
 	 
-	 public void CrearEquipo(int id, String nombre) {
+	 public void CrearEquipo(int id, String nombre, int fundacion) {
 		 
 		 this.id_equipo = id;
 		 this.NombreEquipo = nombre;
+		 this.Fundacion = fundacion;
 	 }
 	
 	 
@@ -303,10 +305,9 @@ class PARTIDO{
 		this.NombreEquipo = nombreEquipo;
 	}
 
-	public void setPosicion_Temporada(int posicion_Temporada) {
-		Posicion_Temporada = posicion_Temporada;
+	public void setPosicion_Temporada(int posicion) {
+	    this.Posicion_Temporada = posicion;
 	}
-	
 	public void incrementarPartidosGanados() {
 	    PartidosGanados += 1;
 	}
@@ -343,7 +344,9 @@ class PARTIDO{
 		 return PartidosGanados;
 	 }
 	
-	
+	public int getFundacion() {
+		return Fundacion;
+	}
 	public int getPartidosPerdidos() {
 		return PartidosPerdidos;
 	}
