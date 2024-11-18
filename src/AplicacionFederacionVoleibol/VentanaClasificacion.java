@@ -28,6 +28,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaClasificacion extends JFrame {
+	
+private ArrayClasificacion arrayClasificacion;
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
