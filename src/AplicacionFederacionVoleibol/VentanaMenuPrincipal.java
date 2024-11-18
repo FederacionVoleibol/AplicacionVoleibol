@@ -1,33 +1,30 @@
 package AplicacionFederacionVoleibol;
 
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.GraphicsEnvironment;
-import java.awt.Point;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
-import java.awt.GridLayout;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 public class VentanaMenuPrincipal extends JFrame implements ActionListener {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JPanel panelContenedor; // Cambié el nombre para mantener el estilo camelCase
-    private JButton btnIntroDatos;
     private JButton btnClasificacion;
     private JButton btnArbitros;
     private JPanel panel;
-    private JButton btnNewButton;
+    private JButton btnCerrarSesion;
     private JButton btnEquipo;
+    private JButton btnJornadas;
+    private JButton btnDesarrollador;
 
     /**
      * Launch the application.
@@ -43,6 +40,7 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
                 }
             }
         });
+        
     }
 
     /**
@@ -61,7 +59,7 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
         
 		
 		//TITULO DE LA VENTANA
-		setTitle("Menú (Sesión Iniciada con: "+AlgoritmoLogin.getUsuario()+" - "+AlgoritmoLogin.getTipodeUsuario()+")");
+		setTitle(" APLICACIÓN FEDERACIÓN VOLEIBOL - Menú (Sesión Iniciada con: "+EstructurasDeAlmacenamiento.getUsuario()+" - "+EstructurasDeAlmacenamiento.getTipodeUsuario()+")");
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -80,51 +78,97 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
                 panelParteSuperior.add(panelListadeOpciones, BorderLayout.CENTER);
                 
                         btnArbitros = new JButton("Arbitros");
-                        panelListadeOpciones.add(btnArbitros);
+                       if (EstructurasDeAlmacenamiento.getTipodeUsuario().equals("Desarrollador") || EstructurasDeAlmacenamiento.getTipodeUsuario().equals("Admin")) {
+                        	 panelListadeOpciones.add(btnArbitros);
+                        }
                         
                                 btnClasificacion = new JButton("Tabla de Clasificación");
-                                panelListadeOpciones.add(btnClasificacion);
-                                btnClasificacion.setBackground(new Color(240, 240, 240));
+                                 
+                                	panelListadeOpciones.add(btnClasificacion);
                                 
-                                        btnIntroDatos = new JButton("Jornadas");
-                                        panelListadeOpciones.add(btnIntroDatos);
-                                        
+                                btnClasificacion.setBackground(new Color(240, 240, 240));
+                                 
                                         btnEquipo = new JButton("Equipos");
                                         btnEquipo.addActionListener(new ActionListener() {
                                         	public void actionPerformed(ActionEvent e) {  
                                         		
                                         	}
                                         });
+                                     
                                         panelListadeOpciones.add(btnEquipo);
                                         
+                                        
+                                        btnJornadas = new JButton("Jornadas");
+                                         
+                                        //El admin no tiene sentido que vea el boton jornadas
+                                        if(EstructurasDeAlmacenamiento.getTipodeUsuario().equals("Usuario"))
+                                        	panelListadeOpciones.add(btnJornadas);
+                                        
+                                        
+                                        btnDesarrollador = new JButton("Crear Usuario");
+                                       if(EstructurasDeAlmacenamiento.getTipodeUsuario().equals("Desarrollador" )) {
+                                    	   panelListadeOpciones.add(btnDesarrollador);
+                                       }
                                         panel = new JPanel();
                                         contentPane.add(panel, BorderLayout.SOUTH);
                                         panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
                                         
-                                        btnNewButton = new JButton("Cerrar Sesión");
-                                        panel.add(btnNewButton);
-                                        btnIntroDatos.addActionListener(this);
-                                btnClasificacion.addActionListener(this);
+                                        btnCerrarSesion = new JButton("Cerrar Sesión");
+                                        panel.add(btnCerrarSesion);
+                                    
+                        btnClasificacion.addActionListener(this);
                         btnArbitros.addActionListener(this);
                         btnEquipo.addActionListener(this);
-
+                        btnCerrarSesion.addActionListener(this);
+                        
         // Cargar la ventana de clasificación por defecto (u otro panel que quieras mostrar primero)
-        cargarVentanaClasificacion();
+       EstructurasDeAlmacenamiento login = new EstructurasDeAlmacenamiento();
+       if (login.TipodeUsuario.equals("Desarrollador") || login.TipodeUsuario.equals("Admin")) {
+    	   cargarVentanaClasificacion();
+    	   }
+       else {
+		  cargarVentanaClasificacionUsuarios();
+	   }
+       
     }
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        Object o = ae.getSource();
-        
-        if (o == btnClasificacion) {
-            cargarVentanaClasificacion();
-        } else if (o == btnArbitros) {
+    public void actionPerformed(ActionEvent variableGuardarAccionBoton) {
+        Object botonAccionado = variableGuardarAccionBoton.getSource();
+        String tipoUsuario = EstructurasDeAlmacenamiento.getTipodeUsuario();
+
+        if (botonAccionado == btnClasificacion) {
+            if (tipoUsuario.equals("Admin")) {
+                cargarVentanaClasificacion();
+            } else if (tipoUsuario.equals("Desarrollador")) {
+                cargarVentanaClasificacionUsuarios();
+            }
+            
+            else if (tipoUsuario.equals("Usuario")) {
+                cargarVentanaClasificacionUsuarios();
+            }
+        } else if (botonAccionado == btnArbitros && (tipoUsuario.equals("Desarrollador") || tipoUsuario.equals("Admin"))) {
             cargarVentanaArbitros();
-        } else if (o == btnIntroDatos) {
-            // Puedes agregar otra ventana si es necesario
-        } else if (o == btnEquipo) {
-        	cargarVentanaEquipos();
-            // Puedes agregar otra ventana si es necesario
+        } else if (botonAccionado == btnEquipo) {
+            if (tipoUsuario.equals("Desarrollador") || tipoUsuario.equals("Admin")) {
+                cargarVentanaEquipos();
+            } else if (tipoUsuario.equals("Usuario")) {
+                cargarVentanaEquiposUsuarios();
+            }
+        } else if (botonAccionado == btnCerrarSesion) {
+            cerrarSesion();
+        }
+    }
+
+    
+    private void cerrarSesion() {
+        // Confirmación para cerrar sesión
+        int confirm = JOptionPane.showConfirmDialog(this, "¿Seguro que quieres cerrar sesión?", "Cerrar Sesión", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            dispose(); // Cierra la ventana actual (VentanaMenuPrincipal)
+            
+            // Crear y mostrar la ventana de login
+            VentanaPrincipal ventanaLogin = new VentanaPrincipal();
+            ventanaLogin.setVisible(true);
         }
     }
 
@@ -143,9 +187,9 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
     private void cargarVentanaArbitros() {
         // Remover todos los componentes previos y cargar la ventana de arbitros
         panelContenedor.removeAll();
-        VentanaIntroducirArbitros va = new VentanaIntroducirArbitros();
-        va.setSize(517, 229);  // Ajusta el tamaño si es necesario
-        panelContenedor.add(va.getContentPane(), BorderLayout.CENTER);
+        VentanaIntroducirArbitros VentanaIntroducirArbitros = new VentanaIntroducirArbitros();
+        VentanaIntroducirArbitros.setSize(517, 229);  // Ajusta el tamaño si es necesario
+        panelContenedor.add(VentanaIntroducirArbitros.getContentPane(), BorderLayout.CENTER);
         panelContenedor.revalidate();
         panelContenedor.repaint();
     }
@@ -153,10 +197,33 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
 private void cargarVentanaEquipos() {
     // Remover todos los componentes previos y cargar la ventana de clasificación
     panelContenedor.removeAll();
-    VentanaIntroducirEquipos ve = new VentanaIntroducirEquipos();
-    ve.setSize(517, 229);
-    panelContenedor.add(ve.getContentPane(), BorderLayout.CENTER);
+    VentanaIntroducirEquipos VentanaIntroducirEquipos = new VentanaIntroducirEquipos();
+    VentanaIntroducirEquipos.setSize(517, 229);
+    panelContenedor.add(VentanaIntroducirEquipos.getContentPane(), BorderLayout.CENTER);
     panelContenedor.revalidate();
     panelContenedor.repaint();
 }
+private void cargarVentanaClasificacionUsuarios() {
+    // Remover todos los componentes previos y cargar la ventana de clasificación
+    panelContenedor.removeAll();
+    VentanaClasificacionUsuarios VentanaClasificacionUsuarios = new VentanaClasificacionUsuarios();
+    VentanaClasificacionUsuarios.setSize(517, 229);
+    panelContenedor.add(VentanaClasificacionUsuarios.getContentPane(), BorderLayout.CENTER);
+    panelContenedor.revalidate();
+    panelContenedor.repaint();
 }
+private void cargarVentanaEquiposUsuarios() {
+    // Remover todos los componentes previos y cargar la ventana de clasificación
+    panelContenedor.removeAll();
+    VentanaEquiposUsuarios VentanaEquiposUsuarios = new VentanaEquiposUsuarios();
+    VentanaEquiposUsuarios.setSize(517, 229);
+    panelContenedor.add(VentanaEquiposUsuarios.getContentPane(), BorderLayout.CENTER);
+    panelContenedor.revalidate();
+    panelContenedor.repaint();
+}
+
+}
+
+
+
+
