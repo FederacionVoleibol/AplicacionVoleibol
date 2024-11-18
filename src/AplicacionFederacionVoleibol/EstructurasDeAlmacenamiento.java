@@ -4,7 +4,7 @@ package AplicacionFederacionVoleibol;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlgoritmoLogin {
+public class EstructurasDeAlmacenamiento {
 	/**
 	 * PEQUEÑA BASE DE DATOS
 	 */

@@ -59,7 +59,7 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
         
 		
 		//TITULO DE LA VENTANA
-		setTitle("Menú (Sesión Iniciada con: "+AlgoritmoLogin.getUsuario()+" - "+AlgoritmoLogin.getTipodeUsuario()+")");
+		setTitle(" APLICACIÓN FEDERACIÓN VOLEIBOL - Menú (Sesión Iniciada con: "+EstructurasDeAlmacenamiento.getUsuario()+" - "+EstructurasDeAlmacenamiento.getTipodeUsuario()+")");
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -78,7 +78,7 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
                 panelParteSuperior.add(panelListadeOpciones, BorderLayout.CENTER);
                 
                         btnArbitros = new JButton("Arbitros");
-                       if (AlgoritmoLogin.getTipodeUsuario() == "Desarrollador" || AlgoritmoLogin.getTipodeUsuario() == "Admin") {
+                       if (EstructurasDeAlmacenamiento.getTipodeUsuario().equals("Desarrollador") || EstructurasDeAlmacenamiento.getTipodeUsuario().equals("Admin")) {
                         	 panelListadeOpciones.add(btnArbitros);
                         }
                         
@@ -101,12 +101,12 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
                                         btnJornadas = new JButton("Jornadas");
                                          
                                         //El admin no tiene sentido que vea el boton jornadas
-                                        if(AlgoritmoLogin.getTipodeUsuario() == "Usuario")
+                                        if(EstructurasDeAlmacenamiento.getTipodeUsuario().equals("Usuario"))
                                         	panelListadeOpciones.add(btnJornadas);
                                         
                                         
                                         btnDesarrollador = new JButton("Crear Usuario");
-                                       if(AlgoritmoLogin.getTipodeUsuario() == "Desarrollador" ) {
+                                       if(EstructurasDeAlmacenamiento.getTipodeUsuario().equals("Desarrollador" )) {
                                     	   panelListadeOpciones.add(btnDesarrollador);
                                        }
                                         panel = new JPanel();
@@ -122,8 +122,8 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
                         btnCerrarSesion.addActionListener(this);
                         
         // Cargar la ventana de clasificación por defecto (u otro panel que quieras mostrar primero)
-       AlgoritmoLogin login = new AlgoritmoLogin();
-       if (login.TipodeUsuario == "Admin") {//login.TipodeUsuario == "Desarrollador" ||
+       EstructurasDeAlmacenamiento login = new EstructurasDeAlmacenamiento();
+       if (login.TipodeUsuario.equals("Desarrollador") || login.TipodeUsuario.equals("Admin")) {
     	   cargarVentanaClasificacion();
     	   }
        else {
@@ -134,7 +134,7 @@ public class VentanaMenuPrincipal extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent variableGuardarAccionBoton) {
         Object botonAccionado = variableGuardarAccionBoton.getSource();
-        String tipoUsuario = AlgoritmoLogin.getTipodeUsuario();
+        String tipoUsuario = EstructurasDeAlmacenamiento.getTipodeUsuario();
 
         if (botonAccionado == btnClasificacion) {
             if (tipoUsuario.equals("Admin")) {

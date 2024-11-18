@@ -357,7 +357,11 @@ public class VentanaClasificacion extends JFrame {
 		lblNewLabel_1 = new JLabel("");
 		panelGuardarDatos.add(lblNewLabel_1);
 		panelGuardarDatos.add(btnGuardarDatos);
-
+		//Condicion para desactivar el boton segun el tipo de usuario
+		if (EstructurasDeAlmacenamiento.TipodeUsuario.equals("Desarrollador")) {
+		    btnGuardarDatos.setEnabled(false); // Desactiva el botón para que no sea clickeable
+		}
+		
 		panel_5 = new JPanel();
 		PantallaJornadas.add(panel_5, BorderLayout.CENTER);
 		panel_5.setLayout(new GridLayout(3, 0, 0, 0));
@@ -449,7 +453,11 @@ public class VentanaClasificacion extends JFrame {
 		gbc_txtPuntajePartido1Local.gridx = 3;
 		gbc_txtPuntajePartido1Local.gridy = 2;
 		panelPartido1.add(txtPuntajePartido1Local, gbc_txtPuntajePartido1Local);
-
+		// Condición para editar segun el tipo de usuario
+		if (EstructurasDeAlmacenamiento.TipodeUsuario.equals("Desarrollador")) {
+		    txtPuntajePartido1Local.setEditable(false); // Desactiva edición si el usuario es "Desarrollador"
+		}
+		
 		txtUltimoSetPartido1Local = new JTextField();
 		txtUltimoSetPartido1Local.setColumns(3);
 		GridBagConstraints gbc_txtUltimoSetPartido1Local = new GridBagConstraints();
@@ -458,7 +466,11 @@ public class VentanaClasificacion extends JFrame {
 		gbc_txtUltimoSetPartido1Local.gridx = 5;
 		gbc_txtUltimoSetPartido1Local.gridy = 2;
 		panelPartido1.add(txtUltimoSetPartido1Local, gbc_txtUltimoSetPartido1Local);
-
+		// Condición para editar segun el tipo de usuario
+		if (EstructurasDeAlmacenamiento.TipodeUsuario.equals("Desarrollador")) {
+		    txtUltimoSetPartido1Local.setEditable(false); // Desactiva edición si el usuario es "Desarrollador"
+		}
+		
 		lblVisitanteB_1 = new JLabel("Visitante");
 		lblVisitanteB_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblVisitanteB_1.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -488,7 +500,11 @@ public class VentanaClasificacion extends JFrame {
 		gbc_txtPuntajePartido1Visitante.gridx = 3;
 		gbc_txtPuntajePartido1Visitante.gridy = 3;
 		panelPartido1.add(txtPuntajePartido1Visitante, gbc_txtPuntajePartido1Visitante);
-
+		// Condición para editar segun el tipo de usuario
+		if (EstructurasDeAlmacenamiento.TipodeUsuario.equals("Desarrollador")) {
+		    txtPuntajePartido1Visitante.setEditable(false); // Desactiva edición si el usuario es "Desarrollador"
+		}
+		
 		txtUltimoSetPartido1Visitante = new JTextField();
 		txtUltimoSetPartido1Visitante.setColumns(3);
 		GridBagConstraints gbc_txtUltimoSetPartido1Visitante = new GridBagConstraints();
@@ -496,7 +512,11 @@ public class VentanaClasificacion extends JFrame {
 		gbc_txtUltimoSetPartido1Visitante.gridx = 5;
 		gbc_txtUltimoSetPartido1Visitante.gridy = 3;
 		panelPartido1.add(txtUltimoSetPartido1Visitante, gbc_txtUltimoSetPartido1Visitante);
-
+		// Condición para editar segun el tipo de usuario
+		if (EstructurasDeAlmacenamiento.TipodeUsuario.equals("Desarrollador")) {
+			txtUltimoSetPartido1Visitante.setEditable(false); // Desactiva edición si el usuario es "Desarrollador"
+		}
+		
 		panel_6 = new JPanel();
 		panel_5.add(panel_6);
 		panel_6.setLayout(new BorderLayout(0, 0));
@@ -584,6 +604,10 @@ public class VentanaClasificacion extends JFrame {
 		gbc_txtPuntajePartido2Local.gridx = 3;
 		gbc_txtPuntajePartido2Local.gridy = 2;
 		panelPartido2.add(txtPuntajePartido2Local, gbc_txtPuntajePartido2Local);
+		// Condición para editar segun el tipo de usuario
+		if (EstructurasDeAlmacenamiento.TipodeUsuario.equals("Desarrollador")) {
+			txtPuntajePartido2Local.setEditable(false);
+		}
 
 		txtUltimoSetPartido2Local = new JTextField();
 		txtUltimoSetPartido2Local.setColumns(3);
@@ -593,7 +617,11 @@ public class VentanaClasificacion extends JFrame {
 		gbc_txtUltimoSetPartido2Local.gridx = 5;
 		gbc_txtUltimoSetPartido2Local.gridy = 2;
 		panelPartido2.add(txtUltimoSetPartido2Local, gbc_txtUltimoSetPartido2Local);
-
+		// Condición para editar segun el tipo de usuario
+		if (EstructurasDeAlmacenamiento.TipodeUsuario.equals("Desarrollador")) {
+			txtUltimoSetPartido2Local.setEditable(false);
+		}
+		
 		lblVisitanteB = new JLabel("Visitante");
 		lblVisitanteB.setFont(new Font("Arial", Font.PLAIN, 11));
 		lblVisitanteB.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -623,7 +651,10 @@ public class VentanaClasificacion extends JFrame {
 		gbc_txtPuntajePartido2Visitante.gridx = 3;
 		gbc_txtPuntajePartido2Visitante.gridy = 3;
 		panelPartido2.add(txtPuntajePartido2Visitante, gbc_txtPuntajePartido2Visitante);
-
+		// Condición para editar segun el tipo de usuario
+		if (EstructurasDeAlmacenamiento.TipodeUsuario.equals("Desarrollador")) {
+			txtPuntajePartido2Visitante.setEditable(false);
+		}
 		txtUltimoSetPartido2Visitante = new JTextField();
 		txtUltimoSetPartido2Visitante.setColumns(3);
 		GridBagConstraints gbc_txtUltimoSetPartido2Visitante = new GridBagConstraints();
@@ -631,7 +662,10 @@ public class VentanaClasificacion extends JFrame {
 		gbc_txtUltimoSetPartido2Visitante.gridx = 5;
 		gbc_txtUltimoSetPartido2Visitante.gridy = 3;
 		panelPartido2.add(txtUltimoSetPartido2Visitante, gbc_txtUltimoSetPartido2Visitante);
-
+		// Condición para editar segun el tipo de usuario
+		if (EstructurasDeAlmacenamiento.TipodeUsuario.equals("Desarrollador")) {
+			txtUltimoSetPartido2Visitante.setEditable(false);
+		}
 		panel_7 = new JPanel();
 		panel_5.add(panel_7);
 		panel_7.setLayout(new BorderLayout(0, 0));
@@ -719,6 +753,10 @@ public class VentanaClasificacion extends JFrame {
 		gbc_txtPuntajePartido3Local.gridx = 3;
 		gbc_txtPuntajePartido3Local.gridy = 2;
 		panelPartido3.add(txtPuntajePartido3Local, gbc_txtPuntajePartido3Local);
+		// Condición para editar segun el tipo de usuario
+		if (EstructurasDeAlmacenamiento.TipodeUsuario.equals("Desarrollador")) {
+			txtPuntajePartido3Local.setEditable(false);
+		}
 
 		txtUltimoSetPartido3Local = new JTextField();
 		txtUltimoSetPartido3Local.setColumns(3);
@@ -728,6 +766,10 @@ public class VentanaClasificacion extends JFrame {
 		gbc_txtUltimoSetPartido3Local.gridx = 5;
 		gbc_txtUltimoSetPartido3Local.gridy = 2;
 		panelPartido3.add(txtUltimoSetPartido3Local, gbc_txtUltimoSetPartido3Local);
+		// Condición para editar segun el tipo de usuario
+		if (EstructurasDeAlmacenamiento.TipodeUsuario.equals("Desarrollador")) {
+			txtUltimoSetPartido3Local.setEditable(false);
+		}
 
 		lblVisitanteB_2 = new JLabel("Visitante");
 		lblVisitanteB_2.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -758,6 +800,10 @@ public class VentanaClasificacion extends JFrame {
 		gbc_txtPuntajePartido3Visitante.gridx = 3;
 		gbc_txtPuntajePartido3Visitante.gridy = 3;
 		panelPartido3.add(txtPuntajePartido3Visitante, gbc_txtPuntajePartido3Visitante);
+		// Condición para editar segun el tipo de usuario
+		if (EstructurasDeAlmacenamiento.TipodeUsuario.equals("Desarrollador")) {
+			txtPuntajePartido3Visitante.setEditable(false);
+		}
 
 		txtUltimoSetPartido3Visitante = new JTextField();
 		txtUltimoSetPartido3Visitante.setColumns(3);
@@ -766,6 +812,10 @@ public class VentanaClasificacion extends JFrame {
 		gbc_txtUltimoSetPartido3Visitante.gridx = 5;
 		gbc_txtUltimoSetPartido3Visitante.gridy = 3;
 		panelPartido3.add(txtUltimoSetPartido3Visitante, gbc_txtUltimoSetPartido3Visitante);
+		// Condición para editar segun el tipo de usuario
+		if (EstructurasDeAlmacenamiento.TipodeUsuario.equals("Desarrollador")) {
+			txtUltimoSetPartido3Visitante.setEditable(false);
+		}
 
 		PantallaClasificacion = new JPanel();
 		contentPane.add(PantallaClasificacion);
@@ -945,95 +995,12 @@ public class VentanaClasificacion extends JFrame {
 			return comparacion;
 		});
 
-		// METODO COMPARATOR IMPORT.UTIL.COMPARATOR
-//	    listaPosicionDeEquipos.sort(
-//	    	    Comparator.comparingInt(EQUIPOS::getPuntajeTotal).reversed() // Orden descendente por PuntajeTotal
-//	    	        .thenComparingInt(EQUIPOS::getPuntosSetsTotal).reversed() // Luego por PuntosSetsTotal en descendente
-//	    	        .thenComparingInt(EQUIPOS::getFundacion) // Finalmente por Fundacion en ascendente
-//	    	);
-
 		// Asignar las posiciones dentro de la lista auxiliar
 		for (int i = 0; i < listaPosicionDeEquipos.size(); i++) {
 			EQUIPOS equipoOrdenado = listaPosicionDeEquipos.get(i);
 			equipoOrdenado.setPosicion_Temporada(i + 1); // Asignar la posición (i+1 porque comienza en 1)
 		}
 
-//	 // Asignar las posiciones en función del orden en la lista auxiliar
-//	    for (int i = 0; i < listaPosicionDeEquipos.size(); i++) {
-//	        EQUIPOS PosicionDeEquipos = listaPosicionDeEquipos.get(i);
-//	        final int posicion = i + 1; // Variable final para usar dentro del stream
-//
-//	        // Buscar el equipo correspondiente en la lista original y actualizar su posición
-//	        for (EQUIPOS listaEquiposoriginal : AlgoritmoJornadasFixture.listEquipos) {
-//	            if (listaEquiposoriginal.getid_equipo() == PosicionDeEquipos.getid_equipo()) {
-//	            	listaEquiposoriginal.setPosicion_Temporada(posicion);
-//	                break; // Salir del bucle una vez actualizado
-//	            }
-//	        }
-//	    }
-
-		// Mostrar la nueva lista con posiciones, nombres y puntajes
-		System.out.println("╔════════════════════════════════════════════════════════════════════════════════════╗");
-		System.out.println("                                    CLASIFICACIÓN                                    ");
-		System.out.println("╚════════════════════════════════════════════════════════════════════════════════════╝");
-		System.out.printf("%-10s %-25s %-10s %-10s %-10s %-15s%n", "Posición", "Nombre del Equipo", "PG", "PP",
-				"PTS Total", "Puntos de Sets");
-		System.out.println("--------------------------------------------------------------------------------------");
-
-		for (EQUIPOS equipo : listaPosicionDeEquipos) {
-			System.out.printf("%-10d %-25s %-10d %-10d %-10d %-15d%n", equipo.getPosicion_Temporada(),
-					equipo.getNombreEquipo(), equipo.getPartidosGanados(), equipo.getPartidosPerdidos(),
-					equipo.getPuntajeTotal(), equipo.getPuntosSetsTotal());
-		}
-
-		// Mostrar la lista original sin ordenar
-//	    System.out.println("\n╔════════════════════════════════════════════════════╗");
-//	    System.out.println("         CLASIFICACIÓN SEGÚN EL ORDEN ORIGINAL        ");
-//	    System.out.println("╚════════════════════════════════════════════════════╝");
-//	    System.out.printf("%-10s %-25s %-10s%n", "Índice", "Nombre del Equipo", "Puntaje Total");
-//	    System.out.println("-----------------------------------------------------");
-//	    for (int i = 0; i < AlgoritmoJornadasFixture.listEquipos.size(); i++) {
-//	        EQUIPOS equipo = AlgoritmoJornadasFixture.listEquipos.get(i);
-//	        System.out.printf("%-10d %-25s %-10d%n", 
-//	            i,
-//	            equipo.getNombreEquipo(),
-//	            equipo.getPuntajeTotal());
-//	    }
-	}
-
-	// Método para calcular la posición de los equipos
-	public static void CalcularPosicionEquipos() {
-
-		// Verificar si listEquipos tiene datos
-		if (listEquipos.isEmpty()) {
-			System.out.println("La lista de equipos está vacía. No se puede calcular la clasificación.");
-			return;
-		}
-
-		// Copiar los equipos a la lista global
-		ListOrdenClasificacion = new ArrayList<>(listEquipos);
-
-		// Ordenar por puntaje total en orden descendente
-		ListOrdenClasificacion
-				.sort((equipo1, equipo2) -> Integer.compare(equipo2.getPuntajeTotal(), equipo1.getPuntajeTotal()));
-
-		// Asignar posición según el orden
-		for (int i = 0; i < ListOrdenClasificacion.size(); i++) {
-			ListOrdenClasificacion.get(i).setPosicion_Temporada(i + 1); // Asignar posición empezando desde 1
-		}
-
-		// Mostrar la clasificación
-		if (ListOrdenClasificacion.isEmpty()) {
-			System.out.println("No hay datos en la lista de clasificación para mostrar.");
-			return;
-		}
-
-		System.out.println("Posición | Nombre del Equipo           | Puntaje Total");
-		System.out.println("-----------------------------------------------------");
-		for (EQUIPOS equipo : ListOrdenClasificacion) {
-			System.out.printf("%-8d | %-25s | %-13d%n", equipo.getPosicion_Temporada(), equipo.getNombreEquipo(),
-					equipo.getPuntajeTotal());
-		}
 	}
 
 	private void guardarDatosPartidos(int id_jornada) {
@@ -1132,68 +1099,4 @@ public class VentanaClasificacion extends JFrame {
 		}
 	}
 
-// Método para mostrar que los datos de los partidos se hayan guardado correctamente en la consola
-	private void mostrarDatosPartidos(int id_partido) { // PARA LA LINEA 317
-		// Obtener el partido correspondiente por id_partido
-		PARTIDO partido = AlgoritmoJornadasFixture.listPartidos.get(id_partido);
-		// Obtener los IDs de los equipos local y visitante
-		int idEquipoLocal = partido.getId_equipo_local();
-		int idEquipoVisitante = partido.getId_equipo_visitante();
-		// Obtener los objetos EQUIPOS correspondientes a los equipos local y visitante
-		EQUIPOS equipoLocal = AlgoritmoJornadasFixture.listEquipos.get(idEquipoLocal);
-		EQUIPOS equipoVisitante = AlgoritmoJornadasFixture.listEquipos.get(idEquipoVisitante);
-
-		System.out.println("╔════════════════════════════════════════════════════╗");
-		System.out.println(
-				"                JORNADA " + jornadaActual + " -  PARTIDO " + (id_partido) + "                     ");
-		System.out.println("     " + equipoLocal.getNombreEquipo() + " (" + partido.getSetsGanadosEquipoLocal()
-				+ ") vs (" + partido.getSetsGanadosEquipoVisitante() + ") " + equipoVisitante.getNombreEquipo());
-		System.out.println("╚════════════════════════════════════════════════════╝");
-		System.out.println("/======= DATOS GUARDADOS EN LA CLASE PARTIDOS: ======/");
-//	    System.out.println("Partido " + id_partido + ": ("+ equipoLocal.getid_equipo() + ") " + equipoLocal.getNombreEquipo() + " vs " + equipoVisitante.getNombreEquipo()
-//	    + " ("  + equipoVisitante.getid_equipo() + ")");
-		System.out.println("Puntaje local: " + partido.getSetsGanadosEquipoLocal());
-		System.out.println("Puntaje visitante: " + partido.getSetsGanadosEquipoVisitante());
-		System.out.println("Ultimo set local: " + partido.getPuntajeUltimoSetLocal());
-		System.out.println("Ultimo set visitante: " + partido.getPuntajeUltimoSetVisitante());
-
-		System.out.println("/======= DATOS GUARDADOS EN LA CLASE EQUIPO: ======/");
-		System.out.println(equipoLocal.getNombreEquipo());
-		System.out.println("Partidos ganados: " + equipoLocal.getPartidosGanados());
-		System.out.println("Partidos perdidos: " + equipoLocal.getPartidosPerdidos());
-		System.out.println("Puntos total de los SETS: " + equipoLocal.getPuntosSetsTotal());
-		System.out.println("Puntos totales de Temporada: " + equipoLocal.getPuntajeTotal());
-		System.out.println("---------------------------------");
-		System.out.println(equipoVisitante.getNombreEquipo());
-		System.out.println("Partidos ganados: " + equipoVisitante.getPartidosGanados());
-		System.out.println("Partidos perdidos: " + equipoVisitante.getPartidosPerdidos());
-		System.out.println("Puntos total de los SETS: " + equipoVisitante.getPuntosSetsTotal());
-		System.out.println("Puntos totales de Temporada: " + equipoVisitante.getPuntajeTotal());
-		// System.out.println("/=======================================================/");
-
-	}
-
-//Método para mostrar todos los valores de cada equipo en listEquipos
-	private void mostrarTodosLosEquipos() {
-		if (AlgoritmoJornadasFixture.listEquipos.isEmpty()) {
-			System.out.println("La lista de equipos está vacía.");
-			return;
-		}
-
-		System.out.println("╔════════════════════════════════════════════════════════════════════════════╗");
-		System.out.println("                                  LISTA DE EQUIPOS                            ");
-		System.out.println("╚════════════════════════════════════════════════════════════════════════════╝");
-		for (EQUIPOS equipo : AlgoritmoJornadasFixture.listEquipos) {
-			System.out.println("╔════════════════════════════════════════════════════════════╗");
-			System.out.println("ID del Equipo: " + equipo.getid_equipo());
-			System.out.println("Nombre del Equipo: " + equipo.getNombreEquipo());
-			System.out.println("Entrenador: " + equipo.getEntrenador());
-			System.out.println("Partidos Ganados: " + equipo.getPartidosGanados());
-			System.out.println("Partidos Perdidos: " + equipo.getPartidosPerdidos());
-			System.out.println("Puntaje Total: " + equipo.getPuntajeTotal());
-			System.out.println("Puntos Totales de Sets: " + equipo.getPuntosSetsTotal());
-			System.out.println("Posición en la Temporada: " + equipo.getPosicion_Temporada());
-			System.out.println("╚════════════════════════════════════════════════════════════╝");
-		}
-	}
 }

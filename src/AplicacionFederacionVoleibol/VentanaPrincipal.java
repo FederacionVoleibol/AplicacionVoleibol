@@ -14,9 +14,9 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     private JLabel lblUsuario;
     private JLabel lblIcono;
     private JLabel lblContrasena;
-    private AlgoritmoLogin login = new AlgoritmoLogin();
+    private EstructurasDeAlmacenamiento login = new EstructurasDeAlmacenamiento();
     private JLabel lblMensajeContra;
-    private JLabel logo;
+    private JLabel lblLogo;
 
     public static void main(String[] args) {
 
@@ -39,7 +39,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("Inicio de Sesión");
+        setTitle(" APLICACIÓN FEDERACIÓN VOLEIBOL - Inicio de Sesión");
 
         JPanel contentPane = new JPanel(new BorderLayout());
         setContentPane(contentPane);
@@ -50,7 +50,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         panelIzquierdo.setPreferredSize(new Dimension(200, 0));
         panelIzquierdo.setLayout(new GridBagLayout());
 
-        lblIcono = new JLabel(new ImageIcon("img/login.png"));
+        lblIcono = new JLabel(new ImageIcon("media/login.png"));
         panelIzquierdo.add(lblIcono);
         contentPane.add(panelIzquierdo, BorderLayout.WEST);
 
@@ -58,13 +58,13 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         JPanel panelCentro = new JPanel(new GridBagLayout());
         panelCentro.setBackground(new Color(192, 192, 192));
         
-        logo = new JLabel("");
-        logo.setIcon(new ImageIcon("img/logo100x110.png"));
-        GridBagConstraints gbc_logo = new GridBagConstraints();
-        gbc_logo.insets = new Insets(0, 0, 5, 5);
-        gbc_logo.gridx = 1;
-        gbc_logo.gridy = 0;
-        panelCentro.add(logo, gbc_logo);
+        lblLogo = new JLabel("");
+        lblLogo.setIcon(new ImageIcon("media/logo.png"));
+        GridBagConstraints gbc_lblLogo = new GridBagConstraints();
+        gbc_lblLogo.insets = new Insets(0, 0, 5, 5);
+        gbc_lblLogo.gridx = 1;
+        gbc_lblLogo.gridy = 0;
+        panelCentro.add(lblLogo, gbc_lblLogo);
 
         // Título
         GridBagConstraints gbcTitulo = new GridBagConstraints();

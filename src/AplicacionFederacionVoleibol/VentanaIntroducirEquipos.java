@@ -66,7 +66,7 @@ public class VentanaIntroducirEquipos extends JFrame {
 	private JPanel TituloEquipo_6;
 	private JLabel lblEquipo_6;
 	private JLabel lblNombreEquipo1;
-    String tipoUsuario = AlgoritmoLogin.getTipodeUsuario();
+    String tipoUsuario = EstructurasDeAlmacenamiento.getTipodeUsuario();
 	public static List <EQUIPOS> listEquipos = new ArrayList <>();
 	public static List <PARTIDO> listPartidos = new ArrayList <>();
 	private JLabel lblNombreEquipo2;
