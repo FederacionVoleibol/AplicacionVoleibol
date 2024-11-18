@@ -49,8 +49,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         panelIzquierdo.setBackground(new Color(0, 128, 255));
         panelIzquierdo.setPreferredSize(new Dimension(200, 0));
         panelIzquierdo.setLayout(new GridBagLayout());
-
-        lblIcono = new JLabel(new ImageIcon("media/login.png"));
+        lblIcono = new JLabel(new ImageIcon(getClass().getResource("/images/login.png")));
         panelIzquierdo.add(lblIcono);
         contentPane.add(panelIzquierdo, BorderLayout.WEST);
 
@@ -59,7 +58,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         panelCentro.setBackground(new Color(192, 192, 192));
         
         lblLogo = new JLabel("");
-        lblLogo.setIcon(new ImageIcon("media/logo.png"));
+        lblLogo = new JLabel(new ImageIcon(getClass().getResource("/images/logo.png")));
         GridBagConstraints gbc_lblLogo = new GridBagConstraints();
         gbc_lblLogo.insets = new Insets(0, 0, 5, 5);
         gbc_lblLogo.gridx = 1;
