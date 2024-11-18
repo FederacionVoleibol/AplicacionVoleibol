@@ -315,7 +315,11 @@ public class VentanaClasificacion extends JFrame {
 				// 1. OBTENEMOS LOS DATOS, PASA POR METODOS CON PARAMETRO JORNADACTUAL PARA
 				// VALIDAR LOS DATOS CORRECTOS Y GUARDALOS EN LA ESTRUCTURA EQUIPO Y PARTIDO
 				// **************************************************************************************************
+				// Establecemos un tamaño para la ventana
+				setSize(900, 550);
 				guardarDatosPartidos((jornadaActual - 1));
+				// Establecemos un tamaño para la ventana
+				setSize(900, 550);
 				// **************************************************************************************************
 				// 2. YA CON LOS DATOS DE LA JORNADA GUARDADA, CALCULAMOS EL PUNTAJE DE CADA
 				// EQUIPO Y LO ACTUALIZAMOS EN LA ESTRUCTURA EQUIPO
@@ -351,6 +355,8 @@ public class VentanaClasificacion extends JFrame {
 				 * equipo.getPuntajeTotal()); }
 				 * 
 				 */
+				// Establecemos un tamaño para la ventana
+				setSize(900, 550);
 			}
 		});
 
