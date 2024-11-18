@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 public class AlgoritmoJornadasFixture {
 
-    public static List<EQUIPOS> listEquipos = new ArrayList<>();
-    public static List<PARTIDO> listPartidos = new ArrayList<>();
-    public static List<JORNADAS> listJornadas = new ArrayList<>();
+    public static ArrayList<EQUIPOS> listEquipos = new ArrayList<>();
+    public static ArrayList<PARTIDO> listPartidos = new ArrayList<>();
+    public static ArrayList<JORNADAS> listJornadas = new ArrayList<>();
 	//--------------VARIABLES PRINCIPALES
 	static Scanner scan = new Scanner(System.in);
 	

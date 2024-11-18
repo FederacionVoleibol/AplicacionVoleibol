@@ -315,11 +315,8 @@ public class VentanaClasificacion extends JFrame {
 				// 1. OBTENEMOS LOS DATOS, PASA POR METODOS CON PARAMETRO JORNADACTUAL PARA
 				// VALIDAR LOS DATOS CORRECTOS Y GUARDALOS EN LA ESTRUCTURA EQUIPO Y PARTIDO
 				// **************************************************************************************************
-				// Establecemos un tamaño para la ventana
-				setSize(900, 550);
 				guardarDatosPartidos((jornadaActual - 1));
 				// Establecemos un tamaño para la ventana
-				setSize(900, 550);
 				// **************************************************************************************************
 				// 2. YA CON LOS DATOS DE LA JORNADA GUARDADA, CALCULAMOS EL PUNTAJE DE CADA
 				// EQUIPO Y LO ACTUALIZAMOS EN LA ESTRUCTURA EQUIPO
@@ -355,8 +352,6 @@ public class VentanaClasificacion extends JFrame {
 				 * equipo.getPuntajeTotal()); }
 				 * 
 				 */
-				// Establecemos un tamaño para la ventana
-				setSize(900, 550);
 			}
 		});
 
@@ -1010,14 +1005,14 @@ public class VentanaClasificacion extends JFrame {
 	}
 
 	private void guardarDatosPartidos(int id_jornada) {
-		puntajeLocalFields = new JTextField[] { txtPuntajePartido1Local, txtPuntajePartido2Local,
-				txtPuntajePartido3Local };
-		puntajeVisitanteFields = new JTextField[] { txtPuntajePartido1Visitante, txtPuntajePartido2Visitante,
-				txtPuntajePartido3Visitante };
-		ultimoSetLocalFields = new JTextField[] { txtUltimoSetPartido1Local, txtUltimoSetPartido2Local,
-				txtUltimoSetPartido3Local };
-		ultimoSetVisitanteFields = new JTextField[] { txtUltimoSetPartido1Visitante, txtUltimoSetPartido2Visitante,
-				txtUltimoSetPartido3Visitante };
+		// HAY UN PEQUEÑO PROBLEMA CON JOPTIONPANE QUE CUANDO MUESTRA UN MENSAJE DE ERROR LA VENTANA SE REDIMENCIONA ENTONCES VAMOS A FORZAR EL TAMAÑO
+		setSize(900, 550);
+		
+		
+		puntajeLocalFields = new JTextField[] { txtPuntajePartido1Local, txtPuntajePartido2Local, txtPuntajePartido3Local };
+		puntajeVisitanteFields = new JTextField[] { txtPuntajePartido1Visitante, txtPuntajePartido2Visitante, txtPuntajePartido3Visitante };
+		ultimoSetLocalFields = new JTextField[] { txtUltimoSetPartido1Local, txtUltimoSetPartido2Local, txtUltimoSetPartido3Local };
+		ultimoSetVisitanteFields = new JTextField[] { txtUltimoSetPartido1Visitante, txtUltimoSetPartido2Visitante, txtUltimoSetPartido3Visitante };
 		boolean todosPartidosValidados = true; // Nueva bandera para validar todos los partidos
 
 		try {
