@@ -1,29 +1,18 @@
 package AplicacionFederacionVoleibol;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.FlowLayout;
-import java.awt.Color;
-import javax.swing.UIManager;
-import java.awt.SystemColor;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class VentanaEquiposUsuarios extends JFrame {
 	
@@ -79,6 +68,7 @@ public class VentanaEquiposUsuarios extends JFrame {
 	}
 	
 	public static void main(String[] args) {
+		  AlgoritmoJornadasFixture.InicializarTemporada();//Llamar al metodo main de la clase AlgoritmoJornadasFixture
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -144,12 +134,12 @@ public class VentanaEquiposUsuarios extends JFrame {
 		Equipo_1.add(TituloEquipo_1);
 		TituloEquipo_1.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		lblEquipo1 = new JLabel("Equipo1");
+		lblEquipo1 = new JLabel("Equipo 1");
 		lblEquipo1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEquipo1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		TituloEquipo_1.add(lblEquipo1);
 		
-		lblAlcobendas = new JLabel("CV Alcobendas");
+		lblAlcobendas = new JLabel(AlgoritmoJornadasFixture.listEquipos.get(0).getNombreEquipo());
 		lblAlcobendas.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblAlcobendas.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblAlcobendas.setHorizontalAlignment(SwingConstants.CENTER);
@@ -170,12 +160,12 @@ public class VentanaEquiposUsuarios extends JFrame {
 		Equipo_2.add(TituloEquipo_2);
 		TituloEquipo_2.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		lblEquipo2 = new JLabel("Equipo2");
+		lblEquipo2 = new JLabel("Equipo 2");
 		lblEquipo2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEquipo2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		TituloEquipo_2.add(lblEquipo2);
 		
-		lblAvila = new JLabel("CD Avila Voleibol");
+		lblAvila = new JLabel(AlgoritmoJornadasFixture.listEquipos.get(1).getNombreEquipo());
 		lblAvila.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblAvila.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAvila.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -194,12 +184,12 @@ public class VentanaEquiposUsuarios extends JFrame {
 		Equipo_3.add(TituloEquipo_3);
 		TituloEquipo_3.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		lblEquipo_3 = new JLabel("Equipo3");
+		lblEquipo_3 = new JLabel("Equipo 3");
 		lblEquipo_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEquipo_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		TituloEquipo_3.add(lblEquipo_3);
 		
-		lblBarsa = new JLabel("CV Barça");
+		lblBarsa = new JLabel(AlgoritmoJornadasFixture.listEquipos.get(2).getNombreEquipo());
 		lblBarsa.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblBarsa.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblBarsa.setHorizontalAlignment(SwingConstants.CENTER);
@@ -218,12 +208,12 @@ public class VentanaEquiposUsuarios extends JFrame {
 		Equipo_4.add(TituloEquipo_4);
 		TituloEquipo_4.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		lblEquipo4 = new JLabel("Equipo4");
+		lblEquipo4 = new JLabel("Equipo 4");
 		lblEquipo4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEquipo4.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		TituloEquipo_4.add(lblEquipo4);
 		
-		lblMadrid = new JLabel("CV Madrid Chamberí");
+		lblMadrid = new JLabel(AlgoritmoJornadasFixture.listEquipos.get(3).getNombreEquipo());
 		lblMadrid.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblMadrid.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblMadrid.setHorizontalAlignment(SwingConstants.CENTER);
@@ -242,13 +232,13 @@ public class VentanaEquiposUsuarios extends JFrame {
 		Equipo_5.add(TituloEquipo_5);
 		TituloEquipo_5.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		lblEquipo_5 = new JLabel("Equipo5");
+		lblEquipo_5 = new JLabel("Equipo 5");
 		lblEquipo_5.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEquipo_5.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblEquipo_5.setBackground(new Color(255, 255, 128));
 		TituloEquipo_5.add(lblEquipo_5);
 		
-		lblSayre = new JLabel("CV Sayre Mayser");
+		lblSayre = new JLabel(AlgoritmoJornadasFixture.listEquipos.get(4).getNombreEquipo());
 		lblSayre.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblSayre.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblSayre.setHorizontalAlignment(SwingConstants.CENTER);
@@ -267,13 +257,13 @@ public class VentanaEquiposUsuarios extends JFrame {
 		Equipo_6.add(TituloEquipo_6);
 		TituloEquipo_6.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		lblEquipo_6 = new JLabel("Equipo6");
+		lblEquipo_6 = new JLabel("Equipo 6");
 		lblEquipo_6.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEquipo_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblEquipo_6.setBackground(new Color(128, 255, 128));
 		TituloEquipo_6.add(lblEquipo_6);
 		
-		lblZaragoza = new JLabel("CD Zaragoza");
+		lblZaragoza = new JLabel(AlgoritmoJornadasFixture.listEquipos.get(5).getNombreEquipo());
 		lblZaragoza.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblZaragoza.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblZaragoza.setHorizontalAlignment(SwingConstants.CENTER);

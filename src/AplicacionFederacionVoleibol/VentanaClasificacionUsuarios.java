@@ -2,40 +2,18 @@ package AplicacionFederacionVoleibol;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.util.List;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.GraphicsEnvironment;
-import java.awt.Point;
-
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JButton;
-import javax.swing.BoxLayout;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import javax.swing.JSeparator;
-import javax.swing.JSpinner;
-import java.awt.Button;
-import java.awt.CardLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.JTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JComboBox;
-import javax.swing.SpringLayout;
-import java.awt.event.ActionListener;
-import java.util.List;
-import java.awt.event.ActionEvent;
 
 public class VentanaClasificacionUsuarios extends JFrame {
 
