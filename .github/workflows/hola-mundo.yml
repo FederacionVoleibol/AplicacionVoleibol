@@ -1,0 +1,10 @@
+name: Workflow Hola Mundo # Nombre opcional del workflow
+on:
+ push:
+ branches: [ "main" ] # Se ejecuta en pushes a la rama main
+jobs:
+ saludo:
+ runs-on: ubuntu-latest
+ steps:
+ - name: Saludar por consola
+ run: echo "Hola Mundo desde GitHub Actions"
