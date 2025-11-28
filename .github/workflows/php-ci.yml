@@ -1,0 +1,24 @@
+name: CI PHP - Instalar y Probar
+
+on:
+  push:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: mbstring, dom
+
+      - name: Instalar dependencias con Composer
+        run: composer install
+
+      - name: Ejecutar pruebas PHP
+        run: vendor/bin/phpunit
